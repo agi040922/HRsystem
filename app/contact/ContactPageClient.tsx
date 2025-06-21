@@ -19,23 +19,31 @@ const contactFormSchema = z.object({
   subject: z.string().min(5, "문의 제목은 5자 이상 입력해주세요."),
   message: z.string().min(10, "문의 내용은 10자 이상 입력해주세요."),
   attachment: z
-    .instanceof(FileList)
+    .any() // FileList 대신 any 사용하여 서버 환경에서 안전하게 처리
     .optional() // 파일 첨부는 선택 사항
     .refine(
-      (files) => !files || files.length === 0 || files[0].size <= 5 * 1024 * 1024,
+      (files) => {
+        // 브라우저 환경에서만 FileList 체크
+        if (typeof window === 'undefined') return true // 서버 환경에서는 통과
+        if (!files || (files && files.length === 0)) return true
+        return files[0]?.size <= 5 * 1024 * 1024
+      },
       `파일 크기는 5MB를 초과할 수 없습니다.`,
     )
     .refine(
-      (files) =>
-        !files ||
-        files.length === 0 ||
-        [
+      (files) => {
+        // 브라우저 환경에서만 파일 타입 체크
+        if (typeof window === 'undefined') return true // 서버 환경에서는 통과
+        if (!files || (files && files.length === 0)) return true
+        const allowedTypes = [
           "application/pdf",
           "image/jpeg",
           "image/png",
           "application/msword",
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        ].includes(files[0].type),
+        ]
+        return allowedTypes.includes(files[0]?.type)
+      },
       `지원되는 파일 형식: PDF, JPG, PNG, DOC, DOCX`,
     ),
 })
@@ -56,8 +64,8 @@ export default function ContactPageClient() {
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
     const formData = new FormData()
     Object.entries(data).forEach(([key, value]) => {
-      if (key === "attachment" && value instanceof FileList && value.length > 0) {
-        formData.append(key, value[0])
+      if (key === "attachment" && typeof window !== 'undefined' && value && (value as FileList).length > 0) {
+        formData.append(key, (value as FileList)[0])
       } else if (value !== undefined && value !== null) {
         formData.append(key, String(value))
       }
