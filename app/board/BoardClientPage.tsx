@@ -105,7 +105,7 @@ export default function BoardClientPage({
       <PageBanner 
         title="공지사항"
         subtitle="노무법인 [법인명]의 다양한 소식을 전해드립니다"
-        backgroundImage="public\FAIR000.png"
+        backgroundImage="/FAIR000.png"
       />
 
       <motion.div

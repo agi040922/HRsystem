@@ -98,3 +98,4 @@ const Component = () => {
 - [Next.js Dynamic Rendering](mdc:https:/nextjs.org/docs/app/building-your-application/rendering/server-components#dynamic-rendering)
 - [Next.js Runtime APIs](mdc:https:/nextjs.org/docs/app/building-your-application/rendering/composition-patterns#when-to-use-the-client-and-server-components)
 
+

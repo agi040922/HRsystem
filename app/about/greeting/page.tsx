@@ -12,7 +12,7 @@ export default function GreetingPage() {
       <PageBanner 
         title="인사말"
         subtitle="FAIR인사노무컨설팅의 철학과 비전을 소개합니다"
-        backgroundImage="/placeholder.svg?width=1920&height=450"
+        backgroundImage="/FAIR000.png"
       />
 
       <motion.div
@@ -34,7 +34,7 @@ export default function GreetingPage() {
               </h2>
               <div className="mb-6">
                 <Image
-                  src="/placeholder.svg?width=300&height=300"
+                  src="/언론1.png"
                   alt="대표 공인노무사 정광일 사진"
                   width={120}
                   height={120}
@@ -66,7 +66,7 @@ export default function GreetingPage() {
             </div>
             <div className="px-4 md:px-0">
               <Image
-                src="/placeholder.svg?width=500&height=400"
+                src="https://imageoptimzer.acon3d.com/?image=https%3A%2F%2Fstorage.acon3d.com%2Fproduct%2FOKMrTcsXOsVkdxeUqxNpu&width=2600&quality=70&watermark=true"
                 alt="FAIR인사노무컨설팅 사무실 이미지"
                 width={500}
                 height={400}

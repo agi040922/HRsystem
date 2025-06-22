@@ -52,7 +52,7 @@ export default async function BoardDetailPage({ params }: { params: Promise<{ id
       <PageBanner 
         title="공지사항"
         subtitle="노무법인 [법인명] 공지사항"
-        backgroundImage="public\FAIR000.png"
+        backgroundImage="/FAIR000.png"
       />
 
       <div className="container-fluid max-w-7xl py-8 md:py-12 lg:py-16 xl:py-20">

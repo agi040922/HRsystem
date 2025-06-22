@@ -3,3 +3,181 @@ description:
 globs:
 alwaysApply: false
 ---
+# Labor Law Firm Website - Project Specific Rules
+
+## 🏢 Project Overview
+This is a Next.js-based labor law firm website with Korean language support, featuring legal tools, consultation forms, and client management.
+
+## 📁 Project Structure
+
+### Core Directories
+- [**app/**](mdc:app): Next.js App Router pages and layouts
+- [**components/**](mdc:components): Reusable UI components
+- [**lib/**](mdc:lib): Utility functions and configurations
+- [**public/**](mdc:public): Static assets (images, videos)
+- [**styles/**](mdc:styles): Global CSS styles
+
+### Key Files
+- [package.json](mdc:package.json): Dependencies and scripts
+- [tailwind.config.ts](mdc:tailwind.config.ts): Tailwind CSS configuration
+- [tsconfig.json](mdc:tsconfig.json): TypeScript configuration
+- [next.config.mjs](mdc:next.config.mjs): Next.js configuration
+
+## 🎯 Feature-Specific Guidelines
+
+### Legal Tools Implementation
+Located in [app/tools/](mdc:app/tools/):
+- **AI Consultation**: [ai-consultation/](mdc:app/tools/ai-consultation)
+- **Contract Generator**: [contract-generator/](mdc:app/tools/contract-generator)
+- **Dismissal Checker**: [dismissal-checker/](mdc:app/tools/dismissal-checker)
+- **Severance Calculator**: [severance-calculator/](mdc:app/tools/severance-calculator)
+- **Working Time Checker**: [working-time-checker/](mdc:app/tools/working-time-checker)
+
+#### Development Rules for Tools:
+- **Form Validation**: Use Zod schemas for all input validation
+- **Error Handling**: Provide user-friendly Korean error messages
+- **Loading States**: Show loading indicators for calculations
+- **Results Display**: Format results clearly with proper Korean typography
+
+### Contact Form ([app/contact/](mdc:app/contact/))
+- **File Upload**: Reference [ContactPageClient.tsx](mdc:app/contact/ContactPageClient.tsx) for safe FileList handling
+- **Dynamic Rendering**: Always use `export const dynamic = 'force-dynamic'` for pages with file uploads
+- **Validation**: Follow the SSR-safe pattern established in the contact form
+
+### Board System ([app/board/](mdc:app/board/))
+- **Client Components**: Use client-side rendering for interactive features
+- **Loading States**: Implement proper loading states as shown in [loading.tsx](mdc:app/board/loading.tsx)
+- **Error Handling**: Use [not-found.tsx](mdc:app/board/[id]/not-found.tsx) pattern for error pages
+
+## 🌏 Internationalization (i18n)
+
+### Korean Language Support
+- **Typography**: Use proper Korean fonts and spacing
+- **Form Labels**: All form labels and validation messages in Korean
+- **Error Messages**: Provide clear Korean error messages
+- **Date Formatting**: Use Korean date format (YYYY년 MM월 DD일)
+
+### Text Content Guidelines
+- **Legal Terminology**: Use appropriate legal Korean terminology
+- **Formal Language**: Maintain formal tone (존댓말) throughout
+- **Consistent Naming**: Keep consistent naming for legal terms
+
+## 🔧 Database Integration
+
+### Supabase Configuration
+- **Client Setup**: Use [lib/supabase.ts](mdc:lib/supabase.ts) for database connections
+- **Type Safety**: Generate TypeScript types from Supabase schema
+- **Error Handling**: Implement proper error handling for database operations
+
+### Board Management
+- **CRUD Operations**: Follow patterns in [lib/board.ts](mdc:lib/board.ts)
+- **Admin Functions**: Secure admin operations in [app/admin/](mdc:app/admin/)
+
+## 🎨 UI/UX Guidelines
+
+### Design System
+- **UI Components**: Use shadcn/ui components from [components/ui/](mdc:components/ui/)
+- **Consistent Styling**: Follow established design patterns
+- **Responsive Design**: Ensure mobile-first responsive design
+- **Accessibility**: Maintain WCAG compliance
+
+### Component Usage
+```tsx
+// ✅ Good - Use established UI components
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+
+// ✅ Good - Consistent spacing and typography
+<Card className="shadow-lg hover:shadow-xl transition-shadow">
+  <CardHeader>
+    <CardTitle className="text-xl font-bold">제목</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-muted-foreground leading-relaxed">내용</p>
+  </CardContent>
+</Card>
+```
+
+### Animation Guidelines
+- **Framer Motion**: Use for page transitions and interactions
+- **Performance**: Keep animations smooth and performant
+- **Accessibility**: Respect `prefers-reduced-motion`
+
+## 📱 Mobile Optimization
+
+### Responsive Breakpoints
+```css
+/* Follow Tailwind's breakpoint system */
+sm: 640px   /* Small screens */
+md: 768px   /* Medium screens */
+lg: 1024px  /* Large screens */
+xl: 1280px  /* Extra large screens */
+```
+
+### Mobile-First Approach
+- **Base styles**: Design for mobile first
+- **Progressive enhancement**: Add desktop features progressively
+- **Touch targets**: Ensure proper touch target sizes
+- **Performance**: Optimize for mobile performance
+
+## 🚀 Deployment Guidelines
+
+### Vercel Deployment
+- **Build Optimization**: Ensure all pages build successfully
+- **Environment Variables**: Configure properly for production
+- **Domain Configuration**: Set up custom domain if needed
+- **Performance Monitoring**: Monitor Core Web Vitals
+
+### Pre-deployment Checklist
+- [ ] All TypeScript errors resolved
+- [ ] Build passes locally (`npm run build`)
+- [ ] No browser-only API usage in SSR/SSG contexts
+- [ ] All forms properly validated
+- [ ] Mobile responsiveness tested
+- [ ] Korean text rendering verified
+- [ ] Database connections configured
+
+## 🔒 Security Considerations
+
+### Data Protection
+- **Personal Information**: Secure handling of client personal data
+- **File Uploads**: Validate file types and sizes
+- **Input Sanitization**: Sanitize all user inputs
+- **Authentication**: Implement proper admin authentication
+
+### Legal Compliance
+- **Privacy Policy**: Maintain updated privacy policy
+- **Data Retention**: Follow data retention policies
+- **GDPR Compliance**: Consider GDPR requirements for international clients
+
+## 📊 Performance Monitoring
+
+### Key Metrics to Monitor
+- **Page Load Times**: Especially for tool pages
+- **Form Submission Success**: Monitor contact form success rates
+- **Mobile Performance**: Ensure good mobile experience
+- **SEO Performance**: Monitor search engine rankings
+
+### Optimization Priorities
+1. **Core Web Vitals**: LCP, FID, CLS
+2. **Form Performance**: Fast form validation and submission
+3. **Tool Calculation Speed**: Optimize legal calculation tools
+4. **Image Loading**: Optimize images for Korean content
+
+## 🧪 Testing Strategy
+
+### Component Testing
+- **Form Components**: Test all form validation logic
+- **Tool Components**: Test calculation accuracy
+- **UI Components**: Test responsive behavior
+
+### Integration Testing
+- **Database Operations**: Test CRUD operations
+- **File Upload**: Test file upload functionality
+- **Email Integration**: Test contact form email delivery
+
+### User Acceptance Testing
+- **Legal Professionals**: Get feedback from legal experts
+- **Client Journey**: Test complete user journeys
+- **Mobile Experience**: Test on actual mobile devices
+- **Korean Language**: Verify Korean text rendering

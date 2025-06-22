@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const representativeInfo = {
     name: "정광일",
     position: "대표 공인노무사",
-    image: "/placeholder.svg?width=300&height=300",
+    image: "/강의1.png",
     introduction: "제8회 공인노무사 시험 합격(1999년)으로 25년간의 풍부한 실무 경험과 전문 지식을 바탕으로 고객에게 최고의 노무 서비스를 제공하고 있습니다.",
     
     // 학력 정보
@@ -106,25 +106,25 @@ export default function ProfilePage() {
     // 강의 사진
     lectureImages: [
       {
-        src: "/placeholder.svg?width=400&height=300",
+        src: "/언론1.png",
         title: "서울상공회의소 인사노무관리 강의",
         date: "2024.03.15",
         location: "서울상공회의소"
       },
       {
-        src: "/placeholder.svg?width=400&height=300", 
+        src: "/언론2.png", 
         title: "주한외국기업인사관리협회 특강",
         date: "2024.02.20",
         location: "주한외국기업인사관리협회"
       },
       {
-        src: "/placeholder.svg?width=400&height=300",
+        src: "/강의2.png",
         title: "대기업 노무관리 교육",
         date: "2024.01.30",
         location: "삼성전자"
       },
       {
-        src: "/placeholder.svg?width=400&height=300",
+        src: "/강의3.png",
         title: "석세스 TV 프로직장인 교육",
         date: "2023.12.10",
         location: "석세스 TV"
@@ -138,7 +138,7 @@ export default function ProfilePage() {
       <PageBanner 
         title="대표 프로필"
         subtitle="정광일 대표 공인노무사의 경력, 학력, 강의경력 및 저술활동"
-        backgroundImage="/placeholder.svg?width=1920&height=450"
+        backgroundImage="/FAIR000.png"
       />
 
       <motion.div

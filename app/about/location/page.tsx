@@ -70,7 +70,7 @@ export default function LocationPage() {
       <PageBanner 
         title="오시는 길"
         subtitle="노무법인 [법인명] 위치 안내 및 교통편"
-        backgroundImage="/placeholder.svg?width=1920&height=450"
+        backgroundImage="/FAIR000.png"
       />
 
       <motion.div

@@ -1,5 +1,209 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
+# General Development Rules & Best Practices
+
+## 🎯 Code Quality Standards
+
+### TypeScript Usage
+- **Always use TypeScript**: Prefer `.tsx` over `.jsx` for React components
+- **Strict typing**: Avoid `any` type unless absolutely necessary
+- **Interface definitions**: Create interfaces for complex objects
+- **Type guards**: Use type checking for runtime safety
+
+```typescript
+// ✅ Good
+interface User {
+  id: string
+  name: string
+  email: string
+}
+
+// ❌ Avoid
+const user: any = { id: 1, name: "John" }
+```
+
+### Component Architecture
+- **Single Responsibility**: Each component should have one clear purpose
+- **Reusable Components**: Create components in `/components/ui/` for reusability
+- **Client vs Server Components**: Use `"use client"` only when necessary
+- **Props Interface**: Define props interface for every component
+
+```typescript
+// ✅ Good component structure
+interface ButtonProps {
+  children: React.ReactNode
+  variant?: 'primary' | 'secondary'
+  onClick?: () => void
+}
+
+export function Button({ children, variant = 'primary', onClick }: ButtonProps) {
+  return (
+    <button className={`btn btn-${variant}`} onClick={onClick}>
+      {children}
+    </button>
+  )
+}
+```
+
+## 🔧 Next.js Specific Rules
+
+### File Organization
+- **App Router**: Use app directory structure
+- **Page components**: Keep page components simple, move logic to client components
+- **API Routes**: Place in `app/api/` directory
+- **Static files**: Use `public/` directory for assets
+
+### Performance Optimization
+- **Dynamic imports**: Use `next/dynamic` for heavy components
+- **Image optimization**: Always use `next/image` for images
+- **Font optimization**: Use `next/font` for custom fonts
+- **Bundle analysis**: Regular check with `@next/bundle-analyzer`
+
+```typescript
+// ✅ Good - Dynamic import
+const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+  loading: () => <div>Loading...</div>
+})
+
+// ✅ Good - Image optimization
+import Image from 'next/image'
+
+<Image
+  src="/hero-image.jpg"
+  alt="Hero image"
+  width={800}
+  height={600}
+  priority
+/>
+```
+
+## 🎨 Styling Guidelines
+
+### Tailwind CSS
+- **Utility-first**: Use Tailwind utility classes
+- **Responsive design**: Mobile-first approach with breakpoint prefixes
+- **Component extraction**: Extract repeated patterns into components
+- **Custom utilities**: Add custom utilities in `tailwind.config.ts`
+
+```tsx
+// ✅ Good - Responsive and semantic
+<div className="w-full max-w-md mx-auto p-4 bg-white rounded-lg shadow-lg sm:max-w-lg md:max-w-xl">
+  <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">Title</h2>
+</div>
+```
+
+### CSS Custom Properties
+- **Dark mode**: Use CSS variables for theme switching
+- **Consistent spacing**: Use design system spacing scale
+- **Color palette**: Maintain consistent color scheme
+
+## 📝 Form Handling
+
+### React Hook Form + Zod
+- **Validation schema**: Always use Zod for form validation
+- **Error handling**: Provide clear error messages
+- **Loading states**: Show loading states during submission
+- **Success feedback**: Provide user feedback on successful actions
+
+```typescript
+const formSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters")
+})
+
+type FormData = z.infer<typeof formSchema>
+
+const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
+  resolver: zodResolver(formSchema)
+})
+```
+
+## 🔒 Security Best Practices
+
+### Data Validation
+- **Server-side validation**: Always validate on the server
+- **Input sanitization**: Sanitize user inputs
+- **SQL injection prevention**: Use parameterized queries
+- **XSS prevention**: Escape user-generated content
+
+### Authentication & Authorization
+- **JWT tokens**: Use secure token handling
+- **Route protection**: Implement proper route guards
+- **Role-based access**: Implement proper authorization
+- **Session management**: Secure session handling
+
+## 🚀 Performance Guidelines
+
+### Code Splitting
+- **Route-based splitting**: Automatic with Next.js App Router
+- **Component-based splitting**: Use `React.lazy()` or `next/dynamic`
+- **Third-party libraries**: Import only what you need
+
+### Caching Strategy
+- **Static generation**: Use SSG when possible
+- **ISR (Incremental Static Regeneration)**: For dynamic content
+- **Client-side caching**: Use React Query or SWR
+- **CDN optimization**: Optimize for Vercel Edge Network
+
+## 🧪 Testing Standards
+
+### Unit Testing
+- **Test utilities**: Use `@testing-library/react`
+- **Test coverage**: Aim for >80% coverage
+- **Mock external dependencies**: Mock API calls and external services
+- **Test behavior**: Test user interactions, not implementation
+
+### Integration Testing
+- **API testing**: Test API routes
+- **Database testing**: Test database operations
+- **End-to-end testing**: Use Playwright or Cypress
+
+## 📊 Monitoring & Debugging
+
+### Error Handling
+- **Error boundaries**: Implement React error boundaries
+- **Logging**: Use structured logging
+- **Error tracking**: Implement error tracking service
+- **User feedback**: Provide helpful error messages
+
+### Performance Monitoring
+- **Core Web Vitals**: Monitor LCP, FID, CLS
+- **Bundle size**: Monitor bundle size regularly
+- **API performance**: Monitor API response times
+- **User analytics**: Track user interactions
+
+## 📦 Package Management
+
+### Dependencies
+- **Minimize dependencies**: Only add necessary packages
+- **Security updates**: Regularly update dependencies
+- **Bundle analysis**: Check impact on bundle size
+- **Peer dependencies**: Properly handle peer dependencies
+
+### Version Control
+- **Semantic versioning**: Follow semver for releases
+- **Commit messages**: Use conventional commit format
+- **Branch strategy**: Use feature branches
+- **Pull request reviews**: Require code reviews
+
+## 🔍 Code Review Checklist
+
+### Before Submitting PR
+- [ ] All tests pass
+- [ ] No TypeScript errors
+- [ ] No console.log statements
+- [ ] Proper error handling
+- [ ] Responsive design tested
+- [ ] Accessibility considerations
+- [ ] Performance impact assessed
+
+### Review Criteria
+- [ ] Code follows established patterns
+- [ ] Proper TypeScript usage
+- [ ] Security considerations addressed
+- [ ] Performance optimizations applied
+- [ ] Documentation updated if needed
+

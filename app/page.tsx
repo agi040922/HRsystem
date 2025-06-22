@@ -5,69 +5,221 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 
-import { Briefcase, FileText, Users, ArrowRight, Play, X, Menu, Calculator, AlertTriangle, ClipboardCheck, Scale, MessageSquare, Award, Shield, TrendingUp } from "lucide-react"
+import { Briefcase, FileText, Users, ArrowRight, Play, Calculator, AlertTriangle, ClipboardCheck, Scale, MessageSquare, Award, Shield, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react"
 import KakaoMap from "@/components/kakao-map"
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { getFeaturedPosts } from "@/lib/board"
+import type { BoardPost } from "@/lib/supabase"
 
-// HeroSection 컴포넌트
+// HeroSection 컴포넌트 - 캐러셀 버전
 function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const slides = [
+    {
+      type: "video",
+      src: "/videos/hero-bg.mp4",
+      topLeft: {
+        title: "노무 문제, 명쾌한 해결",
+        subtitle: "FAIR인사노무컨설팅"
+      },
+      bottomRight: {
+        text: "전문적인 상담으로 최적의 솔루션을",
+        highlight: "19년 경험의 전문성"
+      }
+    },
+    {
+      type: "image",
+      src: "https://image.lawtimes.co.kr/images/148040.jpg",
+      topLeft: {
+        title: "200건+ 압도적 승소율",
+        subtitle: "검증된 실력"
+      },
+      bottomRight: {
+        text: "노동위원회, 행정심판에서",
+        highlight: "뛰어난 성과 달성"
+      }
+    },
+    {
+      type: "image", 
+      src: "https://img.investchosun.com/site/data/img_dir/2019/07/09/2019070986003_0.jpg",
+      topLeft: {
+        title: "김&장 출신 전문성",
+        subtitle: "대표 정광일"
+      },
+      bottomRight: {
+        text: "연세대 MBA, 제8회 공인노무사",
+        highlight: "최고 수준의 전문성"
+      }
+    },
+    {
+      type: "image",
+      src: "https://www.blockmedia.co.kr/wp-content/uploads/2023/02/AI-%EC%97%90%EC%84%B8%EC%9D%B4-%EC%82%AC%EB%A1%80.jpg",
+      topLeft: {
+        title: "스마트 노무 도구",
+        subtitle: "AI 기반 솔루션"
+      },
+      bottomRight: {
+        text: "복잡한 노무업무를 간단하게",
+        highlight: "24시간 즉시 해결"
+      }
+    }
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 7000)
+    return () => clearInterval(timer)
+  }, [slides.length, currentSlide])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+  }
+
   return (
-    <section className="relative h-[calc(100vh-4rem)] w-full overflow-hidden flex items-center justify-center">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 z-0 w-full h-full object-cover"
-      >
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        영상을 지원하지 않는 브라우저입니다.
-      </video>
-      <div className="absolute inset-0 bg-black/60 z-10" />
-      <div className="relative z-20 container-fluid text-center max-w-7xl">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl font-bold tracking-tighter text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl mb-4 md:mb-6 leading-tight"
-        >
-          노무 문제, 명쾌한 해결
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-[90%] sm:max-w-[700px] mx-auto text-slate-200 text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 leading-relaxed px-4"
-        >
-          FAIR인사노무컨설팅이 당신의 든든한 파트너가 되어 드리겠습니다.
-          <br className="hidden sm:block" />
-          전문적인 상담으로 최적의 솔루션을 만나보세요.
-        </motion.p>
+    <section className="relative h-[calc(100vh-4rem)] w-full overflow-hidden">
+      <AnimatePresence mode="wait">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col gap-3 sm:flex-row justify-center items-center px-4"
+          key={currentSlide}
+          initial={{ opacity: 0.3 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0.3 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0"
         >
-          <Link href="/contact">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-              빠른 상담 신청 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-            </Button>
-          </Link>
-          <Link href="/services">
-            <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black w-full sm:w-auto">
-              서비스 둘러보기
-            </Button>
-          </Link>
+          {slides[currentSlide].type === "video" ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 z-0 w-full h-full object-cover"
+            >
+              <source src={slides[currentSlide].src} type="video/mp4" />
+              영상을 지원하지 않는 브라우저입니다.
+            </video>
+          ) : (
+            <img
+              src={slides[currentSlide].src}
+              alt="Hero background"
+              className="absolute inset-0 z-0 w-full h-full object-cover"
+            />
+          )}
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          
+          {/* 왼쪽 상단 텍스트 */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
+            className="absolute top-8 left-8 z-20 max-w-md"
+          >
+            <h3 className="text-sm md:text-base text-slate-300 mb-2">
+              {slides[currentSlide].topLeft.subtitle}
+            </h3>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+              {slides[currentSlide].topLeft.title}
+            </h2>
+          </motion.div>
+
+          {/* 오른쪽 하단 텍스트 */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
+            className="absolute bottom-8 right-8 z-20 max-w-md text-right"
+          >
+            <p className="text-sm md:text-base text-slate-300 mb-1">
+              {slides[currentSlide].bottomRight.text}
+            </p>
+            <p className="text-lg md:text-xl font-semibold text-primary">
+              {slides[currentSlide].bottomRight.highlight}
+            </p>
+          </motion.div>
         </motion.div>
+      </AnimatePresence>
+
+      {/* 중앙 메인 콘텐츠 */}
+      <div className="relative z-20 h-full flex items-center justify-center">
+        <div className="container-fluid text-center max-w-4xl px-4">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, delay: 0.2, ease: "easeOut" }}
+            className="text-2xl font-bold tracking-tighter text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 md:mb-6 leading-tight"
+          >
+            당신의 든든한 파트너
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
+            className="max-w-[90%] sm:max-w-[600px] mx-auto text-slate-200 text-sm sm:text-base md:text-lg mb-6 md:mb-8 leading-relaxed"
+          >
+            FAIR인사노무컨설팅이 전문적인 상담으로 최적의 솔루션을 제공합니다.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
+            className="flex flex-col gap-3 sm:flex-row justify-center items-center"
+          >
+            <Link href="/contact">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
+                빠른 상담 신청 <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/services">
+              <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-black/20 w-full sm:w-auto">
+                서비스 둘러보기
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* 네비게이션 버튼 */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/20 hover:bg-black/40 text-white transition-all duration-300"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/20 hover:bg-black/40 text-white transition-all duration-300"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* 인디케이터 */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-500 ${
+              index === currentSlide ? 'bg-primary' : 'bg-white/30 hover:bg-white/50'
+            }`}
+          />
+        ))}
       </div>
     </section>
   )
 }
 
-// CompanyStrengthSection 컴포넌트 - 회사 강점 섹션 추가
-function CompanyStrengthSection() {
+// 회사 소개 통합 섹션 (기존 CompanyStrengthSection + 비디오 결합)
+function CompanyIntroSection() {
   const strengths = [
     {
       icon: Award,
@@ -90,14 +242,15 @@ function CompanyStrengthSection() {
   ]
 
   return (
-    <section className="w-full py-12 md:py-16 bg-gradient-to-br from-blue-50 to-slate-50">
+    <section className="w-full py-8 md:py-12 bg-gradient-to-br from-blue-50 to-slate-50">
       <div className="container-fluid max-w-7xl px-4">
+        {/* 회사 강점 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 md:mb-12"
+          className="text-center mb-6"
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full text-sm text-primary font-medium mb-3">
             <span>🏆</span>
@@ -111,7 +264,7 @@ function CompanyStrengthSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
           {strengths.map((strength, index) => (
             <motion.div
               key={strength.title}
@@ -135,6 +288,63 @@ function CompanyStrengthSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* 회사 소개 영상 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-4"
+        >
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+            영상으로 만나는 FAIR인사노무컨설팅
+          </h3>
+          <p className="text-muted-foreground">
+            2005년 설립 이후 기업자문에 컨설팅 개념을 도입하여 새로운 지평을 열었습니다.
+          </p>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto"
+        >
+          <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl group">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=example"
+              title="FAIR인사노무컨설팅 회사 소개"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+              <Play className="w-12 h-12 text-white/80" />
+            </div>
+          </div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-3"
+          >
+            <Card className="inline-block bg-primary/5 border-primary/20">
+              <CardContent className="p-3">
+                <div className="flex items-center gap-2 justify-center">
+                  <Play className="w-4 h-4 text-primary" />
+                  <p className="text-sm text-muted-foreground">
+                    "법률지식을 넘어 문제를 해결할 수 있는 전략을 제공합니다"
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
@@ -191,14 +401,14 @@ function ToolsSection() {
   ]
 
   return (
-    <section className="w-full py-8 md:py-12 bg-gradient-to-br from-slate-50 to-blue-50/30">
+    <section className="w-full py-6 md:py-10 bg-gradient-to-br from-slate-50 to-blue-50/30">
       <div className="container-fluid max-w-7xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-6 md:mb-8"
+          className="text-center mb-5 md:mb-6"
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full text-sm text-primary font-medium mb-3">
             <span>🛠️</span>
@@ -255,7 +465,7 @@ function ToolsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-6 md:mt-8"
+          className="text-center mt-4 md:mt-6"
         >
           <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
             <span>💡</span>
@@ -308,102 +518,25 @@ function ServiceCard({ icon: Icon, title, description, href, index }: ServiceCar
   )
 }
 
-// FloatingSidebar 컴포넌트
-function FloatingSidebar() {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <>
-      <motion.button
-        onClick={() => setIsOpen(true)}
-        className={`fixed top-1/2 right-4 z-40 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary/90 transition-colors ${isOpen ? 'hidden' : 'block'}`}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1 }}
-      >
-        <Menu className="w-5 h-5" />
-      </motion.button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/20 z-50"
-            />
-            
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 overflow-y-auto"
-            >
-              <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-900">빠른 메뉴</h3>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-1 rounded-full hover:bg-gray-100 transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="p-4 space-y-4">
-                <div className="space-y-3">
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
-                    <Button className="w-full justify-start" variant="outline">
-                      📞 전화 상담 신청
-                    </Button>
-                  </Link>
-                  <Link href="/services" onClick={() => setIsOpen(false)}>
-                    <Button className="w-full justify-start" variant="outline">
-                      💼 전체 서비스 보기
-                    </Button>
-                  </Link>
-                  <Link href="/board" onClick={() => setIsOpen(false)}>
-                    <Button className="w-full justify-start" variant="outline">
-                      📰 최신 소식 보기
-                    </Button>
-                  </Link>
-                  <Link href="/qna" onClick={() => setIsOpen(false)}>
-                    <Button className="w-full justify-start" variant="outline">
-                      ❓ 자주묻는질문
-                    </Button>
-                  </Link>
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20"
-                >
-                  <h4 className="font-medium text-primary mb-2">긴급 상담이 필요하세요?</h4>
-                  <p className="text-xs text-gray-600 mb-3">
-                    업무시간: 평일 09:00~18:00
-                  </p>
-                  <a href="tel:02-1234-5678">
-                    <Button size="sm" className="w-full" onClick={() => setIsOpen(false)}>
-                      📞 02-1234-5678
-                    </Button>
-                  </a>
-                </motion.div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
-  )
-}
-
 export default function HomePage() {
+  const [featuredPosts, setFeaturedPosts] = useState<BoardPost[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadFeaturedPosts() {
+      try {
+        const { posts } = await getFeaturedPosts(3)
+        setFeaturedPosts(posts)
+      } catch (error) {
+        console.error('Failed to load featured posts:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadFeaturedPosts()
+  }, [])
+
   const services = [
     {
       icon: Briefcase,
@@ -425,90 +558,20 @@ export default function HomePage() {
     },
   ]
 
-  const latestPosts = [
-    { id: 1, title: "2025년 최저임금 확정 및 주요 변경사항 안내", date: "2025-05-20", href: "/board/1" },
-    { id: 2, title: "직장 내 괴롭힘 예방 교육, 이렇게 준비하세요!", date: "2025-05-15", href: "/board/2" },
-    { id: 3, title: "주 52시간 근무제 개편안 상세 분석 및 대응 전략", date: "2025-05-10", href: "/board/3" },
-  ]
-
   return (
     <>
       <HeroSection />
-      <CompanyStrengthSection />
+      <CompanyIntroSection />
       <ToolsSection />
-      <FloatingSidebar />
 
-      <section id="company-video" className="w-full py-12 md:py-16 lg:py-24 xl:py-32">
+      <section id="services-summary" className="w-full py-8 md:py-12 bg-slate-50">
         <div className="container-fluid max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-center space-y-4 text-center mb-8 md:mb-12"
-          >
-            <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary font-medium">
-              회사 소개
-            </div>
-            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl px-4">
-              영상으로 만나는 FAIR인사노무컨설팅
-            </h2>
-            <p className="max-w-[90%] sm:max-w-[900px] text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-4">
-              2005년 설립 이후 기업자문에 컨설팅 개념을 도입하여 새로운 지평을 열었습니다.
-            </p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto px-4"
-          >
-            <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl group">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=example"
-                title="FAIR인사노무컨설팅 회사 소개"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                <Play className="w-16 h-16 text-white/80" />
-              </div>
-            </div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-center mt-6 md:mt-8"
-            >
-              <Card className="inline-block bg-primary/5 border-primary/20">
-                <CardContent className="p-4 md:p-6">
-                  <div className="flex items-center gap-3 justify-center">
-                    <Play className="w-5 h-5 text-primary" />
-                    <p className="text-sm md:text-base text-muted-foreground">
-                      "법률지식을 넘어 문제를 해결할 수 있는 전략을 제공합니다"
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section id="services-summary" className="w-full py-12 md:py-16 lg:py-24 xl:py-32 bg-slate-50">
-        <div className="container-fluid max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-center space-y-4 text-center mb-8 md:mb-12"
+            className="flex flex-col items-center justify-center space-y-4 text-center mb-6 md:mb-8"
           >
             <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary font-medium">
               핵심 서비스
@@ -529,55 +592,95 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="latest-news" className="w-full py-12 md:py-16 lg:py-24 xl:py-32 bg-slate-50">
+      <section id="latest-news" className="w-full py-8 md:py-12 bg-slate-50">
         <div className="container-fluid max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-center space-y-4 text-center mb-8 md:mb-12"
+            className="flex flex-col items-center justify-center space-y-4 text-center mb-6 md:mb-8"
           >
             <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl px-4">최신 소식 및 공지사항</h2>
             <p className="max-w-[90%] sm:max-w-[900px] text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-4">
               노동 시장의 최신 동향과 FAIR인사노무컨설팅의 주요 소식을 가장 먼저 확인하세요.
             </p>
           </motion.div>
-          <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 max-w-6xl mx-auto">
-            {latestPosts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-                  <CardHeader>
-                    <Link href={post.href}>
-                      <CardTitle className="text-base sm:text-lg hover:text-primary transition-colors leading-tight">{post.title}</CardTitle>
-                    </Link>
-                    <CardDescription className="text-sm">{post.date}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                  </CardContent>
-                  <div className="p-6 pt-0 mt-auto">
-                    <Link href={post.href}>
-                      <Button variant="outline" size="sm" className="w-full sm:w-auto">
-                        내용 보기
-                      </Button>
-                    </Link>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          
+          {loading ? (
+            <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+              {[1, 2, 3].map((n) => (
+                <div key={n} className="animate-pulse">
+                  <Card className="h-full">
+                    <CardHeader>
+                      <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+                      <div className="h-4 bg-slate-200 rounded w-1/2"></div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2">
+                        <div className="h-4 bg-slate-200 rounded"></div>
+                        <div className="h-4 bg-slate-200 rounded w-2/3"></div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          ) : featuredPosts.length > 0 ? (
+            <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-4">
+              {featuredPosts.map((post, index) => (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+                    <CardHeader className="pb-3">
+                      <Link href={`/board/${post.slug}`}>
+                        <CardTitle className="text-sm sm:text-base lg:text-lg hover:text-primary transition-colors leading-tight line-clamp-2">
+                          {post.title}
+                        </CardTitle>
+                      </Link>
+                      <CardDescription className="text-xs sm:text-sm">
+                        {new Date(post.published_at).toLocaleDateString('ko-KR', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-grow pb-3">
+                      {post.excerpt && (
+                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                      )}
+                    </CardContent>
+                    <div className="p-4 sm:p-6 pt-0 mt-auto">
+                      <Link href={`/board/${post.slug}`}>
+                        <Button variant="outline" size="sm" className="w-full text-xs sm:text-sm">
+                          내용 보기
+                        </Button>
+                      </Link>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">등록된 소식이 없습니다.</p>
+            </div>
+          )}
+          
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center mt-8 md:mt-12 px-4"
+            className="text-center mt-6 md:mt-8 px-4"
           >
             <Link href="/board">
               <Button size="lg" className="w-full sm:w-auto">더 많은 소식 보기</Button>
@@ -586,7 +689,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact-cta" className="w-full py-12 md:py-16 lg:py-24 xl:py-32 bg-primary/5">
+      <section id="contact-cta" className="w-full py-8 md:py-12 bg-primary/5">
         <div className="container-fluid grid items-center justify-center gap-4 text-center max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -621,14 +724,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="location-summary" className="w-full py-12 md:py-16 lg:py-24 xl:py-32 border-t">
+      <section id="location-summary" className="w-full py-8 md:py-12 border-t">
         <div className="container-fluid max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-center space-y-4 text-center mb-8 md:mb-12"
+            className="flex flex-col items-center justify-center space-y-4 text-center mb-6 md:mb-8"
           >
             <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl px-4">오시는 길</h2>
           </motion.div>
@@ -652,7 +755,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-center mt-4 md:mt-6 text-muted-foreground text-sm sm:text-base px-4"
+            className="text-center mt-3 md:mt-4 text-muted-foreground text-sm sm:text-base px-4"
           >
             서울특별시 강남구 테헤란로 123, 4층 (역삼역 5번 출구 도보 5분)
           </motion.p>

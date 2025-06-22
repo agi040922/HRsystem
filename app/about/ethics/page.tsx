@@ -112,7 +112,7 @@ export default function EthicsPage() {
       <PageBanner 
         title="윤리강령"
         subtitle="FAIR인사노무컨설팅이 추구하는 8가지 핵심 가치와 윤리 원칙"
-        backgroundImage="/placeholder.svg?width=1920&height=450"
+        backgroundImage="/FAIR000.png"
       />
 
       <motion.div
