@@ -10,11 +10,9 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               대표: 정광일
               <br />
-              사업자등록번호: 123-45-67890
-              <br />
               주소: 서울특별시 강남구 테헤란로 123, 4층
               <br />
-              전화: <a href="tel:02-1234-5678" className="hover:text-primary">02-1234-5678</a> | 팩스: 02-1234-5679
+              전화: <a href="tel:02-1234-5678" className="hover:text-primary">02-1234-5678</a>
               <br />
               이메일: <a href="mailto:info@fair-hr.co.kr" className="hover:text-primary">info@fair-hr.co.kr</a>
             </p>
@@ -49,7 +47,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">
-                  이용약관 (선택)
+                  이용약관
                 </Link>
               </li>
             </ul>

@@ -2,7 +2,7 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { CheckCircle, Briefcase, FileText, Users, ShieldAlert, UserMinus, MessageCircle } from "lucide-react"
+import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
 const servicesData = [
@@ -19,15 +19,15 @@ const servicesData = [
     ],
   },
   {
-    id: "payroll",
-    icon: FileText,
-    title: "급여 아웃소싱 및 4대보험",
-    shortDescription: "정확하고 효율적인 급여 관리 및 4대보험 업무 대행",
+    id: "payroll-system",
+    icon: Calculator,
+    title: "급여체계 관련 컨설팅",
+    shortDescription: "통상임금 및 평균임금 등 급여체계 최적화 컨설팅",
     details: [
-      "월별 급여계산 및 명세서 발급",
-      "4대보험 취득/상실 신고 및 정산",
-      "연말정산 업무 대행",
-      "퇴직금 및 퇴직연금 관리 자문",
+      "통상임금 및 평균임금 산정 기준 정립",
+      "급여체계 합리화 및 최적화 방안 제시",
+      "연장근로수당 및 제수당 체계 정비",
+      "임금피크제 도입 및 운영 컨설팅",
     ],
   },
   {
@@ -43,27 +43,27 @@ const servicesData = [
     ],
   },
   {
-    id: "industrial-accident",
-    icon: ShieldAlert,
-    title: "산업재해",
-    shortDescription: "산업재해 발생 시 신속한 대응 및 보상 절차 지원",
+    id: "serious-accident-law",
+    icon: Shield,
+    title: "중대재해처벌법 관련 컨설팅",
+    shortDescription: "중대재해처벌법 시행에 따른 기업 안전관리체계 구축",
     details: [
-      "산업재해 신청 및 심사청구 대리",
-      "업무상 질병 관련 자문 및 사건 처리",
-      "산재 예방을 위한 컨설팅 및 교육",
-      "사업주 책임 관련 법률 자문",
+      "중대재해처벌법 대응 안전관리체계 구축",
+      "안전보건관리책임자 지정 및 역할 정립",
+      "사업장 안전점검 및 위험성 평가",
+      "중대재해 예방을 위한 교육 및 매뉴얼 개발",
     ],
   },
   {
-    id: "unfair-dismissal",
-    icon: UserMinus,
-    title: "부당해고 및 징계",
-    shortDescription: "부당해고, 부당징계 등 노동위원회 사건 대리",
+    id: "employment-management",
+    icon: Scale,
+    title: "고용관리 및 인사규정 컨설팅",
+    shortDescription: "합리적 인사관리 및 고용관계 안정화 지원",
     details: [
-      "부당해고 구제신청 사건 대리",
-      "부당징계 관련 법률 자문 및 대응",
-      "화해 및 조정 절차 지원",
-      "해고 관련 법적 리스크 검토",
+      "취업규칙 및 인사규정 정비",
+      "인사평가 및 승진 시스템 구축",
+      "효율적인 인사관리 체계 수립",
+      "조직문화 개선 및 소통 활성화 방안",
     ],
   },
   {
