@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "개인정보처리방침 | 노무법인 [법인명]",
-  description: "노무법인 [법인명]의 개인정보처리방침입니다.",
+  title: "개인정보처리방침 | FAIR인사노무컨설팅",
+  description: "FAIR인사노무컨설팅의 개인정보처리방침입니다. 개인정보 수집, 이용, 보관에 대한 정책을 안내합니다.",
 }
 
 export default function PrivacyPolicyPage() {

@@ -6,9 +6,9 @@ import { Scale, ArrowLeft, Clock, AlertTriangle, CheckCircle, Calendar } from "l
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "근로시간 진단 툴 | 노무법인 전문가 도구",
+  title: "근로시간 진단 툴 | FAIR인사노무컨설팅",
   description: "주52시간 근무제 준수 여부와 근로시간 관리 현황을 진단하는 전문가 도구입니다.",
-  keywords: "근로시간, 주52시간, 근로기준법, 시간외근무, 휴게시간, 노동법, 진단도구",
+  keywords: "근로시간, 주52시간, 근로기준법, 시간외근무, 휴게시간, 노동법, 진단도구, FAIR인사노무컨설팅",
   openGraph: {
     title: "근로시간 진단 툴 - 근로기준법 준수 진단",
     description: "우리 회사의 근로시간 관리가 법적 기준에 맞는지 확인해보세요.",

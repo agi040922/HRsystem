@@ -6,9 +6,9 @@ import { ClipboardCheck, ArrowLeft, Download, FileText, AlertCircle } from "luci
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "근로계약서 작성 툴 | 노무법인 전문가 도구",
+  title: "근로계약서 작성 툴 | FAIR인사노무컨설팅",
   description: "법적 요건을 완벽히 만족하는 근로계약서를 쉽고 빠르게 작성할 수 있는 전문가 도구입니다. 무료로 사용해보세요.",
-  keywords: "근로계약서, 계약서작성, 노동법, 근로기준법, 고용계약, 노무도구",
+  keywords: "근로계약서, 계약서작성, 노동법, 근로기준법, 고용계약, 노무도구, FAIR인사노무컨설팅",
   openGraph: {
     title: "근로계약서 작성 툴 - 전문가가 만든 무료 도구",
     description: "법적 요건을 만족하는 근로계약서를 몇 분만에 작성하세요.",

@@ -6,9 +6,9 @@ import { Calculator, ArrowLeft, DollarSign, Calendar, PieChart, AlertCircle } fr
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "퇴직금 계산기 | 노무법인 전문가 도구",
+  title: "퇴직금 계산기 | FAIR인사노무컨설팅",
   description: "정확한 퇴직금과 각종 수당을 자동으로 계산해주는 전문가 도구입니다. 무료로 사용해보세요.",
-  keywords: "퇴직금계산, 퇴직금산정, 평균임금, 퇴직급여, 노동법, 계산기, 노무도구",
+  keywords: "퇴직금계산, 퇴직금산정, 평균임금, 퇴직급여, 노동법, 계산기, 노무도구, FAIR인사노무컨설팅",
   openGraph: {
     title: "퇴직금 계산기 - 정확한 퇴직급여 산정",
     description: "복잡한 퇴직금 계산을 간단하게! 법적 기준에 맞는 정확한 계산을 제공합니다.",

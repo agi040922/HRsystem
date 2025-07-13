@@ -3,8 +3,8 @@ import { getBoardPosts } from "@/lib/board"
 import { Suspense } from "react"
 
 export const metadata = {
-  title: "공지사항 | 노무법인 [법인명]",
-  description: "노무법인 [법인명]의 최신 소식과 공지사항을 확인하세요.",
+  title: "공지사항 | FAIR인사노무컨설팅",
+  description: "FAIR인사노무컨설팅의 최신 소식과 공지사항을 확인하세요. 노동법 관련 최신 정보와 법률 변경 사항을 알려드립니다.",
 }
 
 export default async function BoardPage({

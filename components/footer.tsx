@@ -10,11 +10,11 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               대표: 정광일
               <br />
-              주소: 서울특별시 강남구 테헤란로 123, 4층
+              주소: 서울 은평구 진관 3로 22 파크앤타워 B동 412호
               <br />
-              전화: <a href="tel:02-1234-5678" className="hover:text-primary">02-1234-5678</a>
+              전화: <a href="tel:02-387-9869" className="hover:text-primary">02-387-9869</a>
               <br />
-              이메일: <a href="mailto:info@fair-hr.co.kr" className="hover:text-primary">info@fair-hr.co.kr</a>
+              이메일: <a href="mailto:fairhr@nate.net" className="hover:text-primary">fairhr@nate.net</a>
             </p>
           </div>
           <div className="px-4 md:px-0">

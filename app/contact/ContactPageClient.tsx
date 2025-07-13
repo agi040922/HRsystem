@@ -204,8 +204,8 @@ export default function ContactPageClient() {
                     <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold text-sm md:text-base">전화 문의 및 예약</h3>
-                      <a href="tel:02-1234-5678" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors">
-                        02-1234-5678
+                      <a href="tel:02-387-9869" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors">
+                        02-387-9869
                       </a>
                     </div>
                   </div>
@@ -213,8 +213,8 @@ export default function ContactPageClient() {
                     <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold text-sm md:text-base">이메일 문의</h3>
-                      <a href="mailto:contact@law-firm.co.kr" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all">
-                        contact@law-firm.co.kr
+                      <a href="mailto:fairhr@nate.net" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all">
+                        fairhr@nate.net
                       </a>
                     </div>
                   </div>
@@ -223,9 +223,9 @@ export default function ContactPageClient() {
                     <div>
                       <h3 className="font-semibold text-sm md:text-base">방문 상담</h3>
                       <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                        서울특별시 강남구 테헤란로 123, 4층
+                        서울 은평구 진관 3로 22 파크앤타워 B동 412호
                         <br />
-                        (역삼역 5번 출구 도보 5분)
+                        (구파발역 1번 출구 도보 15분)
                       </p>
                     </div>
                   </div>

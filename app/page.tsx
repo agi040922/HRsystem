@@ -783,29 +783,229 @@ export default function HomePage() {
       <CompanyIntroSection />
       <ToolsSection />
 
-      <section id="services-summary" className="w-full py-16 bg-slate-50">
+      <section id="services-summary" className="w-full py-12 bg-slate-50">
         <div className="container-fluid max-w-7xl px-4">
+                      {/* 메인 헤더 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-8"
+            >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <span className="text-primary">200여 외국계 기업</span>이 선택한 전문가
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+              2000년부터 24년간 글로벌 기업들의 신뢰받는 파트너
+            </p>
+          </motion.div>
+
+          {/* 간단한 통계 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex justify-center gap-8 mb-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="text-primary">해외기업 자문</span>의 전문가
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              국내외 100여 기업과 함께해온 경험으로, 글로벌 기업의 국내 진출과 운영을 성공적으로 지원합니다.
-            </p>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary mb-1">200+</div>
+              <div className="text-sm text-gray-600">외국계 기업</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary mb-1">24년</div>
+              <div className="text-sm text-gray-600">전문 경험</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary mb-1">다수</div>
+              <div className="text-sm text-gray-600">단체교섭</div>
+            </div>
+          </motion.div>
+
+          {/* 기업 로고 슬라이더 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mb-8"
+          >
+            <div className="text-center mb-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                함께한 <span className="text-primary">글로벌 기업</span>들
+              </h3>
+              <p className="text-base text-gray-600">신뢰받는 파트너로 함께 성장해온 기업들</p>
+            </div>
+            
+            <div className="relative overflow-hidden bg-gradient-to-r from-blue-50 via-white to-blue-50 py-12 -mx-4 md:-mx-8 lg:-mx-16">
+              <div className="flex animate-scroll px-8">
+                {/* 첫 번째 세트 */}
+                <div className="flex space-x-16 min-w-max">
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/마이크로소프트.png" 
+                      alt="Microsoft" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/GE.svg" 
+                      alt="GE" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/씨티뱅크.jpg" 
+                      alt="Citibank" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/GSK.jpg" 
+                      alt="GSK" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/YAMAHA.jpeg" 
+                      alt="YAMAHA" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/DHLEXPRESS.jpg" 
+                      alt="DHL" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/J&J.png" 
+                      alt="Johnson & Johnson" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/GUCCI.png" 
+                      alt="GUCCI" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/NovartisNovartis.jpg" 
+                      alt="Novartis" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/Kellogg.svg" 
+                      alt="Kellogg" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/NHK 서울지국.png" 
+                      alt="NHK 서울지국" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                </div>
+                
+                {/* 두 번째 세트 (무한 스크롤용) */}
+                <div className="flex space-x-16 min-w-max ml-16">
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/마이크로소프트.png" 
+                      alt="Microsoft" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/GE.svg" 
+                      alt="GE" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/씨티뱅크.jpg" 
+                      alt="Citibank" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/GSK.jpg" 
+                      alt="GSK" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/YAMAHA.jpeg" 
+                      alt="YAMAHA" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/DHLEXPRESS.jpg" 
+                      alt="DHL" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/J&J.png" 
+                      alt="Johnson & Johnson" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/GUCCI.png" 
+                      alt="GUCCI" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/NovartisNovartis.jpg" 
+                      alt="Novartis" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <img 
+                      src="/로고/Kellogg.svg" 
+                      alt="Kellogg" 
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
           
-          <div className="grid gap-8 grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto mb-12">
+          {/* 서비스 카드 섹션 */}
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto mb-8">
             {services.map((service, index) => (
               <ServiceCard key={service.title} {...service} index={index} />
             ))}
           </div>
 
+          {/* CTA 섹션 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -815,10 +1015,10 @@ export default function HomePage() {
           >
             <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                성공적인 해외기업 자문 포트폴리오
+                글로벌 기업들이 신뢰하는 이유
               </h3>
               <p className="text-muted-foreground mb-6">
-                다국적 기업의 국내 진출부터 현지 법인 운영까지, 다양한 케이스의 성공 사례를 확인해보세요.
+                24년간 200여 외국계 기업과 함께한 경험으로 완벽한 솔루션을 제공합니다.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/services">
@@ -952,8 +1152,8 @@ export default function HomePage() {
               망설이지 말고 지금 바로 FAIR인사노무컨설팅에 문의하세요.
               <br />
               전화 상담:{" "}
-              <a href="tel:02-1234-5678" className="text-primary hover:underline font-medium">
-                02-1234-5678
+              <a href="tel:02-387-9869" className="text-primary hover:underline font-medium">
+                02-387-9869
               </a>
             </p>
             <motion.div
@@ -994,10 +1194,10 @@ export default function HomePage() {
             className="mx-auto w-full max-w-6xl h-[400px] md:h-[500px] mb-6"
           >
             <KakaoMap
-              latitude={37.5012743}
-              longitude={127.039585}
+              latitude={37.6290}
+              longitude={126.9205}
               level={4}
-              markerText="FAIR인사노무컨설팅 (역삼역 5번 출구 인근)"
+              markerText="FAIR인사노무컨설팅 (은평구 진관동)"
               className="w-full h-full rounded-xl shadow-lg"
             />
           </motion.div>
@@ -1010,10 +1210,10 @@ export default function HomePage() {
           >
             <div className="bg-slate-50 rounded-lg p-6 max-w-2xl mx-auto">
               <p className="text-lg font-medium text-gray-900 mb-2">
-                서울특별시 강남구 테헤란로 123, 4층
+                서울 은평구 진관 3로 22 파크앤타워 B동 412호
               </p>
               <p className="text-muted-foreground">
-                지하철 2호선 역삼역 5번 출구 도보 5분
+                지하철 3호선 구파발역 1번 출구 도보 15분
               </p>
             </div>
           </motion.div>

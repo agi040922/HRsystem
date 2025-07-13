@@ -6,9 +6,9 @@ import { AlertTriangle, ArrowLeft, CheckCircle, XCircle, AlertCircle, Scale } fr
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "해고 가능성 진단 툴 | 노무법인 전문가 도구",
+  title: "해고 가능성 진단 툴 | FAIR인사노무컨설팅",
   description: "해고의 정당성과 절차적 적법성을 사전에 진단하는 전문가 도구입니다. 법적 리스크를 미리 파악하세요.",
-  keywords: "해고진단, 부당해고, 정당한해고, 노동법, 해고절차, 노무도구, 해고사유",
+  keywords: "해고진단, 부당해고, 정당한해고, 노동법, 해고절차, 노무도구, 해고사유, FAIR인사노무컨설팅",
   openGraph: {
     title: "해고 가능성 진단 툴 - 법적 리스크 사전 진단",
     description: "해고의 타당성과 절차를 전문가 기준으로 진단해드립니다.",
