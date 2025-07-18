@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "FAIR인사노무컨설팅",
   description: "전문적인 노무 상담 및 솔루션을 제공합니다.",
+  other: {
+    "naver-site-verification": "30b5f0749e64b98e4970e9906e86ed17df7ed755",
+  },
 }
 
 export default function RootLayout({
