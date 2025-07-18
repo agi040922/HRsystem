@@ -99,7 +99,7 @@ export default function ServicesClientPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
           >
-            노무법인 [법인명]은 고객의 성공을 위한 맞춤형 전문 서비스를 제공합니다.
+            노무법인 FAIR인사노무컨설팅은 고객의 성공을 위한 맞춤형 전문 서비스를 제공합니다.
           </motion.p>
         </div>
 
