@@ -93,13 +93,13 @@ export default function ContactPageClient() {
 
   return (
     <div className="w-full overflow-x-hidden">
-      <div className="container-fluid max-w-7xl py-8 md:py-12 lg:py-16 xl:py-20">
+              <div className="container-fluid max-w-7xl py-4 md:py-6 lg:py-8 xl:py-12">
         <div className="text-center mb-8 md:mb-12 px-4">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl mb-4"
+                          className="text-xl font-bold tracking-tight sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-4"
           >
             기업 서비스 문의
           </motion.h1>

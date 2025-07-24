@@ -104,7 +104,7 @@ export default function BoardClientPage({
       {/* 페이지 배너 */}
       <PageBanner 
         title="공지사항"
-        subtitle="노무법인 [법인명]의 다양한 소식을 전해드립니다"
+        subtitle="FAIR인사노무컨설팅의 다양한 소식을 전해드립니다"
         backgroundImage="/FAIR000.png"
       />
 
@@ -112,7 +112,7 @@ export default function BoardClientPage({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="container-fluid max-w-7xl py-8 md:py-12 lg:py-16 xl:py-20"
+        className="container-fluid max-w-7xl py-4 md:py-6 lg:py-8 xl:py-12"
       >
         {/* 검색 섹션 */}
         <motion.section

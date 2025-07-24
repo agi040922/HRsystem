@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 import { Menu, Briefcase, ChevronDown } from "lucide-react"
 import {
   NavigationMenu,
@@ -184,8 +184,12 @@ export default function Header() {
                 <span className="sr-only">메뉴 열기</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[350px] bg-white">
-              <nav className="grid gap-2 text-base font-medium mt-8">
+            <SheetContent side="right" className="w-[280px] sm:w-[350px] bg-white overflow-y-auto">
+              <SheetHeader>
+                <SheetTitle>메뉴</SheetTitle>
+                <SheetDescription>사이트 메뉴를 탐색하세요</SheetDescription>
+              </SheetHeader>
+              <nav className="grid gap-2 text-base font-medium mt-4">
                 {navItems.map((item) => (
                   <React.Fragment key={item.label}>
                     {item.children ? (

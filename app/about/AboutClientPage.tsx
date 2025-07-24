@@ -115,7 +115,7 @@ export default function AboutClientPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="container-fluid max-w-7xl py-8 md:py-12 lg:py-16 xl:py-20"
+        className="container-fluid max-w-7xl py-4 md:py-6 lg:py-8 xl:py-12"
       >
         {/* 인사말 섹션 */}
         <motion.section
@@ -127,7 +127,7 @@ export default function AboutClientPage() {
         >
           <div className="grid gap-6 md:gap-8 lg:grid-cols-2 items-center max-w-6xl mx-auto">
             <div className="px-4 md:px-0">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-primary flex items-center gap-2">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 text-primary flex items-center gap-2">
                 <Building className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 flex-shrink-0" /> 인사말
               </h2>
               <div className="mb-6">
@@ -175,7 +175,7 @@ export default function AboutClientPage() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-12 md:mb-16 px-4 md:px-0"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-center text-primary flex items-center justify-center gap-2">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-center text-primary flex items-center justify-center gap-2">
             <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 flex-shrink-0" /> 대표 프로필
           </h2>
           

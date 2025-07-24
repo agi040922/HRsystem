@@ -77,7 +77,7 @@ function HeroSection() {
   }
 
   return (
-    <section className="relative h-[75vh] w-full overflow-hidden">
+    <section className="relative h-[60vh] sm:h-[70vh] lg:h-[75vh] w-full overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -135,7 +135,7 @@ function HeroSection() {
                 {slides[currentSlide].topLeft.subtitle}
               </h3>
             )}
-            <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white leading-tight mb-3">
+            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white leading-tight mb-2">
               {slides[currentSlide].topLeft.title}
             </h2>
             {slides[currentSlide].bottomRight.text && (
@@ -159,7 +159,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
-            className="text-2xl font-bold tracking-tighter text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 md:mb-6 leading-tight"
+            className="text-xl font-bold tracking-tighter text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-3 md:mb-4 leading-tight"
           >
             당신의 든든한 파트너
           </motion.h1>
@@ -167,7 +167,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
-            className="max-w-[90%] sm:max-w-[600px] mx-auto text-white text-sm sm:text-base md:text-lg mb-6 md:mb-8 leading-relaxed"
+            className="max-w-[90%] sm:max-w-[600px] mx-auto text-white text-xs sm:text-sm md:text-base mb-4 md:mb-6 leading-relaxed"
           >
             FAIR인사노무컨설팅이 전문적인 상담으로 최적의 솔루션을 제공합니다.
           </motion.p>
@@ -232,7 +232,7 @@ function CompanyIntroSection() {
       bgColor: "from-blue-900 to-blue-700"
     },
     {
-      title: "2005년 설립, 26년차 경험", 
+      title: "2005년 설립, 26년차 경험",
       subtitle: "신뢰받는 파트너",
       description: "국내외 100여 업체의 신뢰받는 파트너로서 최적의 솔루션을 제공합니다.",
       image: "/2.png",
@@ -250,7 +250,7 @@ function CompanyIntroSection() {
   return (
     <section className="w-full bg-slate-50 overflow-hidden">
       {/* 헤더 */}
-      <div className="text-center py-12 px-4">
+      <div className="text-center py-6 sm:py-8 md:py-12 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -260,20 +260,20 @@ function CompanyIntroSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             <span className="text-primary">FAIR인사노무컨설팅</span>을 선택하는 이유
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
             치밀한 논리와 철저한 준비로 고객의 성공을 이끌어온 26년의 경험
           </p>
         </motion.div>
       </div>
 
       {/* 3분할 카드 섹션 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 min-h-[400px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 min-h-[300px] sm:min-h-[350px] md:min-h-[400px]">
         {companyCards.map((card, index) => (
-          <motion.div
+            <motion.div
             key={card.title}
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             className="group relative overflow-hidden cursor-pointer"
           >
@@ -286,19 +286,19 @@ function CompanyIntroSection() {
               />
               {/* 그라디언트 오버레이 */}
               <div className={`absolute inset-0 bg-gradient-to-t ${card.bgColor} opacity-80 group-hover:opacity-90 transition-opacity duration-500`}></div>
-            </div>
+        </div>
 
             {/* 콘텐츠 */}
-            <div className="relative h-full flex flex-col justify-end p-8 text-white">
+            <div className="relative h-full flex flex-col justify-end p-4 sm:p-6 md:p-8 text-white">
               {/* 기본 제목 (항상 보임) */}
               <div className="transform transition-all duration-500">
-                <h3 className="text-2xl md:text-3xl font-bold mb-2 leading-tight">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 leading-tight">
                   {card.title}
-                </h3>
-                <p className="text-lg opacity-90 mb-4">
+          </h3>
+                                  <p className="text-sm sm:text-base opacity-90 mb-4">
                   {card.subtitle}
                 </p>
-              </div>
+          </div>
 
               {/* 호버 시 나타나는 상세 내용 */}
               <div className="transform transition-all duration-500 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
@@ -307,19 +307,19 @@ function CompanyIntroSection() {
                     {card.description}
                   </p>
                 </div>
-              </div>
-
+                      </div>
+                      
               {/* 호버 인디케이터 */}
               <div className="absolute top-8 right-8 w-12 h-12 border border-white/30 rounded-full flex items-center justify-center
                            transform transition-all duration-500 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100">
                 <ArrowRight className="w-5 h-5 text-white" />
-              </div>
-            </div>
+                      </div>
+                    </div>
 
             {/* 하단 액센트 라인 */}
             <div className="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full"></div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
       </div>
     </section>
   )
@@ -381,7 +381,8 @@ function NewsletterCard({ newsletter, index }: NewsletterCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <Card className="hover:shadow-md transition-all duration-300 h-full flex flex-col group cursor-pointer bg-white shadow-sm">
-        <div className="aspect-[3/2] relative overflow-hidden rounded-t-lg">
+        {/* 모바일에서는 이미지 숨김, 데스크톱에서는 표시 */}
+        <div className="hidden sm:block aspect-[3/2] relative overflow-hidden rounded-t-lg">
           {newsletter.cover_image_url ? (
             <img
               src={newsletter.cover_image_url}
@@ -390,45 +391,52 @@ function NewsletterCard({ newsletter, index }: NewsletterCardProps) {
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-blue-700 to-blue-600 flex items-center justify-center relative">
-              <div className="text-center p-2">
-                <BookOpen className="w-4 h-4 text-white mx-auto mb-1" />
+              <div className="text-center p-1.5">
+                <BookOpen className="w-3 h-3 text-white mx-auto mb-0.5" />
                 <div className="text-white font-medium text-xs line-clamp-1 leading-tight">
                   {newsletter.title}
                 </div>
               </div>
             </div>
           )}
-          <div className="absolute top-1 right-1">
-            <div className="bg-white/90 backdrop-blur-sm rounded px-1.5 py-0.5 text-xs font-medium">
+          <div className="absolute top-0.5 right-0.5">
+            <div className="bg-white/90 backdrop-blur-sm rounded px-1 py-0.5 text-xs font-medium">
               {newsletter.language === 'ko' ? '한글' : 'ENG'}
             </div>
           </div>
         </div>
         
-        <CardContent className="flex-grow p-2">
-          <div className="flex items-center gap-1 mb-1">
-            <Calendar className="w-3 h-3 text-muted-foreground" />
+        <CardContent className="flex-grow p-2 sm:p-1.5">
+          {/* 모바일: 언어 태그와 제목만, 데스크톱: 날짜도 포함 */}
+          <div className="sm:hidden flex items-center justify-between mb-1">
+            <div className="bg-primary/10 text-primary rounded px-1.5 py-0.5 text-xs font-medium">
+              {newsletter.language === 'ko' ? '한글' : 'ENG'}
+            </div>
+          </div>
+          
+          <div className="hidden sm:flex items-center gap-0.5 mb-0.5">
+            <Calendar className="w-2.5 h-2.5 text-muted-foreground" />
             <span className="text-xs text-muted-foreground">
               {new Date(newsletter.published_date).toLocaleDateString('ko-KR', {
-                year: 'numeric',
+                year: '2-digit',
                 month: 'short'
               })}
             </span>
           </div>
           
-          <h3 className="font-medium text-xs mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+          <h3 className="font-medium text-sm sm:text-xs mb-1 sm:mb-0.5 line-clamp-1 group-hover:text-primary transition-colors">
             {newsletter.title}
           </h3>
         </CardContent>
         
-        <div className="p-2 pt-0">
+        <div className="p-2 sm:p-1.5 pt-0">
           <Button 
             onClick={handleDownload}
-            className="w-full text-xs py-1"
+            className="w-full text-xs py-1 sm:py-0.5 h-8 sm:h-6"
             size="sm"
             variant="outline"
           >
-            <Download className="w-3 h-3 mr-1" />
+            <Download className="w-3 h-3 sm:w-2.5 sm:h-2.5 mr-1 sm:mr-0.5" />
             다운로드
           </Button>
         </div>
@@ -476,14 +484,14 @@ function NewsletterGridContent() {
       </div>
       
       {loading ? (
-        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+        <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
           {[1, 2].map((n) => (
             <div key={n} className="animate-pulse">
               <Card className="h-full">
                 <div className="aspect-[4/3] bg-slate-200 rounded-t-lg"></div>
-                <CardContent className="p-3">
-                  <div className="space-y-2">
-                    <div className="h-3 bg-slate-200 rounded w-3/4"></div>
+                <CardContent className="p-1.5">
+                  <div className="space-y-1">
+                    <div className="h-2 bg-slate-200 rounded w-3/4"></div>
                     <div className="h-2 bg-slate-200 rounded w-1/2"></div>
                   </div>
                 </CardContent>
@@ -492,7 +500,7 @@ function NewsletterGridContent() {
           ))}
         </div>
       ) : newsletters.length > 0 ? (
-        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+        <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
           {newsletters.map((newsletter, index) => (
             <div key={newsletter.id} className="w-full">
               <motion.div
@@ -732,7 +740,7 @@ export default function HomePage() {
       <HeroSection />
       <CompanyIntroSection />
 
-      <section id="services-summary" className="w-full py-16 bg-slate-50">
+      <section id="services-summary" className="w-full py-6 sm:py-8 md:py-12 bg-slate-50">
         <div className="container-fluid max-w-7xl px-4">
                       {/* 메인 헤더 */}
             <motion.div
@@ -742,10 +750,10 @@ export default function HomePage() {
               transition={{ duration: 0.5 }}
               className="text-center mb-8"
             >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               <span className="text-primary">200여 외국계 기업</span>이 선택한 전문가
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8">
               2000년부터 24년간 글로벌 기업들의 신뢰받는 파트너
             </p>
           </motion.div>
@@ -987,7 +995,7 @@ export default function HomePage() {
       </section>
 
       {/* 통합된 공지사항 및 주간지 섹션 */}
-      <section id="latest-news-and-newsletter" className="w-full py-16 bg-white">
+      <section id="latest-news-and-newsletter" className="w-full py-6 sm:py-8 md:py-12 bg-white">
         <div className="container-fluid max-w-7xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -996,8 +1004,8 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">최신 소식 및 전문 자료</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">최신 소식 및 전문 자료</h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
               노동 시장의 최신 동향과 전문 노동법 주간지를 확인하세요.
             </p>
           </motion.div>
@@ -1018,85 +1026,85 @@ export default function HomePage() {
                     최신 소식
                   </span>
                 </h3>
-                
-                {loading ? (
+          
+          {loading ? (
                   <div className="space-y-4">
-                    {[1, 2, 3].map((n) => (
-                      <div key={n} className="animate-pulse">
-                        <Card className="h-full">
-                          <CardHeader>
-                            <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+              {[1, 2, 3].map((n) => (
+                <div key={n} className="animate-pulse">
+                  <Card className="h-full">
+                    <CardHeader>
+                      <div className="h-4 bg-slate-200 rounded w-3/4"></div>
                             <div className="h-3 bg-slate-200 rounded w-1/2"></div>
-                          </CardHeader>
-                          <CardContent>
+                    </CardHeader>
+                    <CardContent>
                             <div className="h-3 bg-slate-200 rounded w-2/3"></div>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    ))}
-                  </div>
-                ) : featuredPosts.length > 0 ? (
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          ) : featuredPosts.length > 0 ? (
                   <div className="space-y-4">
-                    {featuredPosts.map((post, index) => (
-                      <motion.div
-                        key={post.id}
+              {featuredPosts.map((post, index) => (
+                <motion.div
+                  key={post.id}
                         initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
-                      >
+                >
                         <Card className="hover:shadow-lg transition-shadow duration-300 bg-white shadow-sm">
-                          <CardHeader className="pb-3">
-                            <Link href={`/board/${post.slug}`}>
+                    <CardHeader className="pb-3">
+                      <Link href={`/board/${post.slug}`}>
                               <CardTitle className="text-base hover:text-primary transition-colors leading-tight line-clamp-2">
-                                {post.title}
-                              </CardTitle>
-                            </Link>
+                          {post.title}
+                        </CardTitle>
+                      </Link>
                             <CardDescription className="text-xs">
-                              {new Date(post.published_at).toLocaleDateString('ko-KR', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
-                              })}
-                            </CardDescription>
-                          </CardHeader>
+                        {new Date(post.published_at).toLocaleDateString('ko-KR', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </CardDescription>
+                    </CardHeader>
                           <CardContent className="pb-3">
-                            {post.excerpt && (
+                      {post.excerpt && (
                               <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
-                                {post.excerpt}
-                              </p>
-                            )}
-                          </CardContent>
+                          {post.excerpt}
+                        </p>
+                      )}
+                    </CardContent>
                           <div className="px-6 pb-4">
-                            <Link href={`/board/${post.slug}`}>
+                      <Link href={`/board/${post.slug}`}>
                               <Button variant="outline" size="sm" className="w-full text-xs">
                                 자세히 보기
-                              </Button>
-                            </Link>
-                          </div>
-                        </Card>
-                      </motion.div>
-                    ))}
+                        </Button>
+                      </Link>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
                     <div className="mt-6 text-center">
                       <Link href="/board">
                         <Button size="sm" className="w-full">더 많은 소식 보기</Button>
                       </Link>
                     </div>
-                  </div>
-                ) : (
+            </div>
+          ) : (
                   <div className="text-center py-8 bg-slate-50 rounded-lg">
                     <p className="text-muted-foreground text-sm">등록된 소식이 없습니다.</p>
-                  </div>
-                )}
+            </div>
+          )}
               </motion.div>
             </div>
-            
+          
             {/* 주간지 영역 (1/2) */}
             <div className="lg:col-span-1">
-              <motion.div
+          <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+            viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
@@ -1107,13 +1115,13 @@ export default function HomePage() {
                 </h3>
                 
                 <NewsletterGridContent />
-              </motion.div>
+          </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact-cta" className="w-full py-16 bg-slate-50">
+      <section id="contact-cta" className="w-full py-6 sm:py-8 md:py-12 bg-slate-50">
         <div className="container-fluid max-w-7xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1122,10 +1130,10 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               전문가의 도움이 필요하신가요?
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8">
               망설이지 말고 지금 바로 FAIR인사노무컨설팅에 문의하세요.
               <br />
               전화 상담:{" "}
@@ -1149,7 +1157,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="location-summary" className="w-full py-16 bg-white">
+      <section id="location-summary" className="w-full py-6 sm:py-8 md:py-12 bg-white">
         <div className="container-fluid max-w-7xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1158,8 +1166,8 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">오시는 길</h2>
-            <p className="text-lg text-muted-foreground">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">오시는 길</h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
               편리한 교통과 쾌적한 환경에서 최고의 상담 서비스를 제공합니다.
             </p>
           </motion.div>
@@ -1168,7 +1176,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mx-auto w-full max-w-6xl h-[400px] md:h-[500px] mb-6"
+            className="mx-auto w-full max-w-6xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] mb-4 sm:mb-6"
           >
             <KakaoMap
               latitude={37.6290}

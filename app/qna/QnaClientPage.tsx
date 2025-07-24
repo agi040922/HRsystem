@@ -86,9 +86,9 @@ export default function QnaClientPage() {
   }
 
   return (
-    <div className="container py-12 md:py-16 lg:py-20">
+            <div className="container py-6 md:py-8 lg:py-12">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Q&A</h1>
+                  <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">Q&A</h1>
         <p className="mt-4 text-lg text-muted-foreground">궁금한 점을 해결하고, 전문가의 답변을 받아보세요.</p>
       </div>
 
