@@ -77,7 +77,7 @@ function HeroSection() {
   }
 
   return (
-    <section className="relative h-[60vh] sm:h-[70vh] lg:h-[75vh] w-full overflow-hidden">
+    <section className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] w-full overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -108,16 +108,16 @@ function HeroSection() {
           <div className="absolute inset-0 bg-black/50 z-10" />
           
           {/* 슬라이드 카운터 */}
-          <div className="absolute top-6 right-6 z-20 bg-black/20 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
-            <span className="text-white text-sm font-medium">
+          <div className="absolute top-3 sm:top-6 right-3 sm:right-6 z-20 bg-black/20 backdrop-blur-sm rounded-full px-2 sm:px-3 py-0.5 sm:py-1 border border-white/20">
+            <span className="text-white text-xs sm:text-sm font-medium">
               {currentSlide + 1} / {slides.length}
             </span>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* 왼쪽 슬라이드 텍스트 상자 */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20">
+      {/* 왼쪽 슬라이드 텍스트 상자 - 모바일에서는 숨김 */}
+      <div className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 z-20">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -152,14 +152,45 @@ function HeroSection() {
         </motion.div>
       </div>
 
+      {/* 모바일용 상단 슬라이드 텍스트 */}
+      <div className="lg:hidden absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 z-20 w-[90%] max-w-md">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.0, delay: 0.2, ease: "easeOut" }}
+          className="bg-black/30 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20 text-center"
+        >
+          <motion.div
+            key={`slide-mobile-${currentSlide}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            {slides[currentSlide].topLeft.subtitle && (
+              <h3 className="text-xs sm:text-sm text-white mb-1 font-medium">
+                {slides[currentSlide].topLeft.subtitle}
+              </h3>
+            )}
+            <h2 className="text-sm sm:text-base font-bold text-white leading-tight mb-1">
+              {slides[currentSlide].topLeft.title}
+            </h2>
+            {slides[currentSlide].bottomRight.highlight && (
+              <p className="text-xs sm:text-sm font-medium text-white/90">
+                {slides[currentSlide].bottomRight.highlight}
+              </p>
+            )}
+          </motion.div>
+        </motion.div>
+      </div>
+
       {/* 중앙 메인 콘텐츠 */}
       <div className="relative z-20 h-full flex items-center justify-center">
-        <div className="container-fluid text-center max-w-4xl px-4">
+        <div className="container-fluid text-center max-w-4xl px-4 pt-28 sm:pt-24 md:pt-16 lg:pt-0">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
-            className="text-xl font-bold tracking-tighter text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-3 md:mb-4 leading-tight"
+            className="text-sm font-bold tracking-tighter text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-1 sm:mb-2 md:mb-3 leading-tight"
           >
             당신의 든든한 파트너
           </motion.h1>
@@ -167,7 +198,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
-            className="max-w-[90%] sm:max-w-[600px] mx-auto text-white text-xs sm:text-sm md:text-base mb-4 md:mb-6 leading-relaxed"
+            className="max-w-[80%] sm:max-w-[400px] mx-auto text-white text-xs sm:text-sm md:text-base mb-1.5 sm:mb-2 md:mb-3 leading-relaxed"
           >
             FAIR인사노무컨설팅이 전문적인 상담으로 최적의 솔루션을 제공합니다.
           </motion.p>
@@ -175,15 +206,15 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.8, ease: "easeOut" }}
-            className="flex flex-col gap-3 sm:flex-row justify-center items-center"
+            className="flex flex-col gap-1 sm:gap-1.5 md:gap-2 sm:flex-row justify-center items-center"
           >
             <Link href="/contact">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-                빠른 상담 신청 <ArrowRight className="ml-2 h-4 w-4" />
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto md:size-lg text-xs py-1 sm:py-1.5 md:py-2 px-3 sm:px-4">
+                빠른 상담 신청 <ArrowRight className="ml-1 h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4" />
               </Button>
             </Link>
             <Link href="/services">
-              <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto">
+              <Button variant="outline" size="sm" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto md:size-lg text-xs py-1 sm:py-1.5 md:py-2 px-3 sm:px-4">
                 서비스 둘러보기
               </Button>
             </Link>
@@ -194,24 +225,24 @@ function HeroSection() {
       {/* 네비게이션 버튼 */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 border border-white/20"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 border border-white/20"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 border border-white/20"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 border border-white/20"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
       </button>
 
       {/* 인디케이터 */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-3 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+      <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-2 sm:space-x-3 bg-black/20 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1 sm:py-2 border border-white/20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-500 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-500 ${
               index === currentSlide ? 'bg-primary scale-125' : 'bg-white/40 hover:bg-white/60'
             }`}
           />
