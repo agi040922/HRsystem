@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 
-import { Briefcase, FileText, Users, ArrowRight, Play, Calculator, AlertTriangle, ClipboardCheck, Scale, MessageSquare, Award, Shield, TrendingUp, ChevronLeft, ChevronRight, BookOpen, Download, Globe, Calendar } from "lucide-react"
+import { Briefcase, FileText, Users, ArrowRight, Play, MessageSquare, Award, Shield, TrendingUp, ChevronLeft, ChevronRight, BookOpen, Download, Globe, Calendar } from "lucide-react"
 import KakaoMap from "@/components/kakao-map"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
@@ -53,18 +53,6 @@ function HeroSection() {
       bottomRight: {
         text: "",
         highlight: "최고 수준의 전문성"
-      }
-    },
-    {
-      type: "image",
-      src: "/0706/KakaoTalk_20250703_205426353.jpg",
-      topLeft: {
-        title: "스마트 노무 도구",
-        subtitle: "AI 기반 솔루션"
-      },
-      bottomRight: {
-        text: "복잡한 노무업무를 간단하게",
-        highlight: "24시간 즉시 해결"
       }
     }
   ]
@@ -233,38 +221,41 @@ function HeroSection() {
   )
 }
 
-// 회사 소개 섹션
+// 회사 소개 섹션 - 3분할 인터랙티브 디자인
 function CompanyIntroSection() {
-  const strengths = [
+  const companyCards = [
     {
-      icon: Award,
       title: "200건+ 압도적 승소율",
-      description: "노동위원회, 행정심판, 산재사건 등에서 뛰어난 성과",
-      highlight: "200건+"
+      subtitle: "검증된 실력",
+      description: "노동위원회, 행정심판, 산재사건 등에서 뛰어난 성과를 달성했습니다.",
+      image: "/1.png",
+      bgColor: "from-blue-900 to-blue-700"
     },
     {
-      icon: TrendingUp,
-      title: "2005년 설립, 26년차 경험",
-      description: "국내외 100여 업체의 신뢰받는 파트너",
-      highlight: "26년차"
+      title: "2005년 설립, 26년차 경험", 
+      subtitle: "신뢰받는 파트너",
+      description: "국내외 100여 업체의 신뢰받는 파트너로서 최적의 솔루션을 제공합니다.",
+      image: "/2.png",
+      bgColor: "from-slate-900 to-slate-700"
     },
     {
-      icon: Shield,
       title: "김&장 출신 전문성",
-      description: "기업 자문 및 컨설팅 경험 20년 이상",
-      highlight: "전문성"
+      subtitle: "최고 수준의 노하우",
+      description: "기업 자문 및 컨설팅 경험 20년 이상의 전문성을 바탕으로 합니다.",
+      image: "/3.png", 
+      bgColor: "from-primary to-primary/80"
     }
   ]
 
   return (
-    <section className="w-full py-16 bg-slate-50">
-      <div className="container-fluid max-w-7xl px-4">
+    <section className="w-full bg-slate-50 overflow-hidden">
+      {/* 헤더 */}
+      <div className="text-center py-12 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             <span className="text-primary">FAIR인사노무컨설팅</span>을 선택하는 이유
@@ -273,181 +264,62 @@ function CompanyIntroSection() {
             치밀한 논리와 철저한 준비로 고객의 성공을 이끌어온 26년의 경험
           </p>
         </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-          {strengths.map((strength, index) => (
-            <motion.div
-              key={strength.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-            >
-              <Card className="h-full text-center hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white">
-                <CardContent className="p-8">
-                  <div className="flex flex-col items-center space-y-4">
-                    <div className="p-4 rounded-full bg-primary/10">
-                      <strength.icon className="w-10 h-10 text-primary" />
-                    </div>
-                    <div className="text-3xl font-bold text-primary">{strength.highlight}</div>
-                    <h3 className="font-semibold text-xl text-gray-900">{strength.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{strength.description}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-8"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            영상으로 만나는 FAIR인사노무컨설팅
-          </h3>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            2005년 설립 이후 기업자문에 컨설팅 개념을 도입하여 새로운 지평을 열었습니다.
-          </p>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=example"
-              title="FAIR인사노무컨설팅 회사 소개"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </motion.div>
       </div>
-    </section>
-  )
-}
 
-// 노무 도구 섹션
-function ToolsSection() {
-  const laborTools = [
-    {
-      icon: ClipboardCheck,
-      title: "근로계약서 작성",
-      description: "법적 요건을 만족하는 계약서 간편 작성",
-      href: "/tools/contract-generator/create",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50"
-    },
-    {
-      icon: AlertTriangle,
-      title: "해고 가능성 진단",
-      description: "해고 타당성과 절차 적법성 사전 진단",
-      href: "/tools/dismissal-checker",
-      color: "text-red-600",
-      bgColor: "bg-red-50"
-    },
-    {
-      icon: Calculator,
-      title: "퇴직금 계산기",
-      description: "정확한 퇴직금 및 각종 수당 계산",
-      href: "/tools/severance-calculator",
-      color: "text-green-600",
-      bgColor: "bg-green-50"
-    },
-    {
-      icon: Scale,
-      title: "근로시간 진단",
-      description: "근로기준법 준수 여부 점검",
-      href: "/tools/working-time-checker",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50"
-    },
-    {
-      icon: MessageSquare,
-      title: "AI 노무 상담",
-      description: "24시간 AI 챗봇 즉시 상담",
-      href: "/tools/ai-consultation",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50"
-    }
-  ]
+      {/* 3분할 카드 섹션 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 min-h-[400px]">
+        {companyCards.map((card, index) => (
+          <motion.div
+            key={card.title}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            className="group relative overflow-hidden cursor-pointer"
+          >
+            {/* 배경 이미지 */}
+            <div className="absolute inset-0">
+              <img
+                src={card.image}
+                alt={card.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* 그라디언트 오버레이 */}
+              <div className={`absolute inset-0 bg-gradient-to-t ${card.bgColor} opacity-80 group-hover:opacity-90 transition-opacity duration-500`}></div>
+            </div>
 
-  return (
-    <section className="w-full py-16 bg-white">
-      <div className="container-fluid max-w-7xl px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            스마트 노무 도구
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            전문가가 개발한 도구로 클릭 몇 번으로 전문가 수준의 결과물을 만들어보세요.
-          </p>
-        </motion.div>
+            {/* 콘텐츠 */}
+            <div className="relative h-full flex flex-col justify-end p-8 text-white">
+              {/* 기본 제목 (항상 보임) */}
+              <div className="transform transition-all duration-500">
+                <h3 className="text-2xl md:text-3xl font-bold mb-2 leading-tight">
+                  {card.title}
+                </h3>
+                <p className="text-lg opacity-90 mb-4">
+                  {card.subtitle}
+                </p>
+              </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto mb-8">
-          {laborTools.map((tool, index) => (
-            <motion.div
-              key={tool.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-            >
-              <Link href={tool.href}>
-                <Card className="h-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer border-0 shadow-md bg-white">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col items-center text-center space-y-4">
-                      <div className={`p-4 rounded-xl ${tool.bgColor} group-hover:scale-110 transition-transform duration-300`}>
-                        <tool.icon className={`w-8 h-8 ${tool.color}`} />
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <h3 className="font-semibold text-base group-hover:text-primary transition-colors leading-tight">
-                          {tool.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {tool.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+              {/* 호버 시 나타나는 상세 내용 */}
+              <div className="transform transition-all duration-500 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
+                <div className="border-t border-white/20 pt-4">
+                  <p className="text-sm leading-relaxed opacity-90">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center"
-        >
-          <p className="text-muted-foreground">
-            복잡한 사안은 
-            <Link href="/contact" className="text-primary hover:underline font-medium mx-1">
-              전문가 상담
-            </Link>
-            을 이용해보세요
-          </p>
-        </motion.div>
+              {/* 호버 인디케이터 */}
+              <div className="absolute top-8 right-8 w-12 h-12 border border-white/30 rounded-full flex items-center justify-center
+                           transform transition-all duration-500 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100">
+                <ArrowRight className="w-5 h-5 text-white" />
+              </div>
+            </div>
+
+            {/* 하단 액센트 라인 */}
+            <div className="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full"></div>
+          </motion.div>
+        ))}
       </div>
     </section>
   )
@@ -508,8 +380,8 @@ function NewsletterCard({ newsletter, index }: NewsletterCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Card className="hover:shadow-lg transition-all duration-300 h-full flex flex-col group cursor-pointer bg-white shadow-sm">
-        <div className="aspect-[4/3] relative overflow-hidden rounded-t-lg">
+      <Card className="hover:shadow-md transition-all duration-300 h-full flex flex-col group cursor-pointer bg-white shadow-sm">
+        <div className="aspect-[3/2] relative overflow-hidden rounded-t-lg">
           {newsletter.cover_image_url ? (
             <img
               src={newsletter.cover_image_url}
@@ -518,62 +390,43 @@ function NewsletterCard({ newsletter, index }: NewsletterCardProps) {
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-blue-700 to-blue-600 flex items-center justify-center relative">
-              <div className="text-center p-3">
-                <BookOpen className="w-6 h-6 text-white mx-auto mb-2" />
-                <div className="text-white font-bold text-xs line-clamp-2 leading-tight">
+              <div className="text-center p-2">
+                <BookOpen className="w-4 h-4 text-white mx-auto mb-1" />
+                <div className="text-white font-medium text-xs line-clamp-1 leading-tight">
                   {newsletter.title}
                 </div>
-                <div className="text-white/80 text-xs mt-1">
-                  {newsletter.language === 'ko' ? '한국어판' : 'English'}
-                </div>
-              </div>
-              
-              {/* 장식 패턴 */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-2 left-2 w-1 h-1 bg-white rounded-full"></div>
-                <div className="absolute top-4 right-3 w-1 h-1 bg-white rounded-full"></div>
-                <div className="absolute bottom-3 left-4 w-1 h-1 bg-white rounded-full"></div>
-                <div className="absolute bottom-2 right-2 w-1 h-1 bg-white rounded-full"></div>
-                <div className="absolute top-1/2 left-1 w-1 h-1 bg-white rounded-full"></div>
-                <div className="absolute top-1/3 right-1 w-1 h-1 bg-white rounded-full"></div>
               </div>
             </div>
           )}
-          <div className="absolute top-2 right-2">
-            <div className="bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 text-xs font-medium">
+          <div className="absolute top-1 right-1">
+            <div className="bg-white/90 backdrop-blur-sm rounded px-1.5 py-0.5 text-xs font-medium">
               {newsletter.language === 'ko' ? '한글' : 'ENG'}
-              <Globe className="w-3 h-3 ml-1 inline" />
             </div>
           </div>
         </div>
         
-        <CardContent className="flex-grow p-3">
-          <div className="flex items-center gap-2 mb-2">
+        <CardContent className="flex-grow p-2">
+          <div className="flex items-center gap-1 mb-1">
             <Calendar className="w-3 h-3 text-muted-foreground" />
             <span className="text-xs text-muted-foreground">
               {new Date(newsletter.published_date).toLocaleDateString('ko-KR', {
                 year: 'numeric',
-                month: 'long'
+                month: 'short'
               })}
             </span>
           </div>
           
-          <h3 className="font-semibold text-sm mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+          <h3 className="font-medium text-xs mb-1 line-clamp-1 group-hover:text-primary transition-colors">
             {newsletter.title}
           </h3>
-          
-          {newsletter.description && (
-            <p className="text-xs text-muted-foreground line-clamp-2 mb-3">
-              {newsletter.description}
-            </p>
-          )}
         </CardContent>
         
-        <div className="p-3 pt-0 mt-auto">
+        <div className="p-2 pt-0">
           <Button 
             onClick={handleDownload}
-            className="w-full group-hover:bg-primary/90 transition-colors"
+            className="w-full text-xs py-1"
             size="sm"
+            variant="outline"
           >
             <Download className="w-3 h-3 mr-1" />
             다운로드
@@ -581,6 +434,103 @@ function NewsletterCard({ newsletter, index }: NewsletterCardProps) {
         </div>
       </Card>
     </motion.div>
+  )
+}
+
+// NewsletterGridContent 컴포넌트 - 그리드용
+function NewsletterGridContent() {
+  const [koreanNewsletters, setKoreanNewsletters] = useState<Newsletter[]>([])
+  const [englishNewsletters, setEnglishNewsletters] = useState<Newsletter[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadNewsletters() {
+      try {
+        const { newsletters: allNewsletters } = await getLatestNewsletters(4)
+        const korean = allNewsletters.filter(n => n.language === 'ko').slice(0, 2)
+        const english = allNewsletters.filter(n => n.language === 'en').slice(0, 2)
+        setKoreanNewsletters(korean)
+        setEnglishNewsletters(english)
+      } catch (error) {
+        console.error('Failed to load newsletters:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadNewsletters()
+  }, [])
+
+  const NewsletterRow = ({ newsletters, title, language }: { newsletters: Newsletter[], title: string, language: string }) => (
+    <div className="mb-6">
+      <div className="flex items-center justify-between mb-4">
+        <h4 className="text-base font-bold text-gray-900 flex items-center gap-2">
+          <span className="text-primary">{title}</span>
+          <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+            {language}
+          </span>
+        </h4>
+        <div className="text-xs text-muted-foreground">
+          {newsletters.length > 0 ? `${newsletters.length}개 발행` : '준비중'}
+        </div>
+      </div>
+      
+      {loading ? (
+        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+          {[1, 2].map((n) => (
+            <div key={n} className="animate-pulse">
+              <Card className="h-full">
+                <div className="aspect-[4/3] bg-slate-200 rounded-t-lg"></div>
+                <CardContent className="p-3">
+                  <div className="space-y-2">
+                    <div className="h-3 bg-slate-200 rounded w-3/4"></div>
+                    <div className="h-2 bg-slate-200 rounded w-1/2"></div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+      ) : newsletters.length > 0 ? (
+        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+          {newsletters.map((newsletter, index) => (
+            <div key={newsletter.id} className="w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <NewsletterCard newsletter={newsletter} index={index} />
+              </motion.div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-6 bg-slate-50 rounded-lg">
+          <BookOpen className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
+          <p className="text-muted-foreground text-sm">아직 발행된 주간지가 없습니다.</p>
+        </div>
+      )}
+    </div>
+  )
+
+  return (
+    <div>
+      <NewsletterRow 
+        newsletters={koreanNewsletters} 
+        title="한국어판" 
+        language="Korean"
+      />
+      
+      <NewsletterRow 
+        newsletters={englishNewsletters} 
+        title="영어판" 
+        language="English"
+      />
+      
+
+    </div>
   )
 }
 
@@ -781,9 +731,8 @@ export default function HomePage() {
     <>
       <HeroSection />
       <CompanyIntroSection />
-      <ToolsSection />
 
-      <section id="services-summary" className="w-full py-12 bg-slate-50">
+      <section id="services-summary" className="w-full py-16 bg-slate-50">
         <div className="container-fluid max-w-7xl px-4">
                       {/* 메인 헤더 */}
             <motion.div
@@ -1037,7 +986,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="latest-news" className="w-full py-16 bg-white">
+      {/* 통합된 공지사항 및 주간지 섹션 */}
+      <section id="latest-news-and-newsletter" className="w-full py-16 bg-white">
         <div className="container-fluid max-w-7xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1046,95 +996,122 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">최신 소식 및 공지사항</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">최신 소식 및 전문 자료</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              노동 시장의 최신 동향과 FAIR인사노무컨설팅의 주요 소식을 가장 먼저 확인하세요.
+              노동 시장의 최신 동향과 전문 노동법 주간지를 확인하세요.
             </p>
           </motion.div>
           
-          {loading ? (
-            <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-              {[1, 2, 3].map((n) => (
-                <div key={n} className="animate-pulse">
-                  <Card className="h-full">
-                    <CardHeader>
-                      <div className="h-4 bg-slate-200 rounded w-3/4"></div>
-                      <div className="h-4 bg-slate-200 rounded w-1/2"></div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-2">
-                        <div className="h-4 bg-slate-200 rounded"></div>
-                        <div className="h-4 bg-slate-200 rounded w-2/3"></div>
+          {/* 1:1 그리드 레이아웃 */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {/* 공지사항 영역 (1/2) */}
+            <div className="lg:col-span-1">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <span className="text-primary">공지사항</span>
+                  <span className="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">
+                    최신 소식
+                  </span>
+                </h3>
+                
+                {loading ? (
+                  <div className="space-y-4">
+                    {[1, 2, 3].map((n) => (
+                      <div key={n} className="animate-pulse">
+                        <Card className="h-full">
+                          <CardHeader>
+                            <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+                            <div className="h-3 bg-slate-200 rounded w-1/2"></div>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="h-3 bg-slate-200 rounded w-2/3"></div>
+                          </CardContent>
+                        </Card>
                       </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          ) : featuredPosts.length > 0 ? (
-            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-              {featuredPosts.map((post, index) => (
-                <motion.div
-                  key={post.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Card className="hover:shadow-xl transition-shadow duration-300 h-full flex flex-col bg-white shadow-md">
-                    <CardHeader className="pb-3">
-                      <Link href={`/board/${post.slug}`}>
-                        <CardTitle className="text-lg hover:text-primary transition-colors leading-tight line-clamp-2">
-                          {post.title}
-                        </CardTitle>
-                      </Link>
-                      <CardDescription className="text-sm">
-                        {new Date(post.published_at).toLocaleDateString('ko-KR', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex-grow pb-3">
-                      {post.excerpt && (
-                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                          {post.excerpt}
-                        </p>
-                      )}
-                    </CardContent>
-                    <div className="p-6 pt-0 mt-auto">
-                      <Link href={`/board/${post.slug}`}>
-                        <Button variant="outline" size="sm" className="w-full">
-                          내용 보기
-                        </Button>
+                    ))}
+                  </div>
+                ) : featuredPosts.length > 0 ? (
+                  <div className="space-y-4">
+                    {featuredPosts.map((post, index) => (
+                      <motion.div
+                        key={post.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                      >
+                        <Card className="hover:shadow-lg transition-shadow duration-300 bg-white shadow-sm">
+                          <CardHeader className="pb-3">
+                            <Link href={`/board/${post.slug}`}>
+                              <CardTitle className="text-base hover:text-primary transition-colors leading-tight line-clamp-2">
+                                {post.title}
+                              </CardTitle>
+                            </Link>
+                            <CardDescription className="text-xs">
+                              {new Date(post.published_at).toLocaleDateString('ko-KR', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              })}
+                            </CardDescription>
+                          </CardHeader>
+                          <CardContent className="pb-3">
+                            {post.excerpt && (
+                              <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                                {post.excerpt}
+                              </p>
+                            )}
+                          </CardContent>
+                          <div className="px-6 pb-4">
+                            <Link href={`/board/${post.slug}`}>
+                              <Button variant="outline" size="sm" className="w-full text-xs">
+                                자세히 보기
+                              </Button>
+                            </Link>
+                          </div>
+                        </Card>
+                      </motion.div>
+                    ))}
+                    <div className="mt-6 text-center">
+                      <Link href="/board">
+                        <Button size="sm" className="w-full">더 많은 소식 보기</Button>
                       </Link>
                     </div>
-                  </Card>
-                </motion.div>
-              ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8 bg-slate-50 rounded-lg">
+                    <p className="text-muted-foreground text-sm">등록된 소식이 없습니다.</p>
+                  </div>
+                )}
+              </motion.div>
             </div>
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-muted-foreground">등록된 소식이 없습니다.</p>
+            
+            {/* 주간지 영역 (1/2) */}
+            <div className="lg:col-span-1">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <span className="text-primary">노동법 주간지</span>
+                  <span className="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">
+                    전문 자료
+                  </span>
+                </h3>
+                
+                <NewsletterGridContent />
+              </motion.div>
             </div>
-          )}
-          
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center mt-12"
-          >
-            <Link href="/board">
-              <Button size="lg" className="w-full sm:w-auto">더 많은 소식 보기</Button>
-            </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
-
-      <NewsletterSection />
 
       <section id="contact-cta" className="w-full py-16 bg-slate-50">
         <div className="container-fluid max-w-7xl px-4">
