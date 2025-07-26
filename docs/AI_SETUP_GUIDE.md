@@ -1,92 +1,109 @@
-# AI 기반 게시글 작성 기능 설정 가이드
+# AI 기능 설정 가이드
 
-## 개요
-이 기능은 사용자가 제목과 내용만 입력하면 AI(ChatGPT)가 자동으로 다음을 생성해주는 시스템입니다:
-- HTML 형식으로 변환된 전문적인 컨텐츠
-- SEO 최적화된 제목과 설명
-- URL 슬러그와 요약문
-- 검색엔진 최적화 메타데이터
+이 가이드는 노동법률사무소 웹사이트의 AI 기반 기능들을 설정하는 방법을 설명합니다.
 
-## 필요한 설정
+## 1. 게시글 AI 생성 기능
 
-### 1. OpenAI API 키 설정
+### API 설정
+- `/api/ai/generate-post` 엔드포인트가 구현되어 있습니다
+- OpenAI API 키가 환경변수에 설정되어 있어야 합니다
 
-1. [OpenAI Platform](https://platform.openai.com)에 가입하고 로그인
-2. API Keys 섹션에서 새 API 키 생성
-3. 프로젝트 루트에 `.env.local` 파일 생성
-4. 다음 내용을 추가:
+### 기능
+- 제목과 내용을 입력하면 AI가 HTML 형식의 전문적인 게시글 생성
+- SEO 메타데이터 자동 생성
+- URL 슬러그 자동 생성
 
-```
-OPENAI_API_KEY=sk-your-actual-api-key-here
-```
+## 2. 이미지 업로드 기능
 
-### 2. 기존 환경 변수 유지
-기존에 Supabase 등의 환경 변수가 설정되어 있다면 함께 유지하세요:
+### Supabase Storage 설정
 
-```
-# OpenAI API 설정
-OPENAI_API_KEY=sk-your-actual-api-key-here
+#### 2.1 board-images 버킷 생성
 
-# 기존 Supabase 설정
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-```
+1. **Supabase 대시보드 접속**
+   - https://supabase.com/dashboard 에서 프로젝트 선택
 
-## 사용법
+2. **Storage 탭으로 이동**
+   - 왼쪽 메뉴에서 "Storage" 클릭
 
-### 1. 관리자 페이지 접속
-- `/admin/board/create` 페이지로 이동
+3. **새 버킷 생성**
+   - "Create bucket" 버튼 클릭
+   - Bucket name: `board-images`
+   - Public bucket: ✅ 체크 (공개 접근 허용)
+   - "Save" 클릭
 
-### 2. 간단한 정보 입력
-- **제목**: 게시글 제목 입력
-- **내용**: 일반 텍스트로 내용 작성 (HTML 불필요)
+4. **버킷 정책 설정** (중요!)
+   ```sql
+   -- board-images 버킷에 대한 공개 접근 정책
+   -- Storage > Policies 탭에서 다음 정책들을 추가:
 
-### 3. AI 생성
-- "AI로 컨텐츠 생성하기" 버튼 클릭
-- AI가 자동으로 전문적인 웹 컨텐츠로 변환
+   -- 1. 공개 읽기 정책
+   CREATE POLICY "Public read access for board images" ON storage.objects 
+   FOR SELECT 
+   USING (bucket_id = 'board-images');
 
-### 4. 미리보기 및 확인
-- 생성된 결과를 미리보기로 확인
-- 필요시 수정하기 버튼으로 다시 작성
+   -- 2. 인증된 사용자 업로드 정책 (관리자용)
+   CREATE POLICY "Allow authenticated users to upload board images" ON storage.objects 
+   FOR INSERT 
+   WITH CHECK (bucket_id = 'board-images' AND auth.role() = 'authenticated');
 
-### 5. 게시
-- "게시하기" 버튼으로 최종 발행
+   -- 3. 인증된 사용자 삭제 정책 (관리자용)
+   CREATE POLICY "Allow authenticated users to delete board images" ON storage.objects 
+   FOR DELETE 
+   USING (bucket_id = 'board-images' AND auth.role() = 'authenticated');
+   ```
 
-## 기능 상세
+#### 2.2 기존 Newsletter 버킷들도 확인
 
-### AI가 자동 생성하는 것들
-1. **HTML 컨텐츠**: 적절한 태그 구조로 변환 (`<p>`, `<h3>`, `<ul>`, `<li>` 등)
-2. **URL 슬러그**: 영문으로 SEO 친화적인 URL 생성
-3. **요약문**: 150자 이내의 핵심 요약
-4. **SEO 제목**: 검색엔진 최적화된 60자 이내 제목
-5. **SEO 설명**: 검색 결과에 표시될 160자 이내 설명
-6. **이미지 추천**: 게시글에 어울리는 이미지 설명
+이미 newsletter 기능에서 다음 버킷들이 생성되어 있어야 합니다:
+- `newsletters` (PDF 파일용)
+- `newsletter-covers` (표지 이미지용)
 
-### 장점
-- ✅ 비전공자도 쉽게 사용 가능
-- ✅ 전문적인 웹 컨텐츠 자동 생성
-- ✅ SEO 최적화 자동 처리
-- ✅ 일관된 품질의 게시글 생성
-- ✅ 시간 단축 (제목+내용 → 완성된 게시글)
+### 기능
 
-## 문제 해결
+#### 게시글 작성 시 이미지 업로드
+- `/admin/board/create` - 새 게시글 작성 시
+- `/admin/board/edit/[id]` - 기존 게시글 수정 시
 
-### API 키 관련 오류
-- OpenAI API 키가 올바르게 설정되었는지 확인
-- API 키에 충분한 크레딧이 있는지 확인
-- `.env.local` 파일이 프로젝트 루트에 있는지 확인
+#### 지원 기능
+- 다중 이미지 업로드 (한 번에 여러 개)
+- 실시간 업로드 진행률
+- 이미지 미리보기
+- URL 복사 기능
+- 에디터에 자동 삽입 기능
+- 파일 크기 제한: 10MB
+- 지원 형식: JPG, PNG, WebP, GIF
 
-### AI 생성 실패
-- 제목과 내용이 모두 입력되었는지 확인
+#### 사용법
+1. "이미지 업로드" 섹션에서 파일 선택
+2. 업로드 완료 후 "관리하기" 버튼 클릭
+3. 각 이미지별로:
+   - 📋 URL 복사
+   - ✏️ 에디터에 삽입
+   - ❌ 삭제
+
+### 설정 확인
+관리자 패널에서 "설정 확인" 버튼을 클릭하여 버킷이 올바르게 설정되었는지 확인할 수 있습니다.
+
+## 3. 문제 해결
+
+### 버킷 접근 오류
+- Supabase 대시보드에서 버킷이 생성되었는지 확인
+- 버킷이 public으로 설정되었는지 확인
+- RLS 정책이 올바르게 설정되었는지 확인
+
+### 업로드 실패
+- 파일 크기가 10MB 이하인지 확인
+- 지원되는 이미지 형식인지 확인
 - 네트워크 연결 상태 확인
-- OpenAI 서비스 상태 확인
 
-### 게시 실패
-- Supabase 연결 상태 확인
-- 데이터베이스 권한 확인
+### 이미지가 표시되지 않음
+- 업로드된 이미지의 공개 URL이 올바른지 확인
+- 브라우저 캐시 새로고침
+- Supabase 버킷의 public 설정 확인
 
-## 비용 안내
-- OpenAI API는 사용량에 따라 과금됩니다
-- 게시글 하나당 약 $0.01-0.05 정도 예상
-- 월 사용량을 모니터링하고 적절한 한도를 설정하세요 
+## 4. 보안 고려사항
+
+- 업로드는 관리자만 가능 (인증된 사용자)
+- 파일 크기 제한으로 과도한 업로드 방지
+- 지원하지 않는 파일 형식 차단
+- 파일명 자동 안전화 처리 

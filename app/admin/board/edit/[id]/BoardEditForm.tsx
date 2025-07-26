@@ -11,12 +11,20 @@ import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Save, ArrowLeft, Eye, Calendar, FileText, Image } from "lucide-react"
-import { updateBoardPost } from "@/lib/board"
+import { Progress } from "@/components/ui/progress"
+import { Save, ArrowLeft, Eye, Calendar, FileText, Image, Upload, Copy, X, Settings, Edit3 } from "lucide-react"
+import { updateBoardPost, uploadBoardImageFile, checkBoardImagesBucketSetup } from "@/lib/board"
 import { BoardPost } from "@/lib/supabase"
 
 interface BoardEditFormProps {
   post: BoardPost
+}
+
+interface UploadedImage {
+  id: string
+  name: string
+  url: string
+  size: number
 }
 
 export default function BoardEditForm({ post }: BoardEditFormProps) {
@@ -36,6 +44,115 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+
+  // 이미지 업로드 관련 state
+  const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>([])
+  const [isUploadingImages, setIsUploadingImages] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0)
+  const [showImageManager, setShowImageManager] = useState(false)
+  const [setupCheck, setSetupCheck] = useState<{success: boolean, error: string | null} | null>(null)
+
+  // Supabase 설정 확인 함수
+  const handleCheckSetup = async () => {
+    setIsLoading(true)
+    const result = await checkBoardImagesBucketSetup()
+    setSetupCheck(result)
+    setIsLoading(false)
+  }
+
+  // 이미지 업로드 핸들러
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || [])
+    if (files.length === 0) return
+
+    // 이미지 파일 검증
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+    const invalidFiles = files.filter(file => !validImageTypes.includes(file.type))
+    
+    if (invalidFiles.length > 0) {
+      setError(`지원하지 않는 파일 형식이 있습니다: ${invalidFiles.map(f => f.name).join(', ')}`)
+      return
+    }
+
+    // 파일 크기 검증 (각각 10MB 제한)
+    const maxSize = 10 * 1024 * 1024 // 10MB
+    const oversizedFiles = files.filter(file => file.size > maxSize)
+    
+    if (oversizedFiles.length > 0) {
+      setError(`파일 크기가 너무 큽니다 (최대 10MB): ${oversizedFiles.map(f => f.name).join(', ')}`)
+      return
+    }
+
+    setIsUploadingImages(true)
+    setError(null)
+    setUploadProgress(0)
+
+    try {
+      const uploadPromises = files.map(async (file, index) => {
+        const { publicUrl, error } = await uploadBoardImageFile(file, file.name)
+        
+        // 업로드 진행률 업데이트
+        setUploadProgress(((index + 1) / files.length) * 100)
+        
+        if (error || !publicUrl) {
+          const errorMessage = error && typeof error === 'object' && 'message' in error 
+            ? (error as any).message 
+            : '알 수 없는 오류'
+          throw new Error(`${file.name} 업로드 실패: ${errorMessage}`)
+        }
+
+        return {
+          id: Date.now().toString() + index,
+          name: file.name,
+          url: publicUrl,
+          size: file.size
+        }
+      })
+
+      const results = await Promise.all(uploadPromises)
+      setUploadedImages(prev => [...prev, ...results])
+      setShowImageManager(true)
+
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '이미지 업로드 중 오류가 발생했습니다.')
+    } finally {
+      setIsUploadingImages(false)
+      setUploadProgress(0)
+      // 파일 input 초기화
+      if (e.target) {
+        e.target.value = ''
+      }
+    }
+  }
+
+  // 이미지 URL 클립보드 복사
+  const copyImageUrl = async (url: string) => {
+    try {
+      await navigator.clipboard.writeText(url)
+      // 성공 피드백 (간단한 알림)
+      const button = document.activeElement as HTMLButtonElement
+      if (button) {
+        const originalText = button.textContent
+        button.textContent = '복사됨!'
+        setTimeout(() => {
+          button.textContent = originalText
+        }, 1000)
+      }
+    } catch (err) {
+      setError('클립보드 복사에 실패했습니다.')
+    }
+  }
+
+  // 이미지 삭제
+  const removeImage = (id: string) => {
+    setUploadedImages(prev => prev.filter(img => img.id !== id))
+  }
+
+  // 이미지를 에디터에 삽입
+  const insertImageToEditor = (url: string, altText: string) => {
+    const imageHtml = `<img src="${url}" alt="${altText}" style="max-width: 100%; height: auto;" />`
+    setContent(prev => prev + '\n\n' + imageHtml)
+  }
 
   // 제목에서 슬러그 생성
   const generateSlug = (title: string) => {
@@ -245,6 +362,142 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
         </CardContent>
       </Card>
 
+      {/* 이미지 업로드 섹션 */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Upload className="w-5 h-5" />
+            이미지 업로드
+            {uploadedImages.length > 0 && (
+              <Badge variant="outline">{uploadedImages.length}개</Badge>
+            )}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {/* 설정 확인 */}
+          <div className="flex gap-4 items-center">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleCheckSetup}
+              disabled={isLoading}
+              className="flex items-center gap-2"
+            >
+              {isLoading ? <Settings className="w-3 h-3 animate-spin" /> : <Settings className="w-3 h-3" />}
+              설정 확인
+            </Button>
+            {setupCheck && (
+              <div className={`flex items-center gap-2 text-sm ${setupCheck.success ? 'text-green-600' : 'text-red-600'}`}>
+                {setupCheck.success ? '✅ 준비됨' : '❌ 설정 오류'}
+              </div>
+            )}
+          </div>
+
+          {setupCheck && !setupCheck.success && (
+            <Alert variant="destructive">
+              <AlertDescription className="text-sm">
+                {setupCheck.error}
+              </AlertDescription>
+            </Alert>
+          )}
+
+          <div className="space-y-2">
+            <Label htmlFor="image-upload">이미지 파일</Label>
+            <Input
+              id="image-upload"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+              onChange={handleImageUpload}
+              disabled={isUploadingImages}
+              multiple
+            />
+            <p className="text-sm text-muted-foreground">
+              최대 파일 크기: 10MB | 지원 형식: JPG, PNG, WebP, GIF
+            </p>
+          </div>
+
+          {/* 업로드 진행률 */}
+          {isUploadingImages && (
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span>업로드 진행률</span>
+                <span>{Math.round(uploadProgress)}%</span>
+              </div>
+              <Progress value={uploadProgress} className="w-full" />
+            </div>
+          )}
+
+          {/* 업로드된 이미지 목록 */}
+          {uploadedImages.length > 0 && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <Label>업로드된 이미지</Label>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowImageManager(!showImageManager)}
+                >
+                  {showImageManager ? '숨기기' : '관리하기'}
+                </Button>
+              </div>
+              
+              {showImageManager && (
+                <div className="border rounded-lg p-4 bg-muted/30">
+                  <div className="grid grid-cols-1 gap-3 max-h-64 overflow-y-auto">
+                    {uploadedImages.map((image) => (
+                      <div key={image.id} className="flex items-center gap-3 p-3 bg-background rounded-lg border">
+                        <img 
+                          src={image.url} 
+                          alt={image.name}
+                          className="w-12 h-12 object-cover rounded"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium truncate">{image.name}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {Math.round(image.size / 1024)}KB
+                          </p>
+                        </div>
+                        <div className="flex gap-1">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => copyImageUrl(image.url)}
+                            title="URL 복사"
+                          >
+                            <Copy className="w-3 h-3" />
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => insertImageToEditor(image.url, image.name)}
+                            title="에디터에 삽입"
+                          >
+                            <Edit3 className="w-3 h-3" />
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => removeImage(image.id)}
+                            title="삭제"
+                            className="text-red-600 hover:text-red-700"
+                          >
+                            <X className="w-3 h-3" />
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-3">
+                    💡 팁: "에디터에 삽입" 버튼을 클릭하면 이미지 HTML 코드가 자동으로 본문에 추가됩니다.
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
       {/* 내용 섹션 */}
       <Card>
         <CardHeader>
@@ -257,12 +510,12 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
               id="content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="게시글 내용을 입력하세요 (HTML 태그 사용 가능)"
+              placeholder="게시글 내용을 입력하세요. 위에서 이미지를 업로드한 후 '에디터에 삽입' 버튼으로 쉽게 추가할 수 있습니다."
               rows={15}
               className="font-mono text-sm"
             />
             <p className="text-xs text-muted-foreground">
-              HTML 태그를 사용할 수 있습니다. 이미지는 &lt;img&gt; 태그로 삽입해주세요.
+              HTML 태그를 사용할 수 있습니다. 이미지는 위에서 업로드 후 삽입하거나 직접 &lt;img&gt; 태그로 삽입할 수 있습니다.
             </p>
           </div>
         </CardContent>

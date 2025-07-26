@@ -32,7 +32,7 @@ interface NavSubItem {
 
 const navItems: NavItem[] = [
   {
-    href: "/about",
+    href: "/about/greeting",
     label: "회사소개",
     children: [
       {

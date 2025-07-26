@@ -4,7 +4,8 @@ import Link from "next/link"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Search, Eye, CalendarDays } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Search, Eye, CalendarDays, Star } from "lucide-react"
 import PageBanner from "@/components/page-banner"
 import { motion } from "framer-motion"
 import { BoardPost } from "@/lib/supabase"
@@ -25,15 +26,41 @@ function BoardItem({ post }: BoardItemProps) {
     })
   }
 
+  // excerpt가 없으면 content에서 텍스트만 추출하여 요약 생성
+  const getExcerpt = () => {
+    if (post.excerpt) {
+      return post.excerpt
+    }
+    
+    // HTML 태그를 제거하고 순수 텍스트만 추출
+    const textContent = post.content
+      .replace(/<[^>]*>/g, ' ') // HTML 태그 제거
+      .replace(/\s+/g, ' ') // 연속 공백을 하나로
+      .trim()
+    
+    return textContent.length > 120 
+      ? textContent.substring(0, 120) + '...' 
+      : textContent
+  }
+
   return (
-    <Card className="hover:shadow-md transition-shadow h-full">
-      <CardHeader>
-        <Link href={`/board/${post.slug}`}>
-          <CardTitle className="text-lg md:text-xl hover:text-primary transition-colors line-clamp-2">
-            {post.title}
-          </CardTitle>
-        </Link>
-        <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
+    <Card className="hover:shadow-md transition-shadow h-full group">
+      <CardHeader className="pb-3">
+        <div className="flex items-start justify-between gap-2 mb-2">
+          <Link href={`/board/${post.slug}`} className="flex-1">
+            <CardTitle className="text-lg md:text-xl hover:text-primary transition-colors line-clamp-2 group-hover:text-primary">
+              {post.title}
+            </CardTitle>
+          </Link>
+          {post.is_featured && (
+            <Badge variant="secondary" className="shrink-0 text-yellow-600 bg-yellow-50 border-yellow-200">
+              <Star className="w-3 h-3 mr-1" />
+              추천
+            </Badge>
+          )}
+        </div>
+        
+        <div className="flex items-center gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-1">
             <CalendarDays className="w-4 h-4" />
             <span>{formatDate(post.published_at)}</span>
@@ -44,14 +71,31 @@ function BoardItem({ post }: BoardItemProps) {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="flex-grow">
+
+      <CardContent className="flex-grow space-y-3">
+        {/* 대표 이미지 */}
+        {post.featured_image && (
+          <div className="w-full h-48 overflow-hidden rounded-lg bg-gray-100">
+            <img 
+              src={post.featured_image}
+              alt={post.title}
+              className="w-full h-full object-cover transition-transform group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+        )}
+        
+        {/* 게시글 요약 */}
         <p className="text-muted-foreground leading-relaxed text-sm">
-          {post.excerpt || post.content.substring(0, 100) + '...'}
+          {getExcerpt()}
         </p>
       </CardContent>
-      <CardFooter>
+
+      <CardFooter className="pt-3">
         <Link href={`/board/${post.slug}`} className="w-full">
-          <Button variant="outline" className="w-full">자세히 보기</Button>
+          <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+            자세히 보기
+          </Button>
         </Link>
       </CardFooter>
     </Card>
@@ -99,6 +143,7 @@ export default function BoardClientPage({
 
   const totalPages = Math.ceil(totalCount / 9)
   const posts = initialPosts
+
   return (
     <div className="w-full overflow-x-hidden">
       {/* 페이지 배너 */}
@@ -114,19 +159,36 @@ export default function BoardClientPage({
         transition={{ duration: 0.5 }}
         className="container-fluid max-w-7xl py-4 md:py-6 lg:py-8 xl:py-12"
       >
-        {/* 검색 섹션 */}
+        {/* 검색 및 통계 섹션 */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12 md:mb-16"
+          className="mb-8 md:mb-12"
         >
-          <div className="mb-8 max-w-md mx-auto px-4">
+          {/* 통계 정보 */}
+          <div className="text-center mb-6 px-4">
+            <div className="flex justify-center items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <span className="font-medium">전체 게시글</span>
+                <Badge variant="outline">{totalCount}개</Badge>
+              </div>
+              {searchQuery && (
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">검색 결과</span>
+                  <Badge variant="outline">{posts.length}개</Badge>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* 검색 폼 */}
+          <div className="max-w-md mx-auto px-4">
             <form onSubmit={handleSearch} className="flex gap-2">
               <Input 
                 type="search" 
-                placeholder="게시글 검색..." 
+                placeholder="제목, 내용으로 검색..." 
                 className="flex-grow"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -162,10 +224,30 @@ export default function BoardClientPage({
               ))}
             </div>
           ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                {searchQuery ? '검색 결과가 없습니다.' : '게시글이 없습니다.'}
-              </p>
+            <div className="text-center py-16">
+              <div className="max-w-md mx-auto">
+                <div className="text-6xl mb-4">📝</div>
+                <h3 className="text-lg font-semibold mb-2">
+                  {searchQuery ? '검색 결과가 없습니다' : '게시글이 없습니다'}
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  {searchQuery 
+                    ? '다른 검색어로 시도해보세요.' 
+                    : '첫 번째 게시글이 곧 업로드될 예정입니다.'
+                  }
+                </p>
+                {searchQuery && (
+                  <Button 
+                    variant="outline" 
+                    onClick={() => {
+                      setSearchTerm('')
+                      router.push('/board')
+                    }}
+                  >
+                    전체 게시글 보기
+                  </Button>
+                )}
+              </div>
             </div>
           )}
         </motion.section>
@@ -189,7 +271,17 @@ export default function BoardClientPage({
               </Button>
               
               {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-                const pageNum = i + 1
+                let pageNum
+                if (totalPages <= 5) {
+                  pageNum = i + 1
+                } else {
+                  // 현재 페이지 주변의 페이지들을 표시
+                  const start = Math.max(1, currentPage - 2)
+                  const end = Math.min(totalPages, start + 4)
+                  pageNum = start + i
+                  if (pageNum > end) return null
+                }
+                
                 return (
                   <Button
                     key={pageNum}
@@ -199,7 +291,7 @@ export default function BoardClientPage({
                     {pageNum}
                   </Button>
                 )
-              })}
+              }).filter(Boolean)}
               
               <Button 
                 variant="outline" 
@@ -211,13 +303,6 @@ export default function BoardClientPage({
             </div>
           </motion.section>
         )}
-
-        {/* 관리자 전용 글쓰기 버튼 (조건부 렌더링 필요) */}
-        {/* <div className="mt-8 text-right px-4">
-          <Link href="/board/new">
-            <Button>글쓰기</Button>
-          </Link>
-        </div> */}
       </motion.div>
     </div>
   )

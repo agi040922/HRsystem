@@ -1,5 +1,188 @@
 import { supabase, BoardPost, BoardImage } from './supabase'
 
+// 파일명을 안전한 형태로 변환하는 함수
+function sanitizeFileName(fileName: string): string {
+  // 1. 파일 확장자 분리
+  const lastDotIndex = fileName.lastIndexOf('.')
+  const name = lastDotIndex > 0 ? fileName.substring(0, lastDotIndex) : fileName
+  const extension = lastDotIndex > 0 ? fileName.substring(lastDotIndex) : ''
+  
+  // 2. 파일명을 안전한 형태로 변환
+  const sanitizedName = name
+    .replace(/[^\w\s-]/g, '') // 영문, 숫자, 공백, 하이픈만 허용 (한글 제거)
+    .replace(/\s+/g, '_') // 공백을 언더스코어로 변경
+    .replace(/_+/g, '_') // 연속된 언더스코어를 하나로 통합
+    .replace(/^_|_$/g, '') // 시작과 끝의 언더스코어 제거
+    .toLowerCase() // 소문자로 변환
+  
+  // 3. 파일명이 비어있으면 기본명 사용
+  const finalName = sanitizedName || 'image'
+  
+  return `${finalName}${extension.toLowerCase()}`
+}
+
+// 이미지 파일 업로드 (Supabase Storage)
+export async function uploadBoardImageFile(file: File, fileName: string) {
+  try {
+    // 파일명을 안전한 형태로 변환
+    const sanitizedFileName = sanitizeFileName(fileName)
+    const uniqueFileName = `${Date.now()}_${sanitizedFileName}`
+    
+    console.log('Original image filename:', fileName)
+    console.log('Sanitized image filename:', sanitizedFileName)
+    console.log('Final image filename:', uniqueFileName)
+    
+    const { data, error } = await supabase.storage
+      .from('board-images')
+      .upload(uniqueFileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      })
+
+    if (error) {
+      console.error('Error uploading board image file:', {
+        message: error.message,
+        error: error
+      })
+      return { filePath: null, publicUrl: null, error }
+    }
+
+    // 공개 URL 생성
+    const { data: { publicUrl } } = supabase.storage
+      .from('board-images')
+      .getPublicUrl(data.path)
+
+    return { filePath: data.path, publicUrl, error: null }
+  } catch (err) {
+    console.error('Unexpected error in uploadBoardImageFile:', err)
+    return { filePath: null, publicUrl: null, error: err }
+  }
+}
+
+// 다중 이미지 업로드
+export async function uploadMultipleBoardImages(files: File[], postId?: number) {
+  const uploadPromises = files.map(async (file, index) => {
+    const { publicUrl, error } = await uploadBoardImageFile(file, file.name)
+    
+    if (error || !publicUrl) {
+      return { success: false, file: file.name, error }
+    }
+
+    // 게시글 ID가 있으면 DB에도 저장
+    if (postId) {
+      const { image, error: dbError } = await uploadBoardImage(postId, {
+        image_url: publicUrl,
+        alt_text: file.name.split('.').slice(0, -1).join('.'), // 확장자 제거하고 alt_text로 사용
+        display_order: index
+      })
+      
+      if (dbError) {
+        return { success: false, file: file.name, error: dbError }
+      }
+      
+      return { success: true, file: file.name, publicUrl, imageId: image?.id }
+    }
+
+    return { success: true, file: file.name, publicUrl }
+  })
+
+  const results = await Promise.all(uploadPromises)
+  return results
+}
+
+// board-images 버킷 설정 확인
+export async function checkBoardImagesBucketSetup() {
+  try {
+    console.log('\n🔍 Board Images 버킷 설정 확인 중...')
+    console.log('💡 참고: listBuckets() 권한이 제한되어 개별 버킷 접근 방식을 사용합니다.')
+    
+    // 개별 버킷 접근 시도 (listBuckets 권한 문제 우회)
+    const boardImagesTest = await supabase.storage
+      .from('board-images')
+      .list('', { limit: 1 })
+    
+    console.log('🔄 board-images 버킷 접근 결과:')
+    console.log('- board-images 버킷 접근:', boardImagesTest.error ? '실패' : '성공')
+    
+    if (boardImagesTest.error) {
+      console.error('❌ board-images 버킷 오류:', boardImagesTest.error)
+      console.error('💡 해결 방법: Supabase 대시보드 > Storage에서 "board-images" 버킷을 생성하세요.')
+      return { 
+        success: false, 
+        error: `board-images 버킷 접근 실패: ${boardImagesTest.error.message}` 
+      }
+    }
+    
+    console.log('✅ board-images 버킷이 정상적으로 설정되었습니다.')
+    console.log('- board-images 버킷: 접근 가능')
+    
+    // 테스트 파일 업로드로 쓰기 권한 확인
+    console.log('\n📤 테스트 파일 업로드 중...')
+    const testFile = new File(['test image content'], 'test-image.txt', { type: 'text/plain' })
+    const testFileName = `test_image_${Date.now()}.txt`
+    
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from('board-images')
+      .upload(testFileName, testFile, {
+        cacheControl: '3600',
+        upsert: false
+      })
+    
+    if (uploadError) {
+      console.error('❌ 테스트 파일 업로드 실패:', uploadError.message)
+      console.error('상세 오류:', uploadError)
+      return { 
+        success: false, 
+        error: `파일 업로드 실패: ${uploadError.message}` 
+      }
+    }
+    
+    console.log('✅ 테스트 파일 업로드 성공:', uploadData.path)
+    
+    // 테스트 파일 삭제
+    console.log('\n🗑️ 테스트 파일 삭제 중...')
+    const { error: deleteError } = await supabase.storage
+      .from('board-images')
+      .remove([uploadData.path])
+    
+    if (deleteError) {
+      console.warn('⚠️ 테스트 파일 삭제 실패:', deleteError.message)
+      console.warn('상세 오류:', deleteError)
+    } else {
+      console.log('✅ 테스트 파일 삭제 성공')
+    }
+    
+    console.log('\n🎉 board-images 버킷 설정이 정상입니다!')
+    return { success: true, error: null }
+    
+  } catch (err) {
+    console.error('Unexpected error in checkBoardImagesBucketSetup:', err)
+    return { 
+      success: false, 
+      error: err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다.' 
+    }
+  }
+}
+
+// 이미지 파일 삭제
+export async function deleteBoardImageFile(filePath: string) {
+  try {
+    const { error } = await supabase.storage
+      .from('board-images')
+      .remove([filePath])
+
+    if (error) {
+      console.error('Error deleting board image file:', error)
+      return { success: false, error }
+    }
+
+    return { success: true, error: null }
+  } catch (err) {
+    console.error('Unexpected error in deleteBoardImageFile:', err)
+    return { success: false, error: err }
+  }
+}
+
 // 게시글 목록 가져오기
 export async function getBoardPosts(page: number = 1, limit: number = 10, search?: string) {
   let query = supabase

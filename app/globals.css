@@ -116,6 +116,50 @@
   }
 }
 
+/* 게시글 내용 이미지 스타일 */
+@layer components {
+  .prose img {
+    @apply rounded-lg shadow-sm mx-auto block max-w-full h-auto my-6;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .prose img:hover {
+    @apply scale-105;
+  }
+  
+  /* 게시글 내용에서 이미지가 연속으로 있을 때 간격 조정 */
+  .prose img + img {
+    @apply mt-4;
+  }
+  
+  /* 이미지 캡션이 있는 경우 스타일 */
+  .prose figure {
+    @apply my-8 text-center;
+  }
+  
+  .prose figure img {
+    @apply mb-3;
+  }
+  
+  .prose figcaption {
+    @apply text-sm text-muted-foreground italic;
+  }
+  
+  /* 이미지 갤러리 스타일 (연속된 이미지들) */
+  .prose .image-gallery {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4 my-8;
+  }
+  
+  .prose .image-gallery img {
+    @apply my-0;
+  }
+  
+  /* 작은 인라인 이미지 스타일 */
+  .prose img[style*="width"] {
+    @apply inline-block mx-2 my-1;
+  }
+}
+
 /* 기업 로고 스크롤 애니메이션 */
 @keyframes scroll {
   0% {
@@ -132,4 +176,26 @@
 
 .animate-scroll:hover {
   animation-play-state: paused;
+}
+
+/* 이미지 로딩 상태 */
+@layer components {
+  .image-loading {
+    @apply bg-gray-100 animate-pulse;
+  }
+  
+  .image-error {
+    @apply bg-red-50 border border-red-200 text-red-500 text-center p-4 rounded-lg;
+  }
+}
+
+/* 다크 모드에서 이미지 최적화 */
+@media (prefers-color-scheme: dark) {
+  .prose img {
+    @apply brightness-90;
+  }
+  
+  .prose img:hover {
+    @apply brightness-100;
+  }
 }
