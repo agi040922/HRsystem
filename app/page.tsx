@@ -783,7 +783,7 @@ export default function HomePage() {
               <span className="text-primary">200여 외국계 기업</span>이 선택한 전문가
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8">
-              2000년부터 24년간 글로벌 기업들의 신뢰받는 파트너
+              2000년부터 26년간 글로벌 기업들의 신뢰받는 파트너
             </p>
           </motion.div>
 
@@ -800,7 +800,7 @@ export default function HomePage() {
               <div className="text-sm text-gray-600">외국계 기업</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">24년</div>
+              <div className="text-2xl font-bold text-primary mb-1">26년</div>
               <div className="text-sm text-gray-600">전문 경험</div>
             </div>
           </motion.div>
@@ -1072,7 +1072,7 @@ export default function HomePage() {
               >
                 <div className="flex items-center mb-6">
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
-                    노동법 주간지
+                    FAIR 뉴스레터
                   </h3>
                   <div className="flex-1 ml-8">
                     <Link href="/services" className="text-sm text-gray-500 hover:text-primary transition-colors">
