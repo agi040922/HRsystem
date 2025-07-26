@@ -148,7 +148,8 @@ export default function BoardClientPage({
                   {/* 게시글 목록 */}
                   <div className="divide-y">
                     {posts.map((post, index) => {
-                      const postNumber = totalCount - ((currentPage - 1) * 9) - index
+                      // 간단한 순차 번호 계산
+                      const postNumber = (currentPage - 1) * 9 + index + 1
                       
                       return (
                         <motion.div
