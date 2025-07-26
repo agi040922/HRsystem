@@ -135,16 +135,16 @@ function HeroSection() {
                 {slides[currentSlide].topLeft.subtitle}
               </h3>
             )}
-            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white leading-tight mb-2">
+            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white leading-tight mb-2 whitespace-nowrap">
               {slides[currentSlide].topLeft.title}
             </h2>
             {slides[currentSlide].bottomRight.text && (
-              <p className="text-sm md:text-base text-white mb-1">
+              <p className="text-sm md:text-base text-white mb-1 whitespace-nowrap">
                 {slides[currentSlide].bottomRight.text}
               </p>
             )}
             {slides[currentSlide].bottomRight.highlight && (
-              <p className="text-base md:text-lg font-semibold text-white">
+              <p className="text-base md:text-lg font-semibold text-white whitespace-nowrap">
                 {slides[currentSlide].bottomRight.highlight}
               </p>
             )}
@@ -171,11 +171,11 @@ function HeroSection() {
                 {slides[currentSlide].topLeft.subtitle}
               </h3>
             )}
-            <h2 className="text-sm sm:text-base font-bold text-white leading-tight mb-1">
+            <h2 className="text-sm sm:text-base font-bold text-white leading-tight mb-1 whitespace-nowrap">
               {slides[currentSlide].topLeft.title}
             </h2>
             {slides[currentSlide].bottomRight.highlight && (
-              <p className="text-xs sm:text-sm font-medium text-white/90">
+              <p className="text-xs sm:text-sm font-medium text-white/90 whitespace-nowrap">
                 {slides[currentSlide].bottomRight.highlight}
               </p>
             )}
@@ -198,7 +198,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
-            className="max-w-[80%] sm:max-w-[400px] mx-auto text-white text-xs sm:text-sm md:text-base mb-1.5 sm:mb-2 md:mb-3 leading-relaxed"
+            className="text-white text-xs sm:text-sm md:text-base mb-1.5 sm:mb-2 md:mb-3 leading-relaxed whitespace-nowrap"
           >
             FAIR인사노무컨설팅이 전문적인 상담으로 최적의 솔루션을 제공합니다.
           </motion.p>
@@ -803,10 +803,6 @@ export default function HomePage() {
               <div className="text-2xl font-bold text-primary mb-1">24년</div>
               <div className="text-sm text-gray-600">전문 경험</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">다수</div>
-              <div className="text-sm text-gray-600">단체교섭</div>
-            </div>
           </motion.div>
 
           {/* 기업 로고 슬라이더 */}
@@ -983,43 +979,7 @@ export default function HomePage() {
               </div>
             </div>
           </motion.div>
-          
-          {/* 서비스 카드 섹션 */}
-          <div className="grid gap-8 grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto mb-8">
-            {services.map((service, index) => (
-              <ServiceCard key={service.title} {...service} index={index} />
-            ))}
-          </div>
 
-          {/* CTA 섹션 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center"
-          >
-            <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                글로벌 기업들이 신뢰하는 이유
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                24년간 200여 외국계 기업과 함께한 경험으로 완벽한 솔루션을 제공합니다.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/services">
-                  <Button size="lg" className="w-full sm:w-auto">
-                    포트폴리오 보기
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                    해외기업 자문 문의
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -1167,53 +1127,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="location-summary" className="w-full py-6 sm:py-8 md:py-12 bg-white">
-        <div className="container-fluid max-w-7xl px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">오시는 길</h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
-              편리한 교통과 쾌적한 환경에서 최고의 상담 서비스를 제공합니다.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mx-auto w-full max-w-6xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] mb-4 sm:mb-6"
-          >
-            <KakaoMap
-              latitude={37.6290}
-              longitude={126.9205}
-              level={4}
-              markerText="FAIR인사노무컨설팅 (은평구 진관동)"
-              className="w-full h-full rounded-xl shadow-lg"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-center"
-          >
-            <div className="bg-slate-50 rounded-lg p-6 max-w-2xl mx-auto">
-              <p className="text-lg font-medium text-gray-900 mb-2">
-                서울 은평구 진관 3로 22 파크앤타워 B동 412호
-              </p>
-              <p className="text-muted-foreground">
-                지하철 3호선 구파발역 1번 출구 도보 15분
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+
     </>
   )
 }

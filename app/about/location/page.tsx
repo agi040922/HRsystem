@@ -1,7 +1,6 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Clock, Phone } from "lucide-react"
 import KakaoMap from "@/components/kakao-map"
 import PageBanner from "@/components/page-banner"
 import { motion } from "framer-motion"
@@ -10,17 +9,17 @@ export default function LocationPage() {
   // 위치 정보
   const locationInfo = {
     name: "FAIR인사노무컨설팅",
-    address: "서울특별시 강남구 테헤란로 123, 4층",
-    postalCode: "06123",
-    phone: "02-1234-5678",
-    email: "info@fair-hr.co.kr",
+    address: "서울 은평구 진관 3로 22 파크앤타워 B동 412호",
+    postalCode: "03280",
+    phone: "02-387-9869",
+    email: "fairhr@nate.com",
     businessHours: {
-      weekdays: "09:00 ~ 18:00",
-      saturday: "09:00 ~ 13:00 (예약제)",
+      weekdays: "10:00 ~ 20:00",
+      saturday: "10:00 ~ 17:00",
       sunday: "휴무"
     },
-    latitude: 37.5012743,
-    longitude: 127.039585
+    latitude: 37.6290,
+    longitude: 126.9205
   }
 
   return (
@@ -28,7 +27,7 @@ export default function LocationPage() {
       {/* 페이지 배너 */}
       <PageBanner 
         title="오시는 길"
-        subtitle="노무법인 [법인명] 위치 안내"
+        subtitle="FAIR인사노무컨설팅 위치 안내"
         backgroundImage="/FAIR000.png"
       />
 
@@ -66,49 +65,41 @@ export default function LocationPage() {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-xl">
-                    <MapPin className="w-6 h-6 text-primary" />
-                    기본 정보
-                  </CardTitle>
+                  <CardTitle className="text-xl">기본 정보</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">{locationInfo.name}</h4>
-                    <p className="text-sm text-muted-foreground">
-                      주소: {locationInfo.address}<br />
-                      우편번호: {locationInfo.postalCode}
-                    </p>
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-sm">
-                      <Phone className="w-4 h-4 inline mr-2" />
-                      전화: <a href={`tel:${locationInfo.phone}`} className="text-primary hover:underline">{locationInfo.phone}</a>
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      이메일: <a href={`mailto:${locationInfo.email}`} className="text-primary hover:underline">{locationInfo.email}</a>
-                    </p>
+                    <h4 className="font-semibold text-foreground mb-3">{locationInfo.name}</h4>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p>
+                        <span className="font-medium text-foreground">주소:</span> {locationInfo.address}
+                      </p>
+                      <p>
+                        <span className="font-medium text-foreground">전화:</span> <a href={`tel:${locationInfo.phone}`} className="text-primary hover:underline">{locationInfo.phone}</a>
+                      </p>
+                      <p>
+                        <span className="font-medium text-foreground">이메일:</span> <a href={`mailto:${locationInfo.email}`} className="text-primary hover:underline">{locationInfo.email}</a>
+                      </p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-xl">
-                    <Clock className="w-6 h-6 text-primary" />
-                    운영시간
-                  </CardTitle>
+                  <CardTitle className="text-xl">운영시간</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between py-2 border-b border-gray-100">
                       <span className="text-muted-foreground">평일</span>
                       <span className="font-medium">{locationInfo.businessHours.weekdays}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between py-2 border-b border-gray-100">
                       <span className="text-muted-foreground">토요일</span>
                       <span className="font-medium">{locationInfo.businessHours.saturday}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between py-2">
                       <span className="text-muted-foreground">일요일/공휴일</span>
                       <span className="font-medium text-red-500">{locationInfo.businessHours.sunday}</span>
                     </div>

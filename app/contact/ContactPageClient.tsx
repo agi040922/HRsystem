@@ -214,7 +214,7 @@ export default function ContactPageClient() {
                     <div>
                       <h3 className="font-semibold text-sm md:text-base">이메일 문의</h3>
                       <a href="mailto:fairhr@nate.net" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all">
-                        fairhr@nate.net
+                        fairhr@nate.com
                       </a>
                     </div>
                   </div>
@@ -240,11 +240,11 @@ export default function ContactPageClient() {
                   <div className="space-y-3 text-sm md:text-base">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">평일</span>
-                      <span className="text-muted-foreground">09:00 - 18:00</span>
+                      <span className="text-muted-foreground">10:00 - 20:00</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="font-medium">토요일</span>
-                      <span className="text-muted-foreground">09:00 - 13:00</span>
+                      <span className="text-muted-foreground">10:00 - 17:00</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="font-medium">일요일 및 공휴일</span>

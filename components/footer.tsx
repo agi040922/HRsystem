@@ -14,7 +14,7 @@ export default function Footer() {
               <br />
               전화: <a href="tel:02-387-9869" className="hover:text-primary">02-387-9869</a>
               <br />
-              이메일: <a href="mailto:fairhr@nate.net" className="hover:text-primary">fairhr@nate.net</a>
+              이메일: <a href="mailto:fairhr@nate.com" className="hover:text-primary">fairhr@nate.com</a>
             </p>
           </div>
           <div className="px-4 md:px-0">

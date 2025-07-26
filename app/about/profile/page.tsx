@@ -3,7 +3,6 @@
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Briefcase, BookOpen, Newspaper, GraduationCap, Calendar, Award, User } from "lucide-react"
 import PageBanner from "@/components/page-banner"
 import { motion } from "framer-motion"
 
@@ -12,7 +11,7 @@ export default function ProfilePage() {
   const representativeInfo = {
     name: "정광일",
     position: "대표 공인노무사",
-    image: "/강의1.png",
+    image: "/개인 사진.png",
     introduction: "제8회 공인노무사 시험 합격(1999년)으로 25년간의 풍부한 실무 경험과 전문 지식을 바탕으로 고객에게 최고의 노무 서비스를 제공하고 있습니다.",
     
     // 학력 정보
@@ -163,7 +162,7 @@ export default function ProfilePage() {
                 alt={representativeInfo.name}
                 width={200}
                 height={200}
-                className="rounded-lg object-cover"
+                className="object-cover"
               />
             </div>
             <div className="text-center md:text-left">
@@ -193,10 +192,7 @@ export default function ProfilePage() {
             {/* 학력 */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <GraduationCap className="w-6 h-6" />
-                  학력
-                </CardTitle>
+                <CardTitle className="text-xl">학력</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
@@ -212,10 +208,7 @@ export default function ProfilePage() {
             {/* 주요 경력 */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Calendar className="w-6 h-6" />
-                  주요 경력
-                </CardTitle>
+                <CardTitle className="text-xl">주요 경력</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
@@ -240,10 +233,7 @@ export default function ProfilePage() {
         >
           <Card className="max-w-6xl mx-auto">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-xl">
-                <User className="w-6 h-6" />
-                주요 강의 경력
-              </CardTitle>
+              <CardTitle className="text-xl">주요 강의 경력</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid gap-3 md:grid-cols-2">
@@ -265,8 +255,8 @@ export default function ProfilePage() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-12 md:mb-16 px-4 md:px-0"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-center text-primary flex items-center justify-center gap-2">
-            <Award className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 flex-shrink-0" /> 강의 활동 사진
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-center text-primary">
+            강의 활동 사진
           </h2>
           <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
             {representativeInfo.lectureImages.map((image, index) => (
@@ -283,9 +273,9 @@ export default function ProfilePage() {
                   alt={image.title}
                   width={400}
                   height={300}
-                  className="rounded-lg object-cover w-full h-48"
+                  className="object-cover w-full h-48"
                 />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-end">
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-4 text-white">
                     <h4 className="font-medium text-sm mb-1">{image.title}</h4>
                     <p className="text-xs text-gray-300">{image.date}</p>
@@ -309,10 +299,7 @@ export default function ProfilePage() {
             {/* 저술 및 출판 */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <BookOpen className="w-6 h-6" />
-                  저술 및 출판
-                </CardTitle>
+                <CardTitle className="text-xl">저술 및 출판</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
@@ -328,10 +315,7 @@ export default function ProfilePage() {
             {/* 언론 활동 */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Newspaper className="w-6 h-6" />
-                  언론 활동
-                </CardTitle>
+                <CardTitle className="text-xl">언론 활동</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
@@ -356,10 +340,7 @@ export default function ProfilePage() {
         >
           <Card className="max-w-4xl mx-auto">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-xl justify-center">
-                <Award className="w-6 h-6" />
-                연구 실적
-              </CardTitle>
+              <CardTitle className="text-xl text-center">연구 실적</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid gap-3 md:grid-cols-2">

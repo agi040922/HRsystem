@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { Building } from "lucide-react"
 import PageBanner from "@/components/page-banner"
 import { motion } from "framer-motion"
 
@@ -29,16 +28,16 @@ export default function GreetingPage() {
         >
           <div className="grid gap-6 md:gap-8 lg:grid-cols-2 items-center max-w-6xl mx-auto">
             <div className="px-4 md:px-0">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-primary flex items-center gap-2">
-                <Building className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 flex-shrink-0" /> 대표 공인노무사 인사말
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-primary">
+                대표 공인노무사 인사말
               </h2>
               <div className="mb-6">
                 <Image
-                  src="/언론1.png"
+                  src="/개인 사진.png"
                   alt="대표 공인노무사 정광일 사진"
-                  width={120}
-                  height={120}
-                  className="rounded-full float-left mr-4 mb-2 sm:w-[150px] sm:h-[150px] sm:mr-6"
+                  width={180}
+                  height={180}
+                  className="float-left mr-4 mb-2 sm:w-[220px] sm:h-[220px] sm:mr-6 rounded-lg"
                 />
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   <p className="mb-4">
@@ -66,11 +65,11 @@ export default function GreetingPage() {
             </div>
             <div className="px-4 md:px-0">
               <Image
-                src="https://imageoptimzer.acon3d.com/?image=https%3A%2F%2Fstorage.acon3d.com%2Fproduct%2FOKMrTcsXOsVkdxeUqxNpu&width=2600&quality=70&watermark=true"
+                src="/회사사진.jpg"
                 alt="FAIR인사노무컨설팅 사무실 이미지"
                 width={500}
                 height={400}
-                className="rounded-lg object-cover w-full h-auto"
+                className="object-cover w-full h-auto"
               />
               <div className="mt-4 text-center">
                 <p className="text-sm text-muted-foreground italic">
