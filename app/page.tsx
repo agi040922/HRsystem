@@ -485,9 +485,9 @@ function NewsletterGridContent() {
   useEffect(() => {
     async function loadNewsletters() {
       try {
-        const { newsletters: allNewsletters } = await getLatestNewsletters(4)
-        const korean = allNewsletters.filter(n => n.language === 'ko').slice(0, 2)
-        const english = allNewsletters.filter(n => n.language === 'en').slice(0, 2)
+        const { newsletters: allNewsletters } = await getLatestNewsletters(6)
+        const korean = allNewsletters.filter(n => n.language === 'ko').slice(0, 3)
+        const english = allNewsletters.filter(n => n.language === 'en').slice(0, 3)
         setKoreanNewsletters(korean)
         setEnglishNewsletters(english)
       } catch (error) {
@@ -500,55 +500,57 @@ function NewsletterGridContent() {
     loadNewsletters()
   }, [])
 
-  const NewsletterRow = ({ newsletters, title, language }: { newsletters: Newsletter[], title: string, language: string }) => (
-    <div className="mb-6">
-      <div className="flex items-center justify-between mb-4">
-        <h4 className="text-base font-bold text-gray-900 flex items-center gap-2">
-          <span className="text-primary">{title}</span>
-          <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-            {language}
-          </span>
-        </h4>
-        <div className="text-xs text-muted-foreground">
-          {newsletters.length > 0 ? `${newsletters.length}개 발행` : '준비중'}
-        </div>
-      </div>
+  const NewsletterRow = ({ newsletters, title }: { newsletters: Newsletter[], title: string }) => (
+    <div className="mb-8">
+      <h4 className="text-lg font-bold text-gray-900 mb-4">
+        {title}
+      </h4>
       
       {loading ? (
-        <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
-          {[1, 2].map((n) => (
-            <div key={n} className="animate-pulse">
-              <Card className="h-full">
-                <div className="aspect-[4/3] bg-slate-200 rounded-t-lg"></div>
-                <CardContent className="p-1.5">
-                  <div className="space-y-1">
-                    <div className="h-2 bg-slate-200 rounded w-3/4"></div>
-                    <div className="h-2 bg-slate-200 rounded w-1/2"></div>
-                  </div>
-                </CardContent>
-              </Card>
+        <div className="space-y-3">
+          {[1, 2, 3].map((n) => (
+            <div key={n} className="animate-pulse py-2 border-b border-gray-100">
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <div className="h-3 bg-slate-200 rounded w-3/4 mb-1"></div>
+                  <div className="h-2 bg-slate-200 rounded w-1/4"></div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       ) : newsletters.length > 0 ? (
-        <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
+        <div className="space-y-3">
           {newsletters.map((newsletter, index) => (
-            <div key={newsletter.id} className="w-full">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <NewsletterCard newsletter={newsletter} index={index} />
-              </motion.div>
-            </div>
+            <motion.div
+              key={newsletter.id}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+            >
+              <div className="group py-2 border-b border-gray-100 hover:border-primary/30 transition-colors cursor-pointer"
+                   onClick={() => window.open(newsletter.file_url, '_blank')}>
+                <div className="flex items-center justify-between">
+                  <h5 className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors duration-200 line-clamp-1 flex-1 mr-4">
+                    {newsletter.title}
+                  </h5>
+                  <div className="text-xs text-gray-500 whitespace-nowrap">
+                    {new Date(newsletter.published_date).toLocaleDateString('ko-KR', {
+                      year: '2-digit',
+                      month: '2-digit',
+                      day: '2-digit'
+                    })}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       ) : (
-        <div className="text-center py-6 bg-slate-50 rounded-lg">
-          <BookOpen className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-          <p className="text-muted-foreground text-sm">아직 발행된 주간지가 없습니다.</p>
+        <div className="text-center py-6">
+          <BookOpen className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+          <p className="text-gray-500 text-xs">아직 발행된 주간지가 없습니다.</p>
         </div>
       )}
     </div>
@@ -558,17 +560,13 @@ function NewsletterGridContent() {
     <div>
       <NewsletterRow 
         newsletters={koreanNewsletters} 
-        title="한국어판" 
-        language="Korean"
+        title="한국어판"
       />
       
       <NewsletterRow 
         newsletters={englishNewsletters} 
-        title="영어판" 
-        language="English"
+        title="영어판"
       />
-      
-
     </div>
   )
 }
@@ -1028,21 +1026,9 @@ export default function HomePage() {
       {/* 통합된 공지사항 및 주간지 섹션 */}
       <section id="latest-news-and-newsletter" className="w-full py-6 sm:py-8 md:py-12 bg-white">
         <div className="container-fluid max-w-7xl px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">최신 소식 및 전문 자료</h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-              노동 시장의 최신 동향과 전문 노동법 주간지를 확인하세요.
-            </p>
-          </motion.div>
           
           {/* 1:1 그리드 레이아웃 */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
             {/* 공지사항 영역 (1/2) */}
             <div className="lg:col-span-1">
               <motion.div
@@ -1051,86 +1037,95 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                  <span className="text-primary">공지사항</span>
-                  <span className="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">
-                    최신 소식
-                  </span>
-                </h3>
-          
-          {loading ? (
-                  <div className="space-y-3">
-              {[1, 2, 3, 4, 5].map((n) => (
-                <div key={n} className="animate-pulse flex items-center justify-between py-3 border-b border-gray-100">
-                  <div className="flex-1">
-                    <div className="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
-                    <div className="h-3 bg-slate-200 rounded w-1/4"></div>
+                <div className="flex items-center mb-6">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                    공지사항
+                  </h3>
+                  <div className="flex-1 ml-8">
+                    <Link href="/board" className="text-sm text-gray-500 hover:text-primary transition-colors">
+                      더보기 →
+                    </Link>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : featuredPosts.length > 0 ? (
-                  <div className="space-y-3">
-              {featuredPosts.map((post, index) => (
-                <motion.div
-                  key={post.id}
-                        initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <Link href={`/board/${post.slug}`}>
-                    <div className="group">
-                      <h4 className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors duration-200 line-clamp-1 mb-1">
-                        {post.title}
-                      </h4>
-                      <div className="text-xs text-gray-500">
-                        {new Date(post.published_at).toLocaleDateString('ko-KR', {
-                          year: 'numeric',
-                          month: '2-digit',
-                          day: '2-digit'
-                        })}
+                
+                {/* 구분선 */}
+                <div className="w-full h-px bg-gray-200 mb-6"></div>
+          
+                {loading ? (
+                  <div className="space-y-4">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <div key={n} className="animate-pulse flex items-center justify-between py-3">
+                        <div className="flex-1">
+                          <div className="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
+                          <div className="h-3 bg-slate-200 rounded w-1/4"></div>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-                    <div className="mt-6">
-                      <Link href="/board">
-                        <Button variant="outline" size="sm" className="text-xs">
-                          전체 공지사항 보기
-                        </Button>
-                      </Link>
-                    </div>
-            </div>
-          ) : (
-                  <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-100">
+                    ))}
+                  </div>
+                ) : featuredPosts.length > 0 ? (
+                  <div className="space-y-4">
+                    {featuredPosts.map((post, index) => (
+                      <motion.div
+                        key={post.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                      >
+                        <Link href={`/board/${post.slug}`}>
+                          <div className="group py-3 border-b border-gray-100 hover:border-primary/30 transition-colors">
+                            <div className="flex items-center justify-between">
+                              <h4 className="text-base font-medium text-gray-900 group-hover:text-primary transition-colors duration-200 line-clamp-1 flex-1 mr-4">
+                                {post.title}
+                              </h4>
+                              <div className="text-sm text-gray-500 whitespace-nowrap">
+                                {new Date(post.published_at).toLocaleDateString('ko-KR', {
+                                  year: '2-digit',
+                                  month: '2-digit',
+                                  day: '2-digit'
+                                })}
+                              </div>
+                            </div>
+                          </div>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12">
                     <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-3">
                       <FileText className="w-6 h-6 text-gray-400" />
                     </div>
                     <p className="text-gray-500 text-sm">등록된 공지사항이 없습니다.</p>
-            </div>
-          )}
+                  </div>
+                )}
               </motion.div>
             </div>
           
             {/* 주간지 영역 (1/2) */}
             <div className="lg:col-span-1">
-          <motion.div
+              <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                  <span className="text-primary">노동법 주간지</span>
-                  <span className="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">
-                    전문 자료
-                  </span>
-                </h3>
+                <div className="flex items-center mb-6">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                    노동법 주간지
+                  </h3>
+                  <div className="flex-1 ml-8">
+                    <Link href="/services" className="text-sm text-gray-500 hover:text-primary transition-colors">
+                      더보기 →
+                    </Link>
+                  </div>
+                </div>
                 
-                <NewsletterGridContent />
-          </motion.div>
+                {/* 구분선 */}
+                <div className="w-full h-px bg-gray-200 mb-6"></div>
+                
+                                 <NewsletterGridContent />
+              </motion.div>
             </div>
           </div>
         </div>

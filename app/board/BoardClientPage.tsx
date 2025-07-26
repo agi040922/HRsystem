@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -9,98 +9,8 @@ import { Search, Eye, CalendarDays, Star } from "lucide-react"
 import PageBanner from "@/components/page-banner"
 import { motion } from "framer-motion"
 import { BoardPost } from "@/lib/supabase"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-
-// BoardItem 컴포넌트 
-interface BoardItemProps {
-  post: BoardPost
-}
-
-function BoardItem({ post }: BoardItemProps) {
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    })
-  }
-
-  // excerpt가 없으면 content에서 텍스트만 추출하여 요약 생성
-  const getExcerpt = () => {
-    if (post.excerpt) {
-      return post.excerpt
-    }
-    
-    // HTML 태그를 제거하고 순수 텍스트만 추출
-    const textContent = post.content
-      .replace(/<[^>]*>/g, ' ') // HTML 태그 제거
-      .replace(/\s+/g, ' ') // 연속 공백을 하나로
-      .trim()
-    
-    return textContent.length > 120 
-      ? textContent.substring(0, 120) + '...' 
-      : textContent
-  }
-
-  return (
-    <Card className="hover:shadow-md transition-shadow h-full group">
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <Link href={`/board/${post.slug}`} className="flex-1">
-            <CardTitle className="text-lg md:text-xl hover:text-primary transition-colors line-clamp-2 group-hover:text-primary">
-              {post.title}
-            </CardTitle>
-          </Link>
-          {post.is_featured && (
-            <Badge variant="secondary" className="shrink-0 text-yellow-600 bg-yellow-50 border-yellow-200">
-              <Star className="w-3 h-3 mr-1" />
-              추천
-            </Badge>
-          )}
-        </div>
-        
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1">
-            <CalendarDays className="w-4 h-4" />
-            <span>{formatDate(post.published_at)}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Eye className="w-4 h-4" />
-            <span>{post.views}</span>
-          </div>
-        </div>
-      </CardHeader>
-
-      <CardContent className="flex-grow space-y-3">
-        {/* 대표 이미지 */}
-        {post.featured_image && (
-          <div className="w-full h-48 overflow-hidden rounded-lg bg-gray-100">
-            <img 
-              src={post.featured_image}
-              alt={post.title}
-              className="w-full h-full object-cover transition-transform group-hover:scale-105"
-              loading="lazy"
-            />
-          </div>
-        )}
-        
-        {/* 게시글 요약 */}
-        <p className="text-muted-foreground leading-relaxed text-sm">
-          {getExcerpt()}
-        </p>
-      </CardContent>
-
-      <CardFooter className="pt-3">
-        <Link href={`/board/${post.slug}`} className="w-full">
-          <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-            자세히 보기
-          </Button>
-        </Link>
-      </CardFooter>
-    </Card>
-  )
-}
 
 interface BoardClientPageProps {
   initialPosts: BoardPost[]
@@ -141,6 +51,14 @@ export default function BoardClientPage({
     router.push(`/board?${params.toString()}`)
   }
 
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+  }
+
   const totalPages = Math.ceil(totalCount / 9)
   const posts = initialPosts
 
@@ -172,12 +90,12 @@ export default function BoardClientPage({
             <div className="flex justify-center items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <span className="font-medium">전체 게시글</span>
-                <Badge variant="outline">{totalCount}개</Badge>
+                <Badge variant="outline" className="text-blue-600 border-blue-200">{totalCount}</Badge>
               </div>
               {searchQuery && (
                 <div className="flex items-center gap-2">
                   <span className="font-medium">검색 결과</span>
-                  <Badge variant="outline">{posts.length}개</Badge>
+                  <Badge variant="outline" className="text-green-600 border-green-200">{posts.length}</Badge>
                 </div>
               )}
             </div>
@@ -210,18 +128,113 @@ export default function BoardClientPage({
           className="mb-12 md:mb-16 px-4 md:px-0"
         >
           {posts.length > 0 ? (
-            <div className="grid gap-6 md:gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-              {posts.map((post, index) => (
-                <motion.div
-                  key={post.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <BoardItem post={post} />
-                </motion.div>
-              ))}
+            <div className="max-w-6xl mx-auto">
+              <Card>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-lg">
+                    총 게시물 <span className="text-blue-600">{totalCount}</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  {/* 테이블 헤더 */}
+                  <div className="hidden md:grid md:grid-cols-12 gap-4 px-6 py-3 bg-gray-50 dark:bg-gray-800 border-b font-medium text-sm text-muted-foreground">
+                    <div className="col-span-1 text-center">번호</div>
+                    <div className="col-span-6">제목</div>
+                    <div className="col-span-2 text-center">등차</div>
+                    <div className="col-span-2 text-center">작성일</div>
+                    <div className="col-span-1 text-center">조회</div>
+                  </div>
+                  
+                  {/* 게시글 목록 */}
+                  <div className="divide-y">
+                    {posts.map((post, index) => {
+                      const postNumber = totalCount - ((currentPage - 1) * 9) - index
+                      
+                      return (
+                        <motion.div
+                          key={post.id}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: index * 0.05 }}
+                          className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 px-4 md:px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                        >
+                          {/* 모바일 레이아웃 */}
+                          <div className="md:hidden space-y-2">
+                            <div className="flex items-start justify-between gap-2">
+                              <Link 
+                                href={`/board/${post.slug}`}
+                                className="flex-1"
+                              >
+                                <h3 className="font-medium hover:text-blue-600 transition-colors line-clamp-2">
+                                  {post.is_featured && (
+                                    <Star className="w-4 h-4 inline mr-1 text-yellow-500" />
+                                  )}
+                                  {post.title}
+                                </h3>
+                              </Link>
+                              <span className="text-sm text-muted-foreground shrink-0">
+                                #{postNumber}
+                              </span>
+                            </div>
+                            <div className="flex items-center justify-between text-xs text-muted-foreground">
+                              <span>{formatDate(post.published_at)}</span>
+                              <span className="flex items-center gap-1">
+                                <Eye className="w-3 h-3" />
+                                {post.views}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* 데스크톱 레이아웃 */}
+                          <div className="hidden md:contents">
+                            {/* 번호 */}
+                            <div className="col-span-1 flex items-center justify-center">
+                              <span className="text-sm font-medium text-muted-foreground">
+                                {postNumber}
+                              </span>
+                            </div>
+                            
+                            {/* 제목 */}
+                            <div className="col-span-6 flex items-center">
+                              <Link 
+                                href={`/board/${post.slug}`}
+                                className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+                              >
+                                {post.is_featured && (
+                                  <Star className="w-4 h-4 text-yellow-500 shrink-0" />
+                                )}
+                                <span className="font-medium line-clamp-1">{post.title}</span>
+                              </Link>
+                            </div>
+                            
+                            {/* 등차 (작성자) */}
+                            <div className="col-span-2 flex items-center justify-center">
+                              <span className="text-sm text-muted-foreground">
+                                {post.author_name || 'FAIR'}
+                              </span>
+                            </div>
+                            
+                            {/* 작성일 */}
+                            <div className="col-span-2 flex items-center justify-center">
+                              <span className="text-sm text-muted-foreground">
+                                {formatDate(post.published_at)}
+                              </span>
+                            </div>
+                            
+                            {/* 조회수 */}
+                            <div className="col-span-1 flex items-center justify-center">
+                              <span className="text-sm text-muted-foreground">
+                                {post.views}
+                              </span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           ) : (
             <div className="text-center py-16">
