@@ -164,12 +164,41 @@ export async function deleteNewsletter(id: number) {
   return { success: true, error: null }
 }
 
+// 파일명을 안전한 형태로 변환하는 함수
+function sanitizeFileName(fileName: string): string {
+  // 1. 파일 확장자 분리
+  const lastDotIndex = fileName.lastIndexOf('.')
+  const name = lastDotIndex > 0 ? fileName.substring(0, lastDotIndex) : fileName
+  const extension = lastDotIndex > 0 ? fileName.substring(lastDotIndex) : ''
+  
+  // 2. 파일명을 안전한 형태로 변환
+  const sanitizedName = name
+    .replace(/[^\w\s-]/g, '') // 영문, 숫자, 공백, 하이픈만 허용
+    .replace(/\s+/g, '_') // 공백을 언더스코어로 변경
+    .replace(/_+/g, '_') // 연속된 언더스코어를 하나로 통합
+    .replace(/^_|_$/g, '') // 시작과 끝의 언더스코어 제거
+    .toLowerCase() // 소문자로 변환
+  
+  // 3. 파일명이 비어있으면 기본명 사용
+  const finalName = sanitizedName || 'file'
+  
+  return `${finalName}${extension.toLowerCase()}`
+}
+
 // 파일 업로드 (PDF)
 export async function uploadNewsletterFile(file: File, fileName: string) {
   try {
+    // 파일명을 안전한 형태로 변환
+    const sanitizedFileName = sanitizeFileName(fileName)
+    const uniqueFileName = `${Date.now()}_${sanitizedFileName}`
+    
+    console.log('Original filename:', fileName)
+    console.log('Sanitized filename:', sanitizedFileName)
+    console.log('Final filename:', uniqueFileName)
+    
     const { data, error } = await supabase.storage
       .from('newsletters')
-      .upload(`${Date.now()}_${fileName}`, file, {
+      .upload(uniqueFileName, file, {
         cacheControl: '3600',
         upsert: false
       })
@@ -197,9 +226,17 @@ export async function uploadNewsletterFile(file: File, fileName: string) {
 // 표지 이미지 업로드
 export async function uploadCoverImage(file: File, fileName: string) {
   try {
+    // 파일명을 안전한 형태로 변환
+    const sanitizedFileName = sanitizeFileName(fileName)
+    const uniqueFileName = `${Date.now()}_${sanitizedFileName}`
+    
+    console.log('Original cover filename:', fileName)
+    console.log('Sanitized cover filename:', sanitizedFileName)
+    console.log('Final cover filename:', uniqueFileName)
+    
     const { data, error } = await supabase.storage
       .from('newsletter-covers')
-      .upload(`${Date.now()}_${fileName}`, file, {
+      .upload(uniqueFileName, file, {
         cacheControl: '3600',
         upsert: false
       })

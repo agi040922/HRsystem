@@ -56,6 +56,13 @@ export default function NewsletterCreateForm() {
     const file = e.target.files?.[0]
     if (file) {
       if (file.type === 'application/pdf') {
+        // 파일 크기 검증 (50MB 제한)
+        const maxSize = 50 * 1024 * 1024 // 50MB in bytes
+        if (file.size > maxSize) {
+          setError(`파일 크기가 너무 큽니다. 최대 50MB까지 업로드할 수 있습니다. (현재: ${Math.round(file.size / 1024 / 1024)}MB)`)
+          setPdfFile(null)
+          return
+        }
         setPdfFile(file)
         setError(null)
       } else {
@@ -71,6 +78,14 @@ export default function NewsletterCreateForm() {
     if (file) {
       const validTypes = ['image/jpeg', 'image/png', 'image/webp']
       if (validTypes.includes(file.type)) {
+        // 파일 크기 검증 (10MB 제한)
+        const maxSize = 10 * 1024 * 1024 // 10MB in bytes
+        if (file.size > maxSize) {
+          setError(`이미지 크기가 너무 큽니다. 최대 10MB까지 업로드할 수 있습니다. (현재: ${Math.round(file.size / 1024 / 1024)}MB)`)
+          setCoverImageFile(null)
+          setPreviewUrl(null)
+          return
+        }
         setCoverImageFile(file)
         // 미리보기 생성
         const reader = new FileReader()
@@ -104,7 +119,7 @@ export default function NewsletterCreateForm() {
       }
 
       // 파일 업로드 전 설정 확인
-      console.log('📋 파일 업로드 시작...')
+      console.log('파일 업로드 시작...')
       setUploadProgress(10)
       
       const { publicUrl: fileUrl, error: fileError } = await uploadNewsletterFile(pdfFile, pdfFile.name)
@@ -222,7 +237,7 @@ export default function NewsletterCreateForm() {
             </Button>
             {setupCheck && (
               <div className={`flex items-center gap-2 ${setupCheck.success ? 'text-green-600' : 'text-red-600'}`}>
-                {setupCheck.success ? '✅ 설정 정상' : '❌ 설정 오류'}
+                {setupCheck.success ? '설정 정상' : '설정 오류'}
               </div>
             )}
           </div>
@@ -357,6 +372,9 @@ export default function NewsletterCreateForm() {
               onChange={handlePdfFileChange}
               required
             />
+            <p className="text-sm text-muted-foreground">
+              최대 파일 크기: 50MB | 지원 형식: PDF
+            </p>
             {pdfFile && (
               <div className="text-sm text-muted-foreground">
                 선택된 파일: {pdfFile.name} ({Math.round(pdfFile.size / 1024)}KB)
@@ -384,6 +402,7 @@ export default function NewsletterCreateForm() {
               onChange={handleCoverImageChange}
             />
             <p className="text-sm text-muted-foreground">
+              최대 파일 크기: 10MB | 지원 형식: JPG, PNG, WebP<br/>
               표지 이미지를 업로드하지 않으면 제목을 기반으로 기본 표지가 자동 생성됩니다.
             </p>
             {coverImageFile && (

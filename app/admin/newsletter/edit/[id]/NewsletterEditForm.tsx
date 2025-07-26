@@ -43,6 +43,13 @@ export default function NewsletterEditForm({ newsletter }: NewsletterEditFormPro
     const file = e.target.files?.[0]
     if (file) {
       if (file.type === 'application/pdf') {
+        // 파일 크기 검증 (50MB 제한)
+        const maxSize = 50 * 1024 * 1024 // 50MB in bytes
+        if (file.size > maxSize) {
+          setError(`파일 크기가 너무 큽니다. 최대 50MB까지 업로드할 수 있습니다. (현재: ${Math.round(file.size / 1024 / 1024)}MB)`)
+          setNewPdfFile(null)
+          return
+        }
         setNewPdfFile(file)
         setError(null)
       } else {
@@ -58,6 +65,14 @@ export default function NewsletterEditForm({ newsletter }: NewsletterEditFormPro
     if (file) {
       const validTypes = ['image/jpeg', 'image/png', 'image/webp']
       if (validTypes.includes(file.type)) {
+        // 파일 크기 검증 (10MB 제한)
+        const maxSize = 10 * 1024 * 1024 // 10MB in bytes
+        if (file.size > maxSize) {
+          setError(`이미지 크기가 너무 큽니다. 최대 10MB까지 업로드할 수 있습니다. (현재: ${Math.round(file.size / 1024 / 1024)}MB)`)
+          setNewCoverImageFile(null)
+          setPreviewUrl(null)
+          return
+        }
         setNewCoverImageFile(file)
         // 미리보기 생성
         const reader = new FileReader()
@@ -319,14 +334,15 @@ export default function NewsletterEditForm({ newsletter }: NewsletterEditFormPro
               accept=".pdf"
               onChange={handlePdfFileChange}
             />
+            <p className="text-sm text-muted-foreground">
+              최대 파일 크기: 50MB | 지원 형식: PDF<br/>
+              파일을 선택하지 않으면 기존 파일을 유지합니다.
+            </p>
             {newPdfFile && (
               <div className="text-sm text-muted-foreground">
                 새 파일: {newPdfFile.name} ({Math.round(newPdfFile.size / 1024)}KB)
               </div>
             )}
-            <p className="text-xs text-muted-foreground">
-              파일을 선택하지 않으면 기존 파일을 유지합니다.
-            </p>
           </div>
         </CardContent>
       </Card>
@@ -349,6 +365,7 @@ export default function NewsletterEditForm({ newsletter }: NewsletterEditFormPro
               onChange={handleCoverImageChange}
             />
             <p className="text-sm text-muted-foreground">
+              최대 파일 크기: 10MB | 지원 형식: JPG, PNG, WebP<br/>
               새 이미지를 업로드하지 않으면 기존 이미지를 유지합니다. 기존 이미지가 없으면 제목을 기반으로 기본 표지가 생성됩니다.
             </p>
             {newCoverImageFile && (

@@ -1059,72 +1059,56 @@ export default function HomePage() {
                 </h3>
           
           {loading ? (
-                  <div className="space-y-4">
-              {[1, 2, 3].map((n) => (
-                <div key={n} className="animate-pulse">
-                  <Card className="h-full">
-                    <CardHeader>
-                      <div className="h-4 bg-slate-200 rounded w-3/4"></div>
-                            <div className="h-3 bg-slate-200 rounded w-1/2"></div>
-                    </CardHeader>
-                    <CardContent>
-                            <div className="h-3 bg-slate-200 rounded w-2/3"></div>
-                    </CardContent>
-                  </Card>
+                  <div className="space-y-3">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <div key={n} className="animate-pulse flex items-center justify-between py-3 border-b border-gray-100">
+                  <div className="flex-1">
+                    <div className="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
+                    <div className="h-3 bg-slate-200 rounded w-1/4"></div>
+                  </div>
                 </div>
               ))}
             </div>
           ) : featuredPosts.length > 0 ? (
-                  <div className="space-y-4">
+                  <div className="space-y-3">
               {featuredPosts.map((post, index) => (
                 <motion.div
                   key={post.id}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                        <Card className="hover:shadow-lg transition-shadow duration-300 bg-white shadow-sm">
-                    <CardHeader className="pb-3">
-                      <Link href={`/board/${post.slug}`}>
-                              <CardTitle className="text-base hover:text-primary transition-colors leading-tight line-clamp-2">
-                          {post.title}
-                        </CardTitle>
-                      </Link>
-                            <CardDescription className="text-xs">
+                  <Link href={`/board/${post.slug}`}>
+                    <div className="group">
+                      <h4 className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors duration-200 line-clamp-1 mb-1">
+                        {post.title}
+                      </h4>
+                      <div className="text-xs text-gray-500">
                         {new Date(post.published_at).toLocaleDateString('ko-KR', {
                           year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
+                          month: '2-digit',
+                          day: '2-digit'
                         })}
-                      </CardDescription>
-                    </CardHeader>
-                          <CardContent className="pb-3">
-                      {post.excerpt && (
-                              <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
-                          {post.excerpt}
-                        </p>
-                      )}
-                    </CardContent>
-                          <div className="px-6 pb-4">
-                      <Link href={`/board/${post.slug}`}>
-                              <Button variant="outline" size="sm" className="w-full text-xs">
-                                자세히 보기
-                        </Button>
-                      </Link>
+                      </div>
                     </div>
-                  </Card>
+                  </Link>
                 </motion.div>
               ))}
-                    <div className="mt-6 text-center">
+                    <div className="mt-6">
                       <Link href="/board">
-                        <Button size="sm" className="w-full">더 많은 소식 보기</Button>
+                        <Button variant="outline" size="sm" className="text-xs">
+                          전체 공지사항 보기
+                        </Button>
                       </Link>
                     </div>
             </div>
           ) : (
-                  <div className="text-center py-8 bg-slate-50 rounded-lg">
-                    <p className="text-muted-foreground text-sm">등록된 소식이 없습니다.</p>
+                  <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-100">
+                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <FileText className="w-6 h-6 text-gray-400" />
+                    </div>
+                    <p className="text-gray-500 text-sm">등록된 공지사항이 없습니다.</p>
             </div>
           )}
               </motion.div>

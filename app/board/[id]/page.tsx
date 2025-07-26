@@ -11,13 +11,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   
   if (!post) {
     return {
-      title: "게시글을 찾을 수 없습니다 | 노무법인 [법인명]",
+      title: "게시글을 찾을 수 없습니다 | FAIR인사노무컨설팅",
       description: "요청하신 게시글을 찾을 수 없습니다.",
     }
   }
 
   return {
-    title: post.meta_title || `${post.title} | 공지사항 | 노무법인 [법인명]`,
+    title: post.meta_title || `${post.title} | 공지사항 | FAIR인사노무컨설팅`,
     description: post.meta_description || post.excerpt || post.title,
     openGraph: {
       title: post.meta_title || post.title,
