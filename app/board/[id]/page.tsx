@@ -110,13 +110,23 @@ export default async function BoardDetailPage({ params }: { params: Promise<{ id
             {/* 게시글 내용 */}
             <div 
               className="prose dark:prose-invert max-w-none
+                prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
+                prose-h1:text-3xl prose-h1:mt-8 prose-h1:mb-6
+                prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-5
+                prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-4
+                prose-p:leading-relaxed prose-p:mb-4 prose-p:text-gray-700 dark:prose-p:text-gray-300
+                prose-strong:font-bold prose-strong:text-gray-900 dark:prose-strong:text-white
+                prose-em:italic prose-em:text-gray-700 dark:prose-em:text-gray-300
+                prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6
+                prose-ol:my-4 prose-ol:list-decimal prose-ol:pl-6
+                prose-li:my-1 prose-li:text-gray-700 dark:prose-li:text-gray-300
+                prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-600
+                prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400
                 prose-img:rounded-lg prose-img:shadow-sm prose-img:mx-auto prose-img:block
                 prose-img:max-w-full prose-img:h-auto prose-img:my-6
-                prose-p:leading-relaxed prose-p:mb-4
-                prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-                prose-ul:my-4 prose-li:my-1
-                prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
+                prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+                prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-lg"
               dangerouslySetInnerHTML={{ __html: post.content }} 
             />
 

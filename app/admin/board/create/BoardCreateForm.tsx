@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge"
 import { Loader2, ArrowLeft, Save, Wand2, Eye, Check, Edit3, Image, FileText, Upload, Copy, X, Settings } from "lucide-react"
 import Link from "next/link"
 import { createBoardPost, uploadBoardImageFile, uploadMultipleBoardImages, checkBoardImagesBucketSetup } from "@/lib/board"
+import RichTextEditor, { RichTextEditorRef } from "@/components/ui/rich-text-editor"
 
 interface SimpleFormData {
   title: string
@@ -59,6 +60,10 @@ export default function BoardCreateForm() {
   const [error, setError] = useState<string | null>(null)
   const [uploadProgress, setUploadProgress] = useState(0)
   const [setupCheck, setSetupCheck] = useState<{success: boolean, error: string | null} | null>(null)
+  
+  // Rich Text Editor refs
+  const inputEditorRef = useRef<RichTextEditorRef>(null)
+  const previewEditorRef = useRef<RichTextEditorRef>(null)
   
   const [simpleForm, setSimpleForm] = useState<SimpleFormData>({
     title: "",
@@ -171,20 +176,12 @@ export default function BoardCreateForm() {
 
   // 이미지를 에디터에 삽입
   const insertImageToEditor = (url: string, altText: string) => {
-    const imageHtml = `<img src="${url}" alt="${altText}" style="max-width: 100%; height: auto;" />`
-    
     if (currentStep === 'input') {
-      // 입력 단계에서는 content에 직접 추가
-      setSimpleForm(prev => ({
-        ...prev,
-        content: prev.content + '\n\n' + imageHtml
-      }))
-    } else if (currentStep === 'preview' && finalForm) {
-      // 미리보기 단계에서는 finalForm의 content에 추가
-      setFinalForm(prev => prev ? ({
-        ...prev,
-        content: prev.content + '\n\n' + imageHtml
-      }) : null)
+      // 입력 단계에서는 inputEditorRef를 통해 직접 삽입
+      inputEditorRef.current?.insertImage(url, altText)
+    } else if (currentStep === 'preview') {
+      // 미리보기 단계에서는 previewEditorRef를 통해 직접 삽입
+      previewEditorRef.current?.insertImage(url, altText)
     }
   }
 
@@ -420,16 +417,14 @@ export default function BoardCreateForm() {
           <CardContent>
             <div className="space-y-2">
               <Label htmlFor="content">내용 *</Label>
-              <Textarea
-                id="content"
-                value={finalForm.content}
-                onChange={(e) => setFinalForm(prev => prev ? { ...prev, content: e.target.value } : null)}
-                placeholder="게시글 내용 (HTML 태그 사용 가능)"
-                rows={15}
-                className="font-mono text-sm"
+              <RichTextEditor
+                ref={previewEditorRef}
+                content={finalForm.content}
+                onChange={(content) => setFinalForm(prev => prev ? { ...prev, content } : null)}
+                placeholder="게시글 내용을 편집하세요"
               />
               <p className="text-xs text-muted-foreground">
-                HTML 태그를 사용할 수 있습니다. 필요에 따라 수정하세요.
+                AI가 생성한 내용을 워드프로세서처럼 편집할 수 있습니다. 필요에 따라 수정하세요.
               </p>
             </div>
           </CardContent>
@@ -776,16 +771,14 @@ export default function BoardCreateForm() {
 
           <div className="space-y-2">
             <Label htmlFor="content">내용 *</Label>
-            <Textarea
-              id="content"
-              value={simpleForm.content}
-              onChange={(e) => setSimpleForm(prev => ({ ...prev, content: e.target.value }))}
+            <RichTextEditor
+              ref={inputEditorRef}
+              content={simpleForm.content}
+              onChange={(content) => setSimpleForm(prev => ({ ...prev, content }))}
               placeholder="게시글 내용을 자유롭게 작성하세요. 이미지를 업로드한 후 '에디터에 삽입' 버튼으로 쉽게 추가할 수 있습니다."
-              rows={12}
-              required
             />
             <p className="text-xs text-muted-foreground">
-              일반 텍스트나 HTML로 작성하세요. 이미지는 위에서 업로드 후 삽입할 수 있습니다.
+              워드프로세서처럼 직관적으로 작성하세요. 툴바 버튼으로 텍스트 서식을 쉽게 적용할 수 있습니다.
             </p>
           </div>
         </CardContent>

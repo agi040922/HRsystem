@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -15,6 +15,7 @@ import { Progress } from "@/components/ui/progress"
 import { Save, ArrowLeft, Eye, Calendar, FileText, Image, Upload, Copy, X, Settings, Edit3 } from "lucide-react"
 import { updateBoardPost, uploadBoardImageFile, checkBoardImagesBucketSetup } from "@/lib/board"
 import { BoardPost } from "@/lib/supabase"
+import RichTextEditor, { RichTextEditorRef } from "@/components/ui/rich-text-editor"
 
 interface BoardEditFormProps {
   post: BoardPost
@@ -44,6 +45,9 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+
+  // Rich Text Editor ref
+  const editorRef = useRef<RichTextEditorRef>(null)
 
   // 이미지 업로드 관련 state
   const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>([])
@@ -150,8 +154,7 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
 
   // 이미지를 에디터에 삽입
   const insertImageToEditor = (url: string, altText: string) => {
-    const imageHtml = `<img src="${url}" alt="${altText}" style="max-width: 100%; height: auto;" />`
-    setContent(prev => prev + '\n\n' + imageHtml)
+    editorRef.current?.insertImage(url, altText)
   }
 
   // 제목에서 슬러그 생성
@@ -506,16 +509,14 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
         <CardContent>
           <div className="space-y-2">
             <Label htmlFor="content">내용 *</Label>
-            <Textarea
-              id="content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+            <RichTextEditor
+              ref={editorRef}
+              content={content}
+              onChange={setContent}
               placeholder="게시글 내용을 입력하세요. 위에서 이미지를 업로드한 후 '에디터에 삽입' 버튼으로 쉽게 추가할 수 있습니다."
-              rows={15}
-              className="font-mono text-sm"
             />
             <p className="text-xs text-muted-foreground">
-              HTML 태그를 사용할 수 있습니다. 이미지는 위에서 업로드 후 삽입하거나 직접 &lt;img&gt; 태그로 삽입할 수 있습니다.
+              워드프로세서처럼 직관적으로 편집하세요. 이미지는 위에서 업로드 후 삽입할 수 있습니다.
             </p>
           </div>
         </CardContent>
