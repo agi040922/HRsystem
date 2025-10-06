@@ -1,0 +1,182 @@
+{
+  "hero": {
+    "slide1": {
+      "title": "労務問題、明快な解決",
+      "subtitle": "FAIR人事労務コンサルティング",
+      "text": "専門的な相談で最適なソリューションを",
+      "highlight": "26年のベテラン労務士の専門性"
+    },
+    "slide2": {
+      "title": "200件以上遂行した事件の圧倒的勝訴率",
+      "subtitle": "検証された実力",
+      "text": "労働委員会、行政審判で",
+      "highlight": "優れた成果達成"
+    },
+    "slide3": {
+      "title": "キム&チャン出身の専門性",
+      "subtitle": "",
+      "text": "",
+      "highlight": "最高水準の専門性"
+    },
+    "videoNotSupported": "お使いのブラウザは動画をサポートしていません。",
+    "description": "FAIR人事労務コンサルティングが専門的な相談で最適なソリューションを提供します。",
+    "partner": "あなたの頼れるパートナー",
+    "quickConsultation": "迅速相談申請",
+    "browseServices": "サービスを見る"
+  },
+  "services": {
+    "title": "主要サービス",
+    "subtitle": "FAIR人事労務コンサルティングが提供する専門サービス",
+    "viewAll": "すべてのサービスを見る",
+    "items": {
+      "laborConsulting": {
+        "title": "労働法相談",
+        "description": "企業運営全般の労働法律リスク予防及び対応"
+      },
+      "payroll": {
+        "title": "給与アウトソーシング及び4大保険",
+        "description": "正確で効率的な給与管理及び4大保険業務代行"
+      },
+      "hrConsulting": {
+        "title": "人事労務コンサルティング",
+        "description": "企業カスタマイズ型人事制度設計及び運営支援"
+      },
+      "industrialAccident": {
+        "title": "産業災害",
+        "description": "産業災害発生時の迅速な対応及び補償手続き支援"
+      },
+      "unfairDismissal": {
+        "title": "不当解雇及び懲戒",
+        "description": "不当解雇、不当懲戒等労働委員会事件代理"
+      },
+      "workplaceHarassment": {
+        "title": "職場内いじめ及びセクハラ",
+        "description": "職場内いじめ予防及び発生時の調査、処理支援"
+      }
+    }
+  },
+  "features": {
+    "title": "FAIR人事労務コンサルティングの強み",
+    "subtitle": "なぜFAIRを選ぶべきか",
+    "items": {
+      "experience": {
+        "title": "豊富な経験",
+        "description": "26年間蓄積された労務専門性と多様な事例経験"
+      },
+      "expertise": {
+        "title": "専門性",
+        "description": "キム&チャン出身の検証された専門性と最新法律知識"
+      },
+      "trust": {
+        "title": "信頼性",
+        "description": "顧客中心の透明で正直な相談サービス"
+      },
+      "results": {
+        "title": "実績",
+        "description": "200件以上の事件遂行と高い勝訴率"
+      }
+    }
+  },
+  "stats": {
+    "title": "数字で見るFAIR",
+    "experience": {
+      "value": "26年",
+      "label": "労務経歴"
+    },
+    "cases": {
+      "value": "200+",
+      "label": "遂行事件"
+    },
+    "clients": {
+      "value": "100+",
+      "label": "企業顧客"
+    },
+    "satisfaction": {
+      "value": "98%",
+      "label": "顧客満足度"
+    }
+  },
+  "cta": {
+    "title": "労務問題でお悩みですか？",
+    "subtitle": "今すぐ専門家にご相談ください",
+    "description": "FAIR人事労務コンサルティングが最適なソリューションを提供します",
+    "button": "無料相談申請",
+    "phone": "電話相談",
+    "phoneNumber": "02-1234-5678",
+    "expertHelp": "専門家の助けが必要ですか？",
+    "contactNow": "迷わず今すぐFAIR人事労務コンサルティングにお問い合わせください。",
+    "phoneConsultation": "電話相談:",
+    "onlineConsultation": "オンライン相談へ"
+  },
+  "news": {
+    "title": "最新ニュース",
+    "subtitle": "FAIR人事労務コンサルティングの新しいニュースをご確認ください",
+    "viewAll": "全体を見る",
+    "noNews": "登録されたニュースがありません",
+    "readMore": "詳しく見る"
+  },
+  "newsletter": {
+    "title": "労働法",
+    "titleSuffix": "週刊誌",
+    "subtitle": "毎月発行される専門労働法週刊誌を無料でダウンロードしてください。",
+    "description": "韓国語版と英語版の両方を提供し、海外企業も簡単に活用できます。",
+    "koreanVersion": "韓国語版",
+    "englishVersion": "英語版",
+    "published": "件発行",
+    "preparing": "準備中",
+    "noNewsletter": "まだ発行された週刊誌がありません。",
+    "viewAll": "全体ニュースレターを見る",
+    "download": "ダウンロード",
+    "fairNewsletter": "FAIRニュースレター",
+    "moreLink": "もっと見る →"
+  },
+  "clients": {
+    "title": "200余りの外国系企業が選んだ専門家",
+    "subtitle": "2005年から26年間グローバル企業の信頼されるパートナー",
+    "stats": {
+      "companies": {
+        "value": "200+",
+        "label": "外国系企業"
+      },
+      "experience": {
+        "value": "26年",
+        "label": "専門経験"
+      }
+    },
+    "partnersTitle": "共に歩んだグローバル企業",
+    "partnersSubtitle": "信頼されるパートナーとして共に成長してきた企業"
+  },
+  "board": {
+    "title": "お知らせ",
+    "moreLink": "もっと見る →",
+    "noNotices": "登録されたお知らせがありません。"
+  },
+  "location": {
+    "title": "アクセス",
+    "subtitle": "FAIR人事労務コンサルティングをご訪問ください",
+    "address": "ソウル特別市江南区テヘラン路123",
+    "viewDetails": "詳細位置を見る"
+  },
+  "company": {
+    "title": "を選ぶ理由",
+    "companyName": "FAIR人事労務コンサルティング",
+    "subtitle": "緻密な論理と徹底した準備で顧客の成功を導いてきた26年の経験",
+    "cards": {
+      "winRate": {
+        "title": "200件+圧倒的勝訴率",
+        "subtitle": "検証された実力",
+        "description": "労働委員会、行政審判、産災事件等で優れた成果を達成しました。"
+      },
+      "experience": {
+        "title": "2005年設立、26年の経験",
+        "subtitle": "信頼されるパートナー",
+        "description": "国内外100余りの企業の信頼されるパートナーとして最適なソリューションを提供します。"
+      },
+      "expertise": {
+        "title": "キム&チャン出身の専門性",
+        "subtitle": "最高水準のノウハウ",
+        "description": "企業相談及びコンサルティング経験20年以上の専門性を基盤とします。"
+      }
+    }
+  }
+}

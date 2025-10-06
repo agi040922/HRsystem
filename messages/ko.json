@@ -1,0 +1,39 @@
+{
+  "common": {
+    "welcome": "환영합니다",
+    "hello": "안녕하세요",
+    "goodbye": "안녕히 가세요",
+    "yes": "예",
+    "no": "아니오",
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "편집",
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다"
+  },
+  "navigation": {
+    "home": "홈",
+    "about": "소개",
+    "services": "서비스",
+    "contact": "연락처",
+    "language": "언어"
+  },
+  "test": {
+    "title": "다국어 테스트 페이지",
+    "description": "이 페이지는 한국어, 영어, 일본어 다국어 지원을 테스트하기 위한 페이지입니다.",
+    "currentLanguage": "현재 언어",
+    "switchLanguage": "언어 변경",
+    "content": {
+      "paragraph1": "안녕하세요! 이것은 다국어 지원 테스트 페이지입니다.",
+      "paragraph2": "Next.js와 next-intl을 사용하여 구현되었습니다.",
+      "paragraph3": "상단의 언어 선택 버튼을 클릭하여 언어를 변경할 수 있습니다."
+    },
+    "features": {
+      "title": "주요 기능",
+      "feature1": "실시간 언어 전환",
+      "feature2": "URL 기반 언어 라우팅",
+      "feature3": "타입 안전한 번역 키"
+    }
+  }
+}

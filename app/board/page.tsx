@@ -1,35 +1,46 @@
+"use client"
+
 import BoardClientPage from "./BoardClientPage"
 import { getBoardPosts } from "@/lib/board"
-import { Suspense } from "react"
+import { BoardPost } from "@/lib/supabase"
+import { Suspense, useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
 
-export const metadata = {
-  title: "공지사항 | FAIR인사노무컨설팅",
-  description: "FAIR인사노무컨설팅의 최신 소식과 공지사항을 확인하세요. 노동법 관련 최신 정보와 법률 변경 사항을 알려드립니다.",
-}
+// Note: metadata는 서버 컴포넌트에서만 사용 가능
 
-export default async function BoardPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ page?: string; search?: string }>
-}) {
-  const params = await searchParams
-  const page = Number(params.page) || 1
-  const search = params.search || ""
+export default function BoardPage() {
+  const searchParams = useSearchParams()
+  const [posts, setPosts] = useState<BoardPost[]>([])
+  const [totalCount, setTotalCount] = useState(0)
+  const [loading, setLoading] = useState(true)
   
-  const { posts, count, error } = await getBoardPosts(page, 9, search)
+  const page = Number(searchParams.get('page')) || 1
+  const search = searchParams.get('search') || ""
+  
+  useEffect(() => {
+    async function loadPosts() {
+      setLoading(true)
+      const { posts, count, error } = await getBoardPosts(page, 9, search)
+      if (error) {
+        console.error("Failed to fetch board posts:", error)
+      }
+      setPosts(posts)
+      setTotalCount(count)
+      setLoading(false)
+    }
+    loadPosts()
+  }, [page, search])
 
-  if (error) {
-    console.error("Failed to fetch board posts:", error)
+  if (loading) {
+    return <div>Loading...</div>
   }
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <BoardClientPage 
-        initialPosts={posts} 
-        totalCount={count} 
-        currentPage={page}
-        searchQuery={search}
-      />
-    </Suspense>
+    <BoardClientPage 
+      initialPosts={posts} 
+      totalCount={totalCount} 
+      currentPage={page}
+      searchQuery={search}
+    />
   )
 }

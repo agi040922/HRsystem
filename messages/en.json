@@ -1,0 +1,39 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "hello": "Hello",
+    "goodbye": "Goodbye",
+    "yes": "Yes",
+    "no": "No",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "An error occurred"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "test": {
+    "title": "Multilingual Test Page",
+    "description": "This page is for testing multilingual support in Korean, English, and Japanese.",
+    "currentLanguage": "Current Language",
+    "switchLanguage": "Switch Language",
+    "content": {
+      "paragraph1": "Hello! This is a multilingual support test page.",
+      "paragraph2": "It is implemented using Next.js and next-intl.",
+      "paragraph3": "You can change the language by clicking the language selection button at the top."
+    },
+    "features": {
+      "title": "Key Features",
+      "feature1": "Real-time language switching",
+      "feature2": "URL-based language routing",
+      "feature3": "Type-safe translation keys"
+    }
+  }
+}

@@ -13,27 +13,9 @@ import { HelpCircle, Send } from "lucide-react"
 import { useState } from "react"
 import { useToast } from "@/hooks/use-toast"
 import { motion } from "framer-motion"
+import { useTranslations } from 'next-intl'
+import PageBanner from "@/components/page-banner"
 
-const faqData = [
-  {
-    question: "노무 상담 비용은 어떻게 되나요?",
-    answer:
-      "상담 유형 및 시간에 따라 비용이 다릅니다. 기본 상담료는 [금액]이며, 자세한 내용은 전화 또는 온라인 문의 바랍니다.",
-  },
-  {
-    question: "온라인 상담 신청 후 답변은 언제 받을 수 있나요?",
-    answer:
-      "일반적으로 영업일 기준 24~48시간 이내에 답변 드립니다. 사안의 복잡성에 따라 다소 시간이 소요될 수 있습니다.",
-  },
-  {
-    question: "방문 상담도 가능한가요?",
-    answer: "네, 가능합니다. 사전에 전화 또는 온라인으로 예약해주시면 원활한 상담이 가능합니다.",
-  },
-  {
-    question: "개인정보는 안전하게 관리되나요?",
-    answer: "네, 고객님의 개인정보는 개인정보처리방침에 따라 철저히 관리되며, 상담 내용은 비밀이 보장됩니다.",
-  },
-]
 
 const qnaFormSchema = z
   .object({
@@ -55,8 +37,14 @@ const qnaFormSchema = z
 type QnaFormValues = z.infer<typeof qnaFormSchema>
 
 export default function QnaClientPage() {
+  const t = useTranslations('qna')
   const { toast } = useToast()
   const [showPassword, setShowPassword] = useState(false)
+  
+  const faqQuestions = t.raw('faq.questions') as Array<{
+    question: string
+    answer: string
+  }>
 
   const {
     register,
@@ -78,26 +66,30 @@ export default function QnaClientPage() {
     console.log("Q&A 제출 데이터:", data)
     await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate API call
     toast({
-      title: "문의 등록 성공",
-      description: "문의사항이 성공적으로 등록되었습니다. 빠른 시일 내에 답변드리겠습니다.",
+      title: t('inquiry.form.success'),
+      description: t('inquiry.form.successDescription') || "문의사항이 성공적으로 등록되었습니다. 빠른 시일 내에 답변드리겠습니다.",
     })
     reset() // 폼 초기화
     setShowPassword(false)
   }
 
   return (
-            <div className="container py-6 md:py-8 lg:py-12">
-      <div className="text-center mb-12">
-                  <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">Q&A</h1>
-        <p className="mt-4 text-lg text-muted-foreground">궁금한 점을 해결하고, 전문가의 답변을 받아보세요.</p>
-      </div>
+    <div className="w-full overflow-x-hidden">
+      {/* 페이지 배너 */}
+      <PageBanner 
+        title={t('title')}
+        subtitle={t('subtitle')}
+        backgroundImage="/FAIR000.png"
+      />
+      
+      <div className="container py-6 md:py-8 lg:py-12">
 
       <section id="faq" className="mb-16">
         <h2 className="text-3xl font-semibold mb-8 text-center flex items-center justify-center gap-2">
-          <HelpCircle className="w-7 h-7 text-primary" /> 자주 묻는 질문 (FAQ)
+          <HelpCircle className="w-7 h-7 text-primary" /> {t('faq.title')}
         </h2>
         <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
-          {faqData.map((item, index) => (
+          {faqQuestions.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: -30 }}
@@ -193,6 +185,7 @@ export default function QnaClientPage() {
       <h2 className="text-3xl font-semibold mb-8 text-center">내 질문 확인</h2>
       <p className="text-center text-muted-foreground">로그인 후 내가 등록한 질문과 답변 상태를 확인할 수 있습니다. (구현 예정)</p>
     </section> */}
+      </div>
     </div>
   )
 }

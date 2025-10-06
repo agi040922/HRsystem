@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { I18nProvider } from "./providers"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
@@ -28,11 +29,13 @@ export default function RootLayout({
     <html lang="ko" suppressHydrationWarning>
       <body className={`${inter.className} overflow-x-hidden w-full`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
-          <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
-            <Header />
-            <main className="flex-1 w-full overflow-x-hidden pt-16">{children}</main>
-            <Footer />
-          </div>
+          <I18nProvider>
+            <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+              <Header />
+              <main className="flex-1 w-full overflow-x-hidden pt-16">{children}</main>
+              <Footer />
+            </div>
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

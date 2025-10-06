@@ -1,0 +1,64 @@
+{
+  "header": {
+    "logo": "FAIR人事労務コンサルティング",
+    "menu": "メニュー"
+  },
+  "mainNav": {
+    "home": "ホーム",
+    "about": "会社紹介",
+    "services": "主要サービス",
+    "board": "お知らせ",
+    "qna": "Q&A",
+    "contact": "お問い合わせ"
+  },
+  "aboutMenu": {
+    "greeting": {
+      "title": "ご挨拶",
+      "description": "FAIR人事労務コンサルティングの理念とビジョンをご紹介します"
+    },
+    "profile": {
+      "title": "代表プロフィール",
+      "description": "チョン・グァンイル代表公認労務士の経歴、学歴、講義経歴及び著述活動"
+    },
+    "ethics": {
+      "title": "倫理綱領",
+      "description": "FAIR人事労務コンサルティングが追求する8つの倫理綱領"
+    },
+    "location": {
+      "title": "アクセス",
+      "description": "FAIR人事労務コンサルティングの所在地案内及び交通手段"
+    }
+  },
+  "servicesMenu": {
+    "laborConsulting": {
+      "title": "労働法相談",
+      "description": "企業運営全般の労働法律リスク予防及び対応"
+    },
+    "payroll": {
+      "title": "給与アウトソーシング及び4大保険",
+      "description": "正確で効率的な給与管理及び4大保険業務代行"
+    },
+    "hrConsulting": {
+      "title": "人事労務コンサルティング",
+      "description": "企業カスタマイズ型人事制度設計及び運営支援"
+    },
+    "industrialAccident": {
+      "title": "産業災害",
+      "description": "産業災害発生時の迅速な対応及び補償手続き支援"
+    },
+    "unfairDismissal": {
+      "title": "不当解雇及び懲戒",
+      "description": "不当解雇、不当懲戒等労働委員会事件代理"
+    },
+    "workplaceHarassment": {
+      "title": "職場内いじめ及びセクハラ",
+      "description": "職場内いじめ予防及び発生時の調査、処理支援"
+    }
+  },
+  "language": {
+    "label": "言語",
+    "korean": "한국어",
+    "english": "English",
+    "japanese": "日本語"
+  }
+}

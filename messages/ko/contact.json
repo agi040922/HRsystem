@@ -1,0 +1,102 @@
+{
+  "title": "상담문의",
+  "subtitle": "전문가와 직접 상담하세요",
+  "description": "온라인 상담 신청 또는 전화, 이메일로 문의하세요. 26년차 베테랑 노무사가 직접 상담해드립니다.",
+  "contactInfo": {
+    "title": "연락처 정보",
+    "phone": {
+      "label": "전화 문의 및 예약",
+      "value": "02-387-9869",
+      "description": "평일 10:00 ~ 20:00, 토요일 10:00 ~ 17:00"
+    },
+    "email": {
+      "label": "이메일 문의",
+      "value": "fairhr@nate.com",
+      "description": "24시간 접수 가능"
+    },
+    "address": {
+      "label": "방문 상담",
+      "value": "서울 은평구 진관 3로 22 파크앤타워 B동 412호",
+      "description": "(구파발역 1번 출구 도보 15분)"
+    }
+  },
+  "form": {
+    "title": "온라인 상담 신청",
+    "subtitle": "아래 양식을 작성해주시면 빠른 시일 내에 연락드리겠습니다",
+    "fields": {
+      "companyName": {
+        "label": "회사명",
+        "placeholder": "회사명을 입력해주세요",
+        "error": "회사명은 2자 이상 입력해주세요."
+      },
+      "name": {
+        "label": "성함",
+        "placeholder": "성함을 입력해주세요",
+        "error": "성함은 2자 이상 입력해주세요."
+      },
+      "contact": {
+        "label": "연락처 (휴대폰)",
+        "placeholder": "010-1234-5678",
+        "error": "올바른 휴대폰 번호를 입력해주세요. (예: 010-1234-5678)"
+      },
+      "email": {
+        "label": "이메일",
+        "placeholder": "example@company.com",
+        "error": "올바른 이메일 주소를 입력해주세요."
+      },
+      "message": {
+        "label": "요청 내용",
+        "placeholder": "상담받고 싶은 내용을 자세히 작성해주세요",
+        "error": "요청 내용은 10자 이상 입력해주세요."
+      },
+      "attachment": {
+        "label": "첨부파일 (선택, 5MB 이하)",
+        "description": "관련 자료가 있으시면 첨부해주세요 (최대 5MB)",
+        "supportedFormats": "지원 파일: PDF, JPG, PNG, DOC, DOCX",
+        "sizeError": "파일 크기는 5MB를 초과할 수 없습니다.",
+        "typeError": "지원되는 파일 형식: PDF, JPG, PNG, DOC, DOCX"
+      }
+    },
+    "submit": "상담 신청하기",
+    "submitting": "전송 중...",
+    "success": "상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.",
+    "error": "상담 신청 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "serviceInfo": {
+      "title": "서비스 안내",
+      "item1": "모든 서비스는 기업 대상으로 제공됩니다.",
+      "item2": "상담은 예약제로 진행되며, 전화로 사전 예약해주세요.",
+      "item3": "기업 상담은 유료로 진행됩니다 (10만원, 부가세 별도).",
+      "item4": "요청 접수 후 영업일 기준 1~2일 이내에 연락드립니다."
+    }
+  },
+  "businessHours": {
+    "title": "상담 및 서비스 시간",
+    "weekdays": "평일",
+    "saturday": "토요일",
+    "sunday": "일요일 및 공휴일",
+    "weekdaysTime": "10:00 - 20:00",
+    "saturdayTime": "10:00 - 17:00",
+    "sundayTime": "휴무",
+    "note1": "* 상담은 예약제로 진행되며, 사전 예약 필수입니다.",
+    "note2": "* 기업 상담은 유료로 진행됩니다 (10만원, 부가세 별도).",
+    "note3": "* 강의 및 컨설팅 일정은 별도 협의 가능합니다."
+  },
+  "quickContact": {
+    "title": "빠른 상담",
+    "phone": {
+      "title": "전화 상담",
+      "description": "즉시 전문가와 상담",
+      "action": "전화하기"
+    },
+    "email": {
+      "title": "이메일 문의",
+      "description": "자세한 내용을 이메일로",
+      "action": "이메일 보내기"
+    },
+    "visit": {
+      "title": "방문 상담",
+      "description": "직접 방문하여 상담",
+      "action": "위치 보기"
+    }
+  }
+}

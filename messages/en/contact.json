@@ -1,0 +1,102 @@
+{
+  "title": "Contact Us",
+  "subtitle": "Consult directly with our experts",
+  "description": "Apply for online consultation or contact us by phone or email. Our 26-year veteran labor attorney will consult with you directly.",
+  "contactInfo": {
+    "title": "Contact Information",
+    "phone": {
+      "label": "Phone Inquiry & Reservation",
+      "value": "02-387-9869",
+      "description": "Weekdays 10:00 ~ 20:00, Saturday 10:00 ~ 17:00"
+    },
+    "email": {
+      "label": "Email Inquiry",
+      "value": "fairhr@nate.com",
+      "description": "Available 24 hours"
+    },
+    "address": {
+      "label": "In-Person Consultation",
+      "value": "412, Park & Tower B, 22 Jingwan 3-ro, Eunpyeong-gu, Seoul",
+      "description": "(15-minute walk from Gupabal Station Exit 1)"
+    }
+  },
+  "form": {
+    "title": "Online Consultation Application",
+    "subtitle": "Please fill out the form below and we will contact you as soon as possible",
+    "fields": {
+      "companyName": {
+        "label": "Company Name",
+        "placeholder": "Please enter company name",
+        "error": "Company name must be at least 2 characters long."
+      },
+      "name": {
+        "label": "Name",
+        "placeholder": "Please enter your name",
+        "error": "Name must be at least 2 characters long."
+      },
+      "contact": {
+        "label": "Contact (Mobile)",
+        "placeholder": "010-1234-5678",
+        "error": "Please enter a valid phone number. (e.g., 010-1234-5678)"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "example@company.com",
+        "error": "Please enter a valid email address."
+      },
+      "message": {
+        "label": "Request Content",
+        "placeholder": "Please describe in detail what you would like to consult about",
+        "error": "Request content must be at least 10 characters long."
+      },
+      "attachment": {
+        "label": "Attachment (Optional, Max 5MB)",
+        "description": "Please attach related materials if available (max 5MB)",
+        "supportedFormats": "Supported files: PDF, JPG, PNG, DOC, DOCX",
+        "sizeError": "File size cannot exceed 5MB.",
+        "typeError": "Supported file formats: PDF, JPG, PNG, DOC, DOCX"
+      }
+    },
+    "submit": "Submit Consultation Request",
+    "submitting": "Sending...",
+    "success": "Your consultation request has been completed. We will contact you as soon as possible.",
+    "error": "An error occurred while submitting your consultation request. Please try again.",
+    "serviceInfo": {
+      "title": "Service Information",
+      "item1": "All services are provided for corporate clients.",
+      "item2": "Consultations are by appointment only. Please make a reservation by phone in advance.",
+      "item3": "Corporate consultations are paid services (100,000 KRW, VAT excluded).",
+      "item4": "We will contact you within 1-2 business days after receiving your request."
+    }
+  },
+  "businessHours": {
+    "title": "Consultation & Service Hours",
+    "weekdays": "Weekdays",
+    "saturday": "Saturday",
+    "sunday": "Sunday & Holidays",
+    "weekdaysTime": "10:00 - 20:00",
+    "saturdayTime": "10:00 - 17:00",
+    "sundayTime": "Closed",
+    "note1": "* Consultations are by appointment only. Advance reservation required.",
+    "note2": "* Corporate consultations are paid services (100,000 KRW, VAT excluded).",
+    "note3": "* Lecture and consulting schedules can be arranged separately."
+  },
+  "quickContact": {
+    "title": "Quick Contact",
+    "phone": {
+      "title": "Phone Consultation",
+      "description": "Immediate consultation with experts",
+      "action": "Call Now"
+    },
+    "email": {
+      "title": "Email Inquiry",
+      "description": "Send detailed inquiry by email",
+      "action": "Send Email"
+    },
+    "visit": {
+      "title": "In-Person Consultation",
+      "description": "Visit for direct consultation",
+      "action": "View Location"
+    }
+  }
+}

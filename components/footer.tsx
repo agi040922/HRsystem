@@ -1,60 +1,64 @@
+"use client"
+
 import Link from "next/link"
+import { useTranslations } from 'next-intl'
 
 export default function Footer() {
+  const t = useTranslations('footer')
   return (
     <footer className="border-t bg-muted/40 w-full overflow-x-hidden">
       <div className="container-fluid max-w-7xl py-6 md:py-8 text-center md:text-left">
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <div className="px-4 md:px-0">
-            <h3 className="font-semibold mb-3 text-base md:text-lg">FAIR인사노무컨설팅</h3>
+            <h3 className="font-semibold mb-3 text-base md:text-lg">{t('companyName')}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              대표: 정광일
+              {t('representative')}: {t('representativeName')}
               <br />
-              주소: 서울 은평구 진관 3로 22 파크앤타워 B동 412호
+              {t('address')}: {t('addressDetail')}
               <br />
-              전화: <a href="tel:02-387-9869" className="hover:text-primary">02-387-9869</a>
+              {t('phone')}: <a href="tel:02-387-9869" className="hover:text-primary">{t('phoneNumber')}</a>
               <br />
-              이메일: <a href="mailto:fairhr@nate.com" className="hover:text-primary">fairhr@nate.com</a>
+              {t('email')}: <a href="mailto:fairhr@nate.com" className="hover:text-primary">{t('emailAddress')}</a>
             </p>
           </div>
           <div className="px-4 md:px-0">
-            <h3 className="font-semibold mb-3 text-base md:text-lg">바로가기</h3>
+            <h3 className="font-semibold mb-3 text-base md:text-lg">{t('quickLinks')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/about/greeting" className="text-muted-foreground hover:text-primary transition-colors">
-                  회사소개
+                  {t('about')}
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">
-                  주요 서비스
+                  {t('services')}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-                  상담문의
+                  {t('contact')}
                 </Link>
               </li>
             </ul>
           </div>
           <div className="px-4 md:px-0 sm:col-span-2 lg:col-span-1">
-            <h3 className="font-semibold mb-3 text-base md:text-lg">정책</h3>
+            <h3 className="font-semibold mb-3 text-base md:text-lg">{t('policies')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
-                  개인정보처리방침
+                  {t('privacy')}
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">
-                  이용약관
+                  {t('terms')}
                 </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t text-xs sm:text-sm text-muted-foreground text-center px-4 md:px-0">
-          &copy; {new Date().getFullYear()} FAIR인사노무컨설팅. All rights reserved.
+          &copy; {new Date().getFullYear()} {t('companyName')}. {t('allRightsReserved')}
         </div>
       </div>
     </footer>

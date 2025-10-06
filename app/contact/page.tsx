@@ -1,12 +1,9 @@
+"use client"
+
 import ContactPageClient from "./ContactPageClient"
 
-export const metadata = {
-  title: "상담문의 | FAIR인사노무컨설팅",
-  description: "온라인 상담 신청 또는 전화, 이메일로 문의하세요. 26년차 베테랑 노무사가 직접 상담해드립니다.",
-}
-
-// 동적 렌더링 강제 (FileList API로 인한 SSG 오류 방지)
-export const dynamic = 'force-dynamic'
+// Note: metadata는 서버 컴포넌트에서만 사용 가능
+// 클라이언트 컴포넌트에서는 Head 또는 다른 방법 사용 필요
 
 export default function ContactPage() {
   return <ContactPageClient />

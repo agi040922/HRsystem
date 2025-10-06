@@ -1,9 +1,9 @@
+"use client"
+
 import ServicesClientPage from "./ServicesClientPage"
 
-export const metadata = {
-  title: "주요 서비스 | FAIR인사노무컨설팅",
-  description: "노동법 자문, 급여 아웃소싱, 4대보험, 산업재해, 부당해고, 직장 내 괴롭힘 등 전문 서비스를 안내합니다. 글로벌 기업 자문 전문.",
-}
+// Note: metadata는 서버 컴포넌트에서만 사용 가능
+// 클라이언트 컴포넌트에서는 Head 또는 다른 방법 사용 필요
 
 export default function ServicesPage() {
   return <ServicesClientPage />

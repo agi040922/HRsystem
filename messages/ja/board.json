@@ -1,0 +1,27 @@
+{
+  "title": "お知らせ",
+  "subtitle": "FAIR人事労務コンサルティングの最新ニュースとお知らせ",
+  "description": "FAIR人事労務コンサルティングの最新ニュースとお知らせをご確認ください。労働法関連の最新情報と法律変更事項をお知らせします。",
+  "search": {
+    "placeholder": "タイトルで検索...",
+    "button": "検索",
+    "noResults": "検索結果がありません。",
+    "totalResults": "全体投稿"
+  },
+  "post": {
+    "views": "閲覧数",
+    "date": "作成日",
+    "important": "重要",
+    "readMore": "詳細を見る"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "ページ"
+  },
+  "empty": {
+    "title": "登録されたお知らせがありません",
+    "description": "新しいお知らせが登録されるとここに表示されます。"
+  },
+  "loading": "読み込み中..."
+}

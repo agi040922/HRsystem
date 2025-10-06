@@ -11,6 +11,7 @@ import { motion } from "framer-motion"
 import { BoardPost } from "@/lib/supabase"
 import { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
+import { useTranslations } from 'next-intl'
 
 interface BoardClientPageProps {
   initialPosts: BoardPost[]
@@ -25,6 +26,7 @@ export default function BoardClientPage({
   currentPage, 
   searchQuery 
 }: BoardClientPageProps) {
+  const t = useTranslations('board')
   const [searchTerm, setSearchTerm] = useState(searchQuery)
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -66,8 +68,8 @@ export default function BoardClientPage({
     <div className="w-full overflow-x-hidden">
       {/* 페이지 배너 */}
       <PageBanner 
-        title="공지사항"
-        subtitle="FAIR인사노무컨설팅의 다양한 소식을 전해드립니다"
+        title={t('title')}
+        subtitle={t('subtitle')}
         backgroundImage="/FAIR000.png"
       />
 
@@ -85,35 +87,21 @@ export default function BoardClientPage({
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-8 md:mb-12"
         >
-          {/* 통계 정보 */}
-          <div className="text-center mb-6 px-4">
-            <div className="flex justify-center items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <span className="font-medium">전체 게시글</span>
-                <Badge variant="outline" className="text-blue-600 border-blue-200">{totalCount}</Badge>
-              </div>
-              {searchQuery && (
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">검색 결과</span>
-                  <Badge variant="outline" className="text-green-600 border-green-200">{posts.length}</Badge>
-                </div>
-              )}
-            </div>
-          </div>
+          
 
           {/* 검색 폼 */}
           <div className="max-w-md mx-auto px-4">
             <form onSubmit={handleSearch} className="flex gap-2">
               <Input 
                 type="search" 
-                placeholder="제목, 내용으로 검색..." 
+                placeholder={t('search.placeholder')}
                 className="flex-grow"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <Button type="submit" variant="outline" size="icon">
                 <Search className="w-5 h-5" />
-                <span className="sr-only">검색</span>
+                <span className="sr-only">{t('search.button')}</span>
               </Button>
             </form>
           </div>
@@ -130,11 +118,6 @@ export default function BoardClientPage({
           {posts.length > 0 ? (
             <div className="max-w-6xl mx-auto">
               <Card>
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-lg">
-                    총 게시물 <span className="text-blue-600">{totalCount}</span>
-                  </CardTitle>
-                </CardHeader>
                 <CardContent className="p-0">
                   {/* 테이블 헤더 */}
                   <div className="hidden md:grid md:grid-cols-12 gap-4 px-6 py-3 bg-gray-50 dark:bg-gray-800 border-b font-medium text-sm text-muted-foreground">

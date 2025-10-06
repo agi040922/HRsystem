@@ -1,0 +1,179 @@
+{
+  "greeting": {
+    "title": "Greeting",
+    "subtitle": "Introduction to FAIR HR Consulting's philosophy and vision",
+    "content": {
+      "paragraph1": "Since its establishment in 2005, FAIR HR Consulting has been recognized for opening new horizons in corporate consulting by introducing consulting concepts to corporate advisory services. As a result, we currently provide professional advisory services to over 100 corporate clients both domestically and internationally.",
+      "paragraph2": "In addition to advising large corporations and foreign companies, FAIR HR Consulting also operates Sunham Labor Consultation Center and Sunham Publishing as subsidiary organizations that pursue God's justice and love.",
+      "paragraph3": "We have maintained an overwhelming win rate in over 200 labor-related cases (Labor Relations Commission cases, administrative appeal cases, industrial accident insurance rate change request cases, industrial accident cases, etc.), and all our clients know well that this is the result of meticulous logic and thorough preparation.",
+      "paragraph4": "If you want strategies that can solve problems beyond legal knowledge, meet with FAIR HR Consulting. We will become your true partner."
+    },
+    "signature": "CEO / Certified Labor Attorney Jung Kwang-il",
+    "quote": "We provide strategies that can solve problems beyond legal knowledge"
+  },
+  "profile": {
+    "title": "CEO Profile",
+    "subtitle": "Jung Kwang-il, Certified Labor Attorney",
+    "name": "Jung Kwang-il",
+    "position": "CEO / Certified Labor Attorney",
+    "introduction": "Passed the 8th Certified Labor Attorney examination (1999) and has been providing the best labor services to clients based on 25 years of rich practical experience and professional knowledge.",
+    "licenses": [
+      "Certified Labor Attorney (8th, 1999)",
+      "Sexual Harassment Prevention Education Instructor"
+    ],
+    "education": [
+      "Yonsei University Graduate School of Business (MBA) Master's",
+      "Hanyang University College of Law Bachelor's",
+      "Korea Labor Institute Labor-Management Relations Senior Leadership Course",
+      "Labor Education Institute Dispute Mediation Expert Course",
+      "Sexual Harassment Prevention Education Instructor Course"
+    ],
+    "career": [
+      "Current CEO of FAIR HR Consulting / Sunham Labor Consultation Center",
+      "Current CEO of Sunham Publishing",
+      "Former Certified Labor Attorney at Kim & Chang Law Firm",
+      "Former Business Consultant at Seoul Chamber of Commerce (Eunpyeong/Mapo)",
+      "Former Expert Committee Member at Ministry of SMEs and Startups Business Support Group",
+      "Former Customer Rights Protection Officer at Korea Workers' Compensation & Welfare Service Seoul Regional Headquarters",
+      "Former External Committee Member at Korea Electric Power Technology HR Committee",
+      "Current Mentor at Hanyang University Startup Support Center Mentos On-Call",
+      "Current Expert Committee Member at Seoul Business Support Center",
+      "Current Pro Bono Committee Member at Gyeonggi Institute for Economic & Science Promotion",
+      "Current Evaluation Committee Member at Korea Institute for Advancement of Technology",
+      "Current Columnist at Hankyung.com"
+    ],
+    "lectures": [
+      "Seoul Chamber of Commerce HR Management from Hiring to Retirement Lecture (2006-2009)",
+      "Seoul Chamber of Commerce Annual Salary System Introduction and Design / Social Insurance Practice Lecture",
+      "Seoul Chamber of Commerce Disciplinary Authority Exercise Practice / Non-regular Worker Management Lecture",
+      "Korea Foreign Company HR Management Association HR Management from Hiring to Retirement Lecture (2005-2011)",
+      "Korea Foreign Company HR Management Association Disciplinary Authority Practice / Multiple Union and Labor Strategy Lecture",
+      "Korea Productivity Center Collective Labor Relations Practice Lecture (2011-2012)",
+      "Korea Economic Education Institute Annual Leave Operation Practice Lecture (2012)",
+      "Private School Promotion Foundation University HR Strategy Lecture (2014)",
+      "Samsung Electronics 40-hour Work Week Legal Issues Lecture (2004)",
+      "Samsung Life Industrial Accident Insurance Law Legal Framework Lecture (2004)",
+      "Lotte Aluminum 40-hour Work Week Legal Issues Lecture (2004)",
+      "Korea National University of Arts University HR Management and Contract Operation Lecture (2013)",
+      "Korea Electric Power/KEPCO KPS Collective Labor Relations Law and Manager Role Lecture (2004)",
+      "Success TV Professional Worker Education Lecture (2011)",
+      "Korea HRD Association Core Talent Conditions Lecture (2011)",
+      "Sexual Harassment Prevention Education Professional Instructor (JoongAng Ilbo, McGraw-Hill Korea, Standards & Poors, etc.)"
+    ],
+    "publications": [
+      "『Multiple Union and Labor Strategy Consulting Process』 (Pakyoungsa, 2011)",
+      "『Company's Inner Thoughts』 (Random House Korea, 2011)",
+      "Monthly Labor Law - Management Plan for Poor Performance Workers",
+      "Monthly Labor Law - How to Protect Trade Secrets?",
+      "Monthly Labor Law - Interpretation of Performance Pay or Bonus Payment Restriction Regulations",
+      "Monthly Labor Law - Design of Group Performance Pay and Individual Performance Pay",
+      "Monthly Labor Law - Prerequisites for Corporate Communication Facility Usage Restrictions",
+      "Monthly Labor Law - Design of Job Invention Compensation System",
+      "Monthly Labor Law - Evaluation of Main Contents of Non-regular Worker Legislative Notice (Draft)",
+      "Monthly Labor Law - Interpretation of Consent Subject in Annual Salary System Conversion",
+      "Monthly Tax - SME Evaluation and Compensation System",
+      "Monthly Tax - Negotiation Strategy for Managers and HR Personnel 1.2.3.",
+      "Monthly HR Management - Legal Issues Related to Recruitment"
+    ],
+    "media": [
+      "Korea Economic TV Multiple Union Era Labor Relations Discussion Panel Participation (2008)",
+      "Korea Economic TV Corporate Talent Development Discussion Panel Participation (2008)",
+      "Monthly HRD Interview - Worker Attitude (2011)",
+      "Monthly Cosmopolitan Interview - What Workers Are Curious About (2011)",
+      "Hankyung Business Interview - Relationship Between Company and Workers (2011)",
+      "KBS Sung Ki-young's Economy Today Interview - You Must Know the Company to Succeed at Work (2011)",
+      "Monthly Sure Interview - Prerequisites for Successful Work Life (2011)",
+      "Currently active as Hankyung.com columnist"
+    ],
+    "research": [
+      "Analysis of Success and Failure Factors in Labor-Management Cooperation (2008, Master's Thesis)",
+      "Diversification of Union Organization Forms and Tasks of Labor Law (Korea Labor Institute Project Participation)",
+      "Collective Bargaining Unification Plan Under Multiple Unions (Korea Labor Institute Completion Paper)",
+      "University HR Management 100 Questions and Answers (University Lecture Material Production)"
+    ],
+    "lectureImages": [
+      {
+        "src": "/언론1.png",
+        "title": "Seoul Chamber of Commerce HR Management Lecture",
+        "date": "2024.03.15",
+        "location": "Seoul Chamber of Commerce"
+      },
+      {
+        "src": "/언론2.png",
+        "title": "Korea Foreign Company HR Management Association Special Lecture",
+        "date": "2024.02.20",
+        "location": "Korea Foreign Company HR Management Association"
+      },
+      {
+        "src": "/강의2.png",
+        "title": "Large Corporation Labor Management Education",
+        "date": "2024.01.30",
+        "location": "Samsung Electronics"
+      },
+      {
+        "src": "/강의3.png",
+        "title": "Success TV Professional Worker Education",
+        "date": "2023.12.10",
+        "location": "Success TV"
+      }
+    ],
+    "sections": {
+      "education": {
+        "title": "Education"
+      },
+      "career": {
+        "title": "Major Career"
+      },
+      "lectures": {
+        "title": "Major Lecture Experience"
+      },
+      "publications": {
+        "title": "Publications"
+      },
+      "media": {
+        "title": "Media Activities"
+      },
+      "research": {
+        "title": "Research Achievements"
+      },
+      "lecturePhotos": {
+        "title": "Lecture Activity Photos"
+      }
+    }
+  },
+  "ethics": {
+    "title": "Code of Ethics",
+    "subtitle": "8 Core Values and Ethical Principles Pursued by FAIR HR Consulting",
+    "intro": "FAIR HR Consulting has established and adheres to the following code of ethics.",
+    "principles": [
+      "We charge fair and reasonable fees.",
+      "We fulfill our strict confidentiality obligations regarding all client information.",
+      "We utilize government-supported consulting and subsidies legally and legitimately.",
+      "We comply with laws and faithfully perform delegated tasks according to principles and good faith.",
+      "We faithfully perform all undertaken work regardless of company size and contract amount.",
+      "We avoid free consultations for responsible consulting and consult based on the best interests of our clients.",
+      "We provide free consultations for the socially disadvantaged such as disabled persons and basic livelihood recipients, and companies contributing to local communities.",
+      "We perform all tasks based on God's justice and love."
+    ]
+  },
+  "location": {
+    "title": "Location",
+    "subtitle": "FAIR HR Consulting Location Guide",
+    "companyName": "FAIR HR Consulting",
+    "address": "412, Park & Tower B, 22 Jingwan 3-ro, Eunpyeong-gu, Seoul",
+    "postalCode": "03280",
+    "phone": "02-387-9869",
+    "email": "fairhr@nate.com",
+    "basicInfo": "Basic Information",
+    "businessHours": "Business Hours",
+    "weekdays": "Weekdays",
+    "saturday": "Saturday",
+    "sunday": "Sunday/Holidays",
+    "weekdaysTime": "10:00 ~ 20:00",
+    "saturdayTime": "10:00 ~ 17:00",
+    "sundayTime": "Closed",
+    "addressLabel": "Address:",
+    "phoneLabel": "Phone:",
+    "emailLabel": "Email:"
+  }
+}

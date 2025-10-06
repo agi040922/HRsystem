@@ -15,7 +15,9 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { useTranslations } from 'next-intl'
+import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 
 interface NavItem {
   href: string
@@ -30,73 +32,7 @@ interface NavSubItem {
   description: string
 }
 
-const navItems: NavItem[] = [
-  {
-    href: "/about/greeting",
-    label: "회사소개",
-    children: [
-      {
-        href: "/about/greeting",
-        title: "인사말",
-        description: "FAIR인사노무컨설팅의 철학과 비전을 소개합니다",
-      },
-      {
-        href: "/about/profile",
-        title: "대표 프로필",
-        description: "정광일 대표 공인노무사의 경력, 학력, 강의경력 및 저술활동",
-      },
-      {
-        href: "/about/ethics",
-        title: "윤리강령",
-        description: "FAIR인사노무컨설팅이 추구하는 8가지 윤리강령",
-      },
-      {
-        href: "/about/location",
-        title: "오시는 길",
-        description: "FAIR인사노무컨설팅 위치 안내 및 교통편",
-      },
-    ],
-  },
-  {
-    href: "/services",
-    label: "주요 서비스",
-    children: [
-      {
-        href: "/services#labor-consulting",
-        title: "노동법 자문",
-        description: "기업 운영 전반의 노동법률 리스크 예방 및 대응",
-      },
-      {
-        href: "/services#payroll",
-        title: "급여 아웃소싱 및 4대보험",
-        description: "정확하고 효율적인 급여 관리 및 4대보험 업무 대행",
-      },
-      {
-        href: "/services#hr-consulting",
-        title: "인사노무 컨설팅",
-        description: "기업 맞춤형 인사제도 설계 및 운영 지원",
-      },
-      {
-        href: "/services#industrial-accident",
-        title: "산업재해",
-        description: "산업재해 발생 시 신속한 대응 및 보상 절차 지원",
-      },
-      {
-        href: "/services#unfair-dismissal",
-        title: "부당해고 및 징계",
-        description: "부당해고, 부당징계 등 노동위원회 사건 대리",
-      },
-      {
-        href: "/services#workplace-harassment",
-        title: "직장 내 괴롭힘 및 성희롱",
-        description: "직장 내 괴롭힘 예방 및 발생 시 조사, 처리 지원",
-      },
-    ],
-  },
-  { href: "/board", label: "공지사항" },
-  { href: "/qna", label: "Q&A" },
-  { href: "/contact", label: "상담문의" },
-]
+// navItems는 이제 컴포넌트 내부에서 번역과 함께 생성됩니다
 
 const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
   ({ className, title, children, ...props }, ref) => {
@@ -123,6 +59,96 @@ ListItem.displayName = "ListItem"
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [currentLocale, setCurrentLocale] = useState('ko')
+  
+  // useTranslations를 try-catch로 감싸서 에러 처리
+  let t: any;
+  try {
+    t = useTranslations();
+  } catch (error) {
+    // 컨텍스트가 없을 경우 기본 함수 제공
+    t = (key: string) => key;
+  }
+
+  // 번역된 네비게이션 아이템 생성
+  const navItems: NavItem[] = [
+    {
+      href: "/about/greeting",
+      label: t('mainNav.about'),
+      children: [
+        {
+          href: "/about/greeting",
+          title: t('aboutMenu.greeting.title'),
+          description: t('aboutMenu.greeting.description'),
+        },
+        {
+          href: "/about/profile",
+          title: t('aboutMenu.profile.title'),
+          description: t('aboutMenu.profile.description'),
+        },
+        {
+          href: "/about/ethics",
+          title: t('aboutMenu.ethics.title'),
+          description: t('aboutMenu.ethics.description'),
+        },
+        {
+          href: "/about/location",
+          title: t('aboutMenu.location.title'),
+          description: t('aboutMenu.location.description'),
+        },
+      ],
+    },
+    {
+      href: "/services",
+      label: t('mainNav.services'),
+      children: [
+        {
+          href: "/services#labor-consulting",
+          title: t('servicesMenu.laborConsulting.title'),
+          description: t('servicesMenu.laborConsulting.description'),
+        },
+        {
+          href: "/services#payroll",
+          title: t('servicesMenu.payroll.title'),
+          description: t('servicesMenu.payroll.description'),
+        },
+        {
+          href: "/services#hr-consulting",
+          title: t('servicesMenu.hrConsulting.title'),
+          description: t('servicesMenu.hrConsulting.description'),
+        },
+        {
+          href: "/services#industrial-accident",
+          title: t('servicesMenu.industrialAccident.title'),
+          description: t('servicesMenu.industrialAccident.description'),
+        },
+        {
+          href: "/services#unfair-dismissal",
+          title: t('servicesMenu.unfairDismissal.title'),
+          description: t('servicesMenu.unfairDismissal.description'),
+        },
+        {
+          href: "/services#workplace-harassment",
+          title: t('servicesMenu.workplaceHarassment.title'),
+          description: t('servicesMenu.workplaceHarassment.description'),
+        },
+      ],
+    },
+    { href: "/board", label: t('mainNav.board') },
+    { href: "/qna", label: t('mainNav.qna') },
+    { href: "/contact", label: t('mainNav.contact') },
+  ]
+
+  // 로컬 스토리지에서 언어 가져오기
+  useEffect(() => {
+    const savedLocale = localStorage.getItem('locale') || 'ko';
+    setCurrentLocale(savedLocale);
+  }, []);
+
+  const handleLanguageChange = (newLocale: string) => {
+    setCurrentLocale(newLocale);
+    // 커스텀 이벤트는 LanguageSwitcher에서 발생시킴
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/95 shadow-sm">
@@ -138,39 +164,45 @@ export default function Header() {
           />
         </Link>
         
-        <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList className="gap-1">
-            {navItems.map((item) =>
-              item.children ? (
-                <NavigationMenuItem key={item.label}>
-                  <NavigationMenuTrigger className="text-sm font-medium text-gray-700 hover:text-primary transition-colors bg-transparent hover:bg-gray-50 data-[state=open]:bg-gray-50 data-[state=open]:text-primary h-10 px-4 py-2">
-                    {item.label}
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="min-w-[400px] p-4">
-                    <ul className="grid w-full gap-2 grid-cols-1">
-                      {item.children.map((child) => (
-                        <ListItem key={child.title} href={child.href} title={child.title}>
-                          {child.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              ) : (
-                <NavigationMenuItem key={item.label}>
-                  <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(
-                      navigationMenuTriggerStyle(),
-                      "text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors h-10 px-4 py-2"
-                    )}>
+        <div className="hidden lg:flex items-center gap-4">
+          <NavigationMenu>
+            <NavigationMenuList className="gap-1">
+              {navItems.map((item) =>
+                item.children ? (
+                  <NavigationMenuItem key={item.label}>
+                    <NavigationMenuTrigger className="text-sm font-medium text-gray-700 hover:text-primary transition-colors bg-transparent hover:bg-gray-50 data-[state=open]:bg-gray-50 data-[state=open]:text-primary h-10 px-4 py-2">
                       {item.label}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              ),
-            )}
-          </NavigationMenuList>
-        </NavigationMenu>
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className="min-w-[400px] p-4">
+                      <ul className="grid w-full gap-2 grid-cols-1">
+                        {item.children.map((child) => (
+                          <ListItem key={child.title} href={child.href} title={child.title}>
+                            {child.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                ) : (
+                  <NavigationMenuItem key={item.label}>
+                    <Link href={item.href} legacyBehavior passHref>
+                      <NavigationMenuLink className={cn(
+                        navigationMenuTriggerStyle(),
+                        "text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors h-10 px-4 py-2"
+                      )}>
+                        {item.label}
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ),
+              )}
+            </NavigationMenuList>
+          </NavigationMenu>
+          <LanguageSwitcher 
+            currentLocale={currentLocale}
+            onLanguageChange={handleLanguageChange}
+          />
+        </div>
         
         <div className="lg:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -186,9 +218,15 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] sm:w-[350px] bg-white overflow-y-auto">
               <SheetHeader>
-                <SheetTitle>메뉴</SheetTitle>
+                <SheetTitle>{t('header.menu')}</SheetTitle>
                 <SheetDescription>사이트 메뉴를 탐색하세요</SheetDescription>
               </SheetHeader>
+              <div className="flex justify-end mt-4 mb-2">
+                <LanguageSwitcher 
+                  currentLocale={currentLocale}
+                  onLanguageChange={handleLanguageChange}
+                />
+              </div>
               <nav className="grid gap-2 text-base font-medium mt-4">
                 {navItems.map((item) => (
                   <React.Fragment key={item.label}>

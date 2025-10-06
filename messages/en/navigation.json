@@ -1,0 +1,64 @@
+{
+  "header": {
+    "logo": "FAIR HR Consulting",
+    "menu": "Menu"
+  },
+  "mainNav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "board": "Notice",
+    "qna": "Q&A",
+    "contact": "Contact"
+  },
+  "aboutMenu": {
+    "greeting": {
+      "title": "Greeting",
+      "description": "Introduction to FAIR HR Consulting's philosophy and vision"
+    },
+    "profile": {
+      "title": "CEO Profile",
+      "description": "Career, education, lectures and publications of CEO Jung Kwang-il"
+    },
+    "ethics": {
+      "title": "Code of Ethics",
+      "description": "8 ethical principles pursued by FAIR HR Consulting"
+    },
+    "location": {
+      "title": "Location",
+      "description": "Location and transportation information for FAIR HR Consulting"
+    }
+  },
+  "servicesMenu": {
+    "laborConsulting": {
+      "title": "Labor Law Consulting",
+      "description": "Prevention and response to labor law risks in overall business operations"
+    },
+    "payroll": {
+      "title": "Payroll Outsourcing & Insurance",
+      "description": "Accurate and efficient payroll management and 4 major insurance services"
+    },
+    "hrConsulting": {
+      "title": "HR Consulting",
+      "description": "Customized HR system design and operational support"
+    },
+    "industrialAccident": {
+      "title": "Industrial Accident",
+      "description": "Rapid response and compensation process support for industrial accidents"
+    },
+    "unfairDismissal": {
+      "title": "Unfair Dismissal & Discipline",
+      "description": "Representation in labor commission cases including unfair dismissal"
+    },
+    "workplaceHarassment": {
+      "title": "Workplace Harassment",
+      "description": "Prevention and investigation support for workplace harassment"
+    }
+  },
+  "language": {
+    "label": "Language",
+    "korean": "한국어",
+    "english": "English",
+    "japanese": "日本語"
+  }
+}

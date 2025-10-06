@@ -4,190 +4,177 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle } from "lucide-react"
 import { motion } from "framer-motion"
+import { useTranslations } from 'next-intl'
+import PageBanner from "@/components/page-banner"
 
-const servicesData = [
-  {
-    id: "labor-consulting",
-    icon: Briefcase,
-    title: "노동법 자문",
-    shortDescription: "기업 운영 전반의 노동법률 리스크 예방 및 대응",
-    details: [
-      "근로계약서, 취업규칙 등 제규정 검토 및 정비",
-      "인사노무 관련 법률 자문 및 컨설팅",
-      "노동 관련 법규 변경사항 안내 및 대응 전략 수립",
-      "노사협의회 운영 자문",
-    ],
-  },
-  {
-    id: "payroll-system",
-    icon: Calculator,
-    title: "급여체계 관련 컨설팅",
-    shortDescription: "통상임금 및 평균임금 등 급여체계 최적화 컨설팅",
-    details: [
-      "통상임금 및 평균임금 산정 기준 정립",
-      "급여체계 합리화 및 최적화 방안 제시",
-      "연장근로수당 및 제수당 체계 정비",
-      "임금피크제 도입 및 운영 컨설팅",
-    ],
-  },
-  {
-    id: "hr-consulting",
-    icon: Users,
-    title: "인사노무 컨설팅",
-    shortDescription: "기업 맞춤형 인사제도 설계 및 운영 지원",
-    details: [
-      "채용, 평가, 보상 시스템 설계",
-      "직무분석 및 조직설계 컨설팅",
-      "성과관리 시스템 구축 및 운영 지원",
-      "인사 관련 교육 프로그램 개발 및 운영",
-    ],
-  },
-  {
-    id: "serious-accident-law",
-    icon: Shield,
-    title: "중대재해처벌법 관련 컨설팅",
-    shortDescription: "중대재해처벌법 시행에 따른 기업 안전관리체계 구축",
-    details: [
-      "중대재해처벌법 대응 안전관리체계 구축",
-      "안전보건관리책임자 지정 및 역할 정립",
-      "사업장 안전점검 및 위험성 평가",
-      "중대재해 예방을 위한 교육 및 매뉴얼 개발",
-    ],
-  },
-  {
-    id: "employment-management",
-    icon: Scale,
-    title: "고용관리 및 인사규정 컨설팅",
-    shortDescription: "합리적 인사관리 및 고용관계 안정화 지원",
-    details: [
-      "취업규칙 및 인사규정 정비",
-      "인사평가 및 승진 시스템 구축",
-      "효율적인 인사관리 체계 수립",
-      "조직문화 개선 및 소통 활성화 방안",
-    ],
-  },
-  {
-    id: "workplace-harassment",
-    icon: MessageCircle,
-    title: "직장 내 괴롭힘 및 성희롱",
-    shortDescription: "직장 내 괴롭힘 예방 및 발생 시 조사, 처리 지원",
-    details: [
-      "직장 내 괴롭힘 예방 교육 및 시스템 구축",
-      "사건 발생 시 조사 및 처리 절차 자문",
-      "피해자 보호 및 가해자 징계 관련 컨설팅",
-      "관련 법규 준수 및 분쟁 해결 지원",
-    ],
-  },
-]
+const iconMap = {
+  "labor-consulting": Briefcase,
+  "payroll-system": Calculator,
+  "hr-consulting": Users,
+  "serious-accident-law": Shield,
+  "labor-disputes": Scale,
+  "workplace-harassment": MessageCircle
+}
 
 export default function ServicesClientPage() {
+  const t = useTranslations('services')
+  const services = t.raw('services') as Array<{
+    id: string
+    title: string
+    shortDescription: string
+    details: string[]
+  }>
+
+  const whyChoose = t.raw('whyChoose') as {
+    title: string
+    subtitle: string
+    reasons: Array<{
+      title: string
+      description: string
+    }>
+  }
+
   return (
     <div className="w-full overflow-x-hidden">
-              <div className="container-fluid max-w-7xl py-4 md:py-6 lg:py-8 xl:py-12">
-        <div className="text-center mb-8 md:mb-12 px-4">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-                          className="text-xl font-bold tracking-tight sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-4"
-          >
-            주요 서비스
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-          >
-            노무법인 FAIR인사노무컨설팅은 고객의 성공을 위한 맞춤형 전문 서비스를 제공합니다.
-          </motion.p>
-        </div>
+      {/* 페이지 배너 */}
+      <PageBanner 
+        title={t('title')}
+        subtitle={t('subtitle')}
+        backgroundImage="/FAIR000.png"
+      />
 
-        <div className="grid gap-4 md:gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mb-8 md:mb-12 max-w-6xl mx-auto">
-          {servicesData.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0" />
-                    <CardTitle className="text-lg sm:text-xl">{service.title}</CardTitle>
-                  </div>
-                  <CardDescription className="text-sm sm:text-base leading-relaxed">{service.shortDescription}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    {service.details.slice(0, 2).map((detail, index) => (
-                      <li key={index} className="flex items-start">
-                        <CheckCircle className="w-4 h-4 mr-2 mt-0.5 text-green-500 flex-shrink-0" />
-                        <span className="leading-relaxed">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <div className="p-6 pt-0">
-                  <a href={`#${service.id}`} className="text-primary hover:underline text-sm font-medium transition-colors">
-                    자세히 보기 &darr;
-                  </a>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.h2 
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="container-fluid max-w-7xl py-8 md:py-12 lg:py-16"
+      >
+        {/* 서비스 목록 */}
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-                        className="text-xl sm:text-2xl font-semibold mb-4 md:mb-6 text-center px-4"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-12 md:mb-16 px-4 md:px-0"
         >
-          서비스 상세 안내
-        </motion.h2>
-        
-        <div className="max-w-4xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
-            {servicesData.map((service, index) => (
+          <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
+            {services.map((service, index) => {
+              const IconComponent = iconMap[service.id as keyof typeof iconMap] || Briefcase
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="p-2 bg-primary/10 rounded-lg">
+                          <IconComponent className="h-6 w-6 text-primary" />
+                        </div>
+                        <CardTitle className="text-xl">{service.title}</CardTitle>
+                      </div>
+                      <CardDescription className="text-base">
+                        {service.shortDescription}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Accordion type="single" collapsible className="w-full">
+                        <AccordionItem value="details" className="border-none">
+                          <AccordionTrigger className="text-sm font-medium hover:no-underline">
+                            {t('viewDetails')}
+                          </AccordionTrigger>
+                          <AccordionContent>
+                            <ul className="space-y-2 mt-2">
+                              {service.details.map((detail, detailIndex) => (
+                                <li key={detailIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                  <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                                  <span>{detail}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              )
+            })}
+          </div>
+        </motion.section>
+
+        {/* FAIR를 선택하는 이유 */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-12 md:mb-16 px-4 md:px-0"
+        >
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+              {whyChoose.title}
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              {whyChoose.subtitle}
+            </p>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {whyChoose.reasons.map((reason, index) => (
               <motion.div
-                key={service.id}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <AccordionItem value={service.id} id={service.id} className="scroll-mt-20">
-                  <AccordionTrigger className="text-base sm:text-lg font-medium hover:no-underline py-4 px-2 md:px-4">
-                    <div className="flex items-center gap-3">
-                      <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
-                      <span className="text-left">{service.title}</span>
+                <Card className="text-center h-full">
+                  <CardContent className="pt-6">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="h-6 w-6 text-primary" />
                     </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="pt-2 pb-4 px-2 md:px-4">
-                    <p className="text-muted-foreground mb-4 text-sm sm:text-base leading-relaxed">{service.shortDescription}</p>
-                    <ul className="space-y-3">
-                      {service.details.map((detail, index) => (
-                        <li key={index} className="flex items-start">
-                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 mt-0.5 text-green-600 flex-shrink-0" />
-                          <span className="text-foreground text-sm sm:text-base leading-relaxed">{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="mt-6 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      <strong>기대 효과:</strong> {service.title} 서비스를 통해 법적 리스크를 최소화하고, 안정적인
-                      노사관계를 구축하며, 기업 경쟁력을 강화할 수 있습니다.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
+                    <h3 className="font-semibold text-lg mb-2">{reason.title}</h3>
+                    <p className="text-muted-foreground text-sm">{reason.description}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
-          </Accordion>
-        </div>
-      </div>
+          </div>
+        </motion.section>
+
+        {/* CTA 섹션 */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="px-4 md:px-0"
+        >
+          <Card className="bg-primary text-primary-foreground">
+            <CardContent className="text-center py-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                {t('cta.title')}
+              </h2>
+              <p className="text-lg mb-6 opacity-90">
+                {t('cta.description')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button className="bg-white text-primary px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                  {t('cta.button')}
+                </button>
+                <div className="flex items-center gap-2 text-lg">
+                  <span>📞</span>
+                  <span>{t('cta.phone')}</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.section>
+      </motion.div>
     </div>
   )
 }

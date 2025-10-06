@@ -1,0 +1,102 @@
+{
+  "title": "Our Services",
+  "subtitle": "Professional services provided by FAIR HR Consulting",
+  "description": "We provide expert services including labor law consulting, payroll outsourcing, 4 major insurances, industrial accidents, unfair dismissal, workplace harassment, etc. Specialized in global corporate consulting.",
+  "viewDetails": "View Details",
+  "services": [
+    {
+      "id": "labor-consulting",
+      "title": "Labor Law Consulting",
+      "shortDescription": "Prevention and response to labor law risks in overall business operations",
+      "details": [
+        "Review and maintenance of employment contracts, work rules and other regulations",
+        "Legal consulting and advisory services related to HR and labor affairs",
+        "Guidance on labor law changes and establishment of response strategies",
+        "Advisory services for labor-management council operations"
+      ]
+    },
+    {
+      "id": "payroll-system",
+      "title": "Payroll System Consulting",
+      "shortDescription": "Optimization consulting for payroll systems including ordinary wages and average wages",
+      "details": [
+        "Establishment of calculation standards for ordinary wages and average wages",
+        "Rationalization and optimization of payroll systems",
+        "Reorganization of overtime pay and allowance systems",
+        "Introduction and operation consulting for wage peak system"
+      ]
+    },
+    {
+      "id": "hr-consulting",
+      "title": "HR Consulting",
+      "shortDescription": "Customized HR system design and operational support for companies",
+      "details": [
+        "Design of recruitment, evaluation, and compensation systems",
+        "Job analysis and organizational design consulting",
+        "Performance management system establishment and operational support",
+        "Development and operation of HR-related training programs"
+      ]
+    },
+    {
+      "id": "serious-accident-law",
+      "title": "Serious Accident Punishment Act Consulting",
+      "shortDescription": "Establishment of corporate safety management systems in accordance with the Serious Accident Punishment Act",
+      "details": [
+        "Establishment of safety and health management systems in response to the Serious Accident Punishment Act",
+        "Preparation of safety and health management regulations and manuals",
+        "Development and operation of safety and health education programs",
+        "Risk assessment and improvement measures for serious accident prevention"
+      ]
+    },
+    {
+      "id": "labor-disputes",
+      "title": "Labor Dispute Resolution",
+      "shortDescription": "Professional response to Labor Relations Commission cases and various labor disputes",
+      "details": [
+        "Representation in unfair dismissal and disciplinary relief applications",
+        "Response to Labor Relations Commission mediation and arbitration procedures",
+        "Mediation and resolution of collective disputes",
+        "Prevention of labor disputes and establishment of proactive response strategies"
+      ]
+    },
+    {
+      "id": "workplace-harassment",
+      "title": "Workplace Harassment and Sexual Harassment Prevention",
+      "shortDescription": "Prevention of workplace harassment and investigation/handling support when incidents occur",
+      "details": [
+        "Development of workplace harassment prevention education programs",
+        "Establishment of harassment reporting and investigation procedures",
+        "Establishment of perpetrator discipline and victim protection measures",
+        "Organizational culture improvement consulting for recurrence prevention"
+      ]
+    }
+  ],
+  "whyChoose": {
+    "title": "Why Choose FAIR",
+    "subtitle": "A trusted partner verified by 26 years of expertise and reliability",
+    "reasons": [
+      {
+        "title": "Rich Experience",
+        "description": "26 years of accumulated labor expertise and experience with over 200 cases"
+      },
+      {
+        "title": "Proven Expertise",
+        "description": "Professional expertise from Kim & Chang background and latest legal knowledge"
+      },
+      {
+        "title": "Customized Solutions",
+        "description": "Optimal customized services considering each company's characteristics"
+      },
+      {
+        "title": "Rapid Response",
+        "description": "Expert consultation support within 24 hours in emergency situations"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Consult with Our Experts",
+    "description": "We will propose solutions optimized for your company.",
+    "button": "Request Free Consultation",
+    "phone": "02-387-9869"
+  }
+}

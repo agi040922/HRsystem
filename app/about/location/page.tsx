@@ -4,19 +4,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import KakaoMap from "@/components/kakao-map"
 import PageBanner from "@/components/page-banner"
 import { motion } from "framer-motion"
+import { useTranslations } from 'next-intl'
 
 export default function LocationPage() {
+  const t = useTranslations('location')
   // 위치 정보
   const locationInfo = {
-    name: "FAIR인사노무컨설팅",
-    address: "서울 은평구 진관 3로 22 파크앤타워 B동 412호",
-    postalCode: "03280",
-    phone: "02-387-9869",
-    email: "fairhr@nate.com",
+    name: t('companyName'),
+    address: t('address'),
+    postalCode: t('postalCode'),
+    phone: t('phone'),
+    email: t('email'),
     businessHours: {
-      weekdays: "10:00 ~ 20:00",
-      saturday: "10:00 ~ 17:00",
-      sunday: "휴무"
+      weekdays: t('weekdaysTime'),
+      saturday: t('saturdayTime'),
+      sunday: t('sundayTime')
     },
     latitude: 37.6290,
     longitude: 126.9205
@@ -26,8 +28,8 @@ export default function LocationPage() {
     <div className="w-full overflow-x-hidden">
       {/* 페이지 배너 */}
       <PageBanner 
-        title="오시는 길"
-        subtitle="FAIR인사노무컨설팅 위치 안내"
+        title={t('title')}
+        subtitle={t('subtitle')}
         backgroundImage="/FAIR000.png"
       />
 
@@ -65,20 +67,20 @@ export default function LocationPage() {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl">기본 정보</CardTitle>
+                  <CardTitle className="text-xl">{t('basicInfo')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-foreground mb-3">{locationInfo.name}</h4>
                     <div className="space-y-2 text-sm text-muted-foreground">
                       <p>
-                        <span className="font-medium text-foreground">주소:</span> {locationInfo.address}
+                        <span className="font-medium text-foreground">{t('addressLabel')}</span> {locationInfo.address}
                       </p>
                       <p>
-                        <span className="font-medium text-foreground">전화:</span> <a href={`tel:${locationInfo.phone}`} className="text-primary hover:underline">{locationInfo.phone}</a>
+                        <span className="font-medium text-foreground">{t('phoneLabel')}</span> <a href={`tel:${locationInfo.phone}`} className="text-primary hover:underline">{locationInfo.phone}</a>
                       </p>
                       <p>
-                        <span className="font-medium text-foreground">이메일:</span> <a href={`mailto:${locationInfo.email}`} className="text-primary hover:underline">{locationInfo.email}</a>
+                        <span className="font-medium text-foreground">{t('emailLabel')}</span> <a href={`mailto:${locationInfo.email}`} className="text-primary hover:underline">{locationInfo.email}</a>
                       </p>
                     </div>
                   </div>
@@ -87,20 +89,20 @@ export default function LocationPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl">운영시간</CardTitle>
+                  <CardTitle className="text-xl">{t('businessHours')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">평일</span>
+                      <span className="text-muted-foreground">{t('weekdays')}</span>
                       <span className="font-medium">{locationInfo.businessHours.weekdays}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">토요일</span>
+                      <span className="text-muted-foreground">{t('saturday')}</span>
                       <span className="font-medium">{locationInfo.businessHours.saturday}</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-muted-foreground">일요일/공휴일</span>
+                      <span className="text-muted-foreground">{t('sunday')}</span>
                       <span className="font-medium text-red-500">{locationInfo.businessHours.sunday}</span>
                     </div>
                   </div>

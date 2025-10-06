@@ -1,0 +1,102 @@
+{
+  "title": "お問い合わせ",
+  "subtitle": "専門家と直接ご相談ください",
+  "description": "オンライン相談申請または電話、メールでお問い合わせください。26年のベテラン労務士が直接相談いたします。",
+  "contactInfo": {
+    "title": "連絡先情報",
+    "phone": {
+      "label": "電話お問い合わせ・予約",
+      "value": "02-387-9869",
+      "description": "平日 10:00 ~ 20:00、土曜日 10:00 ~ 17:00"
+    },
+    "email": {
+      "label": "メールお問い合わせ",
+      "value": "fairhr@nate.com",
+      "description": "24時間受付可能"
+    },
+    "address": {
+      "label": "訪問相談",
+      "value": "ソウル特別市恩平区鎮寛3路22 パーク&タワーB棟412号",
+      "description": "(九把発駅1番出口から徒歩15分)"
+    }
+  },
+  "form": {
+    "title": "オンライン相談申請",
+    "subtitle": "下記のフォームにご記入いただければ、迅速にご連絡いたします",
+    "fields": {
+      "companyName": {
+        "label": "会社名",
+        "placeholder": "会社名をご入力ください",
+        "error": "会社名は2文字以上でご入力ください。"
+      },
+      "name": {
+        "label": "お名前",
+        "placeholder": "お名前をご入力ください",
+        "error": "お名前は2文字以上でご入力ください。"
+      },
+      "contact": {
+        "label": "連絡先",
+        "placeholder": "010-1234-5678",
+        "error": "正しい電話番号をご入力ください。（例：010-1234-5678）"
+      },
+      "email": {
+        "label": "メールアドレス",
+        "placeholder": "example@company.com",
+        "error": "正しいメールアドレスをご入力ください。"
+      },
+      "message": {
+        "label": "相談依頼内容",
+        "placeholder": "相談したい内容を詳しくご記入ください",
+        "error": "依頼内容は10文字以上でご入力ください。"
+      },
+      "attachment": {
+        "label": "添付ファイル",
+        "description": "関連資料がございましたら添付してください（最大5MB）",
+        "supportedFormats": "対応形式：PDF、JPG、PNG、DOC、DOCX",
+        "sizeError": "ファイルサイズは5MBを超えることはできません。",
+        "typeError": "対応ファイル形式：PDF、JPG、PNG、DOC、DOCX"
+      }
+    },
+    "submit": "相談申請する",
+    "submitting": "送信中...",
+    "success": "相談申請が完了しました。迅速にご連絡いたします。",
+    "error": "相談申請中にエラーが発生しました。再度お試しください。",
+    "serviceInfo": {
+      "title": "サービス案内",
+      "item1": "すべてのサービスは企業対象に提供されます。",
+      "item2": "相談は予約制で進行され、電話で事前予約をお願いします。",
+      "item3": "企業相談は有料で進行されます（10万円、付加価値税別途）。",
+      "item4": "依頼受付後営業日基準1〜2日以内にご連絡いたします。"
+    }
+  },
+  "businessHours": {
+    "title": "相談・サービス時間",
+    "weekdays": "平日",
+    "saturday": "土曜日",
+    "sunday": "日曜日・祝日",
+    "weekdaysTime": "10:00 - 20:00",
+    "saturdayTime": "10:00 - 17:00",
+    "sundayTime": "休業",
+    "note1": "* 相談は予約制で進行され、事前予約必須です。",
+    "note2": "* 企業相談は有料で進行されます（10万円、付加価値税別途）。",
+    "note3": "* 講義およびコンサルティング日程は別途協議可能です。"
+  },
+  "quickContact": {
+    "title": "クイック連絡",
+    "phone": {
+      "title": "電話相談",
+      "description": "専門家とすぐに相談",
+      "action": "電話する"
+    },
+    "email": {
+      "title": "メールお問い合わせ",
+      "description": "詳細内容をメールで",
+      "action": "メール送信"
+    },
+    "visit": {
+      "title": "訪問相談",
+      "description": "直接訪問して相談",
+      "action": "場所を見る"
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "hero": {
+    "slide1": {
+      "title": "노무 문제, 명쾌한 해결",
+      "subtitle": "FAIR인사노무컨설팅",
+      "text": "전문적인 상담으로 최적의 솔루션을",
+      "highlight": "26년차 베테랑 노무사의 전문성"
+    },
+    "slide2": {
+      "title": "200건 이상 수행한 사건의 압도적 승소율",
+      "subtitle": "검증된 실력",
+      "text": "노동위원회, 행정심판에서",
+      "highlight": "뛰어난 성과 달성"
+    },
+    "slide3": {
+      "title": "김&장 출신의 전문성",
+      "subtitle": "",
+      "text": "",
+      "highlight": "최고 수준의 전문성"
+    },
+    "videoNotSupported": "영상을 지원하지 않는 브라우저입니다.",
+    "description": "FAIR인사노무컨설팅이 전문적인 상담으로 최적의 솔루션을 제공합니다.",
+    "partner": "당신의 든든한 파트너",
+    "quickConsultation": "빠른 상담 신청",
+    "browseServices": "서비스 둘러보기"
+  },
+  "services": {
+    "title": "주요 서비스",
+    "subtitle": "FAIR인사노무컨설팅이 제공하는 전문 서비스",
+    "viewAll": "모든 서비스 보기",
+    "items": {
+      "laborConsulting": {
+        "title": "노동법 자문",
+        "description": "기업 운영 전반의 노동법률 리스크 예방 및 대응"
+      },
+      "payroll": {
+        "title": "급여 아웃소싱 및 4대보험",
+        "description": "정확하고 효율적인 급여 관리 및 4대보험 업무 대행"
+      },
+      "hrConsulting": {
+        "title": "인사노무 컨설팅",
+        "description": "기업 맞춤형 인사제도 설계 및 운영 지원"
+      },
+      "industrialAccident": {
+        "title": "산업재해",
+        "description": "산업재해 발생 시 신속한 대응 및 보상 절차 지원"
+      },
+      "unfairDismissal": {
+        "title": "부당해고 및 징계",
+        "description": "부당해고, 부당징계 등 노동위원회 사건 대리"
+      },
+      "workplaceHarassment": {
+        "title": "직장 내 괴롭힘 및 성희롱",
+        "description": "직장 내 괴롭힘 예방 및 발생 시 조사, 처리 지원"
+      },
+      "globalConsulting": {
+        "title": "글로벌 기업 자문",
+        "description": "다국적 기업의 국내 진출 및 운영에 필요한 종합 노무 자문 서비스"
+      }
+    }
+  },
+  "features": {
+    "title": "FAIR인사노무컨설팅의 강점",
+    "subtitle": "왜 FAIR를 선택해야 하는가",
+    "items": {
+      "experience": {
+        "title": "풍부한 경험",
+        "description": "26년간 축적된 노무 전문성과 다양한 사례 경험"
+      },
+      "expertise": {
+        "title": "전문성",
+        "description": "김&장 출신의 검증된 전문성과 최신 법률 지식"
+      },
+      "trust": {
+        "title": "신뢰성",
+        "description": "고객 중심의 투명하고 정직한 상담 서비스"
+      },
+      "results": {
+        "title": "실적",
+        "description": "200건 이상의 사건 수행과 높은 승소율"
+      }
+    }
+  },
+  "stats": {
+    "title": "숫자로 보는 FAIR",
+    "experience": {
+      "value": "26년",
+      "label": "노무 경력"
+    },
+    "cases": {
+      "value": "200+",
+      "label": "수행 사건"
+    },
+    "clients": {
+      "value": "100+",
+      "label": "기업 고객"
+    },
+    "satisfaction": {
+      "value": "98%",
+      "label": "고객 만족도"
+    }
+  },
+  "cta": {
+    "title": "노무 문제로 고민하고 계신가요?",
+    "subtitle": "지금 바로 전문가와 상담하세요",
+    "description": "FAIR인사노무컨설팅이 최적의 솔루션을 제공합니다",
+    "button": "무료 상담 신청",
+    "phone": "전화 상담",
+    "phoneNumber": "02-1234-5678",
+    "expertHelp": "전문가의 도움이 필요하신가요?",
+    "contactNow": "망설이지 말고 지금 바로 FAIR인사노무컨설팅에 문의하세요.",
+    "phoneConsultation": "전화 상담:",
+    "onlineConsultation": "온라인 상담 바로가기"
+  },
+  "news": {
+    "title": "최신 소식",
+    "subtitle": "FAIR인사노무컨설팅의 새로운 소식을 확인하세요",
+    "viewAll": "전체 보기",
+    "noNews": "등록된 소식이 없습니다",
+    "readMore": "자세히 보기"
+  },
+  "newsletter": {
+    "title": "노동법",
+    "titleSuffix": "주간지",
+    "subtitle": "매월 발행되는 전문 노동법 주간지를 무료로 다운로드하세요.",
+    "description": "한글판과 영어판을 모두 제공하여 해외 기업도 쉽게 활용할 수 있습니다.",
+    "koreanVersion": "한국어판",
+    "englishVersion": "영어판",
+    "published": "개 발행",
+    "preparing": "준비중",
+    "noNewsletter": "아직 발행된 주간지가 없습니다.",
+    "viewAll": "전체 뉴스레터 보기",
+    "download": "다운로드",
+    "fairNewsletter": "FAIR 뉴스레터",
+    "moreLink": "더보기 →"
+  },
+  "clients": {
+    "title": "200여 외국계 기업이 선택한 전문가",
+    "subtitle": "2005년부터 26년간 글로벌 기업들의 신뢰받는 파트너",
+    "stats": {
+      "companies": {
+        "value": "200+",
+        "label": "외국계 기업"
+      },
+      "experience": {
+        "value": "26년",
+        "label": "전문 경험"
+      }
+    },
+    "partnersTitle": "함께한 글로벌 기업들",
+    "partnersSubtitle": "신뢰받는 파트너로 함께 성장해온 기업들"
+  },
+  "board": {
+    "title": "공지사항",
+    "moreLink": "더보기 →",
+    "noNotices": "등록된 공지사항이 없습니다."
+  },
+  "location": {
+    "title": "오시는 길",
+    "subtitle": "FAIR인사노무컨설팅을 방문해주세요",
+    "address": "서울특별시 강남구 테헤란로 123",
+    "viewDetails": "상세 위치 보기"
+  },
+  "company": {
+    "title": "을 선택하는 이유",
+    "companyName": "FAIR인사노무컨설팅",
+    "subtitle": "치밀한 논리와 철저한 준비로 고객의 성공을 이끌어온 26년의 경험",
+    "cards": {
+      "winRate": {
+        "title": "200건+ 압도적 승소율",
+        "subtitle": "검증된 실력",
+        "description": "노동위원회, 행정심판, 산재사건 등에서 뛰어난 성과를 달성했습니다."
+      },
+      "experience": {
+        "title": "2005년 설립, 26년차 경험",
+        "subtitle": "신뢰받는 파트너",
+        "description": "국내외 100여 업체의 신뢰받는 파트너로서 최적의 솔루션을 제공합니다."
+      },
+      "expertise": {
+        "title": "김&장 출신 전문성",
+        "subtitle": "최고 수준의 노하우",
+        "description": "기업 자문 및 컨설팅 경험 20년 이상의 전문성을 바탕으로 합니다."
+      }
+    }
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "hero": {
+    "slide1": {
+      "title": "Clear Solutions for Labor Issues",
+      "subtitle": "FAIR HR Consulting",
+      "text": "Optimal solutions through professional consultation",
+      "highlight": "26 years of veteran labor consultant expertise"
+    },
+    "slide2": {
+      "title": "Overwhelming Win Rate in Over 200 Cases",
+      "subtitle": "Proven Track Record",
+      "text": "At Labor Relations Commission and Administrative Appeals",
+      "highlight": "Outstanding Performance Achieved"
+    },
+    "slide3": {
+      "title": "Expertise from Kim & Chang",
+      "subtitle": "",
+      "text": "",
+      "highlight": "Top-tier Professional Expertise"
+    },
+    "videoNotSupported": "Your browser does not support the video tag.",
+    "description": "FAIR HR Consulting provides optimal solutions through professional consultation.",
+    "partner": "Your Reliable Partner",
+    "quickConsultation": "Request Quick Consultation",
+    "browseServices": "Browse Services"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Professional services provided by FAIR HR Consulting",
+    "viewAll": "View All Services",
+    "items": {
+      "laborConsulting": {
+        "title": "Labor Law Consulting",
+        "description": "Prevention and response to labor law risks in overall business operations"
+      },
+      "payroll": {
+        "title": "Payroll Outsourcing & Insurance",
+        "description": "Accurate and efficient payroll management and 4 major insurance services"
+      },
+      "hrConsulting": {
+        "title": "HR Consulting",
+        "description": "Customized HR system design and operational support"
+      },
+      "industrialAccident": {
+        "title": "Industrial Accident",
+        "description": "Rapid response and compensation process support for industrial accidents"
+      },
+      "unfairDismissal": {
+        "title": "Unfair Dismissal & Discipline",
+        "description": "Representation in labor commission cases including unfair dismissal"
+      },
+      "workplaceHarassment": {
+        "title": "Workplace Harassment",
+        "description": "Prevention and investigation support for workplace harassment"
+      }
+    }
+  },
+  "features": {
+    "title": "Why Choose FAIR",
+    "subtitle": "Our Strengths",
+    "items": {
+      "experience": {
+        "title": "Rich Experience",
+        "description": "26 years of accumulated labor expertise and diverse case experience"
+      },
+      "expertise": {
+        "title": "Expertise",
+        "description": "Proven expertise from Kim & Chang and latest legal knowledge"
+      },
+      "trust": {
+        "title": "Reliability",
+        "description": "Customer-centered transparent and honest consulting service"
+      },
+      "results": {
+        "title": "Track Record",
+        "description": "Over 200 cases handled with high win rate"
+      }
+    }
+  },
+  "stats": {
+    "title": "FAIR by Numbers",
+    "experience": {
+      "value": "26 Years",
+      "label": "Labor Experience"
+    },
+    "cases": {
+      "value": "200+",
+      "label": "Cases Handled"
+    },
+    "clients": {
+      "value": "100+",
+      "label": "Corporate Clients"
+    },
+    "satisfaction": {
+      "value": "98%",
+      "label": "Client Satisfaction"
+    }
+  },
+  "cta": {
+    "title": "Concerned About Labor Issues?",
+    "subtitle": "Consult with an expert now",
+    "description": "FAIR HR Consulting provides optimal solutions",
+    "button": "Request Free Consultation",
+    "phone": "Phone Consultation",
+    "phoneNumber": "02-1234-5678",
+    "expertHelp": "Need Expert Assistance?",
+    "contactNow": "Don't hesitate to contact FAIR HR Consulting right now.",
+    "phoneConsultation": "Phone Consultation:",
+    "onlineConsultation": "Go to Online Consultation"
+  },
+  "news": {
+    "title": "Latest News",
+    "subtitle": "Check out the latest news from FAIR HR Consulting",
+    "viewAll": "View All",
+    "noNews": "No news available",
+    "readMore": "Read More"
+  },
+  "newsletter": {
+    "title": "Labor Law",
+    "titleSuffix": "Weekly",
+    "subtitle": "Download professional labor law weekly publications for free every month.",
+    "description": "Available in both Korean and English versions for easy use by international companies.",
+    "koreanVersion": "Korean Edition",
+    "englishVersion": "English Edition",
+    "published": " published",
+    "preparing": "Coming Soon",
+    "noNewsletter": "No weekly publications have been released yet.",
+    "viewAll": "View All Newsletters",
+    "download": "Download",
+    "fairNewsletter": "FAIR Newsletter",
+    "moreLink": "View More →"
+  },
+  "clients": {
+    "title": "Expert Chosen by 200+ Foreign Companies",
+    "subtitle": "Trusted partner to global companies for 26 years since 2005",
+    "stats": {
+      "companies": {
+        "value": "200+",
+        "label": "Foreign Companies"
+      },
+      "experience": {
+        "value": "26 Years",
+        "label": "Professional Experience"
+      }
+    },
+    "partnersTitle": "Global Companies We've Worked With",
+    "partnersSubtitle": "Companies that have grown together as trusted partners"
+  },
+  "board": {
+    "title": "Announcements",
+    "moreLink": "View More →",
+    "noNotices": "No announcements available."
+  },
+  "location": {
+    "title": "Location",
+    "subtitle": "Visit FAIR HR Consulting",
+    "address": "123 Teheran-ro, Gangnam-gu, Seoul",
+    "viewDetails": "View Detailed Location"
+  },
+  "company": {
+    "title": " Selection Reasons",
+    "companyName": "Why Choose FAIR HR Consulting",
+    "subtitle": "26 years of experience leading client success through meticulous logic and thorough preparation",
+    "cards": {
+      "winRate": {
+        "title": "200+ Cases, Outstanding Win Rate",
+        "subtitle": "Proven Track Record",
+        "description": "Achieved excellent results in labor relations committees, administrative appeals, and industrial accident cases."
+      },
+      "experience": {
+        "title": "Established 2005, 26 Years Experience",
+        "subtitle": "Trusted Partner",
+        "description": "Providing optimal solutions as a trusted partner to over 100 domestic and international companies."
+      },
+      "expertise": {
+        "title": "Kim & Chang Alumni Expertise",
+        "subtitle": "Top-tier Know-how",
+        "description": "Based on over 20 years of expertise in corporate advisory and consulting experience."
+      }
+    }
+  }
+}
