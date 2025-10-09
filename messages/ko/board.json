@@ -23,5 +23,6 @@
     "title": "등록된 공지사항이 없습니다",
     "description": "새로운 공지사항이 등록되면 여기에 표시됩니다."
   },
-  "loading": "로딩 중..."
+  "loading": "Loading...",
+  "moreLink": "더 많은 소식 보기"
 }

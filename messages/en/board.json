@@ -23,5 +23,6 @@
     "title": "No announcements registered",
     "description": "New announcements will be displayed here when registered."
   },
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "moreLink": "View More News"
 }

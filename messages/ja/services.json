@@ -3,6 +3,20 @@
   "subtitle": "FAIR人事労務コンサルティングが提供する専門サービス",
   "description": "労働法相談、給与アウトソーシング、4大保険、産業災害、不当解雇、職場内いじめなど専門サービスをご案内します。グローバル企業相談専門。",
   "viewDetails": "詳細を見る",
+  "items": {
+    "globalConsulting": {
+      "title": "グローバル企業相談",
+      "description": "多国籍企業の韓国進出および現地労務管理専門コンサルティング"
+    },
+    "overseasDispatch": {
+      "title": "海外人材派遣",
+      "description": "国際企業の人材派遣および駐在員労務管理専門サービス"
+    },
+    "internationalContracts": {
+      "title": "国際契約相談",
+      "description": "海外進出企業のための現地雇用契約および労務規定相談"
+    }
+  },
   "services": [
     {
       "id": "labor-consulting",

@@ -28,7 +28,9 @@
     "title": "문의하기",
     "subtitle": "궁금한 점이 있으시면 언제든지 문의해주세요",
     "form": {
-      "name": {
+      "title": "직접 질문하기",
+      "fields": {
+        "name": {
         "label": "이름",
         "placeholder": "이름을 입력해주세요",
         "error": "이름은 2자 이상 입력해주세요."
@@ -53,17 +55,19 @@
         "placeholder": "궁금한 내용을 자세히 작성해주세요",
         "error": "문의 내용은 10자 이상 입력해주세요."
       },
-      "isPrivate": {
-        "label": "비공개 문의",
-        "description": "비공개 문의 시 비밀번호를 설정해주세요"
+        "isPrivate": {
+          "label": "비밀글로 등록하기"
+        },
+        "password": {
+          "label": "비밀번호 (4자리 이상)",
+          "placeholder": "비밀번호를 입력해주세요",
+          "show": "표시",
+          "hide": "숨김",
+          "error": "비공개 문의 시 비밀번호는 4자 이상 입력해주세요."
+        }
       },
-      "password": {
-        "label": "비밀번호",
-        "placeholder": "4자리 이상 입력",
-        "error": "비공개 문의 시 비밀번호는 4자 이상 입력해주세요."
-      },
-      "submit": "문의하기",
-      "submitting": "전송 중...",
+      "submit": "문의 등록",
+      "submitting": "등록 중...",
       "success": "문의 등록 성공",
       "successDescription": "문의사항이 성공적으로 등록되었습니다. 빠른 시일 내에 답변드리겠습니다.",
       "error": "문의 전송 중 오류가 발생했습니다."

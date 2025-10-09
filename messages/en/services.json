@@ -1,8 +1,22 @@
 {
-  "title": "Our Services",
+  "title": "Main Services",
   "subtitle": "Professional services provided by FAIR HR Consulting",
-  "description": "We provide expert services including labor law consulting, payroll outsourcing, 4 major insurances, industrial accidents, unfair dismissal, workplace harassment, etc. Specialized in global corporate consulting.",
+  "description": "We provide specialized services including labor law consulting, payroll outsourcing, four major insurances, industrial accidents, unfair dismissal, and workplace harassment. Specialized in global corporate consulting.",
   "viewDetails": "View Details",
+  "items": {
+    "globalConsulting": {
+      "title": "Global Corporate Consulting",
+      "description": "Specialized consulting for multinational companies entering Korea and local labor management"
+    },
+    "overseasDispatch": {
+      "title": "Overseas Personnel Dispatch",
+      "description": "Professional services for international corporate personnel dispatch and expatriate labor management"
+    },
+    "internationalContracts": {
+      "title": "International Contract Advisory",
+      "description": "Local employment contract and labor regulation advisory for companies expanding overseas"
+    }
+  },
   "services": [
     {
       "id": "labor-consulting",

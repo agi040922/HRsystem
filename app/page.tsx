@@ -21,14 +21,14 @@ export default function NewHomePage() {
     },
     {
       icon: FileText,
-      title: "해외 인력 파견",
-      description: "국제 기업의 인력 파견 및 주재원 노무 관리 전문 서비스",
+      title: t('services.items.overseasDispatch.title'),
+      description: t('services.items.overseasDispatch.description'),
       href: "/services#overseas-dispatch",
     },
     {
       icon: Users,
-      title: "국제 계약 자문",
-      description: "해외 진출 기업을 위한 현지 고용 계약 및 노무 규정 자문",
+      title: t('services.items.internationalContracts.title'),
+      description: t('services.items.internationalContracts.description'),
       href: "/services#international-contracts",
     },
   ]

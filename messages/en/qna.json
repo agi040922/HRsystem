@@ -28,7 +28,9 @@
     "title": "Make an Inquiry",
     "subtitle": "Please feel free to contact us if you have any questions",
     "form": {
-      "name": {
+      "title": "Ask a Question Directly",
+      "fields": {
+        "name": {
         "label": "Name",
         "placeholder": "Please enter your name",
         "error": "Name must be at least 2 characters long."
@@ -48,23 +50,25 @@
         "placeholder": "Please enter inquiry title",
         "error": "Title must be at least 5 characters long."
       },
-      "content": {
-        "label": "Inquiry Content",
-        "placeholder": "Please write your inquiry in detail",
-        "error": "Inquiry content must be at least 10 characters long."
-      },
-      "isPrivate": {
-        "label": "Private Inquiry",
-        "description": "Please set a password for private inquiries"
-      },
-      "password": {
-        "label": "Password",
-        "placeholder": "Enter at least 4 characters",
-        "error": "Password must be at least 4 characters long for private inquiries."
+        "content": {
+          "label": "Inquiry Content",
+          "placeholder": "Please write your inquiry in detail",
+          "error": "Inquiry content must be at least 10 characters long."
+        },
+        "isPrivate": {
+          "label": "Register as Private Post"
+        },
+        "password": {
+          "label": "Password (4+ characters)",
+          "placeholder": "Please enter password",
+          "show": "Show",
+          "hide": "Hide",
+          "error": "Password must be at least 4 characters for private inquiries."
+        }
       },
       "submit": "Submit Inquiry",
-      "submitting": "Sending...",
-      "success": "Inquiry submitted successfully",
+      "submitting": "Submitting...",
+      "success": "Inquiry Registered Successfully",
       "successDescription": "Your inquiry has been successfully registered. We will respond as soon as possible.",
       "error": "An error occurred while sending your inquiry."
     }

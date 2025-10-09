@@ -3,6 +3,20 @@
   "subtitle": "FAIR인사노무컨설팅이 제공하는 전문 서비스",
   "description": "노동법 자문, 급여 아웃소싱, 4대보험, 산업재해, 부당해고, 직장 내 괴롭힘 등 전문 서비스를 안내합니다. 글로벌 기업 자문 전문.",
   "viewDetails": "상세 내용 보기",
+  "items": {
+    "globalConsulting": {
+      "title": "글로벌 기업 자문",
+      "description": "다국적 기업의 한국 진출 및 현지 노무 관리 전문 컨설팅"
+    },
+    "overseasDispatch": {
+      "title": "해외 인력 파견",
+      "description": "국제 기업의 인력 파견 및 주재원 노무 관리 전문 서비스"
+    },
+    "internationalContracts": {
+      "title": "국제 계약 자문",
+      "description": "해외 진출 기업을 위한 현지 고용 계약 및 노무 규정 자문"
+    }
+  },
   "services": [
     {
       "id": "labor-consulting",

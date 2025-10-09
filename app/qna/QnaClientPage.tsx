@@ -37,11 +37,11 @@ const qnaFormSchema = z
 type QnaFormValues = z.infer<typeof qnaFormSchema>
 
 export default function QnaClientPage() {
-  const t = useTranslations('qna')
+  const t = useTranslations()
   const { toast } = useToast()
   const [showPassword, setShowPassword] = useState(false)
   
-  const faqQuestions = t.raw('faq.questions') as Array<{
+  const faqQuestions = t.raw('qna.faq.questions') as Array<{
     question: string
     answer: string
   }>
@@ -66,8 +66,8 @@ export default function QnaClientPage() {
     console.log("Q&A 제출 데이터:", data)
     await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate API call
     toast({
-      title: t('inquiry.form.success'),
-      description: t('inquiry.form.successDescription') || "문의사항이 성공적으로 등록되었습니다. 빠른 시일 내에 답변드리겠습니다.",
+      title: t('qna.inquiry.form.success'),
+      description: t('qna.inquiry.form.successDescription') || "문의사항이 성공적으로 등록되었습니다. 빠른 시일 내에 답변드리겠습니다.",
     })
     reset() // 폼 초기화
     setShowPassword(false)
@@ -77,8 +77,8 @@ export default function QnaClientPage() {
     <div className="w-full overflow-x-hidden">
       {/* 페이지 배너 */}
       <PageBanner 
-        title={t('title')}
-        subtitle={t('subtitle')}
+        title={t('qna.title')}
+        subtitle={t('qna.subtitle')}
         backgroundImage="/FAIR000.png"
       />
       
@@ -86,7 +86,7 @@ export default function QnaClientPage() {
 
       <section id="faq" className="mb-16">
         <h2 className="text-3xl font-semibold mb-8 text-center flex items-center justify-center gap-2">
-          <HelpCircle className="w-7 h-7 text-primary" /> {t('faq.title')}
+          <HelpCircle className="w-7 h-7 text-primary" /> {t('qna.faq.title')}
         </h2>
         <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
           {faqQuestions.map((item, index) => (
@@ -108,7 +108,7 @@ export default function QnaClientPage() {
 
       <section id="qna-form">
         <h2 className="text-3xl font-semibold mb-8 text-center flex items-center justify-center gap-2">
-          <Send className="w-7 h-7 text-primary" /> 직접 질문하기
+          <Send className="w-7 h-7 text-primary" /> {t('qna.inquiry.form.title')}
         </h2>
         <motion.form
           initial={{ opacity: 0, y: 30 }}
@@ -119,28 +119,28 @@ export default function QnaClientPage() {
           className="max-w-2xl mx-auto space-y-6 p-6 border rounded-lg bg-card shadow-lg" // shadow 추가
         >
           <div>
-            <Label htmlFor="name">이름</Label>
-            <Input id="name" {...register("name")} />
+            <Label htmlFor="name">{t('qna.inquiry.form.fields.name.label')}</Label>
+            <Input id="name" placeholder={t('qna.inquiry.form.fields.name.placeholder')} {...register("name")} />
             {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name.message}</p>}
           </div>
           <div>
-            <Label htmlFor="contact">연락처 (휴대폰)</Label>
-            <Input id="contact" placeholder="010-1234-5678" {...register("contact")} />
+            <Label htmlFor="contact">{t('qna.inquiry.form.fields.contact.label')}</Label>
+            <Input id="contact" placeholder={t('qna.inquiry.form.fields.contact.placeholder')} {...register("contact")} />
             {errors.contact && <p className="text-sm text-red-500 mt-1">{errors.contact.message}</p>}
           </div>
           <div>
-            <Label htmlFor="email">이메일</Label>
-            <Input id="email" type="email" {...register("email")} />
+            <Label htmlFor="email">{t('qna.inquiry.form.fields.email.label')}</Label>
+            <Input id="email" type="email" placeholder={t('qna.inquiry.form.fields.email.placeholder')} {...register("email")} />
             {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>}
           </div>
           <div>
-            <Label htmlFor="title">제목</Label>
-            <Input id="title" {...register("title")} />
+            <Label htmlFor="title">{t('qna.inquiry.form.fields.title.label')}</Label>
+            <Input id="title" placeholder={t('qna.inquiry.form.fields.title.placeholder')} {...register("title")} />
             {errors.title && <p className="text-sm text-red-500 mt-1">{errors.title.message}</p>}
           </div>
           <div>
-            <Label htmlFor="content">문의 내용</Label>
-            <Textarea id="content" rows={5} {...register("content")} />
+            <Label htmlFor="content">{t('qna.inquiry.form.fields.content.label')}</Label>
+            <Textarea id="content" rows={5} placeholder={t('qna.inquiry.form.fields.content.placeholder')} {...register("content")} />
             {errors.content && <p className="text-sm text-red-500 mt-1">{errors.content.message}</p>}
           </div>
           <div className="flex items-center space-x-2">
@@ -153,14 +153,14 @@ export default function QnaClientPage() {
               htmlFor="isPrivate"
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              비밀글로 등록하기
+              {t('qna.inquiry.form.fields.isPrivate.label')}
             </Label>
           </div>
           {isPrivateChecked && (
             <div>
-              <Label htmlFor="password">비밀번호 (4자리 이상)</Label>
+              <Label htmlFor="password">{t('qna.inquiry.form.fields.password.label')}</Label>
               <div className="relative">
-                <Input id="password" type={showPassword ? "text" : "password"} {...register("password")} />
+                <Input id="password" type={showPassword ? "text" : "password"} placeholder={t('qna.inquiry.form.fields.password.placeholder')} {...register("password")} />
                 <Button
                   type="button"
                   variant="ghost"
@@ -168,14 +168,14 @@ export default function QnaClientPage() {
                   className="absolute right-1 top-1/2 -translate-y-1/2 h-7"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? "숨김" : "표시"}
+                  {showPassword ? t('qna.inquiry.form.fields.password.hide') : t('qna.inquiry.form.fields.password.show')}
                 </Button>
               </div>
               {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password.message}</p>}
             </div>
           )}
           <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? "등록 중..." : "문의 등록"}
+            {isSubmitting ? t('qna.inquiry.form.submitting') : t('qna.inquiry.form.submit')}
           </Button>
         </motion.form>
       </section>

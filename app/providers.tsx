@@ -270,6 +270,20 @@ const getInitialMessages = (locale: string) => {
       title: "주요 서비스",
       subtitle: "FAIR인사노무컨설팅이 제공하는 전문 서비스",
       viewDetails: "상세 내용 보기",
+      items: {
+        globalConsulting: {
+          title: "글로벌 기업 자문",
+          description: "다국적 기업의 한국 진출 및 현지 노무 관리 전문 컨설팅"
+        },
+        overseasDispatch: {
+          title: "해외 인력 파견",
+          description: "국제 기업의 인력 파견 및 주재원 노무 관리 전문 서비스"
+        },
+        internationalContracts: {
+          title: "국제 계약 자문",
+          description: "해외 진출 기업을 위한 현지 고용 계약 및 노무 규정 자문"
+        }
+      },
       services: [],
       whyChoose: {
         title: "FAIR를 선택하는 이유",
@@ -298,7 +312,8 @@ const getInitialMessages = (locale: string) => {
         important: "중요",
         readMore: "자세히 보기"
       },
-      loading: "로딩 중..."
+      loading: "로딩 중...",
+      moreLink: "더 많은 소식 보기"
     },
     // qna.json 키들 추가
     qna: {
@@ -310,13 +325,48 @@ const getInitialMessages = (locale: string) => {
       },
       inquiry: {
         title: "문의하기",
+        subtitle: "궁금한 점이 있으시면 언제든지 문의해주세요",
         form: {
-          name: { label: "이름", error: "이름은 2자 이상 입력해주세요." },
-          contact: { label: "연락처", error: "올바른 휴대폰 번호를 입력해주세요." },
-          email: { label: "이메일", error: "올바른 이메일 주소를 입력해주세요." },
-          title: { label: "제목", error: "제목은 5자 이상 입력해주세요." },
-          content: { label: "문의 내용", error: "문의 내용은 10자 이상 입력해주세요." },
-          submit: "문의하기"
+          title: "직접 질문하기",
+          fields: {
+            name: { 
+              label: "이름", 
+              placeholder: "이름을 입력해주세요",
+              error: "이름은 2자 이상 입력해주세요." 
+            },
+            contact: { 
+              label: "연락처 (휴대폰)", 
+              placeholder: "010-1234-5678",
+              error: "올바른 휴대폰 번호를 입력해주세요." 
+            },
+            email: { 
+              label: "이메일", 
+              placeholder: "example@company.com",
+              error: "올바른 이메일 주소를 입력해주세요." 
+            },
+            title: { 
+              label: "제목", 
+              placeholder: "문의 제목을 입력해주세요",
+              error: "제목은 5자 이상 입력해주세요." 
+            },
+            content: { 
+              label: "문의 내용", 
+              placeholder: "궁금한 내용을 자세히 작성해주세요",
+              error: "문의 내용은 10자 이상 입력해주세요." 
+            },
+            isPrivate: {
+              label: "비밀글로 등록하기"
+            },
+            password: {
+              label: "비밀번호 (4자리 이상)",
+              placeholder: "비밀번호를 입력해주세요",
+              show: "표시",
+              hide: "숨김",
+              error: "비공개 문의 시 비밀번호는 4자 이상 입력해주세요."
+            }
+          },
+          submit: "문의 등록",
+          submitting: "등록 중..."
         }
       }
     },
