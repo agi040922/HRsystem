@@ -55,6 +55,36 @@
         "supportedFormats": "지원 파일: PDF, JPG, PNG, DOC, DOCX",
         "sizeError": "파일 크기는 5MB를 초과할 수 없습니다.",
         "typeError": "지원되는 파일 형식: PDF, JPG, PNG, DOC, DOCX"
+      },
+      "employeeCount": {
+        "label": "직원 수",
+        "placeholder": "직원 규모를 선택해주세요",
+        "error": "직원 규모를 선택해주세요.",
+        "options": {
+          "under10": "10인 미만",
+          "10to50": "10~50인",
+          "50to100": "50~100인",
+          "100to300": "100~300인",
+          "over300": "300인 이상"
+        }
+      },
+      "interestedServices": {
+        "label": "관심 서비스 (중복 선택 가능)",
+        "error": "관심 서비스를 1개 이상 선택해주세요.",
+        "options": {
+          "advisory": "노무 자문 / FAIR CRM",
+          "diagnosis": "인사노무 진단",
+          "safety": "산업안전보건관리",
+          "payroll": "급여 아웃소싱 / 4대보험",
+          "dispute": "노동위원회 / 분쟁 대응",
+          "harassment": "직장 내 괴롭힘",
+          "other": "기타"
+        }
+      },
+      "privacyConsent": {
+        "label": "개인정보 수집·이용에 동의합니다 (필수)",
+        "description": "수집 항목: 회사명, 성함, 연락처, 이메일, 상담 내용 / 이용 목적: 상담 회신 / 보유 기간: 상담 완료 후 1년",
+        "error": "개인정보 수집·이용에 동의해주세요."
       }
     },
     "submit": "상담 신청하기",

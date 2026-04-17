@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
-import { Menu, Briefcase, ChevronDown } from "lucide-react"
+import { Menu, ChevronDown, ExternalLink } from "lucide-react"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -31,6 +31,9 @@ interface NavSubItem {
   title: string
   description: string
 }
+
+// FAIR CRM 플랫폼 로그인 URL (기획서 기준: efm.fairhr.net 외부 링크)
+const CRM_LOGIN_URL = "https://efm.fairhr.net"
 
 // navItems는 이제 컴포넌트 내부에서 번역과 함께 생성됩니다
 
@@ -71,7 +74,34 @@ export default function Header() {
   }
 
   // 번역된 네비게이션 아이템 생성
+  // 기획서 기준: 홈 / FAIR CRM(신규) / 회사소개 / 공지사항 / Q&A / 상담 신청 + 우측 CRM 로그인 버튼
   const navItems: NavItem[] = [
+    {
+      href: "/fair-crm",
+      label: t('mainNav.fairCrm'),
+      children: [
+        {
+          href: "/fair-crm#intro",
+          title: t('fairCrmMenu.intro.title'),
+          description: t('fairCrmMenu.intro.description'),
+        },
+        {
+          href: "/fair-crm#features",
+          title: t('fairCrmMenu.features.title'),
+          description: t('fairCrmMenu.features.description'),
+        },
+        {
+          href: "/fair-crm#pricing",
+          title: t('fairCrmMenu.pricing.title'),
+          description: t('fairCrmMenu.pricing.description'),
+        },
+        {
+          href: "/fair-crm#process",
+          title: t('fairCrmMenu.process.title'),
+          description: t('fairCrmMenu.process.description'),
+        },
+      ],
+    },
     {
       href: "/about/greeting",
       label: t('mainNav.about'),
@@ -95,42 +125,6 @@ export default function Header() {
           href: "/about/location",
           title: t('aboutMenu.location.title'),
           description: t('aboutMenu.location.description'),
-        },
-      ],
-    },
-    {
-      href: "/services",
-      label: t('mainNav.services'),
-      children: [
-        {
-          href: "/services#labor-consulting",
-          title: t('servicesMenu.laborConsulting.title'),
-          description: t('servicesMenu.laborConsulting.description'),
-        },
-        {
-          href: "/services#payroll",
-          title: t('servicesMenu.payroll.title'),
-          description: t('servicesMenu.payroll.description'),
-        },
-        {
-          href: "/services#hr-consulting",
-          title: t('servicesMenu.hrConsulting.title'),
-          description: t('servicesMenu.hrConsulting.description'),
-        },
-        {
-          href: "/services#industrial-accident",
-          title: t('servicesMenu.industrialAccident.title'),
-          description: t('servicesMenu.industrialAccident.description'),
-        },
-        {
-          href: "/services#unfair-dismissal",
-          title: t('servicesMenu.unfairDismissal.title'),
-          description: t('servicesMenu.unfairDismissal.description'),
-        },
-        {
-          href: "/services#workplace-harassment",
-          title: t('servicesMenu.workplaceHarassment.title'),
-          description: t('servicesMenu.workplaceHarassment.description'),
         },
       ],
     },
@@ -198,13 +192,34 @@ export default function Header() {
               )}
             </NavigationMenuList>
           </NavigationMenu>
-          <LanguageSwitcher 
+          <LanguageSwitcher
             currentLocale={currentLocale}
             onLanguageChange={handleLanguageChange}
           />
+          {/* 기존 CRM 고객용 로그인 버튼 — efm.fairhr.net 외부 이동 */}
+          <a
+            href={CRM_LOGIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-primary/30 text-sm font-medium text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            {t('header.crmLogin')}
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
         </div>
-        
-        <div className="lg:hidden">
+
+        <div className="lg:hidden flex items-center gap-2">
+          {/* 모바일: CRM 로그인 아이콘 버튼 (작게) */}
+          <a
+            href={CRM_LOGIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 h-9 px-2.5 rounded-md border border-primary/30 text-xs font-medium text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+            aria-label={t('header.crmLogin')}
+          >
+            CRM
+            <ExternalLink className="h-3 w-3" />
+          </a>
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button 

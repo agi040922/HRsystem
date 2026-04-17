@@ -1,15 +1,35 @@
 {
   "header": {
     "logo": "FAIR인사노무컨설팅",
-    "menu": "메뉴"
+    "menu": "메뉴",
+    "crmLogin": "CRM 로그인"
   },
   "mainNav": {
     "home": "홈",
+    "fairCrm": "FAIR CRM",
     "about": "회사소개",
     "services": "주요 서비스",
     "board": "공지사항",
     "qna": "Q&A",
-    "contact": "상담문의"
+    "contact": "상담 신청"
+  },
+  "fairCrmMenu": {
+    "intro": {
+      "title": "서비스 소개",
+      "description": "FAIR CRM이 어떤 플랫폼인지 확인해 보세요"
+    },
+    "features": {
+      "title": "기능",
+      "description": "자문 이력 축적, 진단 보고서, 산업안전 관리 등 핵심 기능"
+    },
+    "pricing": {
+      "title": "요금제",
+      "description": "기본 서비스와 추가 서비스 요금 안내"
+    },
+    "process": {
+      "title": "도입 절차",
+      "description": "상담 신청부터 계정 발급까지 3단계 프로세스"
+    }
   },
   "aboutMenu": {
     "greeting": {

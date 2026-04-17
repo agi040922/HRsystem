@@ -3,7 +3,10 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { ExternalLink } from "lucide-react"
 import { useTranslations } from 'next-intl'
+
+const CRM_LOGIN_URL = "https://efm.fairhr.net"
 
 export default function CtaSection() {
   const tCta = useTranslations('cta')
@@ -34,12 +37,19 @@ export default function CtaSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3"
           >
             <Link href="/contact">
               <Button size="lg" className="px-8 py-3">
                 {tCta('onlineConsultation')}
               </Button>
             </Link>
+            <a href={CRM_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="px-8 py-3 gap-1.5">
+                {tCta('crmLogin')}
+                <ExternalLink className="h-4 w-4" />
+              </Button>
+            </a>
           </motion.div>
         </motion.div>
       </div>

@@ -1,15 +1,35 @@
 {
   "header": {
     "logo": "FAIR HR Consulting",
-    "menu": "Menu"
+    "menu": "Menu",
+    "crmLogin": "CRM Login"
   },
   "mainNav": {
     "home": "Home",
+    "fairCrm": "FAIR CRM",
     "about": "About Us",
     "services": "Services",
     "board": "Notice",
     "qna": "Q&A",
-    "contact": "Contact"
+    "contact": "Consultation"
+  },
+  "fairCrmMenu": {
+    "intro": {
+      "title": "Service Overview",
+      "description": "See what FAIR CRM can do for your company"
+    },
+    "features": {
+      "title": "Features",
+      "description": "Advisory log, diagnostic reports, safety management and more"
+    },
+    "pricing": {
+      "title": "Pricing",
+      "description": "Base and add-on service pricing"
+    },
+    "process": {
+      "title": "Onboarding",
+      "description": "3-step process from consultation to account activation"
+    }
   },
   "aboutMenu": {
     "greeting": {

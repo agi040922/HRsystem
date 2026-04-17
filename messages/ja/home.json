@@ -1,10 +1,10 @@
 {
   "hero": {
     "slide1": {
-      "title": "労務問題、明快な解決",
-      "subtitle": "FAIR人事労務コンサルティング",
-      "text": "専門的な相談で最適なソリューションを",
-      "highlight": "26年のベテラン労務士の専門性"
+      "title": "労務リスク、これからはシステムで管理",
+      "subtitle": "FAIR CRM",
+      "text": "AIベースの人事労務CRMで紛争を予防し、",
+      "highlight": "27年のキャリアを持つ労務士が直接運営します"
     },
     "slide2": {
       "title": "200件以上遂行した事件の圧倒的勝訴率",
@@ -19,10 +19,54 @@
       "highlight": "最高水準の専門性"
     },
     "videoNotSupported": "お使いのブラウザは動画をサポートしていません。",
-    "description": "FAIR人事労務コンサルティングが専門的な相談で最適なソリューションを提供します。",
-    "partner": "あなたの頼れるパートナー",
-    "quickConsultation": "迅速相談申請",
-    "browseServices": "サービスを見る"
+    "description": "相談履歴の蓄積から人事労務診断、産業安全管理まで一つのプラットフォームで。",
+    "partner": "FAIR CRM — 人事労務統合管理プラットフォーム",
+    "quickConsultation": "無料相談申請",
+    "browseServices": "FAIR CRMを見る"
+  },
+  "crmServices": {
+    "title": "FAIR CRM — 人事労務リスクを予防する統合プラットフォーム",
+    "subtitle": "相談記録から診断レポート、安全管理まで一箇所で管理してください",
+    "cards": {
+      "advisory": {
+        "emoji": "📋",
+        "title": "相談履歴の完全蓄積",
+        "description": "すべての相談内容が記録・管理され、いつでも過去の履歴を素早く確認できます。"
+      },
+      "diagnosis": {
+        "emoji": "⚠️",
+        "title": "人事労務管理診断",
+        "description": "入社時の全数診断と定期診断レポートでリスクを事前に発見します。"
+      },
+      "safety": {
+        "emoji": "🛡️",
+        "title": "産業安全保健管理",
+        "description": "システムを通じて安全管理状況をリアルタイムで点検し、安定的に運営します。"
+      }
+    },
+    "viewAll": "すべての機能を見る →"
+  },
+  "process": {
+    "title": "導入手順 — 3ステップで開始",
+    "subtitle": "相談からCRMアカウント発行まで、複雑ではありません",
+    "steps": {
+      "step1": {
+        "number": "01",
+        "title": "オンライン無料相談申請",
+        "description": "会社規模と必要なサービスを相談申請フォームでお受付ください。"
+      },
+      "step2": {
+        "number": "02",
+        "title": "カスタマイズサービス選択後、契約締結",
+        "description": "会社の状況に合わせたサービス構成と料金を協議の上、契約を締結します。"
+      },
+      "step3": {
+        "number": "03",
+        "title": "FAIR CRMアカウント発行",
+        "description": "契約後すぐにFAIR CRMアカウントが発行され、すぐにシステムを使用できます。"
+      }
+    },
+    "cta": "今すぐ相談を申請する →"
   },
   "services": {
     "title": "主要サービス",
@@ -103,10 +147,11 @@
     "button": "無料相談申請",
     "phone": "電話相談",
     "phoneNumber": "02-1234-5678",
-    "expertHelp": "専門家の助けが必要ですか？",
-    "contactNow": "迷わず今すぐFAIR人事労務コンサルティングにお問い合わせください。",
+    "expertHelp": "今すぐFAIR CRMを始めましょう",
+    "contactNow": "AIベースの人事労務CRMで紛争を予防し、相談履歴を体系的に管理してください。",
     "phoneConsultation": "電話相談:",
-    "onlineConsultation": "オンライン相談へ"
+    "onlineConsultation": "無料相談申請",
+    "crmLogin": "CRMログイン(既存のお客様)"
   },
   "news": {
     "title": "最新ニュース",

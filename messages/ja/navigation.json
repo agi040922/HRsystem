@@ -1,15 +1,35 @@
 {
   "header": {
     "logo": "FAIR人事労務コンサルティング",
-    "menu": "メニュー"
+    "menu": "メニュー",
+    "crmLogin": "CRMログイン"
   },
   "mainNav": {
     "home": "ホーム",
+    "fairCrm": "FAIR CRM",
     "about": "会社紹介",
     "services": "主要サービス",
     "board": "お知らせ",
     "qna": "Q&A",
     "contact": "お問い合わせ"
+  },
+  "fairCrmMenu": {
+    "intro": {
+      "title": "サービス紹介",
+      "description": "FAIR CRMの概要をご確認ください"
+    },
+    "features": {
+      "title": "機能",
+      "description": "相談履歴の蓄積、診断レポート、産業安全管理など"
+    },
+    "pricing": {
+      "title": "料金プラン",
+      "description": "基本サービスと追加サービスの料金案内"
+    },
+    "process": {
+      "title": "導入手順",
+      "description": "相談申し込みからアカウント発行までの3ステップ"
+    }
   },
   "aboutMenu": {
     "greeting": {

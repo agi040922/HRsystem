@@ -55,6 +55,36 @@
         "supportedFormats": "Supported files: PDF, JPG, PNG, DOC, DOCX",
         "sizeError": "File size cannot exceed 5MB.",
         "typeError": "Supported file formats: PDF, JPG, PNG, DOC, DOCX"
+      },
+      "employeeCount": {
+        "label": "Number of Employees",
+        "placeholder": "Select company size",
+        "error": "Please select your company size.",
+        "options": {
+          "under10": "Under 10",
+          "10to50": "10 to 50",
+          "50to100": "50 to 100",
+          "100to300": "100 to 300",
+          "over300": "Over 300"
+        }
+      },
+      "interestedServices": {
+        "label": "Services of Interest (multiple selection)",
+        "error": "Please select at least one service of interest.",
+        "options": {
+          "advisory": "Labor Advisory / FAIR CRM",
+          "diagnosis": "HR & Labor Diagnostics",
+          "safety": "Occupational Safety Management",
+          "payroll": "Payroll Outsourcing / Insurance",
+          "dispute": "Labor Commission / Dispute Response",
+          "harassment": "Workplace Harassment",
+          "other": "Other"
+        }
+      },
+      "privacyConsent": {
+        "label": "I agree to the collection and use of personal information (required)",
+        "description": "Items collected: Company, Name, Phone, Email, Message / Purpose: Consultation reply / Retention: 1 year after consultation",
+        "error": "You must agree to the collection and use of personal information."
       }
     },
     "submit": "Submit Consultation Request",
