@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowRight, ClipboardList, FileSearch, ShieldCheck } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 export default function CrmServicesSection() {
@@ -10,28 +10,19 @@ export default function CrmServicesSection() {
 
   const cards = [
     {
-      Icon: ClipboardList,
       image: "/crm/advisory-history.png",
       title: t("cards.advisory.title"),
       description: t("cards.advisory.description"),
-      accent: "from-primary/10 to-primary/5",
-      iconBg: "bg-primary/10 text-primary",
     },
     {
-      Icon: FileSearch,
       image: "/crm/diagnosis-report.png",
       title: t("cards.diagnosis.title"),
       description: t("cards.diagnosis.description"),
-      accent: "from-amber-100 to-amber-50",
-      iconBg: "bg-amber-100 text-amber-600",
     },
     {
-      Icon: ShieldCheck,
       image: "/crm/safety-dashboard.png",
       title: t("cards.safety.title"),
       description: t("cards.safety.description"),
-      accent: "from-blue-100 to-blue-50",
-      iconBg: "bg-blue-100 text-blue-600",
     },
   ]
 
@@ -75,12 +66,6 @@ export default function CrmServicesSection() {
                   />
                 </div>
                 <div>
-                  <div
-                    className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${card.iconBg}`}
-                    aria-hidden="true"
-                  >
-                    <card.Icon className="w-6 h-6" strokeWidth={1.75} />
-                  </div>
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
                     {card.title}
                   </h3>
