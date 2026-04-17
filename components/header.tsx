@@ -179,14 +179,14 @@ export default function Header() {
                   </NavigationMenuItem>
                 ) : (
                   <NavigationMenuItem key={item.label}>
-                    <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={cn(
-                        navigationMenuTriggerStyle(),
-                        "text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors h-10 px-4 py-2"
-                      )}>
+                    <NavigationMenuLink asChild className={cn(
+                      navigationMenuTriggerStyle(),
+                      "text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors h-10 px-4 py-2"
+                    )}>
+                      <Link href={item.href}>
                         {item.label}
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 ),
               )}
