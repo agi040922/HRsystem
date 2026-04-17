@@ -29,17 +29,14 @@
     "subtitle": "Manage advisory records, diagnostic reports, and safety compliance in one place",
     "cards": {
       "advisory": {
-        "emoji": "📋",
         "title": "Full Advisory History",
         "description": "All consultation records are captured and managed so past cases can be retrieved instantly."
       },
       "diagnosis": {
-        "emoji": "⚠️",
         "title": "HR & Labor Diagnostics",
         "description": "Full diagnostic on onboarding plus recurring reports to surface risks early."
       },
       "safety": {
-        "emoji": "🛡️",
         "title": "Occupational Safety Management",
         "description": "Monitor safety compliance status in real time and keep operations stable."
       }
