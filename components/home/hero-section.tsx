@@ -14,16 +14,28 @@ export default function HeroSection() {
 
   const slides = [
     {
-      type: "video",
-      src: "/crm/hero-intro.mp4",
-      topLeft: {
-        title: t('slide1.title'),
-        subtitle: t('slide1.subtitle')
-      },
-      bottomRight: {
-        text: t('slide1.text'),
-        highlight: t('slide1.highlight')
-      }
+      type: "image",
+      src: "/crm/dashboard-overview.png",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
+    },
+    {
+      type: "image",
+      src: "/crm/advisory-history.png",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
+    },
+    {
+      type: "image",
+      src: "/crm/safety-dashboard.png",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
+    },
+    {
+      type: "image",
+      src: "/crm/diagnosis-report.png",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
     },
     {
       type: "image",
@@ -54,7 +66,7 @@ export default function HeroSection() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 7000)
+    }, 5000)
     return () => clearInterval(timer)
   }, [slides.length, currentSlide])
 

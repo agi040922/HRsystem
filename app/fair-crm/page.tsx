@@ -1,7 +1,8 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import {
   ArrowRight,
   CheckCircle2,
@@ -123,20 +124,10 @@ export default function FairCrmPage() {
         </div>
       </section>
 
-      {/* Demo Video */}
+      {/* Demo Slideshow */}
       <section className="w-full bg-white py-12 sm:py-16 md:py-20">
         <div className="container-fluid max-w-5xl px-4">
-          <div className="rounded-2xl overflow-hidden shadow-xl border border-border/50 aspect-video bg-black">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="/crm/features-demo.mp4" type="video/mp4" />
-            </video>
-          </div>
+          <FeatureSlideshow />
         </div>
       </section>
 
@@ -371,6 +362,54 @@ export default function FairCrmPage() {
           </div>
         </div>
       </section>
+    </div>
+  )
+}
+
+const SLIDESHOW_IMAGES = [
+  "/crm/dashboard-overview.png",
+  "/crm/advisory-history.png",
+  "/crm/safety-dashboard.png",
+  "/crm/diagnosis-report.png",
+  "/crm/login.png",
+]
+
+function FeatureSlideshow() {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % SLIDESHOW_IMAGES.length)
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="rounded-2xl overflow-hidden shadow-xl border border-border/50 aspect-video bg-slate-100 relative">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={current}
+          src={SLIDESHOW_IMAGES[current]}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+        />
+      </AnimatePresence>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+        {SLIDESHOW_IMAGES.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${
+              idx === current ? "bg-primary scale-125" : "bg-white/60 hover:bg-white"
+            }`}
+            aria-label={`슬라이드 ${idx + 1}`}
+          />
+        ))}
+      </div>
     </div>
   )
 }
