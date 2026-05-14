@@ -5,14 +5,8 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   ArrowRight,
-  CheckCircle2,
+  // CheckCircle2, // Pricing 섹션 주석처리로 미사용 (복원 시 함께 활성화)
   ExternalLink,
-  ClipboardList,
-  FileSearch,
-  ShieldCheck,
-  BarChart3,
-  Bell,
-  Lock,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Button } from "@/components/ui/button"
@@ -20,23 +14,14 @@ import { Button } from "@/components/ui/button"
 const CRM_LOGIN_URL = "https://efm.fairhr.net"
 
 type IntroItem = { title: string; description: string }
-type FeatureItem = { emoji: string; title: string; description: string }
-
-const FEATURE_ICONS = [
-  { Icon: ClipboardList, color: "bg-primary/10 text-primary" },
-  { Icon: FileSearch, color: "bg-amber-100 text-amber-600" },
-  { Icon: ShieldCheck, color: "bg-blue-100 text-blue-600" },
-  { Icon: BarChart3, color: "bg-emerald-100 text-emerald-600" },
-  { Icon: Bell, color: "bg-rose-100 text-rose-600" },
-  { Icon: Lock, color: "bg-slate-200 text-slate-700" },
-]
-type PricingPlan = {
-  name: string
-  price: string
-  target: string
-  features: string[]
-  highlight?: boolean
-}
+// type FeatureItem = { emoji: string; title: string; description: string } // Features 섹션 제거로 미사용
+// type PricingPlan = { // Pricing 섹션 주석처리로 미사용 (복원 시 함께 활성화)
+//   name: string
+//   price: string
+//   target: string
+//   features: string[]
+//   highlight?: boolean
+// }
 type ProcessStep = { number: string; title: string; description: string }
 type CaseItem = { industry: string; size: string; result: string }
 
@@ -44,8 +29,8 @@ export default function FairCrmPage() {
   const t = useTranslations("fairCrm")
 
   const introItems = t.raw("intro.items") as IntroItem[]
-  const featureItems = t.raw("features.items") as FeatureItem[]
-  const pricingPlans = t.raw("pricing.plans") as PricingPlan[]
+  // const featureItems = t.raw("features.items") as FeatureItem[] // Features 섹션 제거로 미사용
+  // const pricingPlans = t.raw("pricing.plans") as PricingPlan[] // Pricing 섹션 주석처리로 미사용 (복원 시 함께 활성화)
   const processSteps = t.raw("process.steps") as ProcessStep[]
   const caseItems = t.raw("cases.items") as CaseItem[]
 
@@ -131,47 +116,7 @@ export default function FairCrmPage() {
         </div>
       </section>
 
-      {/* Features */}
-      <section id="features" className="w-full bg-slate-50 py-12 sm:py-16 md:py-20">
-        <div className="container-fluid max-w-7xl px-4">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              {t("features.title")}
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-              {t("features.subtitle")}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featureItems.map((item, idx) => {
-              const { Icon, color } = FEATURE_ICONS[idx % FEATURE_ICONS.length]
-              return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (idx % 3) * 0.1 }}
-                className="rounded-2xl border border-border/50 bg-white p-6 sm:p-7 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div
-                  className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${color}`}
-                  aria-hidden="true"
-                >
-                  <Icon className="w-6 h-6" strokeWidth={1.75} />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
+      {/* Pricing — 일단 숨김 (혹시 모르니 주석 처리)
       <section id="pricing" className="w-full bg-white py-12 sm:py-16 md:py-20">
         <div className="container-fluid max-w-7xl px-4">
           <div className="text-center mb-10 sm:mb-12">
@@ -228,6 +173,7 @@ export default function FairCrmPage() {
           </p>
         </div>
       </section>
+      */}
 
       {/* Process */}
       <section id="process" className="w-full bg-slate-50 py-12 sm:py-16 md:py-20">
