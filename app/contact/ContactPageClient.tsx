@@ -75,9 +75,15 @@ export default function ContactPageClient() {
     })
 
     try {
-      // 임시 성공 처리
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      console.log("제출 데이터 (FormData):", data)
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      })
+      const result = await response.json().catch(() => null)
+
+      if (!response.ok) {
+        throw new Error(result?.message || "요청사항 제출 중 오류가 발생했습니다.")
+      }
 
       toast({
         title: "요청사항 접수 완료",

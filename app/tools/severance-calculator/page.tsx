@@ -201,8 +201,8 @@ export default function SeveranceCalculatorPage() {
 
         {/* CTA 버튼 */}
         <div className="text-center">
-          <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 mb-4">
-            퇴직금 계산 시작하기
+          <Button asChild size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 mb-4">
+            <Link href="/contact">퇴직금 계산 시작하기</Link>
           </Button>
           <p className="text-sm text-gray-500">
             간단한 정보 입력만으로 정확한 퇴직금을 계산할 수 있습니다.
@@ -227,4 +227,4 @@ export default function SeveranceCalculatorPage() {
       </div>
     </div>
   )
-} 
+}

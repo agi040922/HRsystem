@@ -91,11 +91,11 @@ export default function WorkingTimeCheckerPage() {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3">
-            근로시간 진단 시작하기
+          <Button asChild size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3">
+            <Link href="/contact">근로시간 진단 시작하기</Link>
           </Button>
         </div>
       </div>
     </div>
   )
-} 
+}

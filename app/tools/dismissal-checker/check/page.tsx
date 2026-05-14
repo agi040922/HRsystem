@@ -347,6 +347,44 @@ export default function DismissalCheckPage() {
     return { level: '매우 낮음', color: 'text-red-600', bgColor: 'bg-red-50' }
   }
 
+  const downloadDetailedReport = () => {
+    const selectedDismissalType = dismissalTypes[dismissalType as keyof typeof dismissalTypes]?.name || '미선택'
+    const selectedUserType = userTypes[userType as keyof typeof userTypes]?.name || '미선택'
+    const answerLines = currentQuestions.map((question, index) => {
+      const answer = answers[index]
+      const selectedOption = question.options?.find((option) => option.value === answer)
+      return [
+        `Q${index + 1}. ${question.question}`,
+        `답변: ${selectedOption?.label || answer || '미응답'}`,
+      ].join('\n')
+    })
+    const report = [
+      'FAIR 인사노무컨설팅 해고 정당성 진단 상세 리포트',
+      `생성일시: ${new Date().toLocaleString('ko-KR')}`,
+      '',
+      '[진단 개요]',
+      `해고 유형: ${selectedDismissalType}`,
+      `진단 대상: ${selectedUserType}`,
+      `점수: ${score}/100`,
+      `해고 정당성: ${getJustificationLevel().level}`,
+      '',
+      '[답변 내역]',
+      ...answerLines,
+      '',
+      '[안내]',
+      '본 리포트는 입력값 기반의 간이 진단 결과이며, 실제 사건 판단은 구체적 사실관계와 증빙자료 검토가 필요합니다.',
+    ].join('\n')
+    const blob = new Blob([report], { type: 'text/plain;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `fair-dismissal-report-${new Date().toISOString().slice(0, 10)}.txt`
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    URL.revokeObjectURL(url)
+  }
+
   // 진행률 계산
   const getProgress = () => {
     if (step === 'type') return 25
@@ -835,9 +873,7 @@ export default function DismissalCheckPage() {
                     <Button
                       size="lg"
                       className="bg-[#4169E1] hover:bg-[#191970] text-white"
-                      onClick={() => {
-                        // 결과 다운로드 또는 저장 기능
-                      }}
+                      onClick={downloadDetailedReport}
                     >
                       <FileText className="w-5 h-5 mr-2" />
                       상세 리포트 다운로드
@@ -877,4 +913,4 @@ export default function DismissalCheckPage() {
       </div>
     </div>
   )
-} 
+}

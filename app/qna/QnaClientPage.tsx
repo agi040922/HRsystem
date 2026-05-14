@@ -26,7 +26,7 @@ const qnaFormSchema = z
     email: z.string().email({ message: "올바른 이메일 주소를 입력해주세요." }),
     title: z.string().min(5, { message: "제목은 5자 이상 입력해주세요." }),
     content: z.string().min(10, { message: "문의 내용은 10자 이상 입력해주세요." }),
-    isPrivate: z.boolean().default(false),
+    isPrivate: z.boolean().optional(),
     password: z.string().optional(),
   })
   .refine((data) => !data.isPrivate || (data.isPrivate && data.password && data.password.length >= 4), {
@@ -50,6 +50,7 @@ export default function QnaClientPage() {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<QnaFormValues>({
@@ -62,15 +63,37 @@ export default function QnaClientPage() {
   const isPrivateChecked = watch("isPrivate")
 
   const onSubmit: SubmitHandler<QnaFormValues> = async (data) => {
-    // TODO: 실제 API 호출로 변경
-    console.log("Q&A 제출 데이터:", data)
-    await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate API call
-    toast({
-      title: t('qna.inquiry.form.success'),
-      description: t('qna.inquiry.form.successDescription') || "문의사항이 성공적으로 등록되었습니다. 빠른 시일 내에 답변드리겠습니다.",
-    })
-    reset() // 폼 초기화
-    setShowPassword(false)
+    try {
+      const response = await fetch("/api/qna", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          isPrivate: !!data.isPrivate,
+        }),
+      })
+      const result = await response.json().catch(() => null)
+
+      if (!response.ok) {
+        throw new Error(result?.message || t('qna.inquiry.form.error'))
+      }
+
+      toast({
+        title: t('qna.inquiry.form.success'),
+        description: t('qna.inquiry.form.successDescription') || "문의사항이 성공적으로 등록되었습니다. 빠른 시일 내에 답변드리겠습니다.",
+      })
+      reset()
+      setShowPassword(false)
+    } catch (error) {
+      console.error("Q&A 문의 제출 오류:", error)
+      toast({
+        title: t('qna.inquiry.form.error'),
+        description: "문의 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+        variant: "destructive",
+      })
+    }
   }
 
   return (
@@ -146,8 +169,12 @@ export default function QnaClientPage() {
           <div className="flex items-center space-x-2">
             <Checkbox
               id="isPrivate"
-              {...register("isPrivate")}
-              onCheckedChange={(checked) => setShowPassword(!!checked)}
+              checked={!!isPrivateChecked}
+              onCheckedChange={(checked) => {
+                const isChecked = checked === true
+                setValue("isPrivate", isChecked, { shouldValidate: true })
+                setShowPassword(isChecked)
+              }}
             />
             <Label
               htmlFor="isPrivate"

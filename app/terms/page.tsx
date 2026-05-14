@@ -120,7 +120,7 @@ export default function TermsPage() {
                 <strong>시행일:</strong> 2025년 1월 1일
               </p>
               <p className="text-sm text-muted-foreground mt-2">
-                <strong>문의사항:</strong> 이용약관에 대한 문의는 <a href="mailto:info@fair-hr.co.kr" className="text-primary hover:underline">info@fair-hr.co.kr</a>로 연락주시기 바랍니다.
+                <strong>문의사항:</strong> 이용약관에 대한 문의는 <a href="mailto:fairhr@nate.com" className="text-primary hover:underline">fairhr@nate.com</a>으로 연락주시기 바랍니다.
               </p>
             </div>
           </div>

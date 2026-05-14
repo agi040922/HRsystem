@@ -6,6 +6,7 @@ import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle
 import { motion } from "framer-motion"
 import { useTranslations } from 'next-intl'
 import PageBanner from "@/components/page-banner"
+import Link from "next/link"
 
 const iconMap = {
   "labor-consulting": Briefcase,
@@ -163,9 +164,9 @@ export default function ServicesClientPage() {
                 {t('cta.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button className="bg-white text-primary px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                <Link href="/contact" className="bg-white text-primary px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors">
                   {t('cta.button')}
-                </button>
+                </Link>
                 <div className="flex items-center gap-2 text-lg">
                   <span>📞</span>
                   <span>{t('cta.phone')}</span>

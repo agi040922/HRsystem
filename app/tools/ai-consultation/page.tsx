@@ -91,11 +91,11 @@ export default function AIConsultationPage() {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3">
-            AI 상담 시작하기
+          <Button asChild size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3">
+            <Link href="/contact">AI 상담 시작하기</Link>
           </Button>
         </div>
       </div>
     </div>
   )
-} 
+}
