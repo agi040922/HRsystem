@@ -1,4 +1,9 @@
 {
+  "chart": {
+    "center": "FAIR CRM",
+    "centerSub": "人事労務統合管理",
+    "items": ["診断", "勤怠管理", "休暇管理", "賃金管理", "成果管理", "安全管理"]
+  },
   "hero": {
     "badge": "FAIR CRM",
     "title": "人事労務リスクをシステムで管理",

@@ -79,28 +79,6 @@ export default function Header() {
     {
       href: "/fair-crm",
       label: t('mainNav.fairCrm'),
-      children: [
-        {
-          href: "/fair-crm#intro",
-          title: t('fairCrmMenu.intro.title'),
-          description: t('fairCrmMenu.intro.description'),
-        },
-        {
-          href: "/fair-crm#features",
-          title: t('fairCrmMenu.features.title'),
-          description: t('fairCrmMenu.features.description'),
-        },
-        {
-          href: "/fair-crm#pricing",
-          title: t('fairCrmMenu.pricing.title'),
-          description: t('fairCrmMenu.pricing.description'),
-        },
-        {
-          href: "/fair-crm#process",
-          title: t('fairCrmMenu.process.title'),
-          description: t('fairCrmMenu.process.description'),
-        },
-      ],
     },
     {
       href: "/about/greeting",
@@ -110,11 +88,6 @@ export default function Header() {
           href: "/about/greeting",
           title: t('aboutMenu.greeting.title'),
           description: t('aboutMenu.greeting.description'),
-        },
-        {
-          href: "/about/profile",
-          title: t('aboutMenu.profile.title'),
-          description: t('aboutMenu.profile.description'),
         },
         {
           href: "/about/ethics",
@@ -128,8 +101,12 @@ export default function Header() {
         },
       ],
     },
+    {
+      href: "/services",
+      label: t('servicesNav.label'),
+      children: t.raw('servicesNav.items') as NavSubItem[],
+    },
     { href: "/board", label: t('mainNav.board') },
-    { href: "/qna", label: t('mainNav.qna') },
     { href: "/contact", label: t('mainNav.contact') },
   ]
 

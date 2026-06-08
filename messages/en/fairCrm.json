@@ -1,4 +1,9 @@
 {
+  "chart": {
+    "center": "FAIR CRM",
+    "centerSub": "Integrated HR Management",
+    "items": ["Diagnosis", "Attendance", "Leave", "Payroll", "Performance", "Safety"]
+  },
   "hero": {
     "badge": "FAIR CRM",
     "title": "Manage HR & Labor Risk with a System",

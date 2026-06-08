@@ -10,6 +10,7 @@ import {
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Button } from "@/components/ui/button"
+import CrmDonut from "@/components/fair-crm/crm-donut"
 
 const CRM_LOGIN_URL = "https://efm.fairhr.net"
 
@@ -41,35 +42,49 @@ export default function FairCrmPage() {
         id="intro"
         className="relative w-full bg-gradient-to-br from-primary/5 via-white to-blue-50 py-16 sm:py-20 md:py-28"
       >
-        <div className="container-fluid max-w-7xl px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-4">
-              {t("hero.badge")}
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-              {t("hero.title")}
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {t("hero.subtitle")}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link href="/contact">
-                <Button size="lg" className="px-8">
-                  {t("hero.ctaPrimary")}
-                </Button>
-              </Link>
-              <a href={CRM_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="px-8 gap-1.5">
-                  {t("hero.ctaSecondary")}
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-              </a>
-            </div>
-          </motion.div>
+        <div className="container-fluid max-w-7xl px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10">
+            {/* 왼쪽: 글 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center lg:text-left lg:max-w-lg"
+            >
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-4">
+                {t("hero.badge")}
+              </span>
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 leading-tight mb-4">
+                {t("hero.title")}
+              </h1>
+              <p className="text-sm sm:text-base text-muted-foreground max-w-md mx-auto lg:mx-0 mb-8">
+                {t("hero.subtitle")}
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+                <Link href="/contact">
+                  <Button size="lg" className="px-8">
+                    {t("hero.ctaPrimary")}
+                  </Button>
+                </Link>
+                <a href={CRM_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline" className="px-8 gap-1.5">
+                    {t("hero.ctaSecondary")}
+                    <ExternalLink className="h-4 w-4" />
+                  </Button>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* 오른쪽: 도넛 그래프 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="shrink-0 lg:ml-12 xl:ml-20"
+            >
+              <CrmDonut />
+            </motion.div>
+          </div>
         </div>
       </section>
 

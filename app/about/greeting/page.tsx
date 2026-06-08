@@ -1,8 +1,8 @@
 "use client"
 
-import Image from "next/image"
 import PageBanner from "@/components/page-banner"
 import { motion } from "framer-motion"
+import { User } from "lucide-react"
 import { useTranslations } from 'next-intl'
 
 export default function GreetingPage() {
@@ -30,17 +30,10 @@ export default function GreetingPage() {
         >
           <div className="grid gap-6 md:gap-8 lg:grid-cols-2 items-center max-w-6xl mx-auto">
             <div className="px-4 md:px-0">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-primary">
-                {t('title')} - {t('subtitle')}
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-8 text-primary">
+                {t('title')}
               </h2>
               <div className="mb-6">
-                <Image
-                  src="/개인 사진.png"
-                  alt="대표 공인노무사 정광일 사진"
-                  width={180}
-                  height={180}
-                  className="float-left mr-4 mb-2 sm:w-[220px] sm:h-[220px] sm:mr-6 rounded-lg"
-                />
                 <div className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   <p className="mb-4">
                     {t('content.paragraph1')}
@@ -54,22 +47,44 @@ export default function GreetingPage() {
                   <p className="mb-6">
                     {t('content.paragraph4')}
                   </p>
-                  <div className="border-t border-gray-200 pt-4">
-                    <p className="text-sm text-right">
-                      <span className="font-medium text-foreground">{t('signature')}</span>
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
             <div className="px-4 md:px-0">
-              <Image
-                src="/회사사진.jpg"
-                alt="FAIR인사노무컨설팅 사무실 이미지"
-                width={500}
-                height={400}
-                className="object-cover w-full h-auto"
-              />
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
+                {/* 카드 헤더 */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-primary">
+                    <User className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground">{t('profileCard.title')}</h3>
+                </div>
+
+                {/* 학력·자격 */}
+                <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                  {t('profileCard.credentials')}
+                </p>
+
+                {/* 약력 */}
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
+                  {t.rich('profileCard.bio', {
+                    b: (chunks) => <span className="font-semibold text-foreground">{chunks}</span>,
+                  })}
+                </p>
+
+                {/* 주요 활동 */}
+                <h4 className="text-base font-semibold text-foreground mb-3">{t('profileCard.activitiesTitle')}</h4>
+                <ul className="flex flex-col gap-y-2 text-[13px] sm:text-sm text-muted-foreground">
+                  {(t.raw('profileCard.activities') as string[]).map((activity) => (
+                    <li key={activity} className="flex items-start gap-2">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>{activity}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 기존 인용 문구 유지 */}
               <div className="mt-4 text-center">
                 <p className="text-sm text-muted-foreground italic">
                   "{t('quote')}"
