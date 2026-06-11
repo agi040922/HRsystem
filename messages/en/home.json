@@ -1,10 +1,10 @@
 {
   "hero": {
     "slide1": {
-      "title": "Clear Solutions for Labor Issues",
-      "subtitle": "FAIR HR Consulting",
-      "text": "Optimal solutions through professional consultation",
-      "highlight": "26 years of veteran labor consultant expertise"
+      "title": "Labor Risk — Now Managed by a System",
+      "subtitle": "FAIR CRM",
+      "text": "An AI-driven HR & labor CRM that prevents disputes,",
+      "highlight": "operated directly by a labor attorney with 27 years of experience"
     },
     "slide2": {
       "title": "Overwhelming Win Rate in Over 200 Cases",
@@ -20,9 +20,50 @@
     },
     "videoNotSupported": "Your browser does not support the video tag.",
     "description": "FAIR HR Consulting provides optimal solutions through professional consultation.",
-    "partner": "Your Reliable Partner",
-    "quickConsultation": "Request Quick Consultation",
-    "browseServices": "Browse Services"
+    "partner": "FAIR CRM — HR & Labor Management Platform",
+    "quickConsultation": "Request Free Consultation",
+    "browseServices": "Explore FAIR CRM"
+  },
+  "crmServices": {
+    "title": "FAIR CRM — Integrated Platform for HR & Labor Risk Prevention",
+    "subtitle": "Manage advisory records, diagnostic reports, and safety compliance in one place",
+    "cards": {
+      "advisory": {
+        "title": "Full Advisory History",
+        "description": "All consultation records are captured and managed so past cases can be retrieved instantly."
+      },
+      "diagnosis": {
+        "title": "HR & Labor Diagnostics",
+        "description": "Full diagnostic on onboarding plus recurring reports to surface risks early."
+      },
+      "safety": {
+        "title": "Occupational Safety Management",
+        "description": "Monitor safety compliance status in real time and keep operations stable."
+      }
+    },
+    "viewAll": "See All Features →"
+  },
+  "process": {
+    "title": "3 Steps to Start",
+    "subtitle": "From consultation to CRM account — it's simple.",
+    "steps": {
+      "step1": {
+        "number": "01",
+        "title": "Online Free Consultation",
+        "description": "Submit a quick request with your company size and the services you're interested in."
+      },
+      "step2": {
+        "number": "02",
+        "title": "Pick a Plan & Sign",
+        "description": "Agree on the right service mix and pricing, then finalize the contract."
+      },
+      "step3": {
+        "number": "03",
+        "title": "FAIR CRM Account Issued",
+        "description": "Your CRM account is provisioned right after signing so you can start immediately."
+      }
+    },
+    "cta": "Request Consultation Now →"
   },
   "services": {
     "title": "Our Services",
@@ -103,10 +144,11 @@
     "button": "Request Free Consultation",
     "phone": "Phone Consultation",
     "phoneNumber": "02-1234-5678",
-    "expertHelp": "Need Expert Assistance?",
-    "contactNow": "Don't hesitate to contact FAIR HR Consulting right now.",
+    "expertHelp": "Get Started with FAIR CRM Today",
+    "contactNow": "Prevent disputes and manage advisory records with an AI-powered HR & labor CRM.",
     "phoneConsultation": "Phone Consultation:",
-    "onlineConsultation": "Go to Online Consultation"
+    "onlineConsultation": "Request Free Consultation",
+    "crmLogin": "CRM Login (Existing Customers)"
   },
   "news": {
     "title": "Latest News",

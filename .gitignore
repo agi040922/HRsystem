@@ -27,3 +27,10 @@ yarn-error.log*
 next-env.d.ts
 .omx/
 .omc/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# CRM 원본 백업 (마스킹 전 회사명 노출 방지)
+public/crm/_original/

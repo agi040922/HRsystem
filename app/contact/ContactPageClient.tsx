@@ -4,7 +4,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { useForm, type SubmitHandler } from "react-hook-form"
+import { Checkbox } from "@/components/ui/checkbox"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Controller, useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Phone, Mail, MapPin, AlertTriangle } from "lucide-react"
@@ -14,12 +22,33 @@ import { motion } from "framer-motion"
 import { useTranslations } from 'next-intl'
 import PageBanner from "@/components/page-banner"
 
+const EMPLOYEE_OPTIONS = ["under10", "10to50", "50to100", "100to300", "over300"] as const
+const SERVICE_OPTIONS = [
+  "advisory",
+  "diagnosis",
+  "safety",
+  "payroll",
+  "dispute",
+  "harassment",
+  "other",
+] as const
+
 const contactFormSchema = z.object({
   companyName: z.string().min(2, "회사명은 2자 이상 입력해주세요."),
   name: z.string().min(2, "성함은 2자 이상 입력해주세요."),
   contact: z.string().regex(/^01[016789]-\d{3,4}-\d{4}$/, "올바른 휴대폰 번호를 입력해주세요. (예: 010-1234-5678)"),
   email: z.string().email("올바른 이메일 주소를 입력해주세요."),
+  employeeCount: z.enum(EMPLOYEE_OPTIONS, {
+    required_error: "직원 규모를 선택해주세요.",
+    invalid_type_error: "직원 규모를 선택해주세요.",
+  }),
+  interestedServices: z
+    .array(z.enum(SERVICE_OPTIONS))
+    .min(1, "관심 서비스를 1개 이상 선택해주세요."),
   message: z.string().min(10, "요청 내용은 10자 이상 입력해주세요."),
+  privacyConsent: z.literal(true, {
+    errorMap: () => ({ message: "개인정보 수집·이용에 동의해주세요." }),
+  }),
   attachment: z
     .any() // FileList 대신 any 사용하여 서버 환경에서 안전하게 처리
     .optional() // 파일 첨부는 선택 사항
@@ -58,10 +87,14 @@ export default function ContactPageClient() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      interestedServices: [],
+    },
   })
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
@@ -147,6 +180,78 @@ export default function ContactPageClient() {
                   </div>
  
                   <div>
+                    <Label htmlFor="employeeCount" className="text-sm font-medium">
+                      {t('form.fields.employeeCount.label')}
+                    </Label>
+                    <Controller
+                      name="employeeCount"
+                      control={control}
+                      render={({ field }) => (
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <SelectTrigger id="employeeCount" className="mt-1">
+                            <SelectValue placeholder={t('form.fields.employeeCount.placeholder')} />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {EMPLOYEE_OPTIONS.map((key) => (
+                              <SelectItem key={key} value={key}>
+                                {t(`form.fields.employeeCount.options.${key}`)}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      )}
+                    />
+                    {errors.employeeCount && (
+                      <p className="text-xs sm:text-sm text-red-500 mt-1">
+                        {t('form.fields.employeeCount.error')}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-medium">
+                      {t('form.fields.interestedServices.label')}
+                    </Label>
+                    <Controller
+                      name="interestedServices"
+                      control={control}
+                      render={({ field }) => (
+                        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {SERVICE_OPTIONS.map((key) => {
+                            const checked = field.value?.includes(key) ?? false
+                            return (
+                              <label
+                                key={key}
+                                htmlFor={`service-${key}`}
+                                className="flex items-center gap-2 rounded-md border border-border/50 px-3 py-2 text-sm cursor-pointer hover:bg-accent/50 transition-colors"
+                              >
+                                <Checkbox
+                                  id={`service-${key}`}
+                                  checked={checked}
+                                  onCheckedChange={(value) => {
+                                    const current = field.value ?? []
+                                    if (value) {
+                                      field.onChange([...current, key])
+                                    } else {
+                                      field.onChange(current.filter((v) => v !== key))
+                                    }
+                                  }}
+                                />
+                                <span>{t(`form.fields.interestedServices.options.${key}`)}</span>
+                              </label>
+                            )
+                          })}
+                        </div>
+                      )}
+                    />
+                    {errors.interestedServices && (
+                      <p className="text-xs sm:text-sm text-red-500 mt-1">
+                        {t('form.fields.interestedServices.error')}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
                     <Label htmlFor="message" className="text-sm font-medium">{t('form.fields.message.label')}</Label>
                     <Textarea id="message" rows={5} placeholder={t('form.fields.message.placeholder')} {...register("message")} className="mt-1 resize-none" />
                     {errors.message && <p className="text-xs sm:text-sm text-red-500 mt-1">{String(errors.message.message)}</p>}
@@ -176,6 +281,38 @@ export default function ContactPageClient() {
                         </ul>
                       </div>
                     </div>
+                  </div>
+                  <div className="rounded-md border border-border/60 bg-slate-50 p-3 md:p-4">
+                    <Controller
+                      name="privacyConsent"
+                      control={control}
+                      render={({ field }) => (
+                        <label
+                          htmlFor="privacyConsent"
+                          className="flex items-start gap-2 text-sm cursor-pointer"
+                        >
+                          <Checkbox
+                            id="privacyConsent"
+                            checked={field.value === true}
+                            onCheckedChange={(v) => field.onChange(v === true)}
+                            className="mt-0.5"
+                          />
+                          <span>
+                            <span className="font-medium text-gray-900">
+                              {t('form.fields.privacyConsent.label')}
+                            </span>
+                            <span className="block text-xs text-muted-foreground mt-1 leading-relaxed">
+                              {t('form.fields.privacyConsent.description')}
+                            </span>
+                          </span>
+                        </label>
+                      )}
+                    />
+                    {errors.privacyConsent && (
+                      <p className="text-xs sm:text-sm text-red-500 mt-2">
+                        {t('form.fields.privacyConsent.error')}
+                      </p>
+                    )}
                   </div>
                   <Button type="submit" className="w-full" disabled={isSubmitting}>
                     {isSubmitting ? t('form.submitting') : t('form.submit')}

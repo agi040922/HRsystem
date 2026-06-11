@@ -1,10 +1,10 @@
 {
   "hero": {
     "slide1": {
-      "title": "노무 문제, 명쾌한 해결",
-      "subtitle": "FAIR인사노무컨설팅",
-      "text": "전문적인 상담으로 최적의 솔루션을",
-      "highlight": "26년차 베테랑 노무사의 전문성"
+      "title": "노무 리스크, 이제 시스템이 관리합니다",
+      "subtitle": "FAIR CRM",
+      "text": "AI 기반 인사노무 CRM으로 분쟁을 예방하고",
+      "highlight": "27년 경력 노무사가 직접 운영합니다"
     },
     "slide2": {
       "title": "200건 이상 수행한 사건의 압도적 승소율",
@@ -19,10 +19,51 @@
       "highlight": "최고 수준의 전문성"
     },
     "videoNotSupported": "영상을 지원하지 않는 브라우저입니다.",
-    "description": "FAIR인사노무컨설팅이 전문적인 상담으로 최적의 솔루션을 제공합니다.",
-    "partner": "당신의 든든한 파트너",
-    "quickConsultation": "빠른 상담 신청",
-    "browseServices": "서비스 둘러보기"
+    "description": "자문 이력 축적부터 인사노무 진단, 산업안전 관리까지 하나의 플랫폼에서.",
+    "partner": "FAIR CRM — 인사노무 통합 관리 플랫폼",
+    "quickConsultation": "무료 상담 신청하기",
+    "browseServices": "FAIR CRM 살펴보기"
+  },
+  "crmServices": {
+    "title": "FAIR CRM — 인사노무 리스크를 예방하는 통합 플랫폼",
+    "subtitle": "상담 기록부터 진단 보고서, 안전 관리까지 한 곳에서 관리하세요",
+    "cards": {
+      "advisory": {
+        "title": "자문 이력 완전 축적",
+        "description": "모든 상담 내용이 기록되고 관리되어, 언제든 과거 이력을 빠르게 확인할 수 있습니다."
+      },
+      "diagnosis": {
+        "title": "인사노무관리 진단",
+        "description": "입사 시 1회 전수 진단과 정기 진단 보고서로 리스크를 사전에 발견합니다."
+      },
+      "safety": {
+        "title": "산업안전보건관리",
+        "description": "시스템을 통해 안전 관리 현황을 실시간으로 점검하고 안정적으로 운영합니다."
+      }
+    },
+    "viewAll": "전체 기능 보기 →"
+  },
+  "process": {
+    "title": "도입 절차 — 3단계로 시작합니다",
+    "subtitle": "상담부터 CRM 계정 발급까지, 복잡하지 않습니다",
+    "steps": {
+      "step1": {
+        "number": "01",
+        "title": "온라인 무료 상담 신청",
+        "description": "회사 규모와 필요한 서비스를 상담 신청 폼으로 접수해주세요."
+      },
+      "step2": {
+        "number": "02",
+        "title": "맞춤 서비스 선택 후 계약 체결",
+        "description": "회사 상황에 맞는 서비스 구성과 요금을 협의한 뒤 계약을 체결합니다."
+      },
+      "step3": {
+        "number": "03",
+        "title": "FAIR CRM 계정 발급",
+        "description": "계약 즉시 FAIR CRM 계정이 발급되어 바로 시스템을 사용할 수 있습니다."
+      }
+    },
+    "cta": "지금 상담 신청하기 →"
   },
   "services": {
     "title": "주요 서비스",
@@ -107,10 +148,11 @@
     "button": "무료 상담 신청",
     "phone": "전화 상담",
     "phoneNumber": "02-1234-5678",
-    "expertHelp": "전문가의 도움이 필요하신가요?",
-    "contactNow": "망설이지 말고 지금 바로 FAIR인사노무컨설팅에 문의하세요.",
+    "expertHelp": "지금 FAIR CRM을 시작하세요",
+    "contactNow": "AI 기반 인사노무 CRM으로 분쟁을 예방하고 자문 이력을 체계적으로 관리해보세요.",
     "phoneConsultation": "전화 상담:",
-    "onlineConsultation": "온라인 상담 바로가기"
+    "onlineConsultation": "무료 상담 신청하기",
+    "crmLogin": "CRM 로그인 (기존 고객)"
   },
   "news": {
     "title": "최신 소식",

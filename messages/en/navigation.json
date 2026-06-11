@@ -1,15 +1,46 @@
 {
+  "servicesNav": {
+    "label": "Services",
+    "items": [
+      { "href": "/services#labor-consulting", "title": "Labor Law Consulting", "description": "Prevention and response to labor law risks in overall business operations" },
+      { "href": "/services#payroll-system", "title": "Payroll System Consulting", "description": "Optimization consulting for payroll systems including ordinary and average wages" },
+      { "href": "/services#hr-consulting", "title": "HR Consulting", "description": "Customized HR system design and operational support for companies" },
+      { "href": "/services#serious-accident-law", "title": "Serious Accident Punishment Act Consulting", "description": "Establishing corporate safety management systems under the Serious Accident Punishment Act" },
+      { "href": "/services#labor-disputes", "title": "Labor Dispute Resolution", "description": "Professional response to Labor Relations Commission cases and various labor disputes" },
+      { "href": "/services#workplace-harassment", "title": "Workplace Harassment & Sexual Harassment Prevention", "description": "Prevention of workplace harassment and investigation/handling support when incidents occur" }
+    ]
+  },
   "header": {
     "logo": "FAIR HR Consulting",
-    "menu": "Menu"
+    "menu": "Menu",
+    "crmLogin": "CRM Login"
   },
   "mainNav": {
     "home": "Home",
+    "fairCrm": "FAIR CRM",
     "about": "About Us",
     "services": "Services",
     "board": "Notice",
     "qna": "Q&A",
-    "contact": "Contact"
+    "contact": "Consultation"
+  },
+  "fairCrmMenu": {
+    "intro": {
+      "title": "Service Overview",
+      "description": "See what FAIR CRM can do for your company"
+    },
+    "features": {
+      "title": "Features",
+      "description": "Advisory log, diagnostic reports, safety management and more"
+    },
+    "pricing": {
+      "title": "Pricing",
+      "description": "Base and add-on service pricing"
+    },
+    "process": {
+      "title": "Onboarding",
+      "description": "3-step process from consultation to account activation"
+    }
   },
   "aboutMenu": {
     "greeting": {

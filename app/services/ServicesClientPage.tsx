@@ -64,6 +64,8 @@ export default function ServicesClientPage() {
               return (
                 <motion.div
                   key={service.id}
+                  id={service.id}
+                  className="scroll-mt-28"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

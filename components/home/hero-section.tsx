@@ -14,16 +14,28 @@ export default function HeroSection() {
 
   const slides = [
     {
-      type: "video",
-      src: "/videos/hero-bg.mp4",
-      topLeft: {
-        title: t('slide1.title'),
-        subtitle: t('slide1.subtitle')
-      },
-      bottomRight: {
-        text: t('slide1.text'),
-        highlight: t('slide1.highlight')
-      }
+      type: "image",
+      src: "/crm/dashboard-overview.png",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
+    },
+    {
+      type: "image",
+      src: "/crm/advisory-history.png",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
+    },
+    {
+      type: "image",
+      src: "/crm/safety-dashboard.png",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
+    },
+    {
+      type: "image",
+      src: "/crm/diagnosis-report.png",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
     },
     {
       type: "image",
@@ -54,7 +66,7 @@ export default function HeroSection() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 7000)
+    }, 5000)
     return () => clearInterval(timer)
   }, [slides.length, currentSlide])
 
@@ -82,22 +94,42 @@ export default function HeroSection() {
           className="absolute inset-0"
         >
           {slides[currentSlide].type === "video" ? (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 z-0 w-full h-full object-cover"
-            >
-              <source src={slides[currentSlide].src} type="video/mp4" />
-              {t('videoNotSupported')}
-            </video>
+            <>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-hidden="true"
+                className="absolute inset-0 z-0 w-full h-full object-cover scale-110 blur-2xl opacity-80"
+              >
+                <source src={slides[currentSlide].src} type="video/mp4" />
+              </video>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 z-0 w-full h-full object-contain"
+              >
+                <source src={slides[currentSlide].src} type="video/mp4" />
+                {t('videoNotSupported')}
+              </video>
+            </>
           ) : (
-            <img
-              src={slides[currentSlide].src}
-              alt="Hero background"
-              className="absolute inset-0 z-0 w-full h-full object-cover"
-            />
+            <>
+              <img
+                src={slides[currentSlide].src}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 z-0 w-full h-full object-cover scale-110 blur-2xl opacity-80"
+              />
+              <img
+                src={slides[currentSlide].src}
+                alt="Hero background"
+                className="absolute inset-0 z-0 w-full h-full object-contain"
+              />
+            </>
           )}
           <div className="absolute inset-0 bg-black/50 z-10" />
           

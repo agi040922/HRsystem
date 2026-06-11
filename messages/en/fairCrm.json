@@ -1,0 +1,165 @@
+{
+  "chart": {
+    "center": "FAIR CRM",
+    "centerSub": "Integrated HR Management",
+    "items": ["Diagnosis", "Attendance", "Leave", "Payroll", "Performance", "Safety"]
+  },
+  "hero": {
+    "badge": "FAIR CRM",
+    "title": "Manage HR & Labor Risk with a System",
+    "subtitle": "An HR & labor CRM designed by a labor attorney with 27 years of experience — advisory logs, diagnostics, and safety management in one place.",
+    "ctaPrimary": "Request Free Consultation",
+    "ctaSecondary": "CRM Login (Existing Customers)"
+  },
+  "intro": {
+    "title": "Why FAIR CRM",
+    "subtitle": "Eliminate the recurring risks faced by HR teams in a single system.",
+    "items": [
+      {
+        "title": "Scattered advisory history",
+        "description": "Stop relying on memory — scattered calls and emails are captured automatically in the system."
+      },
+      {
+        "title": "Risks discovered too late",
+        "description": "Onboarding-wide diagnostics and periodic reports surface issues early."
+      },
+      {
+        "title": "Unmanageable safety operations",
+        "description": "Track occupational safety checklists and compliance in one place."
+      }
+    ]
+  },
+  "features": {
+    "title": "Core Features",
+    "subtitle": "Six features built for real-world HR teams",
+    "items": [
+      {
+        "emoji": "📋",
+        "title": "Advisory CRM",
+        "description": "Organize consultations, meetings and emails on a timeline automatically."
+      },
+      {
+        "emoji": "⚠️",
+        "title": "HR & Labor Diagnostics",
+        "description": "Quantify weak spots through checklist-based diagnostics."
+      },
+      {
+        "emoji": "🛡️",
+        "title": "Occupational Safety",
+        "description": "Manage legal obligations and documents for safety operations."
+      },
+      {
+        "emoji": "📊",
+        "title": "Automated Reports",
+        "description": "Monthly and quarterly reports generated automatically for decision making."
+      },
+      {
+        "emoji": "🔔",
+        "title": "Deadline Alerts",
+        "description": "Prevent missed legal deadlines, contract renewals and training schedules."
+      },
+      {
+        "emoji": "🔒",
+        "title": "Permissions & Security",
+        "description": "Role-based access and encryption keep sensitive information safe."
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Pricing Plans",
+    "subtitle": "Flexible plans based on company size and needs. Detailed quotes are provided after consultation.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "Contact",
+        "target": "10–50 employees",
+        "features": [
+          "Advisory CRM",
+          "Basic diagnostic report",
+          "Email consultation channel"
+        ]
+      },
+      {
+        "name": "Standard",
+        "price": "Contact",
+        "target": "50–300 employees",
+        "highlight": true,
+        "features": [
+          "All Starter features",
+          "Occupational Safety Management",
+          "Automated periodic reports",
+          "Dedicated labor attorney support"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Contact",
+        "target": "300+ employees / groups",
+        "features": [
+          "All Standard features",
+          "Multi-language support",
+          "Custom permission policies",
+          "Annual legal review"
+        ]
+      }
+    ],
+    "note": "All plans are annual contracts. Actual pricing varies with company size and scope.",
+    "cta": "Get a Custom Quote"
+  },
+  "process": {
+    "title": "Onboarding Process",
+    "subtitle": "Three steps from consultation to account activation",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Free Consultation",
+        "description": "Submit a quick request online with your size and services of interest."
+      },
+      {
+        "number": "02",
+        "title": "Plan & Contract",
+        "description": "Finalize the plan and scope that match your requirements, then sign."
+      },
+      {
+        "number": "03",
+        "title": "CRM Account Setup",
+        "description": "Accounts are provisioned immediately with onboarding training included."
+      }
+    ]
+  },
+  "cases": {
+    "title": "FAIR CRM in Action",
+    "subtitle": "Proven across diverse industries",
+    "items": [
+      {
+        "industry": "IT Startup",
+        "size": "80 employees",
+        "result": "Zero legal risk maintained with revised employment rules and automated onboarding checklist"
+      },
+      {
+        "industry": "Foreign Manufacturer",
+        "size": "250 employees",
+        "result": "Safety compliance rose from 45% to 98% with automated HQ reporting"
+      },
+      {
+        "industry": "Professional Services",
+        "size": "120 employees",
+        "result": "Quarterly diagnostics enabled proactive improvements and full win at labor commission"
+      }
+    ]
+  },
+  "screenshots": {
+    "title": "Product Screens",
+    "subtitle": "Explore the key screens of FAIR CRM at a glance.",
+    "dashboard": "Main Dashboard",
+    "advisory": "Advisory History",
+    "diagnosis": "HR Diagnosis Report",
+    "safety": "Compliance & Safety"
+  },
+  "cta": {
+    "title": "Start with FAIR CRM Today",
+    "subtitle": "Disputes cost the most when handled after the fact. Manage risk proactively with a system.",
+    "ctaPrimary": "Request Free Consultation",
+    "ctaSecondary": "CRM Login (Existing Customers)"
+  }
+}

@@ -55,6 +55,36 @@
         "supportedFormats": "対応形式：PDF、JPG、PNG、DOC、DOCX",
         "sizeError": "ファイルサイズは5MBを超えることはできません。",
         "typeError": "対応ファイル形式：PDF、JPG、PNG、DOC、DOCX"
+      },
+      "employeeCount": {
+        "label": "従業員数",
+        "placeholder": "企業規模を選択してください",
+        "error": "企業規模を選択してください。",
+        "options": {
+          "under10": "10名未満",
+          "10to50": "10〜50名",
+          "50to100": "50〜100名",
+          "100to300": "100〜300名",
+          "over300": "300名以上"
+        }
+      },
+      "interestedServices": {
+        "label": "関心のあるサービス(複数選択可)",
+        "error": "関心のあるサービスを1つ以上選択してください。",
+        "options": {
+          "advisory": "労務顧問 / FAIR CRM",
+          "diagnosis": "人事労務診断",
+          "safety": "産業安全保健管理",
+          "payroll": "給与アウトソーシング / 4大保険",
+          "dispute": "労働委員会 / 紛争対応",
+          "harassment": "職場内いじめ",
+          "other": "その他"
+        }
+      },
+      "privacyConsent": {
+        "label": "個人情報の収集・利用に同意します(必須)",
+        "description": "収集項目: 会社名、氏名、連絡先、メール、相談内容 / 利用目的: 相談回答 / 保有期間: 相談完了後1年",
+        "error": "個人情報の収集・利用にご同意ください。"
       }
     },
     "submit": "相談申請する",
