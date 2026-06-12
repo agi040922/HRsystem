@@ -348,7 +348,7 @@ export default function ContactPageClient() {
                     <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold text-sm md:text-base">{t('contactInfo.email.label')}</h3>
-                      <a href="mailto:fairhr@nate.net" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all">
+                      <a href="mailto:fairhr@nate.com" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all">
                         {t('contactInfo.email.value')}
                       </a>
                     </div>
