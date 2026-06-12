@@ -34,10 +34,19 @@ const ALLOWED_ATTACHMENT_TYPES = new Set([
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 ])
 
+/** 하이픈 없이 들어온 휴대폰 번호도 010-1234-5678 형태로 정규화 */
+function normalizePhone(value: unknown): unknown {
+  if (typeof value !== "string") return value
+  const digits = value.replace(/\D/g, "")
+  if (digits.length === 11) return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`
+  if (digits.length === 10) return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
+  return value
+}
+
 const contactFormSchema = z.object({
   companyName: z.string().min(2),
   name: z.string().min(2),
-  contact: z.string().regex(/^01[016789]-\d{3,4}-\d{4}$/),
+  contact: z.preprocess(normalizePhone, z.string().regex(/^01[016789]-\d{3,4}-\d{4}$/)),
   email: z.string().email(),
   message: z.string().min(10),
   // 표시용 필드라 검증 실패로 접수 자체가 막히지 않도록 느슨하게 받음

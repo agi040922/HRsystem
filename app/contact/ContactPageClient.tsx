@@ -81,6 +81,15 @@ const contactFormSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormSchema>
 
+/** 숫자만 추출해서 010-1234-5678 형태로 자동 포맷 (11자리는 3-4-4, 10자리는 3-3-4) */
+function formatPhoneNumber(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 11)
+  if (digits.length <= 3) return digits
+  if (digits.length <= 7) return `${digits.slice(0, 3)}-${digits.slice(3)}`
+  if (digits.length <= 10) return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
+  return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`
+}
+
 export default function ContactPageClient() {
   const t = useTranslations('contact')
   const { toast } = useToast()
@@ -96,6 +105,9 @@ export default function ContactPageClient() {
       interestedServices: [],
     },
   })
+
+  // register의 onChange를 가로채서 포맷된 값으로 전달
+  const contactField = register("contact")
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
     const formData = new FormData()
@@ -170,7 +182,18 @@ export default function ContactPageClient() {
                   </div>
                   <div>
                     <Label htmlFor="contact" className="text-sm font-medium">{t('form.fields.contact.label')}</Label>
-                    <Input id="contact" placeholder={t('form.fields.contact.placeholder')} {...register("contact")} className="mt-1" />
+                    <Input
+                      id="contact"
+                      type="tel"
+                      inputMode="numeric"
+                      placeholder={t('form.fields.contact.placeholder')}
+                      {...contactField}
+                      onChange={(e) => {
+                        e.target.value = formatPhoneNumber(e.target.value)
+                        contactField.onChange(e)
+                      }}
+                      className="mt-1"
+                    />
                     {errors.contact && <p className="text-xs sm:text-sm text-red-500 mt-1">{String(errors.contact.message)}</p>}
                   </div>
                   <div>
