@@ -1,0 +1,48 @@
+name: Deploy main to Vercel (Production)
+
+# main에 push가 들어오면 (누가 push했든 상관없이)
+# Vercel Deploy Hook을 호출해서 Production 배포를 트리거한다.
+#
+# 왜 필요한가:
+#   Vercel은 보안상 "커밋 작성자가 Vercel 프로젝트 권한이 있는 사람"일 때만
+#   자동 배포를 만든다. 그래서 팀에 없는 협업자가 main에 push하면 Vercel이
+#   배포를 건너뛴다. Deploy Hook은 인증된 트리거라서 작성자 권한과 무관하게
+#   배포를 일으킨다. → 누가 push하든 Production에 반영됨.
+
+on:
+  push:
+    branches:
+      - main
+
+# 동시에 여러 push가 와도 마지막 것만 배포되도록 (중복 배포 방지)
+concurrency:
+  group: deploy-main
+  cancel-in-progress: true
+
+jobs:
+  trigger-vercel-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vercel Deploy Hook 호출 (main → Production)
+        run: |
+          if [ -z "${{ secrets.VERCEL_DEPLOY_HOOK_MAIN }}" ]; then
+            echo "❌ VERCEL_DEPLOY_HOOK_MAIN secret이 비어 있습니다."
+            echo "   Settings > Secrets and variables > Actions 에 등록하세요."
+            exit 1
+          fi
+
+          echo "main 브랜치 push 감지 (by ${{ github.actor }}) → Vercel Deploy Hook 호출"
+
+          HTTP_CODE=$(curl -s -o response.json -w "%{http_code}" \
+            -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_MAIN }}")
+
+          echo "Vercel 응답 (HTTP $HTTP_CODE):"
+          cat response.json || true
+          echo ""
+
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "✅ 배포 트리거 성공 — Production에 곧 반영됩니다."
+          else
+            echo "❌ 배포 트리거 실패 (HTTP $HTTP_CODE)"
+            exit 1
+          fi
