@@ -107,6 +107,7 @@ export default function Header() {
       children: t.raw('servicesNav.items') as NavSubItem[],
     },
     { href: "/board", label: t('mainNav.board') },
+    { href: "/newsletter", label: t('mainNav.newsletter') },
     { href: "/contact", label: t('mainNav.contact') },
   ]
 

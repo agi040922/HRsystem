@@ -18,18 +18,26 @@ interface BoardClientPageProps {
   totalCount: number
   currentPage: number
   searchQuery: string
+  // 게시판 종류: 'notice'(공지사항, 기본) | 'newsletter'(뉴스레터)
+  variant?: 'notice' | 'newsletter'
 }
 
-export default function BoardClientPage({ 
-  initialPosts, 
-  totalCount, 
-  currentPage, 
-  searchQuery 
+export default function BoardClientPage({
+  initialPosts,
+  totalCount,
+  currentPage,
+  searchQuery,
+  variant = 'notice'
 }: BoardClientPageProps) {
   const t = useTranslations('board')
   const [searchTerm, setSearchTerm] = useState(searchQuery)
   const router = useRouter()
   const searchParams = useSearchParams()
+
+  // 게시판별 경로/배너 (공지사항=/board, 뉴스레터=/newsletter)
+  const basePath = variant === 'newsletter' ? '/newsletter' : '/board'
+  const bannerTitle = variant === 'newsletter' ? t('newsletterTitle') : t('title')
+  const bannerSubtitle = variant === 'newsletter' ? t('newsletterSubtitle') : t('subtitle')
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -40,7 +48,7 @@ export default function BoardClientPage({
       params.delete('search')
     }
     params.delete('page') // 검색할 때는 첫 페이지로
-    router.push(`/board?${params.toString()}`)
+    router.push(`${basePath}?${params.toString()}`)
   }
 
   const handlePageChange = (page: number) => {
@@ -50,7 +58,7 @@ export default function BoardClientPage({
     } else {
       params.delete('page')
     }
-    router.push(`/board?${params.toString()}`)
+    router.push(`${basePath}?${params.toString()}`)
   }
 
   const formatDate = (dateString: string) => {
@@ -67,9 +75,9 @@ export default function BoardClientPage({
   return (
     <div className="w-full overflow-x-hidden">
       {/* 페이지 배너 */}
-      <PageBanner 
-        title={t('title')}
-        subtitle={t('subtitle')}
+      <PageBanner
+        title={bannerTitle}
+        subtitle={bannerSubtitle}
         backgroundImage="/FAIR000.png"
       />
 
@@ -146,8 +154,8 @@ export default function BoardClientPage({
                           {/* 모바일 레이아웃 */}
                           <div className="md:hidden space-y-2">
                             <div className="flex items-start justify-between gap-2">
-                              <Link 
-                                href={`/board/${post.slug}`}
+                              <Link
+                                href={`${basePath}/${post.slug}`}
                                 className="flex-1"
                               >
                                 <h3 className="font-medium hover:text-blue-600 transition-colors line-clamp-2">
@@ -181,8 +189,8 @@ export default function BoardClientPage({
                             
                             {/* 제목 */}
                             <div className="col-span-6 flex items-center">
-                              <Link 
-                                href={`/board/${post.slug}`}
+                              <Link
+                                href={`${basePath}/${post.slug}`}
                                 className="flex items-center gap-2 hover:text-blue-600 transition-colors"
                               >
                                 {post.is_featured && (
@@ -238,7 +246,7 @@ export default function BoardClientPage({
                     variant="outline" 
                     onClick={() => {
                       setSearchTerm('')
-                      router.push('/board')
+                      router.push(basePath)
                     }}
                   >
                     전체 게시글 보기

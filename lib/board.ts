@@ -183,12 +183,13 @@ export async function deleteBoardImageFile(filePath: string) {
   }
 }
 
-// 게시글 목록 가져오기
-export async function getBoardPosts(page: number = 1, limit: number = 10, search?: string) {
+// 게시글 목록 가져오기 (category 기본값: 'notice' = 공지사항)
+export async function getBoardPosts(page: number = 1, limit: number = 10, search?: string, category: string = 'notice') {
   let query = supabase
     .from('board_posts')
     .select('*')
     .eq('is_published', true)
+    .eq('category', category)
     .order('is_featured', { ascending: false })
     .order('published_at', { ascending: false })
 
@@ -213,13 +214,18 @@ export async function getBoardPosts(page: number = 1, limit: number = 10, search
   return { posts: data as BoardPost[], count: count || 0, error: null }
 }
 
-// 어드민용 게시글 목록 가져오기 (모든 게시글 포함)
-export async function getAdminBoardPosts(page: number = 1, limit: number = 10, search?: string) {
+// 어드민용 게시글 목록 가져오기 (category 미지정 시 전체 게시판 포함)
+export async function getAdminBoardPosts(page: number = 1, limit: number = 10, search?: string, category?: string) {
   let query = supabase
     .from('board_posts')
     .select('*', { count: 'exact' })
     .order('is_featured', { ascending: false })
     .order('published_at', { ascending: false })
+
+  // 게시판(카테고리) 필터 (지정 시에만)
+  if (category) {
+    query = query.eq('category', category)
+  }
 
   // 검색 기능
   if (search) {
@@ -242,9 +248,9 @@ export async function getAdminBoardPosts(page: number = 1, limit: number = 10, s
   return { posts: data as BoardPost[], count: count || 0, error: null }
 }
 
-// 특정 게시글 상세 정보 가져오기
-export async function getBoardPost(slug: string) {
-  const { data, error } = await supabase
+// 특정 게시글 상세 정보 가져오기 (category 지정 시 해당 게시판으로 한정)
+export async function getBoardPost(slug: string, category?: string) {
+  let query = supabase
     .from('board_posts')
     .select(`
       *,
@@ -257,7 +263,12 @@ export async function getBoardPost(slug: string) {
     `)
     .eq('slug', slug)
     .eq('is_published', true)
-    .single()
+
+  if (category) {
+    query = query.eq('category', category)
+  }
+
+  const { data, error } = await query.single()
 
   if (error) {
     // PGRST116은 결과가 없을 때 발생하는 정상적인 에러이므로 로그 출력하지 않음
@@ -323,13 +334,14 @@ export async function incrementViews(slug: string) {
   }
 }
 
-// 인기 게시글 가져오기
-export async function getFeaturedPosts(limit: number = 5) {
+// 인기 게시글 가져오기 (category 기본값: 'notice' = 공지사항)
+export async function getFeaturedPosts(limit: number = 5, category: string = 'notice') {
   const { data, error } = await supabase
     .from('board_posts')
     .select('id, title, slug, excerpt, published_at, views')
     .eq('is_published', true)
     .eq('is_featured', true)
+    .eq('category', category)
     .order('published_at', { ascending: false })
     .limit(limit)
 
@@ -341,12 +353,13 @@ export async function getFeaturedPosts(limit: number = 5) {
   return { posts: data as BoardPost[], error: null }
 }
 
-// 최신 게시글 가져오기
-export async function getRecentPosts(limit: number = 5) {
+// 최신 게시글 가져오기 (category 기본값: 'notice' = 공지사항)
+export async function getRecentPosts(limit: number = 5, category: string = 'notice') {
   const { data, error } = await supabase
     .from('board_posts')
     .select('id, title, slug, excerpt, published_at, views')
     .eq('is_published', true)
+    .eq('category', category)
     .order('published_at', { ascending: false })
     .limit(limit)
 
@@ -368,6 +381,7 @@ export async function createBoardPost(postData: {
   meta_title?: string
   meta_description?: string
   is_featured?: boolean
+  category?: string // 'notice'(공지사항) | 'newsletter'(뉴스레터), 미지정 시 DB 기본값 notice
 }) {
   const { data, error } = await supabase
     .from('board_posts')

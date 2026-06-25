@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Switch } from "@/components/ui/switch"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
@@ -41,6 +42,7 @@ interface FinalFormData {
   meta_description: string
   is_featured: boolean
   is_published: boolean
+  category: 'notice' | 'newsletter'
 }
 
 interface UploadedImage {
@@ -69,6 +71,9 @@ export default function BoardCreateForm() {
     title: "",
     content: "",
   })
+
+  // 게시판 선택: 공지사항(notice) | 뉴스레터(newsletter)
+  const [category, setCategory] = useState<'notice' | 'newsletter'>('notice')
 
   const [generatedData, setGeneratedData] = useState<GeneratedData | null>(null)
   const [finalForm, setFinalForm] = useState<FinalFormData | null>(null)
@@ -224,6 +229,7 @@ export default function BoardCreateForm() {
         meta_description: result.data.metaDescription,
         is_featured: false,
         is_published: true,
+        category,
       })
       setCurrentStep('preview')
 
@@ -289,8 +295,8 @@ export default function BoardCreateForm() {
             <h3 className="text-lg font-semibold text-green-800">게시글이 성공적으로 발행되었습니다!</h3>
             <p className="text-muted-foreground">AI가 생성한 컨텐츠로 전문적인 게시글이 완성되었습니다.</p>
             <div className="flex gap-2 justify-center">
-              <Link href="/board">
-                <Button>공지사항 보기</Button>
+              <Link href={finalForm?.category === 'newsletter' ? '/newsletter' : '/board'}>
+                <Button>{finalForm?.category === 'newsletter' ? '뉴스레터 보기' : '공지사항 보기'}</Button>
               </Link>
               <Button variant="outline" onClick={() => window.location.reload()}>
                 새 글 작성
@@ -388,7 +394,7 @@ export default function BoardCreateForm() {
                 className="font-mono text-sm"
               />
               <p className="text-xs text-muted-foreground">
-                URL: /board/{finalForm.slug}
+                URL: {finalForm.category === 'newsletter' ? '/newsletter' : '/board'}/{finalForm.slug}
               </p>
             </div>
 
@@ -754,6 +760,22 @@ export default function BoardCreateForm() {
           <CardTitle>1단계: 기본 정보 입력</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="category">게시판 선택 *</Label>
+            <Select value={category} onValueChange={(v) => setCategory(v as 'notice' | 'newsletter')}>
+              <SelectTrigger id="category" className="w-full sm:w-64">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="notice">공지사항</SelectItem>
+                <SelectItem value="newsletter">뉴스레터</SelectItem>
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-muted-foreground">
+              이 글을 어느 게시판에 올릴지 선택하세요.
+            </p>
+          </div>
+
           <div className="space-y-2">
             <Label htmlFor="title">제목 *</Label>
             <Input
