@@ -57,9 +57,9 @@ export default function GreetingPage() {
               {/* 프로필 사진 */}
               <div className="shrink-0 mx-auto sm:mx-0">
                 <img
-                  src="/개인 사진.png"
+                  src="/profile-ceo.png"
                   alt={t('profileCard.name')}
-                  className="w-40 h-48 sm:w-44 sm:h-52 object-cover rounded-xl shadow-sm bg-gray-200"
+                  className="w-40 h-48 sm:w-44 sm:h-52 object-cover object-top rounded-xl shadow-sm bg-gray-200"
                 />
               </div>
 
