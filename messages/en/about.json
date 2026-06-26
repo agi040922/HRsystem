@@ -1,7 +1,8 @@
 {
   "greeting": {
+    "sectionTitle": "About the Representative",
     "profileCard": {
-      "title": "Introducing Representative Labor Attorney Jung Kwang-il",
+      "name": "Representative Labor Attorney Jung Kwang-il",
       "credentials": "Certified Labor Attorney (8th class, 1999) · Hanyang University School of Law · Yonsei University Graduate School of Business (MBA)",
       "bio": "After serving as a labor attorney at Kim & Chang, he founded <b>FAIR HR Consulting</b> in 2005. To date, he has provided HR and labor advisory and consulting to <b>over 200 domestic and international companies</b>.",
       "activitiesTitle": "Key Activities",
@@ -9,8 +10,17 @@
         "Expert Advisor, National Court Administration",
         "Customer Protection Officer, Seoul Regional HQ, Korea Workers' Compensation & Welfare Service",
         "Expert Advisor, Gyeonggi-do Economy and Science Promotion Agency",
+        "Advisory Member, Gyeonggi-do Public Interest Activity Support Center",
         "Advisory Member, SME Business Support Group, Ministry of SMEs and Startups",
-        "Management Consultant, Seoul Chamber of Commerce and Industry"
+        "Management Consultant, Seoul Chamber of Commerce and Industry",
+        "Counseling Member, Workplace Harassment Counseling Center (Korea Certified Labor Attorneys Association)",
+        "Expert Advisor, Seoul Business Support Center, Industry Promotion Agency"
+      ],
+      "publicationsTitle": "Major Publications",
+      "publications": [
+        "Multiple Unions and Labor-Management Strategy Consulting Process (Parkyoung Publishing)",
+        "The Company's Inner Thoughts (Random House Korea)",
+        "The Pleasant Clerk Who Became a Master of Labor Law (Seonham Publishing)"
       ]
     },
     "title": "Greeting",

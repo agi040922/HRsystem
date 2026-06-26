@@ -45,8 +45,8 @@
   },
   "aboutMenu": {
     "greeting": {
-      "title": "인사말",
-      "description": "FAIR인사노무컨설팅의 철학과 비전을 소개합니다"
+      "title": "인사말/대표 소개",
+      "description": "FAIR인사노무컨설팅의 철학과 비전, 대표 공인노무사 정광일을 소개합니다"
     },
     "profile": {
       "title": "대표 프로필",
