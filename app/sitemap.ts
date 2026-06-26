@@ -51,12 +51,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/newsletter`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.7,
-    },
-    {
       url: `${baseUrl}/privacy`,
       lastModified: new Date(),
       changeFrequency: 'yearly' as const,
@@ -114,10 +108,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   try {
-    // 동적 게시물 페이지들 (공지사항 + 뉴스레터)
-    const { posts } = await getBoardPosts(1, 1000) // 공지사항 전체
-    const { posts: newsletterPosts } = await getBoardPosts(1, 1000, undefined, 'newsletter') // 뉴스레터 전체
-
+    // 동적 게시물 페이지들
+    const { posts } = await getBoardPosts(1, 1000) // 모든 게시물을 가져옴
+    
     const boardPages = posts.map((post) => ({
       url: `${baseUrl}/board/${post.slug}`,
       lastModified: new Date(post.updated_at || post.published_at),
@@ -125,14 +118,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }))
 
-    const newsletterPages = newsletterPosts.map((post) => ({
-      url: `${baseUrl}/newsletter/${post.slug}`,
-      lastModified: new Date(post.updated_at || post.published_at),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
-
-    return [...staticPages, ...boardPages, ...newsletterPages]
+    return [...staticPages, ...boardPages]
   } catch (error) {
     console.error('Error generating sitemap:', error)
     // 에러가 발생하면 정적 페이지만 반환

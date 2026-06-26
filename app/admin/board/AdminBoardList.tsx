@@ -93,9 +93,8 @@ export default function AdminBoardList({ currentPage, searchQuery }: AdminBoardL
       setShowUnpublishedAlert(post.title)
       return
     }
-    // 발행된 게시글은 새 창에서 열기 (게시판별 경로)
-    const basePath = post.category === 'newsletter' ? '/newsletter' : '/board'
-    window.open(`${basePath}/${post.slug}`, '_blank')
+    // 발행된 게시글은 새 창에서 열기
+    window.open(`/board/${post.slug}`, '_blank')
   }
 
   // 날짜 포맷팅
@@ -232,17 +231,12 @@ export default function AdminBoardList({ currentPage, searchQuery }: AdminBoardL
                       <TableRow key={post.id}>
                         <TableCell>
                           <div>
-                            <div className="flex items-center gap-2">
-                              <Badge variant={post.category === 'newsletter' ? 'default' : 'outline'} className="shrink-0">
-                                {post.category === 'newsletter' ? '뉴스레터' : '공지사항'}
-                              </Badge>
-                              <button
-                                onClick={() => handleViewUnpublished(post)}
-                                className="font-medium hover:text-primary transition-colors text-left"
-                              >
-                                {post.title}
-                              </button>
-                            </div>
+                            <button 
+                              onClick={() => handleViewUnpublished(post)}  
+                              className="font-medium hover:text-primary transition-colors text-left"
+                            >
+                              {post.title}
+                            </button>
                             {post.excerpt && (
                               <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
                                 {post.excerpt}

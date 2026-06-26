@@ -8,7 +8,6 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 // 타입 정의
 export interface BoardPost {
   id: number
-  category: string // 'notice'(공지사항) | 'newsletter'(뉴스레터)
   title: string
   slug: string
   content: string

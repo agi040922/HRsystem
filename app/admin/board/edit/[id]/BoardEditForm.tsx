@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Progress } from "@/components/ui/progress"
@@ -42,9 +41,6 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
   const [authorName, setAuthorName] = useState(post.author_name || "관리자")
   const [isPublished, setIsPublished] = useState(post.is_published)
   const [isFeatured, setIsFeatured] = useState(post.is_featured)
-  const [category, setCategory] = useState<'notice' | 'newsletter'>(
-    post.category === 'newsletter' ? 'newsletter' : 'notice'
-  )
   
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -208,7 +204,6 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
       author_name: authorName.trim(),
       is_published: isDraft ? false : isPublished,
       is_featured: isFeatured,
-      category,
     }
 
     const { error } = await updateBoardPost(post.id, formData)
@@ -322,22 +317,6 @@ export default function BoardEditForm({ post }: BoardEditFormProps) {
           <CardTitle>기본 정보</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="category">게시판 *</Label>
-            <Select value={category} onValueChange={(v) => setCategory(v as 'notice' | 'newsletter')}>
-              <SelectTrigger id="category" className="w-full sm:w-64">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="notice">공지사항</SelectItem>
-                <SelectItem value="newsletter">뉴스레터</SelectItem>
-              </SelectContent>
-            </Select>
-            <p className="text-xs text-muted-foreground">
-              게시판을 바꾸면 이 글이 해당 게시판으로 이동합니다.
-            </p>
-          </div>
-
           <div className="space-y-2">
             <Label htmlFor="title">제목 *</Label>
             <Input
