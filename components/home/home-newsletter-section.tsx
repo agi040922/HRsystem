@@ -27,7 +27,7 @@ export default function HomeNewsletterSection() {
           className="flex items-end justify-between gap-4"
         >
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">뉴스레터</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">FAIR 뉴스레터</h2>
             <p className="mt-2 text-sm md:text-base text-muted-foreground">
               인사노무 리스크를 법·판례 중심으로 쉽게 정리해 전합니다.
             </p>
