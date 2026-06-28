@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getBoardPosts } from '@/lib/board'
 import { getLatestNewsletters } from '@/lib/newsletter'
+import { NEWSLETTER_POSTS } from '@/lib/newsletterPosts'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.fairhr.net' // 실제 도메인으로 변경 필요
@@ -50,6 +51,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily' as const,
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/newsletter`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    // 뉴스레터 글(정적)
+    ...NEWSLETTER_POSTS.map((p) => ({
+      url: `${baseUrl}/newsletter/${p.slug}`,
+      lastModified: new Date(p.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     {
       url: `${baseUrl}/privacy`,
       lastModified: new Date(),
