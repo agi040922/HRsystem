@@ -18,8 +18,7 @@ export default function HomeNewsletterSection() {
 
   return (
     <section id="newsletter-preview" className="w-full border-b border-gray-100 bg-gray-50">
-      <div className="container-fluid max-w-7xl py-14 md:py-20">
-        <div className="max-w-6xl mx-auto">
+      <div className="container-fluid max-w-7xl px-4 py-14 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +67,6 @@ export default function HomeNewsletterSection() {
               </Link>
             </motion.div>
           ))}
-        </div>
         </div>
       </div>
     </section>
