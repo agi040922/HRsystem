@@ -56,7 +56,8 @@ export default function NewsletterListPage() {
         backgroundImage="/FAIR000.png"
       />
 
-      <div className="container-fluid max-w-6xl py-10 md:py-14 lg:py-16 px-4">
+      <div className="container-fluid max-w-7xl py-10 md:py-14 lg:py-16">
+        <div className="max-w-6xl mx-auto">
         <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-muted-foreground">
           노란봉투법·직장 내 괴롭힘·중대재해 등 기업이 마주하는 인사노무 리스크를
           법·판례·분쟁사례 중심으로 쉽게 정리해 발행합니다. 회원가입 없이 누구나
@@ -92,6 +93,7 @@ export default function NewsletterListPage() {
             아직 발행된 글이 없습니다.
           </p>
         )}
+        </div>
       </div>
     </div>
   )
