@@ -1,0 +1,103 @@
+{
+  "hero": {
+    "badge": "HR and labor ERP AX transformation",
+    "title": "Before changing HR work, organize the workflow first",
+    "subtitle": "If attendance, payroll, contracts, and advisory records remain scattered, adding AI only creates another tool. HR AX starts from the ERP and document formats you already use, selects repeatable workflows, and connects them to reviewable automation.",
+    "ctaPrimary": "Request an AX diagnosis",
+    "ctaSecondary": "See adoption process",
+    "metrics": [
+      { "value": "1–2", "label": "priority workflows to automate first" },
+      { "value": "4–8 wks", "label": "diagnosis, prototype, pilot" },
+      { "value": "Reviewed", "label": "expert approval and audit logs by design" }
+    ]
+  },
+  "dashboard": {
+    "eyebrow": "HR AX Operating View",
+    "title": "Sample HR and labor work queue",
+    "status": "Consulting view",
+    "queue": [
+      "Employment contract change request · waiting for owner review",
+      "Leave and attendance anomaly · risk review required",
+      "Labor advisory draft · before expert approval"
+    ],
+    "noteLabel": "Operating principle",
+    "note": "This is not a screen where AI acts alone. It is designed as an operating view where people review, approve, and leave an auditable record."
+  },
+  "pain": {
+    "eyebrow": "Before AX",
+    "title": "HR operations need structure before AI adoption",
+    "subtitle": "When ERP, spreadsheets, messengers, and document templates each move separately, automation impact stays limited. HR AX first organizes high-frequency and high-risk work.",
+    "items": [
+      {
+        "label": "Scattered",
+        "title": "Records exist, but context is broken",
+        "description": "Attendance, payroll, contracts, and advisory logs are managed separately, forcing teams to re-check them during handovers or audits."
+      },
+      {
+        "label": "Manual",
+        "title": "Document work remains repetitive",
+        "description": "Hiring, resignation, leave, and contract changes still require teams to compare forms and fields every time."
+      },
+      {
+        "label": "Risk",
+        "title": "Review evidence is not retained",
+        "description": "Even with AI-assisted answers, labor risk does not decrease unless the approval basis and reviewer are recorded."
+      }
+    ]
+  },
+  "modules": {
+    "eyebrow": "AX Scope",
+    "title": "Start HR AX with consultable units of work",
+    "subtitle": "More important than a general chatbot is the work queue, documents, approvals, and reporting flow that HR teams handle every day.",
+    "items": [
+      {
+        "title": "Document and form automation",
+        "description": "Draft contracts, certificates, work rules, and notices using existing templates and ERP fields.",
+        "points": ["Required-field validation", "Change history storage", "Pre-approval checklist"]
+      },
+      {
+        "title": "Labor advisory support",
+        "description": "Create reviewable draft answers from advisory history and internal standards.",
+        "points": ["Source document links", "Expert review flow", "Advisory log accumulation"]
+      },
+      {
+        "title": "Joiner, leaver, and leave workflows",
+        "description": "Operate hiring, resignation, leave, disciplinary, and training work by owner, due date, and approval status.",
+        "points": ["Owner assignment", "Due-date alerts", "Progress dashboard"]
+      },
+      {
+        "title": "Risk reporting",
+        "description": "Turn attendance, payroll, contract, and safety data into monthly reports and executive summaries.",
+        "points": ["Anomaly review", "Action history", "Summary reports"]
+      }
+    ]
+  },
+  "architecture": {
+    "eyebrow": "Implementation",
+    "title": "Add a reviewable execution layer without replacing the existing ERP",
+    "subtitle": "Define the connection scope around the FAIR CRM/ERP, spreadsheets, and document templates already in operation, then expand step by step.",
+    "layers": [
+      { "title": "Work data cleanup", "description": "Standardize attendance, payroll, contract, and advisory fields and identify connectable sources." },
+      { "title": "Process orchestration", "description": "Design request intake, owner assignment, review, approval, and record storage as one flow." },
+      { "title": "Governed AI use", "description": "Use AI results with permissions, audit logs, source documents, and expert approval built in." }
+    ]
+  },
+  "workflow": {
+    "eyebrow": "Adoption Flow",
+    "title": "Validate small, then expand from diagnosis to pilot",
+    "subtitle": "Like the reference sites, the page makes the diagnosis, prototype, and operational adoption path clear while adding the review responsibility required in HR and labor work.",
+    "steps": [
+      { "period": "1 wk", "title": "Workflow diagnosis", "description": "Select HR work with high repetition and risk through interviews and source materials.", "output": "Output: prioritized workflow list" },
+      { "period": "1–2 wks", "title": "Data and form mapping", "description": "Organize ERP fields, spreadsheets, document templates, and approval standards into connectable structures.", "output": "Output: field map and screen draft" },
+      { "period": "2–4 wks", "title": "Prototype", "description": "Build work queues, document drafts, and review screens as real screens and collect feedback.", "output": "Output: clickable pilot" },
+      { "period": "Operate", "title": "Adoption and expansion", "description": "Expand scope using owner training and operating logs as the basis.", "output": "Output: operating rules and improvement roadmap" }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Consulting",
+    "title": "Can AX be applied to our HR operations?",
+    "subtitle": "Using your current ERP, spreadsheets, and document templates, we identify the application points with fast impact and low risk.",
+    "primary": "Request an AX diagnosis",
+    "secondary": "View FAIR CRM"
+  }
+}

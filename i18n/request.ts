@@ -10,7 +10,7 @@ export default getRequestConfig(async ({ locale }) => {
 
   try {
     // 모듈화된 번역 파일들을 동적으로 로드하고 통합
-    const [common, navigation, home, about, services, board, qna, contact, fairCrm] = await Promise.all([
+    const [common, navigation, home, about, services, board, qna, contact, fairCrm, ax] = await Promise.all([
       import(`../messages/${validLocale}/common.json`),
       import(`../messages/${validLocale}/navigation.json`),
       import(`../messages/${validLocale}/home.json`),
@@ -19,7 +19,8 @@ export default getRequestConfig(async ({ locale }) => {
       import(`../messages/${validLocale}/board.json`),
       import(`../messages/${validLocale}/qna.json`),
       import(`../messages/${validLocale}/contact.json`),
-      import(`../messages/${validLocale}/fairCrm.json`)
+      import(`../messages/${validLocale}/fairCrm.json`),
+      import(`../messages/${validLocale}/ax.json`)
     ]);
 
     // MCP 문서에 따른 단순 스프레드 병합 사용
@@ -34,7 +35,8 @@ export default getRequestConfig(async ({ locale }) => {
       board: board.default,        // board 네임스페이스로 감싸기
       qna: qna.default,           // qna 네임스페이스로 감싸기
       contact: contact.default,    // contact 네임스페이스로 감싸기
-      fairCrm: fairCrm.default     // fairCrm 네임스페이스로 감싸기
+      fairCrm: fairCrm.default,    // fairCrm 네임스페이스로 감싸기
+      ax: ax.default               // ax 네임스페이스로 감싸기
     };
 
     // 디버깅: 메시지 구조 확인

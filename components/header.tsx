@@ -81,6 +81,10 @@ export default function Header() {
       label: t('mainNav.fairCrm'),
     },
     {
+      href: "/ax",
+      label: t('mainNav.ax'),
+    },
+    {
       href: "/about/greeting",
       label: t('mainNav.about'),
       children: [
