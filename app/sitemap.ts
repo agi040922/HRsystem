@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next'
 import { getBoardPosts } from '@/lib/board'
-import { getLatestNewsletters } from '@/lib/newsletter'
 import { NEWSLETTER_POSTS } from '@/lib/newsletterPosts'
+import { SITE_URL } from '@/lib/seo'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.fairhr.net' // 실제 도메인으로 변경 필요
+  const baseUrl = SITE_URL
 
   // 정적 페이지들
   const staticPages = [
@@ -35,6 +35,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/fair-crm`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,

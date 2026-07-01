@@ -7,14 +7,51 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { I18nProvider } from "./providers"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { SEO_KEYWORDS, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "FAIR인사노무컨설팅",
-  description: "전문적인 노무 상담 및 솔루션을 제공합니다.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} | 공인노무사 HR 자문·FAIR CRM`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  keywords: SEO_KEYWORDS,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    type: "website",
+    title: `${SITE_NAME} | 공인노무사 HR 자문·FAIR CRM`,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    locale: "ko_KR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} | 공인노무사 HR 자문·FAIR CRM`,
+    description: SITE_DESCRIPTION,
+  },
   icons: {
     icon: "/favicon.ico",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
   other: {
     "naver-site-verification": "30b5f0749e64b98e4970e9906e86ed17df7ed755",

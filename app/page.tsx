@@ -1,23 +1,19 @@
-"use client"
+import type { Metadata } from "next"
+import HomePageClient from "./HomePageClient"
+import StructuredData from "@/components/seo/structured-data"
+import { homeFaqJsonLd, organizationJsonLd, pageMetadata, websiteJsonLd } from "@/lib/seo"
 
-import HeroSection from "@/components/home/hero-section"
-import HomeNewsletterSection from "@/components/home/home-newsletter-section"
-import CrmServicesSection from "@/components/home/crm-services-section"
-import ProcessSection from "@/components/home/process-section"
-import CompanyIntroSection from "@/components/home/company-intro-section"
-import ClientsSection from "@/components/home/clients-section"
-import CtaSection from "@/components/home/cta-section"
+export const metadata: Metadata = pageMetadata({
+  title: "FAIR인사노무컨설팅 | 공인노무사 HR 자문·FAIR CRM",
+  path: "/",
+  keywords: ["노무 상담", "HR 자문", "FAIR인사노무컨설팅"],
+})
 
 export default function NewHomePage() {
   return (
     <>
-      <HeroSection />
-      <HomeNewsletterSection />
-      <CrmServicesSection />
-      <ProcessSection />
-      <CompanyIntroSection />
-      <ClientsSection />
-      <CtaSection />
+      <StructuredData data={[organizationJsonLd, websiteJsonLd, homeFaqJsonLd]} />
+      <HomePageClient />
     </>
   )
 }
