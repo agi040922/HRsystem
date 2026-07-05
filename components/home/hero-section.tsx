@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowRight, ChevronLeft, ChevronRight, PlayCircle, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useTranslations } from 'next-intl'
@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 // HeroSection 컴포넌트 - 캐러셀 버전
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [showVideo, setShowVideo] = useState(false)
   const t = useTranslations('hero')
 
   const slides = [
@@ -216,7 +217,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
-            className="text-sm font-bold tracking-tighter text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-1 sm:mb-2 md:mb-3 leading-tight"
+            className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-2 sm:mb-3 md:mb-4 leading-tight"
           >
             {t('partner')}
           </motion.h1>
@@ -224,7 +225,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
-            className="text-white text-xs sm:text-sm md:text-base mb-1.5 sm:mb-2 md:mb-3 leading-relaxed whitespace-nowrap"
+            className="text-white text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-5 md:mb-7 leading-relaxed"
           >
             {t('description')}
           </motion.p>
@@ -232,18 +233,26 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.8, ease: "easeOut" }}
-            className="flex flex-col gap-1 sm:gap-1.5 md:gap-2 sm:flex-row justify-center items-center"
+            className="flex flex-col gap-2 sm:gap-3 sm:flex-row justify-center items-center"
           >
-            <Link href="/contact">
-              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto md:size-lg text-xs py-1 sm:py-1.5 md:py-2 px-3 sm:px-4">
-                {t('quickConsultation')} <ArrowRight className="ml-1 h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4" />
+            <Link href="/contact" className="w-full sm:w-auto">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto text-sm sm:text-base font-semibold py-2.5 sm:py-3 px-5 sm:px-7">
+                {t('quickConsultation')} <ArrowRight className="ml-1.5 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
-            <Link href="/services">
-              <Button variant="outline" size="sm" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto md:size-lg text-xs py-1 sm:py-1.5 md:py-2 px-3 sm:px-4">
+            <Link href="/services" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-sm sm:text-base font-semibold py-2.5 sm:py-3 px-5 sm:px-7">
                 {t('browseServices')}
               </Button>
             </Link>
+            <Button
+              onClick={() => setShowVideo(true)}
+              variant="outline"
+              size="lg"
+              className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-sm sm:text-base font-semibold py-2.5 sm:py-3 px-5 sm:px-7"
+            >
+              <PlayCircle className="mr-1.5 h-4 w-4 sm:h-5 sm:w-5" /> FAIR CRM 제안서
+            </Button>
           </motion.div>
         </div>
       </div>
@@ -274,6 +283,34 @@ export default function HeroSection() {
           />
         ))}
       </div>
+
+      {/* FAIR CRM 제안서 동영상 모달 */}
+      {showVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setShowVideo(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowVideo(false)}
+              aria-label="닫기"
+              className="absolute -top-11 right-0 text-white/90 hover:text-white transition-colors"
+            >
+              <X className="h-8 w-8" />
+            </button>
+            <iframe
+              className="w-full h-full rounded-lg shadow-2xl"
+              src="https://www.youtube.com/embed/tgSLC1t6R3Q?autoplay=1&rel=0"
+              title="FAIR CRM 제안서"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }
