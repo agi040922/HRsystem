@@ -303,7 +303,7 @@ export default function HeroSection() {
             </button>
             <iframe
               className="w-full h-full rounded-lg shadow-2xl"
-              src="https://www.youtube.com/embed/tgSLC1t6R3Q?autoplay=1&rel=0"
+              src="https://www.youtube.com/embed/q4NwtfZE3Fk?autoplay=1&rel=0"
               title="FAIR CRM 제안서"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
