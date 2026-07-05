@@ -71,6 +71,41 @@ export default function HeroSection() {
     return () => clearInterval(timer)
   }, [slides.length, currentSlide])
 
+  // 제안서 영상: 유튜브 자막(CC) 강제 끄기 — IFrame API로 captions 모듈 언로드
+  useEffect(() => {
+    if (!showVideo) return
+    let player: any = null
+    const off = (target: any) => {
+      try { target.unloadModule("captions") } catch {}
+      try { target.unloadModule("cc") } catch {}
+      try { target.setOption("captions", "track", {}) } catch {}
+    }
+    const init = () => {
+      const YT = (window as any).YT
+      const el = document.getElementById("fair-crm-video")
+      if (!YT || !YT.Player || !el) return
+      player = new YT.Player("fair-crm-video", {
+        events: {
+          onReady: (e: any) => off(e.target),
+          onApiChange: (e: any) => off(e.target),
+          onStateChange: (e: any) => off(e.target),
+        },
+      })
+    }
+    if ((window as any).YT && (window as any).YT.Player) {
+      init()
+    } else {
+      if (!document.getElementById("yt-iframe-api")) {
+        const tag = document.createElement("script")
+        tag.id = "yt-iframe-api"
+        tag.src = "https://www.youtube.com/iframe_api"
+        document.body.appendChild(tag)
+      }
+      ;(window as any).onYouTubeIframeAPIReady = init
+    }
+    return () => { try { player?.destroy?.() } catch {} }
+  }, [showVideo])
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
   }
@@ -302,8 +337,9 @@ export default function HeroSection() {
               <X className="h-8 w-8" />
             </button>
             <iframe
+              id="fair-crm-video"
               className="w-full h-full rounded-lg shadow-2xl"
-              src="https://www.youtube.com/embed/q4NwtfZE3Fk?autoplay=1&rel=0&cc_load_policy=0&cc_lang_pref=none"
+              src="https://www.youtube.com/embed/q4NwtfZE3Fk?autoplay=1&rel=0&cc_load_policy=0&enablejsapi=1"
               title="FAIR CRM 제안서"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
