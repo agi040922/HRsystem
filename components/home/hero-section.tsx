@@ -271,12 +271,12 @@ export default function HeroSection() {
             className="flex flex-col gap-2 sm:gap-3 sm:flex-row justify-center items-center"
           >
             <Link href="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto text-sm sm:text-base font-semibold py-2.5 sm:py-3 px-5 sm:px-7">
-                {t('quickConsultation')} <ArrowRight className="ml-1.5 h-4 w-4 sm:h-5 sm:w-5" />
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
+                {t('quickConsultation')} <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
               </Button>
             </Link>
             <Link href="/services" className="w-full sm:w-auto">
-              <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-sm sm:text-base font-semibold py-2.5 sm:py-3 px-5 sm:px-7">
+              <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
                 {t('browseServices')}
               </Button>
             </Link>
@@ -284,9 +284,9 @@ export default function HeroSection() {
               onClick={() => setShowVideo(true)}
               variant="outline"
               size="lg"
-              className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-sm sm:text-base font-semibold py-2.5 sm:py-3 px-5 sm:px-7"
+              className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9"
             >
-              <PlayCircle className="mr-1.5 h-4 w-4 sm:h-5 sm:w-5" /> FAIR CRM 제안서
+              <PlayCircle className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> FAIR CRM 제안서
             </Button>
           </motion.div>
         </div>
