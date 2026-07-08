@@ -119,7 +119,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] w-full overflow-hidden">
+    <section className="relative h-[64vh] sm:h-[62vh] md:h-[70vh] lg:h-[75vh] w-full overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -214,8 +214,8 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* 모바일용 상단 슬라이드 텍스트 */}
-      <div className="lg:hidden absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 z-20 w-[90%] max-w-md">
+      {/* 모바일용 상단 슬라이드 텍스트 — 중앙 콘텐츠와 겹쳐 모바일에서는 숨김 */}
+      <div className="hidden absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 z-20 w-[90%] max-w-md">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -247,7 +247,7 @@ export default function HeroSection() {
 
       {/* 중앙 메인 콘텐츠 */}
       <div className="relative z-20 h-full flex items-center justify-center">
-        <div className="container-fluid text-center max-w-4xl px-4 pt-28 sm:pt-24 md:pt-16 lg:pt-0">
+        <div className="container-fluid text-center max-w-4xl px-4 pt-6 sm:pt-8 md:pt-16 lg:pt-0">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
