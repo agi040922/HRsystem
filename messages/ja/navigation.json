@@ -2,13 +2,13 @@
   "servicesNav": {
     "label": "サービス",
     "items": [
-      { "href": "/services/freelancer", "title": "フリーランサー診断と管理", "description": "労働者性診断・契約書・名簿・証憑を一箇所で管理" },
       { "href": "/services/labor-consulting", "title": "労働法相談", "description": "企業運営全般の労働法律リスク予防及び対応" },
       { "href": "/services/payroll-system", "title": "給与体系関連コンサルティング", "description": "通常賃金及び平均賃金等給与体系最適化コンサルティング" },
       { "href": "/services/hr-consulting", "title": "人事労務コンサルティング", "description": "企業カスタマイズ型人事制度設計及び運営支援" },
       { "href": "/services/serious-accident-law", "title": "重大災害処罰法関連コンサルティング", "description": "重大災害処罰法施行に伴う企業安全管理体系構築" },
       { "href": "/services/labor-disputes", "title": "労働紛争解決", "description": "労働委員会事件及び各種労働紛争専門対応" },
-      { "href": "/services/workplace-harassment", "title": "職場内いじめ調査の実施", "description": "申告受付から調査・措置・モニタリングまで法に沿って実施" }
+      { "href": "/services/workplace-harassment", "title": "職場内いじめ調査の実施", "description": "申告受付から調査・措置・モニタリングまで法に沿って実施" },
+      { "href": "/services/freelancer", "title": "フリーランサー診断と管理", "description": "労働者性診断・契約書・名簿・証憑を一箇所で管理" }
     ]
   },
   "header": {

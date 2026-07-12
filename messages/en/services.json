@@ -19,17 +19,6 @@
   },
   "services": [
     {
-      "id": "freelancer",
-      "title": "Freelancer Diagnosis & Management",
-      "shortDescription": "Worker-status diagnosis, contracts, roster, and evidence — all in one place",
-      "details": [
-        "AI self-diagnosis of worker-status risk",
-        "Verified service contract generation",
-        "Ongoing freelancer roster & evidence management",
-        "AI supervisor comprehensive review"
-      ]
-    },
-    {
       "id": "labor-consulting",
       "title": "Labor Law Consulting",
       "shortDescription": "Prevention and response to labor law risks in overall business operations",
@@ -94,17 +83,48 @@
         "Establishment of perpetrator discipline and victim protection measures",
         "Organizational culture improvement consulting for recurrence prevention"
       ]
+    },
+    {
+      "id": "freelancer",
+      "title": "Freelancer Diagnosis & Management",
+      "shortDescription": "Worker-status diagnosis, contracts, roster, and evidence — all in one place",
+      "details": [
+        "AI self-diagnosis of worker-status risk",
+        "Verified service contract generation",
+        "Ongoing freelancer roster & evidence management",
+        "AI supervisor comprehensive review"
+      ]
     }
   ],
   "harassmentProcedure": {
     "title": "Workplace Harassment Investigation Procedure",
     "subtitle": "From report intake to monitoring — conducted in 5 lawful steps",
     "steps": [
-      { "no": "1", "title": "Report Intake", "desc": "Anyone may report, and cases are opened upon awareness even without a report. Multiple reporting channels are provided and the reporter's confidentiality is strictly protected." },
-      { "no": "2", "title": "Investigation", "desc": "We decide between counseling, a summary inquiry, or a formal investigation. Investigators sign a confidentiality pledge and proceed in order: victim → witnesses → alleged perpetrator." },
-      { "no": "3", "title": "Fact-finding & Action", "desc": "Based on findings, we carry out victim protection, settlement, or disciplinary action. The victim's opinion must be heard before disciplining the perpetrator (effective Oct 2025)." },
-      { "no": "4", "title": "No Detrimental Treatment", "desc": "Dismissal or unfair personnel action taken because of a report or harm claim is subject to criminal punishment." },
-      { "no": "5", "title": "Prevention & Monitoring", "desc": "After closure, we check for recurrence or retaliation every half-year and continue to support the victim." }
+      {
+        "no": "1",
+        "title": "Report Intake",
+        "desc": "Anyone may report, and cases are opened upon awareness even without a report. Multiple reporting channels are provided and the reporter's confidentiality is strictly protected."
+      },
+      {
+        "no": "2",
+        "title": "Investigation",
+        "desc": "We decide between counseling, a summary inquiry, or a formal investigation. Investigators sign a confidentiality pledge and proceed in order: victim → witnesses → alleged perpetrator."
+      },
+      {
+        "no": "3",
+        "title": "Fact-finding & Action",
+        "desc": "Based on findings, we carry out victim protection, settlement, or disciplinary action. The victim's opinion must be heard before disciplining the perpetrator (effective Oct 2025)."
+      },
+      {
+        "no": "4",
+        "title": "No Detrimental Treatment",
+        "desc": "Dismissal or unfair personnel action taken because of a report or harm claim is subject to criminal punishment."
+      },
+      {
+        "no": "5",
+        "title": "Prevention & Monitoring",
+        "desc": "After closure, we check for recurrence or retaliation every half-year and continue to support the victim."
+      }
     ]
   },
   "whyChoose": {
