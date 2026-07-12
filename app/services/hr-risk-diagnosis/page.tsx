@@ -72,7 +72,7 @@ export default function HrRiskDiagnosisPage() {
             no="1"
             icon={<Calculator className="h-6 w-6" />}
             title="통상임금과 평균임금 간이 진단"
-            desc="월 통상임금·소정근로시간과 최근 3개월 임금총액으로 통상시급·평균임금을 계산합니다."
+            desc="임금항목별로 통상임금·평균임금 산입 여부를 5대 기준에 따라 자동 판정합니다. (FAIR CRM 판단기)"
           />
           <OrdinaryWageCalc />
         </section>
