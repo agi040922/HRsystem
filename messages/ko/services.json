@@ -19,6 +19,17 @@
   },
   "services": [
     {
+      "id": "hr-risk-diagnosis",
+      "title": "HR 리스크 진단",
+      "shortDescription": "통상임금·산업안전·근로자성 간이진단을 한 곳에서",
+      "details": [
+        "통상임금·평균임금 간이 계산",
+        "산업안전 간이진단(10문항)",
+        "프리랜서 근로자성 간이진단(6문항)",
+        "회원가입 없이 바로 확인"
+      ]
+    },
+    {
       "id": "labor-consulting",
       "title": "노동법 자문",
       "shortDescription": "기업 운영 전반의 노동법률 리스크 예방 및 대응",

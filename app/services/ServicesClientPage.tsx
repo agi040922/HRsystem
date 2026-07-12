@@ -1,13 +1,14 @@
 "use client"
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle, ArrowRight, UserCheck } from "lucide-react"
+import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle, ArrowRight, UserCheck, Activity } from "lucide-react"
 import { motion } from "framer-motion"
 import { useTranslations } from 'next-intl'
 import PageBanner from "@/components/page-banner"
 import Link from "next/link"
 
 const iconMap = {
+  "hr-risk-diagnosis": Activity,
   "freelancer": UserCheck,
   "labor-consulting": Briefcase,
   "payroll-system": Calculator,

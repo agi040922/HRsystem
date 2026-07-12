@@ -19,6 +19,17 @@
   },
   "services": [
     {
+      "id": "hr-risk-diagnosis",
+      "title": "HR Risk Diagnosis",
+      "shortDescription": "Ordinary-wage, industrial-safety, and worker-status quick diagnostics in one place",
+      "details": [
+        "Ordinary/average wage quick calculation",
+        "Industrial safety quick diagnosis (10 questions)",
+        "Freelancer worker-status quick diagnosis (6 questions)",
+        "Instant check without sign-up"
+      ]
+    },
+    {
       "id": "labor-consulting",
       "title": "Labor Law Consulting",
       "shortDescription": "Prevention and response to labor law risks in overall business operations",
