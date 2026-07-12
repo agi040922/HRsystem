@@ -67,7 +67,7 @@ export default function HrRiskDiagnosisPage() {
           제공합니다. 정확한 진단·자문은 FAIR인사노무컨설팅이 도와드립니다.
         </p>
 
-        <section className="mb-14">
+        <section id="ordinary-wage" className="mb-14 scroll-mt-28">
           <SectionHead
             no="1"
             icon={<Calculator className="h-6 w-6" />}
@@ -77,7 +77,7 @@ export default function HrRiskDiagnosisPage() {
           <OrdinaryWageCalc />
         </section>
 
-        <section className="mb-14">
+        <section id="safety" className="mb-14 scroll-mt-28">
           <SectionHead
             no="2"
             icon={<ShieldCheck className="h-6 w-6" />}
@@ -87,7 +87,7 @@ export default function HrRiskDiagnosisPage() {
           <SafetyQuickDiagnosis />
         </section>
 
-        <section className="mb-14">
+        <section id="freelancer" className="mb-14 scroll-mt-28">
           <SectionHead
             no="3"
             icon={<UserCheck className="h-6 w-6" />}

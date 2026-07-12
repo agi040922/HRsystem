@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ChevronLeft, ChevronRight, PlayCircle, X } from "lucide-react"
+import { ArrowRight, ChevronLeft, ChevronRight, PlayCircle, X, Calculator, ShieldCheck, UserCheck } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useTranslations } from 'next-intl'
@@ -35,6 +35,7 @@ export default function HeroSection() {
     {
       type: "image",
       src: "/crm/diagnosis-report.png",
+      variant: "diagnosis",
       topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
       bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
     },
@@ -270,24 +271,46 @@ export default function HeroSection() {
             transition={{ duration: 1.0, delay: 0.8, ease: "easeOut" }}
             className="flex flex-col gap-2 sm:gap-3 sm:flex-row justify-center items-center"
           >
-            <Link href="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
-                {t('quickConsultation')} <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
-              </Button>
-            </Link>
-            <Link href="/services" className="w-full sm:w-auto">
-              <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
-                {t('browseServices')}
-              </Button>
-            </Link>
-            <Button
-              onClick={() => setShowVideo(true)}
-              variant="outline"
-              size="lg"
-              className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9"
-            >
-              <PlayCircle className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> FAIR CRM 제안서
-            </Button>
+            {(slides[currentSlide] as { variant?: string }).variant === "diagnosis" ? (
+              <>
+                <Link href="/services/hr-risk-diagnosis#ordinary-wage" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
+                    <Calculator className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> 통상임금·평균임금 진단
+                  </Button>
+                </Link>
+                <Link href="/services/hr-risk-diagnosis#safety" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
+                    <ShieldCheck className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> 산업안전 진단
+                  </Button>
+                </Link>
+                <Link href="/services/hr-risk-diagnosis#freelancer" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
+                    <UserCheck className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> 프리랜서 진단
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/contact" className="w-full sm:w-auto">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
+                    {t('quickConsultation')} <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
+                  </Button>
+                </Link>
+                <Link href="/services" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
+                    {t('browseServices')}
+                  </Button>
+                </Link>
+                <Button
+                  onClick={() => setShowVideo(true)}
+                  variant="outline"
+                  size="lg"
+                  className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9"
+                >
+                  <PlayCircle className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> FAIR CRM 제안서
+                </Button>
+              </>
+            )}
           </motion.div>
         </div>
       </div>
