@@ -2,7 +2,7 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle } from "lucide-react"
+import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useTranslations } from 'next-intl'
 import PageBanner from "@/components/page-banner"
@@ -33,12 +33,6 @@ export default function ServicesClientPage() {
       title: string
       description: string
     }>
-  }
-
-  const procedure = t.raw('harassmentProcedure') as {
-    title: string
-    subtitle: string
-    steps: Array<{ no: string; title: string; desc: string }>
   }
 
   return (
@@ -90,74 +84,38 @@ export default function ServicesClientPage() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="details" className="border-none">
-                          <AccordionTrigger className="text-sm font-medium hover:no-underline">
-                            {t('viewDetails')}
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <ul className="space-y-2 mt-2">
-                              {service.details.map((detail, detailIndex) => (
-                                <li key={detailIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                  <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                                  <span>{detail}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
+                      {service.id === "workplace-harassment" ? (
+                        <Link
+                          href="/services/workplace-harassment"
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                        >
+                          조사 절차 자세히 보기
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      ) : (
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="details" className="border-none">
+                            <AccordionTrigger className="text-sm font-medium hover:no-underline">
+                              {t('viewDetails')}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="space-y-2 mt-2">
+                                {service.details.map((detail, detailIndex) => (
+                                  <li key={detailIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                                    <span>{detail}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+                      )}
                     </CardContent>
                   </Card>
                 </motion.div>
               )
             })}
-          </div>
-        </motion.section>
-
-        {/* 직장 내 괴롭힘 조사 절차 */}
-        <motion.section
-          id="harassment-procedure"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mb-12 md:mb-16 px-4 md:px-0 scroll-mt-28"
-        >
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-              {procedure.title}
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              {procedure.subtitle}
-            </p>
-          </div>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {procedure.steps.map((step, i) => (
-              <motion.div
-                key={step.no}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-              >
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardContent className="flex items-start gap-4 p-5 md:p-6">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-lg">
-                      {step.no}
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg text-foreground mb-1">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                        {step.desc}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
           </div>
         </motion.section>
 

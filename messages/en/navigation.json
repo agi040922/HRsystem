@@ -7,7 +7,7 @@
       { "href": "/services#hr-consulting", "title": "HR Consulting", "description": "Customized HR system design and operational support for companies" },
       { "href": "/services#serious-accident-law", "title": "Serious Accident Punishment Act Consulting", "description": "Establishing corporate safety management systems under the Serious Accident Punishment Act" },
       { "href": "/services#labor-disputes", "title": "Labor Dispute Resolution", "description": "Professional response to Labor Relations Commission cases and various labor disputes" },
-      { "href": "/services#workplace-harassment", "title": "Workplace Harassment Investigation", "description": "From report intake to investigation, action, and monitoring — conducted per the law" }
+      { "href": "/services/workplace-harassment", "title": "Workplace Harassment Investigation", "description": "From report intake to investigation, action, and monitoring — conducted per the law" }
     ]
   },
   "header": {
