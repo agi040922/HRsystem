@@ -19,6 +19,17 @@
   },
   "services": [
     {
+      "id": "freelancer",
+      "title": "Freelancer Diagnosis & Management",
+      "shortDescription": "Worker-status diagnosis, contracts, roster, and evidence — all in one place",
+      "details": [
+        "AI self-diagnosis of worker-status risk",
+        "Verified service contract generation",
+        "Ongoing freelancer roster & evidence management",
+        "AI supervisor comprehensive review"
+      ]
+    },
+    {
       "id": "labor-consulting",
       "title": "Labor Law Consulting",
       "shortDescription": "Prevention and response to labor law risks in overall business operations",

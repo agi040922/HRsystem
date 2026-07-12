@@ -2,6 +2,7 @@
   "servicesNav": {
     "label": "Services",
     "items": [
+      { "href": "/services/freelancer", "title": "Freelancer Diagnosis & Management", "description": "Worker-status diagnosis, contracts, roster, and evidence — all in one place" },
       { "href": "/services/labor-consulting", "title": "Labor Law Consulting", "description": "Prevention and response to labor law risks in overall business operations" },
       { "href": "/services/payroll-system", "title": "Payroll System Consulting", "description": "Optimization consulting for payroll systems including ordinary and average wages" },
       { "href": "/services/hr-consulting", "title": "HR Consulting", "description": "Customized HR system design and operational support for companies" },

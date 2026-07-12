@@ -19,6 +19,17 @@
   },
   "services": [
     {
+      "id": "freelancer",
+      "title": "フリーランサー診断と管理",
+      "shortDescription": "労働者性診断・契約書・名簿・証憑を一箇所で管理",
+      "details": [
+        "労働者性リスクのAI自己診断",
+        "検証済み委託契約書の作成",
+        "フリーランサー名簿・証憑の常時管理",
+        "AI監督官の総合点検"
+      ]
+    },
+    {
       "id": "labor-consulting",
       "title": "労働法相談",
       "shortDescription": "企業運営全般の労働法律リスク予防及び対応",

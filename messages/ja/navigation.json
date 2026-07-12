@@ -2,6 +2,7 @@
   "servicesNav": {
     "label": "サービス",
     "items": [
+      { "href": "/services/freelancer", "title": "フリーランサー診断と管理", "description": "労働者性診断・契約書・名簿・証憑を一箇所で管理" },
       { "href": "/services/labor-consulting", "title": "労働法相談", "description": "企業運営全般の労働法律リスク予防及び対応" },
       { "href": "/services/payroll-system", "title": "給与体系関連コンサルティング", "description": "通常賃金及び平均賃金等給与体系最適化コンサルティング" },
       { "href": "/services/hr-consulting", "title": "人事労務コンサルティング", "description": "企業カスタマイズ型人事制度設計及び運営支援" },

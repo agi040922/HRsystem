@@ -19,6 +19,17 @@
   },
   "services": [
     {
+      "id": "freelancer",
+      "title": "프리랜서 진단과 관리",
+      "shortDescription": "프리랜서 근로자성 진단·계약서·명부·증빙을 한 곳에서 관리",
+      "details": [
+        "근로자성 위험 AI 자가진단",
+        "검증된 위탁계약서 생성",
+        "프리랜서 명부·증빙자료 상시 관리",
+        "AI 감독관 종합 점검"
+      ]
+    },
+    {
       "id": "labor-consulting",
       "title": "노동법 자문",
       "shortDescription": "기업 운영 전반의 노동법률 리스크 예방 및 대응",

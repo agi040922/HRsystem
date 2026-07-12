@@ -2,6 +2,7 @@
   "servicesNav": {
     "label": "서비스",
     "items": [
+      { "href": "/services/freelancer", "title": "프리랜서 진단과 관리", "description": "프리랜서 근로자성 진단·계약서·명부·증빙을 한 곳에서 관리" },
       { "href": "/services/labor-consulting", "title": "노동법 자문", "description": "기업 운영 전반의 노동법률 리스크 예방 및 대응" },
       { "href": "/services/payroll-system", "title": "급여체계 관련 컨설팅", "description": "통상임금 및 평균임금 등 급여체계 최적화 컨설팅" },
       { "href": "/services/hr-consulting", "title": "인사노무 컨설팅", "description": "기업 맞춤형 인사제도 설계 및 운영 지원" },
