@@ -106,7 +106,7 @@ export default function HarassmentTabs() {
     {
       key: "cases",
       title: "수행 사례",
-      desc: "FAIR가 수행한 조사 사례",
+      desc: "최근 3년간 대표 수행 사례",
       icon: <FolderCheck className="h-6 w-6" />,
     },
   ]
@@ -233,9 +233,10 @@ export default function HarassmentTabs() {
       {/* ── 수행 사례 ── */}
       {active === "cases" && (
         <div className="mt-8">
+          <h3 className="mb-2 text-lg sm:text-xl font-bold text-gray-900">최근 3년간 대표 수행 사례</h3>
           <p className="mb-5 text-sm sm:text-base leading-relaxed text-muted-foreground">
-            FAIR인사노무컨설팅이 외부 조사기관으로서 직접 수행한 직장 내 괴롭힘 조사 사례입니다. 의뢰 기관의
-            비밀유지를 위해 업종·기관 유형만 표기합니다.
+            FAIR인사노무컨설팅이 외부 조사기관으로서 최근 3년간 직접 수행한 대표 직장 내 괴롭힘 조사
+            사례입니다. 의뢰 기관의 비밀유지를 위해 업종·기관 유형만 표기합니다.
           </p>
           <div className="space-y-3">
             {CASES.map((c, i) => (
