@@ -75,8 +75,8 @@
     },
     {
       "id": "workplace-harassment",
-      "title": "Workplace Harassment and Sexual Harassment Prevention",
-      "shortDescription": "Prevention of workplace harassment and investigation/handling support when incidents occur",
+      "title": "Workplace Harassment Investigation",
+      "shortDescription": "From report intake to investigation, action, and monitoring — conducted per the law",
       "details": [
         "Development of workplace harassment prevention education programs",
         "Establishment of harassment reporting and investigation procedures",
@@ -85,6 +85,17 @@
       ]
     }
   ],
+  "harassmentProcedure": {
+    "title": "Workplace Harassment Investigation Procedure",
+    "subtitle": "From report intake to monitoring — conducted in 5 lawful steps",
+    "steps": [
+      { "no": "1", "title": "Report Intake", "desc": "Anyone may report, and cases are opened upon awareness even without a report. Multiple reporting channels are provided and the reporter's confidentiality is strictly protected." },
+      { "no": "2", "title": "Investigation", "desc": "We decide between counseling, a summary inquiry, or a formal investigation. Investigators sign a confidentiality pledge and proceed in order: victim → witnesses → alleged perpetrator." },
+      { "no": "3", "title": "Fact-finding & Action", "desc": "Based on findings, we carry out victim protection, settlement, or disciplinary action. The victim's opinion must be heard before disciplining the perpetrator (effective Oct 2025)." },
+      { "no": "4", "title": "No Detrimental Treatment", "desc": "Dismissal or unfair personnel action taken because of a report or harm claim is subject to criminal punishment." },
+      { "no": "5", "title": "Prevention & Monitoring", "desc": "After closure, we check for recurrence or retaliation every half-year and continue to support the victim." }
+    ]
+  },
   "whyChoose": {
     "title": "Why Choose FAIR",
     "subtitle": "A trusted partner verified by 26 years of expertise and reliability",

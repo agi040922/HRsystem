@@ -35,6 +35,12 @@ export default function ServicesClientPage() {
     }>
   }
 
+  const procedure = t.raw('harassmentProcedure') as {
+    title: string
+    subtitle: string
+    steps: Array<{ no: string; title: string; desc: string }>
+  }
+
   return (
     <div className="w-full overflow-x-hidden">
       {/* 페이지 배너 */}
@@ -106,6 +112,52 @@ export default function ServicesClientPage() {
                 </motion.div>
               )
             })}
+          </div>
+        </motion.section>
+
+        {/* 직장 내 괴롭힘 조사 절차 */}
+        <motion.section
+          id="harassment-procedure"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mb-12 md:mb-16 px-4 md:px-0 scroll-mt-28"
+        >
+          <div className="text-center mb-8 md:mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+              {procedure.title}
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              {procedure.subtitle}
+            </p>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {procedure.steps.map((step, i) => (
+              <motion.div
+                key={step.no}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+              >
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardContent className="flex items-start gap-4 p-5 md:p-6">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-lg">
+                      {step.no}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg text-foreground mb-1">
+                        {step.title}
+                      </h3>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                        {step.desc}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </motion.section>
 
