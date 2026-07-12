@@ -52,7 +52,7 @@ export default function HrRiskDiagnosisPage() {
         backgroundImage="/FAIR000.png"
       />
 
-      <div className="mx-auto max-w-4xl py-10 md:py-14 lg:py-16 px-4">
+      <div className="mx-auto max-w-5xl py-10 md:py-14 lg:py-16 px-4">
         <div className="mb-6">
           <Link href="/services">
             <Button variant="outline" size="sm" className="flex items-center gap-2">
