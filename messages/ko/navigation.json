@@ -2,11 +2,11 @@
   "servicesNav": {
     "label": "서비스",
     "items": [
-      { "href": "/services#labor-consulting", "title": "노동법 자문", "description": "기업 운영 전반의 노동법률 리스크 예방 및 대응" },
-      { "href": "/services#payroll-system", "title": "급여체계 관련 컨설팅", "description": "통상임금 및 평균임금 등 급여체계 최적화 컨설팅" },
-      { "href": "/services#hr-consulting", "title": "인사노무 컨설팅", "description": "기업 맞춤형 인사제도 설계 및 운영 지원" },
-      { "href": "/services#serious-accident-law", "title": "중대재해처벌법 관련 컨설팅", "description": "중대재해처벌법 시행에 따른 기업 안전관리체계 구축" },
-      { "href": "/services#labor-disputes", "title": "노동분쟁 해결", "description": "노동위원회 사건 및 각종 노동분쟁 전문 대응" },
+      { "href": "/services/labor-consulting", "title": "노동법 자문", "description": "기업 운영 전반의 노동법률 리스크 예방 및 대응" },
+      { "href": "/services/payroll-system", "title": "급여체계 관련 컨설팅", "description": "통상임금 및 평균임금 등 급여체계 최적화 컨설팅" },
+      { "href": "/services/hr-consulting", "title": "인사노무 컨설팅", "description": "기업 맞춤형 인사제도 설계 및 운영 지원" },
+      { "href": "/services/serious-accident-law", "title": "중대재해처벌법 관련 컨설팅", "description": "중대재해처벌법 시행에 따른 기업 안전관리체계 구축" },
+      { "href": "/services/labor-disputes", "title": "노동분쟁 해결", "description": "노동위원회 사건 및 각종 노동분쟁 전문 대응" },
       { "href": "/services/workplace-harassment", "title": "직장 내 괴롭힘 조사 수행", "description": "신고 접수부터 조사·조치·모니터링까지 법에 맞게 수행" }
     ]
   },

@@ -1,7 +1,6 @@
 "use client"
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useTranslations } from 'next-intl'
@@ -84,33 +83,13 @@ export default function ServicesClientPage() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      {service.id === "workplace-harassment" ? (
-                        <Link
-                          href="/services/workplace-harassment"
-                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                        >
-                          조사 절차 자세히 보기
-                          <ArrowRight className="h-4 w-4" />
-                        </Link>
-                      ) : (
-                        <Accordion type="single" collapsible className="w-full">
-                          <AccordionItem value="details" className="border-none">
-                            <AccordionTrigger className="text-sm font-medium hover:no-underline">
-                              {t('viewDetails')}
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <ul className="space-y-2 mt-2">
-                                {service.details.map((detail, detailIndex) => (
-                                  <li key={detailIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                                    <span>{detail}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                      )}
+                      <Link
+                        href={`/services/${service.id}`}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                      >
+                        {service.id === "workplace-harassment" ? "조사 절차 자세히 보기" : "자세히 보기"}
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
                     </CardContent>
                   </Card>
                 </motion.div>

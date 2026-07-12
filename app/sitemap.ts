@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getBoardPosts } from '@/lib/board'
 import { NEWSLETTER_POSTS } from '@/lib/newsletterPosts'
+import { SERVICE_DETAIL_SLUGS } from '@/lib/serviceDetails'
 import { SITE_URL } from '@/lib/seo'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -45,6 +46,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    ...SERVICE_DETAIL_SLUGS.map((slug) => ({
+      url: `${baseUrl}/services/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     {
       url: `${baseUrl}/fair-crm`,
       lastModified: new Date(),
