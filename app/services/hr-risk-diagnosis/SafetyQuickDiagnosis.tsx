@@ -71,7 +71,7 @@ export default function SafetyQuickDiagnosis() {
           <p className="mt-2 text-2xl font-bold text-gray-900">{result.label}</p>
           <p className="mt-2 text-sm leading-relaxed text-gray-700">{result.head}</p>
         </div>
-        <div className="rounded-2xl border border-gray-200 bg-white p-6">
+        <div className="rounded-2xl border border-blue-900 bg-white p-6">
           <h4 className="text-sm font-semibold text-gray-500">점검이 필요한 항목 ({result.signals.length})</h4>
           {result.signals.length === 0 ? (
             <p className="mt-3 text-sm text-gray-600">미이행으로 잡힌 항목이 없습니다. 다만 간이진단은 10개 문항만 확인합니다.</p>
@@ -99,7 +99,7 @@ export default function SafetyQuickDiagnosis() {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+      <div className="rounded-lg border border-blue-900 bg-white px-4 py-3">
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium text-gray-600">{answered} / {QUESTIONS.length} 문항</span>
           <span className="text-gray-400">이행하고 있으면 “예”</span>
@@ -112,7 +112,7 @@ export default function SafetyQuickDiagnosis() {
         {QUESTIONS.map((q, i) => {
           const v = answers[q.id]
           return (
-            <div key={q.id} className="rounded-xl border border-gray-200 bg-white p-4">
+            <div key={q.id} className="rounded-xl border border-blue-900 bg-white p-4">
               <p className="text-sm leading-relaxed text-gray-800">
                 <span className="mr-1 font-semibold text-gray-400">{i + 1}.</span>
                 <span className="mr-1 text-xs font-semibold text-primary">[{q.area}]</span>

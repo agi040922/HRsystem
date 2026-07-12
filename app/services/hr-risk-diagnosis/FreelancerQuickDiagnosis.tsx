@@ -59,7 +59,7 @@ export default function FreelancerQuickDiagnosis() {
           <p className="mt-2 text-2xl font-bold text-gray-900">{result.label}</p>
           <p className="mt-2 text-sm leading-relaxed text-gray-700">{result.head}</p>
         </div>
-        <div className="rounded-2xl border border-gray-200 bg-white p-6">
+        <div className="rounded-2xl border border-blue-900 bg-white p-6">
           <h4 className="text-sm font-semibold text-gray-500">위험 신호로 잡힌 항목 ({result.signals.length})</h4>
           {result.signals.length === 0 ? (
             <p className="mt-3 text-sm text-gray-600">위험으로 분류된 항목이 없습니다. 다만 간이진단은 업무 6개 문항만 확인하므로, 분쟁·서류 지표까지 전체 진단으로 점검해 보시길 권장합니다.</p>
@@ -83,7 +83,7 @@ export default function FreelancerQuickDiagnosis() {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+      <div className="rounded-lg border border-blue-900 bg-white px-4 py-3">
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium text-gray-600">{answered} / {QUESTIONS.length} 문항</span>
           <span className="text-gray-400">예 / 아니오로 답해 주세요</span>
@@ -96,7 +96,7 @@ export default function FreelancerQuickDiagnosis() {
         {QUESTIONS.map((q, i) => {
           const v = answers[q.id]
           return (
-            <div key={q.id} className="rounded-xl border border-gray-200 bg-white p-4">
+            <div key={q.id} className="rounded-xl border border-blue-900 bg-white p-4">
               <p className="text-sm leading-relaxed text-gray-800">
                 <span className="mr-1 font-semibold text-gray-400">{i + 1}.</span>{q.text}
               </p>

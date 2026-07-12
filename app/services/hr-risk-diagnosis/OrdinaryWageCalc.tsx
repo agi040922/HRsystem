@@ -92,7 +92,7 @@ function JudgeTable({ mode }: { mode: "ordinary" | "average" }) {
   return (
     <div>
       {/* 기준 요약 */}
-      <div className="mb-4 overflow-hidden rounded-xl border border-gray-200">
+      <div className="mb-4 overflow-hidden rounded-xl border border-blue-900">
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-gray-50 text-left text-gray-500">
@@ -130,7 +130,7 @@ function JudgeTable({ mode }: { mode: "ordinary" | "average" }) {
         </button>
       </div>
 
-      <div className="mt-3 overflow-x-auto rounded-xl border border-gray-200">
+      <div className="mt-3 overflow-x-auto rounded-xl border border-blue-900">
         <table className="min-w-[720px] w-full text-sm">
           <thead>
             <tr className="bg-gray-50 text-gray-600">
@@ -200,7 +200,7 @@ function JudgeTable({ mode }: { mode: "ordinary" | "average" }) {
       </div>
 
       {/* 판정 조견표 */}
-      <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-4 text-xs leading-relaxed text-gray-600">
+      <div className="mt-4 rounded-xl border border-blue-900 bg-gray-50 p-4 text-xs leading-relaxed text-gray-600">
         <p className="mb-1 font-semibold text-gray-700">판정 기준</p>
         {mode === "ordinary" ? (
           <p>90점↑ 포함 확실 · 70~89 가능성 높음 · 40~69 확인 필요 · 10~39 제외 가능 · 0~9 제외 높음. (①~③ 3대 요건 각 30점)</p>
@@ -215,7 +215,7 @@ function JudgeTable({ mode }: { mode: "ordinary" | "average" }) {
 export default function OrdinaryWageCalc() {
   const [tab, setTab] = useState<"ordinary" | "average">("ordinary")
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6">
+    <div className="rounded-2xl border border-blue-900 bg-white p-4 sm:p-6">
       <div className="mb-5 flex gap-2">
         {(["ordinary", "average"] as const).map((t) => (
           <button
