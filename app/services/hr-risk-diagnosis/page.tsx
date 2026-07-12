@@ -1,12 +1,10 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Calculator, ShieldCheck, UserCheck } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import PageBanner from "@/components/page-banner"
 import { pageMetadata } from "@/lib/seo"
-import OrdinaryWageCalc from "./OrdinaryWageCalc"
-import SafetyQuickDiagnosis from "./SafetyQuickDiagnosis"
-import FreelancerQuickDiagnosis from "./FreelancerQuickDiagnosis"
+import DiagnosisTabs from "./DiagnosisTabs"
 
 export const metadata: Metadata = pageMetadata({
   title: "HR 리스크 진단 | 통상임금·산업안전·근로자성 간이진단",
@@ -15,33 +13,6 @@ export const metadata: Metadata = pageMetadata({
   path: "/services/hr-risk-diagnosis",
   keywords: ["HR 리스크 진단", "통상임금 계산", "산업안전 진단", "근로자성 진단", "간이진단"],
 })
-
-function SectionHead({
-  no,
-  icon,
-  title,
-  desc,
-}: {
-  no: string
-  icon: React.ReactNode
-  title: string
-  desc: string
-}) {
-  return (
-    <div className="mb-5 flex items-start gap-3">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-        {icon}
-      </div>
-      <div>
-        <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-          <span className="mr-1.5 text-primary">{no}.</span>
-          {title}
-        </h2>
-        <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
-      </div>
-    </div>
-  )
-}
 
 export default function HrRiskDiagnosisPage() {
   return (
@@ -67,35 +38,9 @@ export default function HrRiskDiagnosisPage() {
           제공합니다. 정확한 진단·자문은 FAIR인사노무컨설팅이 도와드립니다.
         </p>
 
-        <section id="ordinary-wage" className="mb-14 scroll-mt-28">
-          <SectionHead
-            no="1"
-            icon={<Calculator className="h-6 w-6" />}
-            title="통상임금과 평균임금 간이 진단"
-            desc="임금항목별로 통상임금·평균임금 산입 여부를 5대 기준에 따라 자동 판정합니다. (FAIR CRM 판단기)"
-          />
-          <OrdinaryWageCalc />
-        </section>
-
-        <section id="safety" className="mb-14 scroll-mt-28">
-          <SectionHead
-            no="2"
-            icon={<ShieldCheck className="h-6 w-6" />}
-            title="산업안전 간이진단"
-            desc="핵심 안전보건 의무 10가지를 이행하고 있는지 ‘예/아니오’로 점검합니다."
-          />
-          <SafetyQuickDiagnosis />
-        </section>
-
-        <section id="freelancer" className="mb-14 scroll-mt-28">
-          <SectionHead
-            no="3"
-            icon={<UserCheck className="h-6 w-6" />}
-            title="프리랜서 근로자성 간이 진단"
-            desc="업무 방식 6가지 문항으로 3.3 프리랜서 관계의 근로자성 위험을 점검합니다."
-          />
-          <FreelancerQuickDiagnosis />
-        </section>
+        <div className="mb-14">
+          <DiagnosisTabs />
+        </div>
 
         {/* CTA */}
         <section>
