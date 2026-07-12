@@ -16,6 +16,13 @@ export default function HeroSection() {
   const slides = [
     {
       type: "image",
+      src: "/crm/diagnosis-report.png",
+      variant: "diagnosis",
+      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
+      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
+    },
+    {
+      type: "image",
       src: "/crm/dashboard-overview.png",
       topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
       bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
@@ -29,13 +36,6 @@ export default function HeroSection() {
     {
       type: "image",
       src: "/crm/safety-dashboard.png",
-      topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
-      bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
-    },
-    {
-      type: "image",
-      src: "/crm/diagnosis-report.png",
-      variant: "diagnosis",
       topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
       bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
     },
@@ -274,7 +274,7 @@ export default function HeroSection() {
             {(slides[currentSlide] as { variant?: string }).variant === "diagnosis" ? (
               <>
                 <Link href="/services/hr-risk-diagnosis#ordinary-wage" className="w-full sm:w-auto">
-                  <Button variant="outline" size="lg" className="text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-9">
                     <Calculator className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> 통상임금·평균임금 진단
                   </Button>
                 </Link>
