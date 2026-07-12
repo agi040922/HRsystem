@@ -77,6 +77,10 @@ export default function Header() {
   // 기획서 기준: 홈 / FAIR CRM(신규) / 회사소개 / 공지사항 / Q&A / 상담 신청 + 우측 CRM 로그인 버튼
   const navItems: NavItem[] = [
     {
+      href: "/hr-risk-diagnosis",
+      label: t('mainNav.hrRiskDiagnosis'),
+    },
+    {
       href: "/fair-crm",
       label: t('mainNav.fairCrm'),
     },
