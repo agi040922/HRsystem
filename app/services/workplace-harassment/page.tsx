@@ -34,8 +34,8 @@ export default function WorkplaceHarassmentPage() {
         </div>
 
         <p className="text-sm sm:text-base leading-relaxed text-muted-foreground mb-8">
-          누구든 신고할 수 있고, 신고가 없어도 인지 시 접수됩니다. 아래에서 <b>조사 절차</b>와{" "}
-          <b>수행 사례</b>를 확인하실 수 있습니다.
+          누구든 신고할 수 있고, 신고가 없어도 인지 시 접수됩니다. 아래에서 <b>조사 절차</b>,{" "}
+          <b>수행 사례</b>, <b>FAIR 강점</b>을 확인하실 수 있습니다.
         </p>
 
         <HarassmentTabs />

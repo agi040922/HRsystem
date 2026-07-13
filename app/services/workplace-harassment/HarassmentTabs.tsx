@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ChevronDown, ShieldAlert, ListChecks, FolderCheck } from "lucide-react"
+import { ChevronDown, ShieldAlert, ListChecks, FolderCheck, Award } from "lucide-react"
 
 const LAST_UPDATED = "2026-07-08"
 
@@ -74,7 +74,72 @@ const CASES = [
   { org: "공공기관(공사)", desc: "사적인 부분에 대한 지속적인 언급과 고압적인 업무지시로 인한" },
 ]
 
-type TabKey = "procedure" | "cases"
+const STRENGTHS = [
+  {
+    no: "1",
+    title: "경험 많은 베테랑 전문가",
+    desc: "27년 실무 경력의 공인노무사(제8회, 1999)로서 김&장 법률사무소 노무사 출신, 법원행정처 전문심리위원 후보자(2025~)이며, 공공기관·기업의 직장 내 괴롭힘 조사 및 심의위원장을 다수 수행했습니다. 특히 고용노동부가 본인의 조사보고서를 인용하여 판단한 사례 등으로 ‘보고서 증거력’이 실제 검증된 전문가입니다.",
+  },
+  {
+    no: "2",
+    title: "AI 활용 모의판정문 제시 (의뢰 기관이 동의한 경우에 한함)",
+    desc: "조사 결과를 노동위원회·법원이 사용하는 판정문 형식의 ‘모의 판정문’으로 작성해 함께 제시합니다. AI 기반 유사 판례·노동위 사건 분석으로 사실관계와 법리를 교차검증하고, 본 사건이 분쟁으로 비화할 경우의 판단을 사전 시뮬레이션합니다. 이를 통해 ① 조사 결론의 법적 방어력 강화, ② 당사자에 대한 결과 예측 가능성 제공, ③ 후속 징계양정 등 의사결정 리스크의 사전 점검이 가능합니다. (AI는 보조도구이며, 최종 판단은 노무사의 전문적 검토로 확정합니다.)",
+  },
+  {
+    no: "3",
+    title: "피해자 심리검사 지원",
+    desc: "필요할 경우 피해자의 동의 하에 표준화된 심리검사(우울·불안·직무스트레스 척도 등)와 전문 심리상담기관 연계를 지원합니다. 조사 과정에서의 2차 피해를 예방하고 피해자의 회복을 돕는 동시에, 조직이 책임 있게 대응했다는 절차적 신뢰성을 함께 확보합니다.",
+  },
+]
+
+const PRINCIPLES = [
+  {
+    name: "객관성",
+    desc: "27년 경력의 베테랑 노무사가 노동위원회·법원의 판단 기준을 선제 적용하여, 고용노동부 진정·민형사 분쟁에서도 효과적인 증거력을 유지합니다.",
+  },
+  {
+    name: "적법성",
+    desc: "근로기준법 제76조의2·제76조의3 및 판례 기준에 부합하는 절차를 준수하여, 조사 결과가 법적 분쟁에서 흔들리지 않는 방어 논리가 되도록 합니다.",
+  },
+  {
+    name: "중립성",
+    desc: "외부 전문가 관점에서 절차적 정당성을 확보하고, 신고인·피신고인 모두가 결과에 승복할 수 있는 공정성을 담보합니다.",
+  },
+  {
+    name: "비밀유지",
+    desc: "엄격한 보안 체계로 사건 확산과 ‘2차 가해’ 리스크를 차단하여, 조직 내부의 불필요한 동요와 평판 손상을 최소화합니다.",
+  },
+]
+
+const METHODOLOGY = [
+  {
+    step: "STEP 1",
+    title: "조사 범위·전략 수립",
+    desc: "신고 요지를 근로기준법상 괴롭힘 요건과 매칭하고, 잠재적 법적 분쟁 지점을 선제 도출하여 조사 범위·질문 전략을 수립합니다.",
+  },
+  {
+    step: "STEP 2",
+    title: "구조화된 분리 조사",
+    desc: "신고인·피신고인·참고인별로 설계된 질문지를 운용하며 진술의 일관성·구체성을 확인합니다. 피해자 심리상태를 고려하고 필요 시 심리검사·상담기관 연계를 안내합니다.",
+  },
+  {
+    step: "STEP 3",
+    title: "물적 증거 대조·분석",
+    desc: "메신저·이메일·근태 데이터 등 객관적 자료를 진술과 병치하여, 주관적 주장을 배제한 ‘확정적 사실’을 추출합니다.",
+  },
+  {
+    step: "STEP 4",
+    title: "법리 검토·AI 모의판정문 교차검증",
+    desc: "근로기준법 제76조의2·제76조의3 요건별로 매칭하고, AI 기반 유사 판례·노동위 사건과 대조하며, 모의 판정문 작성으로 결론의 타당성을 사전 검증합니다.",
+  },
+  {
+    step: "STEP 5",
+    title: "조사 결과 보고서 작성",
+    desc: "감정적 언어를 배제한 증거 기반 사실관계와 판례 중심 법률 검토를 결합하여, 노동위·법원이 즉시 인용 가능한 수준의 보고서를 제출합니다(모의판정문 첨부 가능).",
+  },
+]
+
+type TabKey = "procedure" | "cases" | "strengths"
 
 export default function HarassmentTabs() {
   const [active, setActive] = useState<TabKey>("procedure")
@@ -82,7 +147,7 @@ export default function HarassmentTabs() {
   useEffect(() => {
     const sync = () => {
       const h = window.location.hash.replace("#", "")
-      if (h === "procedure" || h === "cases") setActive(h)
+      if (h === "procedure" || h === "cases" || h === "strengths") setActive(h)
     }
     sync()
     window.addEventListener("hashchange", sync)
@@ -109,12 +174,18 @@ export default function HarassmentTabs() {
       desc: "최근 3년간 대표 수행 사례",
       icon: <FolderCheck className="h-6 w-6" />,
     },
+    {
+      key: "strengths",
+      title: "FAIR 강점",
+      desc: "27년 전문성 · AI 모의판정 · 심리지원",
+      icon: <Award className="h-6 w-6" />,
+    },
   ]
 
   return (
     <div>
-      {/* 2개 선택 상자 — 옆으로 나란히 */}
-      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+      {/* 선택 상자 — 옆으로 나란히 */}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
         {TABS.map((t) => {
           const isActive = t.key === active
           return (
@@ -261,6 +332,95 @@ export default function HarassmentTabs() {
           <p className="mt-5 text-xs leading-relaxed text-gray-400">
             ※ 상기 사례는 실제 수행한 조사 건을 바탕으로 하며, 비밀유지 의무에 따라 기관명·당사자 등 식별
             정보는 일절 표기하지 않습니다.
+          </p>
+        </div>
+      )}
+
+      {/* ── FAIR 강점 ── */}
+      {active === "strengths" && (
+        <div className="mt-8 space-y-10">
+          {/* 01. 차별화된 3대 강점 */}
+          <section>
+            <div className="mb-4 flex items-baseline gap-2">
+              <span className="text-sm font-bold text-primary">01</span>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">차별화된 3대 강점</h3>
+              <span className="text-xs sm:text-sm text-muted-foreground">Key Strengths</span>
+            </div>
+            <div className="space-y-3">
+              {STRENGTHS.map((s) => (
+                <div
+                  key={s.no}
+                  className="flex items-start gap-3 rounded-2xl border border-blue-900 bg-white p-4 sm:p-5"
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-sm font-bold text-primary">
+                    {s.no}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="text-base font-bold text-gray-900">
+                      강점 {s.no} · {s.title}
+                    </div>
+                    <p className="mt-1.5 text-sm leading-relaxed text-gray-600">{s.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 02. 조사의 4대 원칙 */}
+          <section>
+            <div className="mb-4 flex items-baseline gap-2">
+              <span className="text-sm font-bold text-primary">02</span>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">조사의 4대 원칙</h3>
+              <span className="text-xs sm:text-sm text-muted-foreground">Core Principles</span>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {PRINCIPLES.map((p) => (
+                <div
+                  key={p.name}
+                  className="rounded-2xl border border-blue-900 bg-white p-4 sm:p-5"
+                >
+                  <span className="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                    {p.name}
+                  </span>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-700">{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 03. 5단계 조사 수행 절차 */}
+          <section>
+            <div className="mb-4 flex items-baseline gap-2">
+              <span className="text-sm font-bold text-primary">03</span>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">5단계 조사 수행 절차</h3>
+              <span className="text-xs sm:text-sm text-muted-foreground">Methodology</span>
+            </div>
+            <div className="space-y-3">
+              {METHODOLOGY.map((m) => (
+                <div
+                  key={m.step}
+                  className="flex items-start gap-3 rounded-2xl border border-blue-900 bg-white p-4 sm:p-5"
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
+                    {m.step.replace("STEP ", "")}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-x-2">
+                      <span className="text-xs font-bold uppercase tracking-wide text-primary">
+                        {m.step}
+                      </span>
+                      <span className="text-base font-bold text-gray-900">{m.title}</span>
+                    </div>
+                    <p className="mt-1 text-sm leading-relaxed text-gray-600">{m.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <p className="text-xs leading-relaxed text-gray-400">
+            ※ AI 모의판정문은 조사 결과의 법적 방어력 점검을 돕는 보조도구이며, 최종 판단은 공인노무사의
+            전문적 검토로 확정됩니다. 심리검사·상담기관 연계는 피해자의 동의를 전제로 제공됩니다.
           </p>
         </div>
       )}
