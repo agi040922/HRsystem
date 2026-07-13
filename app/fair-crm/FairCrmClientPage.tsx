@@ -7,6 +7,8 @@ import {
   ArrowRight,
   // CheckCircle2, // Pricing 섹션 주석처리로 미사용 (복원 시 함께 활성화)
   ExternalLink,
+  PlayCircle,
+  X,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Button } from "@/components/ui/button"
@@ -34,6 +36,43 @@ export default function FairCrmPage() {
   // const pricingPlans = t.raw("pricing.plans") as PricingPlan[] // Pricing 섹션 주석처리로 미사용 (복원 시 함께 활성화)
   const processSteps = t.raw("process.steps") as ProcessStep[]
   const caseItems = t.raw("cases.items") as CaseItem[]
+
+  const [showVideo, setShowVideo] = useState(false)
+
+  // 제안서 영상: 유튜브 자막(CC) 강제 끄기 — IFrame API로 captions 모듈 언로드
+  useEffect(() => {
+    if (!showVideo) return
+    let player: any = null
+    const off = (target: any) => {
+      try { target.unloadModule("captions") } catch {}
+      try { target.unloadModule("cc") } catch {}
+      try { target.setOption("captions", "track", {}) } catch {}
+    }
+    const init = () => {
+      const YT = (window as any).YT
+      const el = document.getElementById("fair-crm-video")
+      if (!YT || !YT.Player || !el) return
+      player = new YT.Player("fair-crm-video", {
+        events: {
+          onReady: (e: any) => off(e.target),
+          onApiChange: (e: any) => off(e.target),
+          onStateChange: (e: any) => off(e.target),
+        },
+      })
+    }
+    if ((window as any).YT && (window as any).YT.Player) {
+      init()
+    } else {
+      if (!document.getElementById("yt-iframe-api")) {
+        const tag = document.createElement("script")
+        tag.id = "yt-iframe-api"
+        tag.src = "https://www.youtube.com/iframe_api"
+        document.body.appendChild(tag)
+      }
+      ;(window as any).onYouTubeIframeAPIReady = init
+    }
+    return () => { try { player?.destroy?.() } catch {} }
+  }, [showVideo])
 
   return (
     <div className="w-full overflow-x-hidden pt-16">
@@ -66,6 +105,14 @@ export default function FairCrmPage() {
                     {t("hero.ctaPrimary")}
                   </Button>
                 </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="px-8 gap-1.5"
+                  onClick={() => setShowVideo(true)}
+                >
+                  <PlayCircle className="h-4 w-4" /> FAIR CRM 제안서
+                </Button>
                 <a href={CRM_LOGIN_URL} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" variant="outline" className="px-8 gap-1.5">
                     {t("hero.ctaSecondary")}
@@ -323,6 +370,35 @@ export default function FairCrmPage() {
           </div>
         </div>
       </section>
+
+      {/* FAIR CRM 제안서 동영상 모달 */}
+      {showVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setShowVideo(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowVideo(false)}
+              aria-label="닫기"
+              className="absolute -top-11 right-0 text-white/90 hover:text-white transition-colors"
+            >
+              <X className="h-8 w-8" />
+            </button>
+            <iframe
+              id="fair-crm-video"
+              className="w-full h-full rounded-lg shadow-2xl"
+              src="https://www.youtube.com/embed/q4NwtfZE3Fk?autoplay=1&rel=0&cc_load_policy=0&enablejsapi=1"
+              title="FAIR CRM 제안서"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
