@@ -9,6 +9,7 @@ import {
   ExternalLink,
   PlayCircle,
   X,
+  Download,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Button } from "@/components/ui/button"
@@ -90,9 +91,18 @@ export default function FairCrmPage() {
               transition={{ duration: 0.6 }}
               className="text-center lg:text-left lg:max-w-lg"
             >
-              <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-4">
-                {t("hero.badge")}
-              </span>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-4">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold">
+                  {t("hero.badge")}
+                </span>
+                <a
+                  href="/fair-crm-proposal.pdf"
+                  download="FAIR CRM 제안서.pdf"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/40 text-primary text-xs sm:text-sm font-semibold hover:bg-primary/10 transition-colors"
+                >
+                  <Download className="h-3.5 w-3.5" /> 제안서 다운로드
+                </a>
+              </div>
               <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 leading-tight mb-4">
                 {t("hero.title")}
               </h1>
