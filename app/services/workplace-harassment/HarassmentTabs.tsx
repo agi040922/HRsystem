@@ -66,12 +66,12 @@ const PROCEDURES = [
 ]
 
 const CASES = [
-  { org: "다국적 기업 제조업", desc: "회식 과정에서의 폭언과 업무수행 과정에서의 위압적 태도" },
-  { org: "다국적 기업 제조업", desc: "대기발령과 성과부진에 대한 질책" },
-  { org: "국내 대표 의료기기 유통업", desc: "부서 간 업무권한에 대한 갈등과 모욕적인 언행" },
-  { org: "국립 미술관", desc: "고압적인 업무지시와 휴가신청에 대한 반려" },
-  { org: "시립 도서관", desc: "성희롱과 갑질" },
-  { org: "공공기관(공사)", desc: "사적인 부분에 대한 지속적인 언급과 고압적인 업무지시" },
+  { org: "다국적 기업 제조업", desc: "회식 과정에서의 폭언과 업무수행 과정에서의 위압적 태도로 인한" },
+  { org: "다국적 기업 제조업", desc: "대기발령과 성과부진에 대한 질책으로 인한" },
+  { org: "국내 대표 의료기기 유통업", desc: "부서 간 업무권한에 대한 갈등과 모욕적인 언행으로 인한" },
+  { org: "국립 미술관", desc: "고압적인 업무지시와 휴가신청에 대한 반려로 인한" },
+  { org: "시립 도서관", desc: "성희롱과 갑질에 대한" },
+  { org: "공공기관(공사)", desc: "사적인 부분에 대한 지속적인 언급과 고압적인 업무지시로 인한" },
 ]
 
 type TabKey = "procedure" | "cases"
@@ -252,7 +252,7 @@ export default function HarassmentTabs() {
                     {c.org}
                   </div>
                   <p className="mt-1.5 text-sm sm:text-base leading-relaxed text-gray-800">
-                    {c.desc}으로 인한 직장 내 괴롭힘 조사 수행
+                    {c.desc} 직장 내 괴롭힘 조사 수행
                   </p>
                 </div>
               </div>
