@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { I18nProvider } from "./providers"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import KakaoChatButton from "@/components/kakao-chat-button"
 import { SEO_KEYWORDS, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -75,6 +76,7 @@ export default async function RootLayout({
               <Header />
               <main className="flex-1 w-full overflow-x-hidden pt-16">{children}</main>
               <Footer />
+              <KakaoChatButton />
             </div>
           </I18nProvider>
         </ThemeProvider>
