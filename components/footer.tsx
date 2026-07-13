@@ -1,7 +1,10 @@
 "use client"
 
 import Link from "next/link"
+import { ExternalLink } from "lucide-react"
 import { useTranslations } from 'next-intl'
+
+const BLOG_URL = "https://blog.naver.com/fairhr"
 
 export default function Footer() {
   const t = useTranslations('footer')
@@ -35,9 +38,25 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/newsletter" className="text-muted-foreground hover:text-primary transition-colors">
+                  뉴스레터
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   {t('contact')}
                 </Link>
+              </li>
+              <li>
+                <a
+                  href={BLOG_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  네이버 블로그
+                  <ExternalLink className="h-3 w-3" />
+                </a>
               </li>
             </ul>
           </div>

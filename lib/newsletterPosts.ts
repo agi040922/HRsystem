@@ -17,6 +17,8 @@ export type NewsletterPost = {
   /** 발행일 YYYY-MM-DD */
   date: string
   body: Block[]
+  /** (선택) 네이버 블로그 등 원문 글 링크 — 있으면 상세 하단에 ‘원문 보기’로 노출 */
+  blogUrl?: string
 }
 
 const AUTHOR_BIO: Block = {

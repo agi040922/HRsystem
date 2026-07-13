@@ -2,7 +2,10 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { ExternalLink } from "lucide-react"
 import { NEWSLETTER_POSTS } from "@/lib/newsletterPosts"
+
+const BLOG_URL = "https://blog.naver.com/fairhr"
 
 /**
  * 홈 — Hero 바로 아래 노출되는 "뉴스레터" 미리보기.
@@ -67,6 +70,18 @@ export default function HomeNewsletterSection() {
               </Link>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-9 text-center">
+          <a
+            href={BLOG_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
+          >
+            네이버 블로그에서 더 많은 인사노무 이야기 보기
+            <ExternalLink className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>

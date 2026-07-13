@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ExternalLink } from "lucide-react"
 import {
   NEWSLETTER_POSTS,
   getNewsletterPost,
@@ -10,6 +10,7 @@ import {
 } from "@/lib/newsletterPosts"
 
 const SITE = "https://www.fairhr.net"
+const BLOG_URL = "https://blog.naver.com/fairhr"
 
 export function generateStaticParams() {
   return NEWSLETTER_POSTS.map((p) => ({ slug: p.slug }))
@@ -118,7 +119,23 @@ export default async function NewsletterPostPage({
           ))}
         </div>
 
-        <div className="mt-12 border-t border-gray-200 pt-6">
+        {/* 네이버 블로그 연결 */}
+        <div className="mt-12 rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-6 text-center">
+          <p className="text-sm sm:text-base text-gray-700">
+            인사노무 이야기를 <b>네이버 블로그</b>에서도 만나보세요.
+          </p>
+          <a
+            href={post.blogUrl ?? BLOG_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            {post.blogUrl ? "네이버 블로그에서 원문 보기" : "네이버 블로그에서 더 많은 글 보기"}
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
+
+        <div className="mt-8 border-t border-gray-200 pt-6">
           <Link href="/newsletter">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
