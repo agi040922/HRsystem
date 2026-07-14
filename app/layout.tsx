@@ -8,6 +8,7 @@ import { I18nProvider } from "./providers"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import KakaoChatButton from "@/components/kakao-chat-button"
+import { Analytics } from "@vercel/analytics/next"
 import { SEO_KEYWORDS, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -78,6 +79,7 @@ export default async function RootLayout({
               <Footer />
               <KakaoChatButton />
             </div>
+            <Analytics />
           </I18nProvider>
         </ThemeProvider>
       </body>
