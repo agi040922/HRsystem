@@ -293,7 +293,7 @@ export default function HeroSection() {
             ) : (slides[currentSlide] as { variant?: string }).variant === "consulting" ? (
               <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md sm:max-w-2xl mx-auto">
                 <Link href="/services/freelancer#presumption" className="w-full">
-                  <Button variant="outline" size="lg" className="w-full text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 text-xs sm:text-sm md:text-base font-semibold py-3 h-auto min-h-[3rem] whitespace-normal leading-tight">
+                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-xs sm:text-sm md:text-base font-semibold py-3 h-auto min-h-[3rem] whitespace-normal leading-tight">
                     <Scale className="mr-1.5 h-4 w-4 sm:h-5 sm:w-5 shrink-0" /> 근로자 추정제 관련 컨설팅
                   </Button>
                 </Link>
