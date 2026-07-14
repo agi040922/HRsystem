@@ -71,8 +71,8 @@
     "viewAll": "모든 서비스 보기",
     "items": {
       "laborConsulting": {
-        "title": "노동법 자문",
-        "description": "기업 운영 전반의 노동법률 리스크 예방 및 대응"
+        "title": "인사노무 관리 자문",
+        "description": "기업 운영 전반의 인사노무 리스크 예방 및 대응"
       },
       "payroll": {
         "title": "급여 아웃소싱 및 4대보험",

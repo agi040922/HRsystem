@@ -8,8 +8,9 @@ import { pageMetadata } from "@/lib/seo"
 import { SERVICE_DETAIL_SLUGS, getServiceDetail } from "@/lib/serviceDetails"
 
 export function generateStaticParams() {
-  // hr-consulting은 전용 페이지(app/services/hr-consulting)에서 처리 → 동적 라우트에서 제외
-  return SERVICE_DETAIL_SLUGS.filter((slug) => slug !== "hr-consulting").map((slug) => ({ slug }))
+  // 전용 페이지가 있는 슬러그는 동적 라우트에서 제외 (hr-consulting, labor-consulting)
+  const DEDICATED = ["hr-consulting", "labor-consulting"]
+  return SERVICE_DETAIL_SLUGS.filter((slug) => !DEDICATED.includes(slug)).map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({

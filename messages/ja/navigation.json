@@ -3,7 +3,7 @@
     "label": "サービス",
     "items": [
       { "href": "/services/hr-risk-diagnosis", "title": "HRリスク診断", "description": "通常賃金・産業安全・労働者性の簡易診断でリスクを一度に点検" },
-      { "href": "/services/labor-consulting", "title": "労働法相談", "description": "企業運営全般の労働法律リスク予防及び対応" },
+      { "href": "/services/labor-consulting", "title": "人事労務管理顧問", "description": "企業運営全般の労働法律リスク予防及び対応" },
       { "href": "/services/payroll-system", "title": "給与体系関連コンサルティング", "description": "通常賃金及び平均賃金等給与体系最適化コンサルティング" },
       { "href": "/services/hr-consulting", "title": "人事労務コンサルティング", "description": "企業カスタマイズ型人事制度設計及び運営支援" },
       { "href": "/services/serious-accident-law", "title": "重大災害処罰法関連コンサルティング", "description": "重大災害処罰法施行に伴う企業安全管理体系構築" },
@@ -65,7 +65,7 @@
   },
   "servicesMenu": {
     "laborConsulting": {
-      "title": "労働法相談",
+      "title": "人事労務管理顧問",
       "description": "企業運営全般の労働法律リスク予防及び対応"
     },
     "payroll": {

@@ -3,7 +3,7 @@
     "label": "Services",
     "items": [
       { "href": "/services/hr-risk-diagnosis", "title": "HR Risk Diagnosis", "description": "Check ordinary-wage, industrial-safety, and worker-status risks with quick self-diagnostics" },
-      { "href": "/services/labor-consulting", "title": "Labor Law Consulting", "description": "Prevention and response to labor law risks in overall business operations" },
+      { "href": "/services/labor-consulting", "title": "HR & Labor Advisory", "description": "Prevention and response to labor law risks in overall business operations" },
       { "href": "/services/payroll-system", "title": "Payroll System Consulting", "description": "Optimization consulting for payroll systems including ordinary and average wages" },
       { "href": "/services/hr-consulting", "title": "HR Consulting", "description": "Customized HR system design and operational support for companies" },
       { "href": "/services/serious-accident-law", "title": "Serious Accident Punishment Act Consulting", "description": "Establishing corporate safety management systems under the Serious Accident Punishment Act" },
@@ -65,7 +65,7 @@
   },
   "servicesMenu": {
     "laborConsulting": {
-      "title": "Labor Law Consulting",
+      "title": "HR & Labor Advisory",
       "description": "Prevention and response to labor law risks in overall business operations"
     },
     "payroll": {

@@ -17,8 +17,8 @@ export type ServiceDetail = {
 
 export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
   "labor-consulting": {
-    title: "노동법 자문",
-    subtitle: "기업 운영 전반의 노동법률 리스크 예방 및 대응",
+    title: "인사노무 관리 자문",
+    subtitle: "기업 운영 전반의 인사노무 리스크 예방 및 대응",
     intro:
       "채용부터 퇴직까지, 기업 운영 전반에서 발생하는 노동법률 리스크를 사전에 진단하고 분쟁이 생기기 전에 예방·대응 전략을 함께 설계합니다.",
     sections: [
