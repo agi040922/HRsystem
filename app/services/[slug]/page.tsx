@@ -8,7 +8,8 @@ import { pageMetadata } from "@/lib/seo"
 import { SERVICE_DETAIL_SLUGS, getServiceDetail } from "@/lib/serviceDetails"
 
 export function generateStaticParams() {
-  return SERVICE_DETAIL_SLUGS.map((slug) => ({ slug }))
+  // hr-consulting은 전용 페이지(app/services/hr-consulting)에서 처리 → 동적 라우트에서 제외
+  return SERVICE_DETAIL_SLUGS.filter((slug) => slug !== "hr-consulting").map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({
