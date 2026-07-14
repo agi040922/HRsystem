@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ChevronLeft, ChevronRight, PlayCircle, X, Calculator, ShieldCheck, UserCheck } from "lucide-react"
+import { ArrowRight, ChevronLeft, ChevronRight, PlayCircle, X, Calculator, ShieldCheck, UserCheck, Scale, MessageCircle, Clock, TrendingDown } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useTranslations } from 'next-intl'
@@ -30,6 +30,7 @@ export default function HeroSection() {
     {
       type: "image",
       src: "/crm/advisory-history.png",
+      variant: "consulting",
       topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
       bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
     },
@@ -289,6 +290,29 @@ export default function HeroSection() {
                   </Button>
                 </Link>
               </>
+            ) : (slides[currentSlide] as { variant?: string }).variant === "consulting" ? (
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md sm:max-w-2xl mx-auto">
+                <Link href="/services/freelancer#presumption" className="w-full">
+                  <Button variant="outline" size="lg" className="w-full text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 text-xs sm:text-sm md:text-base font-semibold py-3 h-auto min-h-[3rem] whitespace-normal leading-tight">
+                    <Scale className="mr-1.5 h-4 w-4 sm:h-5 sm:w-5 shrink-0" /> 근로자 추정제 관련 컨설팅
+                  </Button>
+                </Link>
+                <Link href="/services/workplace-harassment" className="w-full">
+                  <Button variant="outline" size="lg" className="w-full text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 text-xs sm:text-sm md:text-base font-semibold py-3 h-auto min-h-[3rem] whitespace-normal leading-tight">
+                    <MessageCircle className="mr-1.5 h-4 w-4 sm:h-5 sm:w-5 shrink-0" /> 직장 내 괴롭힘 조사
+                  </Button>
+                </Link>
+                <Link href="/services/payroll-system#pogwal" className="w-full">
+                  <Button variant="outline" size="lg" className="w-full text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 text-xs sm:text-sm md:text-base font-semibold py-3 h-auto min-h-[3rem] whitespace-normal leading-tight">
+                    <Clock className="mr-1.5 h-4 w-4 sm:h-5 sm:w-5 shrink-0" /> 포괄임금 관련 컨설팅
+                  </Button>
+                </Link>
+                <Link href="/services/payroll-system#peak" className="w-full">
+                  <Button variant="outline" size="lg" className="w-full text-white border-white/80 hover:bg-white hover:text-black backdrop-blur-sm bg-white/10 text-xs sm:text-sm md:text-base font-semibold py-3 h-auto min-h-[3rem] whitespace-normal leading-tight">
+                    <TrendingDown className="mr-1.5 h-4 w-4 sm:h-5 sm:w-5 shrink-0" /> 임금피크제 관련 컨설팅
+                  </Button>
+                </Link>
+              </div>
             ) : (
               <>
                 <Link href="/contact" className="w-full sm:w-auto">
