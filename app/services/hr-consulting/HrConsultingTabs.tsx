@@ -8,7 +8,7 @@ import { getServiceDetail } from "@/lib/serviceDetails"
 const CONSULTING = getServiceDetail("hr-consulting")!
 
 // HR 테크 — 컨설팅으로 설계 → ERP로 구축
-type Section = { no: string; title: string; sub: string; open?: boolean; body?: string; items?: string[] }
+type Section = { no: string; title: string; sub: string; open?: boolean; body?: string; items?: string[]; image?: string; imageCaption?: string }
 const HRTECH: Section[] = [
   {
     no: "1",
@@ -67,11 +67,19 @@ const HRTECH: Section[] = [
       "회사에 맞춘 커스터마이징 — 규모·업종별로 꼭 필요한 기능만 설계·구축합니다.",
     ],
   },
+  {
+    no: "7",
+    title: "HR 테크 구축사례 — ○○상사 경영혁신컨설팅",
+    sub: "경영혁신 컨설팅 → 전용 성과관리 ERP 구축",
+    body: "○○상사의 영업이익 흑자전환을 목표로 한 경영혁신 컨설팅 사례입니다. 컨설팅으로 직무분석·평가·성과관리 제도를 설계하고, 그 설계를 그대로 담은 전용 성과관리 시스템을 구축했습니다. ‘직무분석 → 평가관리 → 성과관리 → 임직원 포털’을 하나의 흐름으로 연결해, 제도(HR)와 시스템(IT)이 따로 놀지 않도록 만든 실제 구축 사례입니다.",
+    image: "/hr-tech-case.png",
+    imageCaption: "○○상사 전용 성과관리 시스템 메인 화면 (의뢰사 비밀유지를 위해 회사명은 익명 처리)",
+  },
 ]
 
 type TabKey = "consulting" | "hr-tech"
 
-function Accordion({ items }: { items: { no: string; title: string; summary: string; points?: string[]; body?: string; open?: boolean }[] }) {
+function Accordion({ items }: { items: { no: string; title: string; summary: string; points?: string[]; body?: string; open?: boolean; image?: string; imageCaption?: string }[] }) {
   return (
     <div className="space-y-3">
       {items.map((s) => (
@@ -98,6 +106,19 @@ function Accordion({ items }: { items: { no: string; title: string; summary: str
                 </li>
               ))}
             </ul>
+          )}
+          {s.image && (
+            <figure className="border-t border-gray-100 px-5 py-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={s.image}
+                alt={s.imageCaption ?? "HR 테크 구축사례"}
+                className="w-full rounded-xl border border-gray-200"
+              />
+              {s.imageCaption && (
+                <figcaption className="mt-2 text-center text-xs text-gray-400">{s.imageCaption}</figcaption>
+              )}
+            </figure>
           )}
         </details>
       ))}
@@ -196,7 +217,7 @@ export default function HrConsultingTabs() {
             맞춤형 ERP를 직접 구축해, 효율적이고 체계적인 성과관리를 현장에서 작동시킵니다.
           </p>
 
-          <Accordion items={HRTECH.map((s) => ({ no: s.no, title: s.title, summary: s.sub, body: s.body, points: s.items, open: s.open }))} />
+          <Accordion items={HRTECH.map((s) => ({ no: s.no, title: s.title, summary: s.sub, body: s.body, points: s.items, open: s.open, image: s.image, imageCaption: s.imageCaption }))} />
 
           <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-6">
             <p className="text-sm leading-relaxed text-gray-700">
