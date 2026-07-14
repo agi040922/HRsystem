@@ -12,7 +12,7 @@ const detail = getServiceDetail("payroll-system")!
 export const metadata: Metadata = pageMetadata({
   title: "급여체계 컨설팅 | 통상·평균임금·포괄임금·임금피크제",
   description:
-    "통상임금·평균임금 산정과 급여체계 정비를 넘어, 포괄임금 오남용 방지(고용노동부 지도지침)와 2022년 대법원 판결 이후 임금피크제까지 법에 맞게 컨설팅합니다.",
+    "통상임금·평균임금 산정과 급여체계 정비를 넘어, 포괄임금 오남용 방지(고용노동부 지도지침)와 최근 대법원 판결(2024·2026)을 반영한 임금피크제까지 법에 맞게 컨설팅합니다.",
   path: "/services/payroll-system",
   keywords: ["급여체계 컨설팅", "포괄임금", "임금피크제", "통상임금", "평균임금", "임금체불 예방"],
 })
