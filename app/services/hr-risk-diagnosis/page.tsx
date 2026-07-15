@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ExternalLink } from "lucide-react"
 import PageBanner from "@/components/page-banner"
 import { pageMetadata } from "@/lib/seo"
 import DiagnosisTabs from "./DiagnosisTabs"
@@ -24,13 +24,19 @@ export default function HrRiskDiagnosisPage() {
       />
 
       <div className="mx-auto max-w-5xl py-10 md:py-14 lg:py-16 px-4">
-        <div className="mb-6">
+        <div className="mb-6 flex flex-wrap items-center gap-2">
           <Link href="/services">
             <Button variant="outline" size="sm" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
               서비스 목록으로
             </Button>
           </Link>
+          <a href="https://freelancer.plustai.com" target="_blank" rel="noopener noreferrer">
+            <Button size="sm" className="flex items-center gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground">
+              프리랜서 백신 바로가기
+              <ExternalLink className="w-3.5 h-3.5" />
+            </Button>
+          </a>
         </div>
 
         <p className="text-sm sm:text-base leading-relaxed text-muted-foreground mb-10">
