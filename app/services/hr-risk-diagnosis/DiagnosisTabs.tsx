@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Calculator, ShieldCheck, UserCheck } from "lucide-react"
+import { Calculator, ShieldCheck, UserCheck, ExternalLink } from "lucide-react"
 import OrdinaryWageCalc from "./OrdinaryWageCalc"
 import SafetyQuickDiagnosis from "./SafetyQuickDiagnosis"
 import FreelancerQuickDiagnosis from "./FreelancerQuickDiagnosis"
@@ -112,17 +112,30 @@ export default function DiagnosisTabs() {
 
       {/* 선택된 진단 내용 */}
       <div className="mt-8">
-        <div className="mb-5 flex items-start gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            {activeTab.icon}
+        <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
+          <div className="flex min-w-0 items-start gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              {activeTab.icon}
+            </div>
+            <div>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                <span className="mr-1.5 text-primary">{activeTab.no}.</span>
+                {activeTab.title}
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">{activeTab.desc}</p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              <span className="mr-1.5 text-primary">{activeTab.no}.</span>
-              {activeTab.title}
-            </h2>
-            <p className="mt-1 text-sm text-muted-foreground">{activeTab.desc}</p>
-          </div>
+          {active === "freelancer" && (
+            <a
+              href="https://freelancer.plustai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-1.5 rounded-md bg-primary px-3.5 py-2 text-xs sm:text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              프리랜서 백신 바로가기
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          )}
         </div>
         <ActiveComponent />
       </div>
