@@ -8,6 +8,7 @@ import { I18nProvider } from "./providers"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import KakaoChatButton from "@/components/kakao-chat-button"
+import SalesAgentWidget from "@/components/sales/sales-agent-widget"
 import { Analytics } from "@vercel/analytics/next"
 import { SEO_KEYWORDS, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 
@@ -78,6 +79,7 @@ export default async function RootLayout({
               <main className="flex-1 w-full overflow-x-hidden pt-16">{children}</main>
               <Footer />
               <KakaoChatButton />
+              <SalesAgentWidget />
             </div>
             <Analytics />
           </I18nProvider>
