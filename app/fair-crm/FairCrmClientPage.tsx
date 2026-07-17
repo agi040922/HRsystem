@@ -86,7 +86,7 @@ export default function FairCrmPage() {
             transition={{ duration: 0.6 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-gray-900"
           >
-            우리회사 이번에는
+            이번에는 우리 회사도
           </motion.h2>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
