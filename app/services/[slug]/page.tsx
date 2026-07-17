@@ -9,7 +9,7 @@ import { SERVICE_DETAIL_SLUGS, getServiceDetail } from "@/lib/serviceDetails"
 
 export function generateStaticParams() {
   // 전용 페이지가 있는 슬러그는 동적 라우트에서 제외 (hr-consulting, labor-consulting)
-  const DEDICATED = ["hr-consulting", "labor-consulting", "payroll-system"]
+  const DEDICATED = ["hr-consulting", "labor-consulting", "payroll-system", "labor-disputes"]
   return SERVICE_DETAIL_SLUGS.filter((slug) => !DEDICATED.includes(slug)).map((slug) => ({ slug }))
 }
 
