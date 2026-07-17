@@ -1,6 +1,7 @@
 "use client"
 
 import HeroSection from "@/components/home/hero-section"
+import ServiceFinderSection from "@/components/home/service-finder-section"
 import HomeNewsletterSection from "@/components/home/home-newsletter-section"
 import CrmServicesSection from "@/components/home/crm-services-section"
 import ProcessSection from "@/components/home/process-section"
@@ -12,6 +13,7 @@ export default function NewHomePage() {
   return (
     <>
       <HeroSection />
+      <ServiceFinderSection />
       <HomeNewsletterSection />
       <CrmServicesSection />
       <ProcessSection />
