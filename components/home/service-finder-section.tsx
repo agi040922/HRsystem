@@ -57,7 +57,7 @@ export default function ServiceFinderSection() {
             >
               <Link
                 href={f.href}
-                className="group flex h-full min-h-[6rem] md:min-h-[6.5rem] flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 transition-all hover:border-primary/50 hover:shadow-md"
+                className="group flex h-full min-h-[6rem] md:min-h-[6.5rem] flex-col justify-between rounded-xl border border-blue-900 bg-white p-4 transition-all hover:border-primary hover:shadow-md"
               >
                 <span className="text-sm md:text-[15px] font-semibold leading-snug text-gray-900 transition-colors group-hover:text-primary">
                   {f.label}
