@@ -9,6 +9,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import KakaoChatButton from "@/components/kakao-chat-button"
 import SalesAgentWidget from "@/components/sales/sales-agent-widget"
+import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
 import { SEO_KEYWORDS, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 
@@ -81,6 +82,7 @@ export default async function RootLayout({
               <KakaoChatButton />
               <SalesAgentWidget />
             </div>
+            <Toaster />
             <Analytics />
           </I18nProvider>
         </ThemeProvider>

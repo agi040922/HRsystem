@@ -15,7 +15,8 @@ import {
 import { Controller, useForm, type SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Phone, Mail, MapPin, AlertTriangle } from "lucide-react"
+import { Phone, Mail, MapPin, AlertTriangle, CheckCircle2 } from "lucide-react"
+import { useState } from "react"
 import { useToast } from "@/hooks/use-toast"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
@@ -93,6 +94,8 @@ function formatPhoneNumber(value: string): string {
 export default function ContactPageClient() {
   const t = useTranslations('contact')
   const { toast } = useToast()
+  const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const {
     register,
     handleSubmit,
@@ -110,6 +113,7 @@ export default function ContactPageClient() {
   const contactField = register("contact")
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
+    setSubmitError(null)
     const formData = new FormData()
     Object.entries(data).forEach(([key, value]) => {
       if (key === "attachment" && typeof window !== 'undefined' && value && (value as FileList).length > 0) {
@@ -130,16 +134,20 @@ export default function ContactPageClient() {
         throw new Error(result?.message || "요청사항 제출 중 오류가 발생했습니다.")
       }
 
-      toast({
-        title: "요청사항 접수 완료",
-        description: "요청사항이 성공적으로 접수되었습니다. 검토 후 신속히 연락드리겠습니다.",
-      })
       reset()
+      setSubmitted(true)
+      // 완료 화면이 보이도록 폼 영역 상단으로 스크롤
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" })
     } catch (error) {
       console.error("문의 제출 오류:", error)
+      const message =
+        error instanceof Error && error.message
+          ? error.message
+          : "요청사항 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요."
+      setSubmitError(message)
       toast({
         title: "오류 발생",
-        description: "요청사항 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+        description: message,
         variant: "destructive",
       })
     }
@@ -169,6 +177,34 @@ export default function ContactPageClient() {
                 <CardTitle className="text-xl md:text-2xl">{t('form.title')}</CardTitle>
               </CardHeader>
               <CardContent>
+                {submitted ? (
+                  <div className="py-10 text-center">
+                    <CheckCircle2 className="mx-auto h-16 w-16 text-green-500" />
+                    <h3 className="mt-5 text-xl md:text-2xl font-bold text-gray-900">
+                      상담 신청이 접수되었습니다
+                    </h3>
+                    <p className="mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">
+                      입력하신 이메일로 접수 확인 메일을 보내드렸습니다.
+                      <br />
+                      검토 후 영업일 기준 1~2일 이내에 연락드리겠습니다.
+                    </p>
+                    <p className="mt-4 text-sm text-muted-foreground">
+                      급한 문의는{" "}
+                      <a href="tel:02-387-9869" className="font-semibold text-primary hover:underline">
+                        02-387-9869
+                      </a>
+                      로 전화 주세요.
+                    </p>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="mt-6"
+                      onClick={() => setSubmitted(false)}
+                    >
+                      새 상담 신청 작성하기
+                    </Button>
+                  </div>
+                ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
                   <div>
                     <Label htmlFor="companyName" className="text-sm font-medium">{t('form.fields.companyName.label')}</Label>
@@ -337,10 +373,16 @@ export default function ContactPageClient() {
                       </p>
                     )}
                   </div>
+                  {submitError && (
+                    <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                      {submitError}
+                    </div>
+                  )}
                   <Button type="submit" className="w-full" disabled={isSubmitting}>
                     {isSubmitting ? t('form.submitting') : t('form.submit')}
                   </Button>
                 </form>
+                )}
               </CardContent>
             </Card>
           </motion.div>
