@@ -77,6 +77,45 @@ export default function FairCrmPage() {
 
   return (
     <div className="w-full overflow-x-hidden pt-16">
+      {/* 인트로 — 큰 카피 한 화면 */}
+      <section className="w-full bg-white py-20 sm:py-28 md:py-36">
+        <div className="container-fluid max-w-5xl px-4 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-gray-900"
+          >
+            우리회사 이번에는
+          </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mt-2 sm:mt-3 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-primary"
+          >
+            [ 미리 체계적으로 준비하자! ]
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-14 sm:mt-20 md:mt-24 text-base sm:text-2xl md:text-3xl font-bold text-gray-900"
+          >
+            하지만 어떻게 관리할 지 모른다면,
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.75 }}
+            className="mt-5 sm:mt-7 text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary"
+          >
+            정답은 FAIR CRM
+          </motion.p>
+        </div>
+      </section>
+
       {/* Hero */}
       <section
         id="intro"
