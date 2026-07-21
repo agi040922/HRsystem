@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Scale, ClipboardList, ExternalLink } from "lucide-react"
+import { Scale, ClipboardList, ExternalLink, Gavel } from "lucide-react"
 import { ServiceDonut } from "@/components/service-donut"
+import { CASE_GROUPS, COMMON_NOTICE } from "./casesData"
 
 const BLOG_URL = "https://blog.naver.com/fairhr_/224326560478"
 
@@ -109,7 +110,7 @@ const PRESUMPTION: Section[] = [
   },
 ]
 
-type TabKey = "presumption" | "manual"
+type TabKey = "presumption" | "manual" | "cases"
 
 export default function FreelancerTabs() {
   const [active, setActive] = useState<TabKey>("presumption")
@@ -117,7 +118,7 @@ export default function FreelancerTabs() {
   useEffect(() => {
     const sync = () => {
       const h = window.location.hash.replace("#", "")
-      if (h === "presumption" || h === "manual") setActive(h)
+      if (h === "presumption" || h === "manual" || h === "cases") setActive(h)
     }
     sync()
     window.addEventListener("hashchange", sync)
@@ -144,12 +145,18 @@ export default function FreelancerTabs() {
       desc: "진단·계약·명부·증빙 6단계 관리",
       icon: <ClipboardList className="h-6 w-6" />,
     },
+    {
+      key: "cases",
+      title: "업종별 판례",
+      desc: "근로자성 인정·부정 판례 모음",
+      icon: <Gavel className="h-6 w-6" />,
+    },
   ]
 
   return (
     <div>
-      {/* 2개 선택 상자 — 옆으로 나란히 */}
-      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+      {/* 선택 상자 — 옆으로 나란히 */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
         {TABS.map((t) => {
           const isActive = t.key === active
           return (
@@ -246,6 +253,72 @@ export default function FreelancerTabs() {
           <p className="mt-3 text-xs leading-relaxed text-gray-400">
             ※ 근로자 추정제는 입법 논의·추진 단계의 제도로, 구체적 지표·요건과 시행 시기는 확정 과정에서
             달라질 수 있습니다. 참고용 요약이며 개별 사안의 법적 판단을 대체하지 않습니다.
+          </p>
+        </div>
+      )}
+
+      {/* ── 업종별 판례 ── */}
+      {active === "cases" && (
+        <div className="mt-8">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+            업종별 판례 — 판례로 보는 근로자성 판단 경향
+          </h3>
+          <p className="mt-3 rounded-2xl border border-gray-200 bg-gray-50 p-4 sm:p-5 text-sm leading-relaxed text-gray-600">
+            {COMMON_NOTICE}
+          </p>
+
+          <div className="mt-6 space-y-8">
+            {CASE_GROUPS.map((g) => (
+              <section key={g.industry}>
+                <h4 className="text-base sm:text-lg font-bold text-gray-900 border-l-4 border-primary pl-3">
+                  {g.industry}
+                </h4>
+                <div className="mt-3 space-y-3">
+                  {g.cases.map((c) => (
+                    <div key={c.cite} className="rounded-2xl border border-gray-200 bg-white p-5">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span
+                          className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                            c.outcome === "인정"
+                              ? "bg-emerald-100 text-emerald-700"
+                              : c.outcome === "부정"
+                                ? "bg-gray-200 text-gray-700"
+                                : "bg-blue-100 text-blue-700"
+                          }`}
+                        >
+                          근로자성 {c.outcome}
+                        </span>
+                        <span className="text-sm font-bold text-gray-900">{c.cite}</span>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-gray-600">{c.summary}</p>
+                      {c.caveat && (
+                        <p className="mt-2 text-xs leading-relaxed text-gray-400">※ {c.caveat}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-6">
+            <p className="text-sm leading-relaxed text-gray-700">
+              업종별 판례와 핵심 점검사항은 <b>프리랜서 백신 업종별 페이지</b>에서도 확인하실 수
+              있으며, 우리 회사 운영방식이 어느 쪽에 가까운지는 무료 자가진단으로 점검해 보실 수
+              있습니다.
+            </p>
+            <a
+              href="https://freelancer.plustai.com/industries"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+            >
+              업종별 페이지 바로가기 <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </div>
+          <p className="mt-3 text-xs leading-relaxed text-gray-400">
+            ※ 위 판례 요지는 일반적 정보 제공 목적의 요약이며, 개별 사안의 법적 판단을 대체하지
+            않습니다.
           </p>
         </div>
       )}
