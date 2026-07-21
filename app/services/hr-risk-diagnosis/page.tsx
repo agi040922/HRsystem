@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import PageBanner from "@/components/page-banner"
-import { pageMetadata } from "@/lib/seo"
+import StructuredData from "@/components/seo/structured-data"
+import NewsletterLinkBlock from "@/components/newsletter-link-block"
+import { pageMetadata, servicePageJsonLd } from "@/lib/seo"
 import DiagnosisTabs from "./DiagnosisTabs"
 
 export const metadata: Metadata = pageMetadata({
@@ -17,6 +19,13 @@ export const metadata: Metadata = pageMetadata({
 export default function HrRiskDiagnosisPage() {
   return (
     <div className="w-full overflow-x-hidden">
+      <StructuredData
+        data={servicePageJsonLd({
+          name: "HR 리스크 진단",
+          description: "통상임금·산업안전·근로자성을 간단히 자가진단해 보세요",
+          path: "/services/hr-risk-diagnosis",
+        })}
+      />
       <PageBanner
         title="HR 리스크 진단"
         subtitle="통상임금·산업안전·근로자성을 간단히 자가진단해 보세요"
@@ -58,6 +67,8 @@ export default function HrRiskDiagnosisPage() {
             </Link>
           </div>
         </section>
+
+        <NewsletterLinkBlock />
       </div>
     </div>
   )

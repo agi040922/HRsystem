@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import PageBanner from "@/components/page-banner"
-import { pageMetadata } from "@/lib/seo"
+import StructuredData from "@/components/seo/structured-data"
+import NewsletterLinkBlock from "@/components/newsletter-link-block"
+import { pageMetadata, servicePageJsonLd } from "@/lib/seo"
 import HarassmentTabs from "./HarassmentTabs"
 
 export const metadata: Metadata = pageMetadata({
@@ -17,6 +19,13 @@ export const metadata: Metadata = pageMetadata({
 export default function WorkplaceHarassmentPage() {
   return (
     <div className="w-full overflow-x-hidden">
+      <StructuredData
+        data={servicePageJsonLd({
+          name: "직장 내 괴롭힘 조사 수행",
+          description: "신고 접수부터 상담·조사·조치·모니터링까지, 법에 맞는 사건 처리 절차",
+          path: "/services/workplace-harassment",
+        })}
+      />
       <PageBanner
         title="직장 내 괴롭힘 조사 수행"
         subtitle="신고 접수부터 상담·조사·조치·모니터링까지, 법에 맞는 사건 처리 절차"
@@ -58,6 +67,8 @@ export default function WorkplaceHarassmentPage() {
             </Link>
           </div>
         </section>
+
+        <NewsletterLinkBlock />
       </div>
     </div>
   )

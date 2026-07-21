@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import PageBanner from "@/components/page-banner"
-import { pageMetadata } from "@/lib/seo"
+import StructuredData from "@/components/seo/structured-data"
+import NewsletterLinkBlock from "@/components/newsletter-link-block"
+import { pageMetadata, servicePageJsonLd } from "@/lib/seo"
 import { getServiceDetail } from "@/lib/serviceDetails"
 import LaborConsultingTabs from "./LaborConsultingTabs"
 
@@ -20,6 +22,13 @@ export const metadata: Metadata = pageMetadata({
 export default function LaborConsultingPage() {
   return (
     <div className="w-full overflow-x-hidden">
+      <StructuredData
+        data={servicePageJsonLd({
+          name: detail.title,
+          description: detail.subtitle,
+          path: "/services/labor-consulting",
+        })}
+      />
       <PageBanner
         title={detail.title}
         subtitle="자문 내용과 FAIR CRM을 통한 자문"
@@ -58,6 +67,8 @@ export default function LaborConsultingPage() {
             </Link>
           </div>
         </section>
+
+        <NewsletterLinkBlock />
       </div>
     </div>
   )

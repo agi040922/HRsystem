@@ -120,6 +120,51 @@ export const homeFaqJsonLd = {
   ],
 }
 
+// 브레드크럼(빵부스러기) 구조화 데이터 생성기. 검색결과의 경로 표시·내부링크 신호용.
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: new URL(item.path, SITE_URL).toString(),
+    })),
+  }
+}
+
+// 서비스 상세 페이지용 구조화 데이터 묶음(BreadcrumbList + Service).
+export function servicePageJsonLd({
+  name,
+  description,
+  path,
+}: {
+  name: string
+  description: string
+  path: string
+}) {
+  const url = new URL(path, SITE_URL).toString()
+  return [
+    breadcrumbJsonLd([
+      { name: "홈", path: "/" },
+      { name: "서비스", path: "/services" },
+      { name, path },
+    ]),
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name,
+      description,
+      url,
+      serviceType: name,
+      areaServed: "KR",
+      inLanguage: "ko-KR",
+      provider: { "@id": `${SITE_URL}/#organization` },
+    },
+  ]
+}
+
 export const fairCrmSoftwareJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",

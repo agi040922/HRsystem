@@ -4,7 +4,9 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, ChevronDown } from "lucide-react"
 import PageBanner from "@/components/page-banner"
-import { pageMetadata } from "@/lib/seo"
+import StructuredData from "@/components/seo/structured-data"
+import NewsletterLinkBlock from "@/components/newsletter-link-block"
+import { pageMetadata, servicePageJsonLd } from "@/lib/seo"
 import { SERVICE_DETAIL_SLUGS, getServiceDetail } from "@/lib/serviceDetails"
 
 export function generateStaticParams() {
@@ -40,6 +42,13 @@ export default async function ServiceDetailPage({
 
   return (
     <div className="w-full overflow-x-hidden">
+      <StructuredData
+        data={servicePageJsonLd({
+          name: detail.title,
+          description: detail.subtitle,
+          path: `/services/${slug}`,
+        })}
+      />
       <PageBanner
         title={detail.title}
         subtitle={detail.subtitle}
@@ -104,6 +113,8 @@ export default async function ServiceDetailPage({
             </Link>
           </div>
         </section>
+
+        <NewsletterLinkBlock />
       </div>
     </div>
   )

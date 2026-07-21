@@ -8,6 +8,7 @@ import {
   getNewsletterPost,
   type Block,
 } from "@/lib/newsletterPosts"
+import { breadcrumbJsonLd } from "@/lib/seo"
 
 const SITE = "https://www.fairhr.net"
 const BLOG_URL = "https://blog.naver.com/fairhr"
@@ -76,6 +77,13 @@ export default async function NewsletterPostPage({
   const post = getNewsletterPost(slug)
   if (!post) notFound()
 
+  // 구조화 데이터 — 빵부스러기 경로(BreadcrumbList).
+  const crumbsJsonLd = breadcrumbJsonLd([
+    { name: "홈", path: "/" },
+    { name: "뉴스레터", path: "/newsletter" },
+    { name: post.title, path: `/newsletter/${post.slug}` },
+  ])
+
   // 구조화 데이터 — 개별 글(BlogPosting). 검색·AI 크롤러 노출용.
   const jsonLd = {
     "@context": "https://schema.org",
@@ -94,6 +102,10 @@ export default async function NewsletterPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbsJsonLd) }}
       />
 
       <article className="container-fluid max-w-3xl py-10 md:py-14 lg:py-16 px-4">
@@ -118,6 +130,40 @@ export default async function NewsletterPostPage({
             <BlockView key={i} block={block} />
           ))}
         </div>
+
+        {/* 함께 보기 — 관련 서비스·상담 내부링크(SEO) */}
+        <section className="mt-12">
+          <h2 className="text-base sm:text-lg font-bold text-gray-900">함께 보기</h2>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+            {[
+              {
+                href: "/services/labor-consulting",
+                t: "노무 자문",
+                d: "기업 인사노무 리스크 상시 관리",
+              },
+              {
+                href: "/services/hr-risk-diagnosis",
+                t: "HR 리스크 진단",
+                d: "임금·근태·규정 자가진단 도구",
+              },
+              {
+                href: "/contact",
+                t: "상담 문의",
+                d: "노무사에게 직접 문의하기",
+              },
+            ].map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className="block h-full rounded-2xl border border-gray-200 p-5 transition-colors hover:border-primary/40 hover:bg-gray-50"
+                >
+                  <p className="text-sm font-bold text-gray-900">{l.t}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{l.d}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* 네이버 블로그 연결 */}
         <div className="mt-12 rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-6 text-center">
