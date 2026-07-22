@@ -46,6 +46,16 @@
       "description": "3-step process from consultation to account activation"
     }
   },
+  "globalCompaniesMenu": {
+    "intro": {
+      "title": "About the Center",
+      "description": "Supporting labor relations of global companies in Korea"
+    },
+    "glossary": {
+      "title": "FAIR Labor Law Glossary (KOR-ENG)",
+      "description": "Search a Korean term to find its English equivalent and practical notes (coming soon)"
+    }
+  },
   "aboutMenu": {
     "greeting": {
       "title": "Greeting & Profile",

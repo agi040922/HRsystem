@@ -46,6 +46,16 @@
       "description": "상담 신청부터 계정 발급까지 3단계 프로세스"
     }
   },
+  "globalCompaniesMenu": {
+    "intro": {
+      "title": "지원센터 소개",
+      "description": "외국계 기업의 한국 노사관계를 평시부터 유사시까지 지원합니다"
+    },
+    "glossary": {
+      "title": "FAIR 노동법 한영사전",
+      "description": "한글 용어를 검색하면 영문 표기와 실무 주의사항을 함께 확인 (준비 중)"
+    }
+  },
   "aboutMenu": {
     "greeting": {
       "title": "인사말/대표 소개",

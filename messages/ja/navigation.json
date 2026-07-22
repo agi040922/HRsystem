@@ -46,6 +46,16 @@
       "description": "相談申し込みからアカウント発行までの3ステップ"
     }
   },
+  "globalCompaniesMenu": {
+    "intro": {
+      "title": "支援センター紹介",
+      "description": "外資系企業の韓国における労使関係を平時から有事まで支援します"
+    },
+    "glossary": {
+      "title": "FAIR 労働法 韓英辞典",
+      "description": "韓国語の用語を検索すると英語表記と実務上の注意点を確認できます（準備中）"
+    }
+  },
   "aboutMenu": {
     "greeting": {
       "title": "ご挨拶／代表紹介",

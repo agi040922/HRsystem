@@ -85,6 +85,18 @@ export default function Header() {
     {
       href: "/global-companies",
       label: t('mainNav.globalCompanies'),
+      children: [
+        {
+          href: "/global-companies",
+          title: t('globalCompaniesMenu.intro.title'),
+          description: t('globalCompaniesMenu.intro.description'),
+        },
+        {
+          href: "/global-companies/glossary",
+          title: t('globalCompaniesMenu.glossary.title'),
+          description: t('globalCompaniesMenu.glossary.description'),
+        },
+      ],
     },
     {
       href: "/about/greeting",
