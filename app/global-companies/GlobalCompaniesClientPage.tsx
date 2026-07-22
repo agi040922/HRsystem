@@ -83,7 +83,7 @@ export default function GlobalCompaniesClientPage() {
             transition={{ duration: 0.6 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-gray-900"
           >
-            한국의 노동법은
+            한국의 노사관계는
           </motion.h2>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
@@ -91,7 +91,7 @@ export default function GlobalCompaniesClientPage() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-2 sm:mt-3 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-primary"
           >
-            [ 본사의 상식과 다릅니다 ]
+            [ 본사의 생각과 다를 수 있습니다 ]
           </motion.h2>
 
           <motion.p
@@ -100,7 +100,7 @@ export default function GlobalCompaniesClientPage() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-14 sm:mt-20 md:mt-24 text-base sm:text-2xl md:text-3xl font-bold text-gray-900"
           >
-            규정은 갖췄는데 노사 문제가 시작됐다면,
+            외국계 기업을 이해하고 전략을 세우고 실행하는
           </motion.p>
           <motion.p
             initial={{ opacity: 0, scale: 0.96 }}
@@ -108,7 +108,7 @@ export default function GlobalCompaniesClientPage() {
             transition={{ duration: 0.6, delay: 0.75 }}
             className="mt-5 sm:mt-7 text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary"
           >
-            필요한 것은 문서가 아니라 실전입니다
+            FAIR인사노무컨설팅
           </motion.p>
         </div>
       </section>
@@ -126,7 +126,7 @@ export default function GlobalCompaniesClientPage() {
               외국계기업 지원센터
             </span>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
-              외국계 기업의 한국 노무, 평시부터 유사시까지
+              외국계 기업의 한국 노사관계, 평시부터 유사시까지
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
               FAIR인사노무컨설팅은 Microsoft, GE, CITIBANK를 비롯한 외국인투자기업의 인사노무
@@ -227,7 +227,7 @@ export default function GlobalCompaniesClientPage() {
         <div className="container-fluid max-w-5xl px-4">
           <div className="rounded-2xl bg-primary text-primary-foreground p-8 sm:p-10 text-center">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">
-              한국 법인의 노무 문제, 함께 정리하겠습니다
+              한국 법인의 노사관계, 함께 정리하겠습니다
             </h2>
             <p className="text-sm sm:text-base opacity-90 mb-6 leading-relaxed">
               현재 상황을 알려주시면 무엇을 먼저 점검해야 하는지부터 말씀드립니다.
