@@ -83,6 +83,10 @@ export default function Header() {
       label: t('mainNav.fairCrm'),
     },
     {
+      href: "/global-companies",
+      label: t('mainNav.globalCompanies'),
+    },
+    {
       href: "/about/greeting",
       label: t('mainNav.about'),
       children: [
