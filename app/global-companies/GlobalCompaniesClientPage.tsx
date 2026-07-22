@@ -227,7 +227,7 @@ export default function GlobalCompaniesClientPage() {
         <div className="container-fluid max-w-5xl px-4">
           <div className="rounded-2xl bg-primary text-primary-foreground p-8 sm:p-10 text-center">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">
-              한국 법인의 노사관계, 함께 정리하겠습니다
+              한국 법인의 노사관계, 든든한 파트너가 되어 드리겠습니다
             </h2>
             <p className="text-sm sm:text-base opacity-90 mb-6 leading-relaxed">
               현재 상황을 알려주시면 무엇을 먼저 점검해야 하는지부터 말씀드립니다.
