@@ -139,9 +139,9 @@ export default function GlobalCompaniesClientPage() {
                   자문 상담 신청 <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/about/profile">
+              <Link href="/about/greeting">
                 <Button size="lg" variant="outline" className="px-8">
-                  대표 노무사 프로필
+                  대표 노무사 소개
                 </Button>
               </Link>
             </div>
