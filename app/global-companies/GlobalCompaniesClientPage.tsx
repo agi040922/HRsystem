@@ -126,7 +126,7 @@ export default function GlobalCompaniesClientPage() {
               외국계기업 지원센터
             </span>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
-              외국계 기업의 한국 노사관계, 평시부터 유사시까지
+              전문화된 서비스로 외국계 기업과 함께 걸어 온 27년
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
               FAIR인사노무컨설팅은 Microsoft, GE, CITIBANK를 비롯한 외국인투자기업의 인사노무
