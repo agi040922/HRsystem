@@ -36,7 +36,7 @@ export default function LaborRelationsClientPage() {
               단체교섭 및 노사관계 지원
             </span>
             <h1 className="break-keep text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
-              외국계 기업의 노사관계 파트너로 걸어온 27년
+              외국계 기업의 노사관계 파트너로 걸어온 20년
             </h1>
             <p className="break-keep text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
               제조·IT·물류·제약·의료기기·소비재·금융까지, 다양한 업종의 외국인투자기업과 함께
@@ -50,14 +50,16 @@ export default function LaborRelationsClientPage() {
       {/* 연혁 */}
       <section className="w-full bg-white py-12 sm:py-16 md:py-20">
         <div className="container-fluid max-w-4xl px-4">
-          <h2 className="break-keep text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-            주요 지원 이력
-          </h2>
-          <p className="break-keep text-sm text-muted-foreground mb-8">
-            고객사 비밀유지를 위해 회사명은 밝히지 않고 업종과 소재 국가만 표기합니다.
-          </p>
+          <div className="text-center mb-8">
+            <h2 className="break-keep text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              주요 지원 이력
+            </h2>
+            <p className="break-keep text-sm text-muted-foreground">
+              고객사 비밀유지를 위해 회사명은 밝히지 않고 업종과 소재 국가만 표기합니다.
+            </p>
+          </div>
 
-          <ol className="relative border-l-2 border-primary/15 pl-6 sm:pl-8">
+          <ol className="relative mx-auto w-fit max-w-full border-l-2 border-primary/15 pl-6 sm:pl-8">
             {RECORDS.map((r, idx) => (
               <motion.li
                 key={r.year + r.text}
