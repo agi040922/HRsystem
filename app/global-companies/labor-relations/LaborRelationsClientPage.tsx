@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, Handshake } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 type Record = { year: string; text: string }
 
@@ -24,73 +23,72 @@ const RECORDS: Record[] = [
 export default function LaborRelationsClientPage() {
   return (
     <div className="w-full overflow-x-hidden pt-16">
-      {/* Hero */}
-      <section className="relative w-full bg-gradient-to-br from-primary/5 via-white to-blue-50 py-16 sm:py-20 md:py-24">
-        <div className="container-fluid max-w-5xl px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-4">
-              단체교섭 및 노사관계 지원
-            </span>
-            <h1 className="break-keep text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
-              외국계 기업의 노사관계 파트너로 걸어온 20년
-            </h1>
-            <p className="break-keep text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
-              제조·IT·물류·제약·의료기기·소비재·금융까지, 다양한 업종의 외국인투자기업과 함께
-              단체교섭 현장을 지나왔습니다. 교섭위원으로 직접 교섭에 참여하기도 하고, 교섭 전략과
-              특별 자문으로 뒤에서 지원하기도 했습니다.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      {/* 제목(좌) + 주요 지원 이력(우) — 데스크톱에서 좌우 배치, 제목은 연표 높이의 중앙 */}
+      <section className="relative w-full bg-gradient-to-br from-primary/5 via-white to-blue-50 py-14 sm:py-20 md:py-24">
+        <div className="container-fluid max-w-7xl px-4">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* 좌 — 제목 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-4">
+                단체교섭 및 노사관계 지원
+              </span>
+              <h1 className="break-keep text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+                외국계 기업의 노사관계 파트너로 걸어온 20년
+              </h1>
+              <p className="break-keep text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                제조·IT·물류·제약·의료기기·소비재·금융까지, 다양한 업종의 외국인투자기업과 함께
+                단체교섭 현장을 지나왔습니다. 교섭위원으로 직접 교섭에 참여하기도 하고, 교섭
+                전략과 특별 자문으로 뒤에서 지원하기도 했습니다.
+              </p>
+            </motion.div>
 
-      {/* 연혁 */}
-      <section className="w-full bg-white py-12 sm:py-16 md:py-20">
-        <div className="container-fluid max-w-4xl px-4">
-          <div className="text-center mb-8">
-            <h2 className="break-keep text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              주요 지원 이력
-            </h2>
-            <p className="break-keep text-sm text-muted-foreground">
-              고객사 비밀유지를 위해 회사명은 밝히지 않고 업종과 소재 국가만 표기합니다.
-            </p>
+            {/* 우 — 주요 지원 이력 */}
+            <div className="rounded-2xl border border-border/50 bg-white/70 p-6 sm:p-8 backdrop-blur-sm">
+              <h2 className="break-keep text-lg sm:text-xl font-bold text-gray-900 mb-1.5">
+                주요 지원 이력
+              </h2>
+              <p className="break-keep text-xs sm:text-sm text-muted-foreground mb-6">
+                고객사 비밀유지를 위해 회사명은 밝히지 않고 업종과 소재 국가만 표기합니다.
+              </p>
+
+              <ol className="relative border-l-2 border-primary/15 pl-5 sm:pl-6">
+                {RECORDS.map((r, idx) => (
+                  <motion.li
+                    key={r.year + r.text}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.24) }}
+                    className="relative pb-5 last:pb-0"
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute -left-[27px] sm:-left-[31px] top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 border-primary bg-white"
+                    >
+                      <span className="h-1 w-1 rounded-full bg-primary" />
+                    </span>
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+                      <span className="text-sm sm:text-base font-bold text-primary shrink-0">
+                        {r.year}
+                      </span>
+                      <span className="break-keep mt-0.5 sm:mt-0 text-sm leading-relaxed text-gray-800">
+                        {r.text}
+                      </span>
+                    </div>
+                  </motion.li>
+                ))}
+              </ol>
+            </div>
           </div>
-
-          <ol className="relative mx-auto w-fit max-w-full border-l-2 border-primary/15 pl-6 sm:pl-8">
-            {RECORDS.map((r, idx) => (
-              <motion.li
-                key={r.year + r.text}
-                initial={{ opacity: 0, x: -12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: Math.min(idx * 0.05, 0.3) }}
-                className="relative pb-7 last:pb-0"
-              >
-                <span
-                  aria-hidden
-                  className="absolute -left-[31px] sm:-left-[39px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-primary bg-white"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                </span>
-                <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
-                  <span className="text-base sm:text-lg font-bold text-primary shrink-0">
-                    {r.year}
-                  </span>
-                  <span className="break-keep mt-0.5 sm:mt-0 text-sm sm:text-base leading-relaxed text-gray-800">
-                    {r.text}
-                  </span>
-                </div>
-              </motion.li>
-            ))}
-          </ol>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="w-full bg-white pb-14 sm:pb-20">
+      <section className="w-full bg-white py-14 sm:py-20">
         <div className="container-fluid max-w-4xl px-4">
           <div className="rounded-2xl bg-primary text-primary-foreground p-6 sm:p-8 text-center">
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/15">
