@@ -81,24 +81,24 @@ export default function GlobalCompaniesClientPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-gray-900"
+            className="break-keep text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900"
           >
-            한국의 노사관계는
+            전문화된 서비스로
           </motion.h2>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-2 sm:mt-3 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-primary"
+            className="mt-2 sm:mt-3 break-keep text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-primary"
           >
-            [ 본사의 생각과 다를 수 있습니다 ]
+            외국계 기업과 함께 걸어 온 27년
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-14 sm:mt-20 md:mt-24 text-base sm:text-2xl md:text-3xl font-bold text-gray-900"
+            className="mt-14 sm:mt-20 md:mt-24 break-keep text-base sm:text-2xl md:text-3xl font-bold text-gray-900"
           >
             외국계 기업을 이해하고 전략을 세우고 실행하는
           </motion.p>
@@ -125,10 +125,10 @@ export default function GlobalCompaniesClientPage() {
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-4">
               외국계기업 지원센터
             </span>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 className="break-keep text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
               전문화된 서비스로 외국계 기업과 함께 걸어 온 27년
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="break-keep text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
               FAIR인사노무컨설팅은 Microsoft, GE, CITIBANK를 비롯한 외국인투자기업의 인사노무
               자문을 수행해 왔습니다. 규정 정비와 같은 평시 관리부터 노동조합 설립·단체교섭·
               노동위원회 사건과 같은 유사시 대응까지, 하나의 창구에서 지원합니다.
@@ -153,10 +153,10 @@ export default function GlobalCompaniesClientPage() {
       <section className="w-full bg-white py-12 sm:py-16 md:py-20">
         <div className="container-fluid max-w-7xl px-4">
           <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            <h2 className="break-keep text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               외국계 기업이 가장 자주 마주하는 네 가지
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="break-keep text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
               한국 법인의 인사담당자와 본사 사이에서 판단이 어려워지는 지점을 중심으로 지원합니다.
             </p>
           </div>
@@ -185,10 +185,10 @@ export default function GlobalCompaniesClientPage() {
       <section className="w-full bg-slate-50 py-12 sm:py-16 md:py-20">
         <div className="container-fluid max-w-7xl px-4">
           <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            <h2 className="break-keep text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               FAIR가 채우는 네 가지 빈틈
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="break-keep text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
               외국계 기업을 지원하는 서비스는 많지만, 아래 네 가지를 함께 갖춘 곳은 드뭅니다.
             </p>
           </div>
@@ -206,8 +206,8 @@ export default function GlobalCompaniesClientPage() {
                 <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
                   <div className="text-3xl font-bold text-primary/30 shrink-0">{g.no}</div>
                   <div className="min-w-0">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">{g.title}</h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground mb-4">
+                    <h3 className="break-keep text-lg sm:text-xl font-bold text-gray-900 mb-3">{g.title}</h3>
+                    <p className="break-keep text-sm leading-relaxed text-muted-foreground mb-4">
                       {g.problem}
                     </p>
                     <div className="rounded-xl bg-primary/5 p-4 sm:p-5">
@@ -267,10 +267,10 @@ export default function GlobalCompaniesClientPage() {
       <section className="w-full bg-white py-14 sm:py-20">
         <div className="container-fluid max-w-5xl px-4">
           <div className="rounded-2xl bg-primary text-primary-foreground p-8 sm:p-10 text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">
+            <h2 className="break-keep text-xl sm:text-2xl md:text-3xl font-bold mb-3">
               한국 법인의 노사관계, 든든한 파트너가 되어 드리겠습니다
             </h2>
-            <p className="text-sm sm:text-base opacity-90 mb-6 leading-relaxed">
+            <p className="break-keep text-sm sm:text-base opacity-90 mb-6 leading-relaxed">
               현재 상황을 알려주시면 무엇을 먼저 점검해야 하는지부터 말씀드립니다.
               자문 계약 이전에도 상담은 가능합니다.
             </p>
