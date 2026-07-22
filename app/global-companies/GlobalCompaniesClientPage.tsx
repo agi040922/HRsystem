@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowRight, Scale, FileText, Landmark, ShieldCheck } from "lucide-react"
+import { ArrowRight, Scale, FileText, Landmark, ShieldCheck, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 type Gap = {
@@ -219,6 +219,47 @@ export default function GlobalCompaniesClientPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAIR 노동법 한영사전 — 준비 중 */}
+      <section className="w-full bg-white py-12 sm:py-16">
+        <div className="container-fluid max-w-7xl px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link
+              href="/global-companies/glossary"
+              className="group block rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8 transition-colors hover:border-primary/40 hover:bg-primary/10"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <BookOpen className="h-7 w-7" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                    <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                      FAIR 노동법 한영사전
+                    </h2>
+                    <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                      준비 중
+                    </span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    인사담당자가 한글 용어를 검색하면 영문 표기와 실무 주의사항을 함께 확인할 수
+                    있도록 준비하고 있습니다.
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary shrink-0">
+                  자세히 보기
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
