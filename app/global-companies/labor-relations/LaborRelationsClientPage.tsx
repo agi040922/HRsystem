@@ -37,7 +37,7 @@ export default function LaborRelationsClientPage() {
                 단체교섭 및 노사관계 지원
               </span>
               <h1 className="break-keep text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
-                외국계 기업의 노사관계 파트너로 걸어온 20년
+                외국계 기업의 노사관계 파트너로 걸어온 27년
               </h1>
               <p className="break-keep text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
                 제조·IT·물류·제약·의료기기·소비재·금융까지, 다양한 업종의 외국인투자기업과 함께
