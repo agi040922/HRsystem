@@ -35,8 +35,7 @@ export default function GreetingPage() {
           <div className="text-sm sm:text-base text-muted-foreground leading-relaxed">
             <p className="mb-4">{t('content.paragraph1')}</p>
             <p className="mb-4">{t('content.paragraph2')}</p>
-            <p className="mb-4">{t('content.paragraph3')}</p>
-            <p className="mb-6">{t('content.paragraph4')}</p>
+            <p className="mb-6">{t('content.paragraph3')}</p>
           </div>
         </motion.section>
 
