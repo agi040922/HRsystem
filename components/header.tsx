@@ -92,6 +92,11 @@ export default function Header() {
           description: t('globalCompaniesMenu.intro.description'),
         },
         {
+          href: "/global-companies/hr-news",
+          title: t('globalCompaniesMenu.hrNews.title'),
+          description: t('globalCompaniesMenu.hrNews.description'),
+        },
+        {
           href: "/global-companies/labor-relations",
           title: t('globalCompaniesMenu.laborRelations.title'),
           description: t('globalCompaniesMenu.laborRelations.description'),
