@@ -1,5 +1,6 @@
 "use client"
 
+import posthog from "posthog-js"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -134,6 +135,11 @@ export default function ContactPageClient() {
         throw new Error(result?.message || "요청사항 제출 중 오류가 발생했습니다.")
       }
 
+      posthog.capture("contact_form_submitted", {
+        employee_count: data.employeeCount,
+        interested_services: data.interestedServices,
+        has_attachment: !!(data.attachment && typeof window !== "undefined" && (data.attachment as FileList).length > 0),
+      })
       reset()
       setSubmitted(true)
       // 완료 화면이 보이도록 폼 영역 상단으로 스크롤
@@ -144,6 +150,7 @@ export default function ContactPageClient() {
         error instanceof Error && error.message
           ? error.message
           : "요청사항 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요."
+      posthog.capture("contact_form_error", { error_message: message })
       setSubmitError(message)
       toast({
         title: "오류 발생",

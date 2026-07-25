@@ -44,15 +44,17 @@ export default function PrivacyPolicyPage() {
             <li>필수항목: 성명, 연락처 (휴대폰 번호), 이메일 주소</li>
             <li>선택항목: 회사명, 직책, 문의 내용에 포함된 개인정보, 첨부파일에 포함된 개인정보 등</li>
             {/*
-              NOTE(수탁자 고지 정합성): 아래 분석 도구 표기는 app/layout.tsx 에서 실제로 사용하는
-              @vercel/analytics 의 <Analytics /> 기준이다. 이 저장소에는 PostHog 의존성이 없으므로
-              PostHog 고지는 제거했다(2026-07-20). 향후 fairhr 에 PostHog 를 실제로 도입하면
-              이 항목과 제4조 위탁·국외이전 목록에 PostHog Inc.(미국)를 다시 추가할 것.
+              NOTE(수탁자 고지 정합성): 아래 분석 도구 표기는 실제 코드 기준이다.
+              - Vercel Analytics: app/layout.tsx 의 <Analytics />
+              - PostHog: instrumentation-client.ts (posthog-js), lib/posthog-server.ts (posthog-node)
+              PostHog 는 2026-07-25 에 도입했고, 그에 맞춰 이 항목과 제4조에 PostHog Inc.(미국)를 추가했다.
+              세션 리플레이(화면 녹화)는 PostHog 프로젝트 설정에서 꺼져 있다(session_recording_opt_in=false).
+              추후 세션 리플레이를 켜면 아래 자동수집항목과 제4조 이전 항목에 '화면 조작 기록'을 반드시 추가할 것.
             */}
             <li>
               자동수집항목: 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 기기·브라우저 정보(운영체제·브라우저 종류 등),
-              페이지 이용기록(방문 페이지·유입 경로 등) — 방문·이용 분석 도구(Vercel Analytics)를 통해 웹사이트 이용 시
-              자동 수집됩니다.
+              페이지 이용기록(방문 페이지·유입 경로 등), 화면 내 클릭 등 상호작용 기록, 브라우저 오류 기록 — 방문·이용
+              분석 도구(Vercel Analytics, PostHog)를 통해 웹사이트 이용 시 자동 수집됩니다.
             </li>
           </ul>
 
@@ -86,7 +88,22 @@ export default function PrivacyPolicyPage() {
             <li>이전·위탁 목적: 웹사이트 이용현황 분석 및 서비스 개선</li>
             <li>보유·이용기간: 수집일로부터 12개월</li>
           </ul>
-          <h3 className="text-xl font-semibold">2. AI 기능 처리 (OpenAI)</h3>
+          <h3 className="text-xl font-semibold">2. 방문·이용 분석 및 오류 진단 (PostHog)</h3>
+          <ul className="list-disc pl-6">
+            <li>수탁자(이전받는 자): PostHog Inc.</li>
+            <li>이전되는 국가: 미국(United States)</li>
+            <li>이전 일시 및 방법: 이용자의 웹사이트 접속·이용 시점에 네트워크를 통한 전송</li>
+            <li>
+              이전·위탁 항목: 접속 IP 정보, 접속 기록, 기기·브라우저 정보(운영체제·브라우저 종류 등), 페이지
+              이용기록(방문 페이지·유입 경로 등), 화면 내 클릭 등 상호작용 기록, 이용자가 상담 신청·자가진단 도구
+              화면에서 선택한 항목(직원 수 규모, 관심 서비스, 첨부파일 유무, 계약서 종류, 해고 유형 등), 브라우저 오류
+              기록. 성명·연락처·이메일 주소 등 이용자를 직접 식별하는 정보와 이용자가 직접 입력한 문장은 포함하지
+              않습니다.
+            </li>
+            <li>이전·위탁 목적: 웹사이트 이용현황 분석, 오류 진단 및 서비스 개선</li>
+            <li>보유·이용기간: 위탁계약 종료 시 또는 위탁 목적 달성 시까지</li>
+          </ul>
+          <h3 className="text-xl font-semibold">3. AI 기능 처리 (OpenAI)</h3>
           <ul className="list-disc pl-6">
             <li>수탁자(이전받는 자): OpenAI (OpenAI, L.L.C.)</li>
             <li>이전되는 국가: 미국(United States)</li>
@@ -101,7 +118,8 @@ export default function PrivacyPolicyPage() {
           </ul>
           <p>
             AI 상담 도우미는 이용자가 화면에서 선택한 항목만 전송하며, 성명·연락처 등 이용자를 직접 식별하는 정보나
-            이용자가 직접 입력한 자유 문장은 전송하지 않습니다. 법인은 해당 처리 내용을 별도로 저장하지 않습니다.
+            이용자가 직접 입력한 자유 문장은 전송하지 않습니다. 법인은 해당 처리 내용을 별도로 저장하지 않으며, 선택
+            항목 자체는 분석 도구에도 기록하지 않고 상담 완료 여부와 추천 결과만 통계 목적으로 기록합니다.
           </p>
           <p>
             법인은 위 방문·이용 분석에서 정보주체를 직접 식별하는 정보를 수집하지 않고 통계·집계 형태로만 처리하며, 화면

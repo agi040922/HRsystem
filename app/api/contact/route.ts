@@ -218,6 +218,9 @@ export async function POST(request: NextRequest) {
       console.error("[contact] Confirmation email error:", confirmationError)
     }
 
+    // 분석 이벤트는 클라이언트(ContactPageClient)의 contact_form_submitted 하나로만 남긴다.
+    // 서버에서 또 보내면 같은 제출이 두 번 집계되고, 서버에는 브라우저의 distinct_id 가 없어
+    // 방문자와 연결도 되지 않는다.
     return NextResponse.json({ message: "문의가 성공적으로 접수되었습니다.", id: data?.id }, { status: 200 })
   } catch (error) {
     if (error instanceof z.ZodError) {

@@ -27,6 +27,16 @@ import {
 } from "@/lib/salesAgent/options"
 import type { ConsultAnswers, Recommendation } from "@/lib/salesAgent/types"
 import { consultSummary } from "@/app/sales/actions"
+import posthog from "posthog-js"
+
+/** posthog-js 가 초기화되지 않았거나 차단된 환경에서도 상담 자체는 계속 동작해야 한다. */
+function getAnalyticsId(): string | undefined {
+  try {
+    return posthog.get_distinct_id()
+  } catch {
+    return undefined
+  }
+}
 
 const ENABLED = process.env.NEXT_PUBLIC_SALES_AGENT_ENABLED !== "false"
 const KAKAO_URL = "https://open.kakao.com/o/smv8tNDi"
@@ -110,7 +120,7 @@ export default function SalesAgentWidget() {
     // 규칙 추천은 즉시 계산(오류·오프라인에도 안전). LLM 요약은 서버에서 보조.
     const localRec = recommendPlan(full)
     try {
-      const res = await consultSummary(full)
+      const res = await consultSummary(full, getAnalyticsId())
       if (res.ok) setResult({ rec: res.recommendation, summary: res.summary })
       else setResult({ rec: localRec, summary: localRec.reason })
     } catch {

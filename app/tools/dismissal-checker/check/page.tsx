@@ -1,5 +1,6 @@
 "use client"
 
+import posthog from "posthog-js"
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -560,7 +561,10 @@ export default function DismissalCheckPage() {
                       이전 단계
                     </Button>
                     <Button
-                      onClick={() => setStep('questions')}
+                      onClick={() => {
+                        setStep('questions')
+                        posthog.capture("dismissal_check_started", { dismissal_type: dismissalType, user_type: userType })
+                      }}
                       disabled={!userType}
                       className="bg-[#4169E1] hover:bg-[#191970] text-white px-6"
                     >

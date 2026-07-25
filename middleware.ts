@@ -36,5 +36,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   // API 라우트, _next/static, _next/image, favicon.ico, test 페이지는 제외
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|test).*)']
+  // ingest: PostHog 리버스 프록시(next.config.mjs rewrites). 페이지뷰·클릭마다 요청이 발생하는데
+  //         미들웨어가 할 일이 없으므로 제외한다(불필요한 미들웨어 호출 비용·지연 제거).
+  matcher: ['/((?!api|ingest|_next/static|_next/image|favicon.ico|test).*)']
 };

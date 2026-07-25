@@ -1,5 +1,6 @@
 "use client"
 
+import posthog from "posthog-js"
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -166,15 +167,16 @@ export default function ContractCreatePage() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Card 
+            <Card
               className={`cursor-pointer transition-all ${
-                selectedTemplate === key 
-                  ? `${template.color} border-2 shadow-lg` 
+                selectedTemplate === key
+                  ? `${template.color} border-2 shadow-lg`
                   : 'border-gray-200 hover:border-gray-300'
               }`}
               onClick={() => {
                 setSelectedTemplate(key)
                 updateData('employmentType', template.name)
+                posthog.capture("contract_template_selected", { template_type: key, template_name: template.name })
               }}
             >
               <CardContent className="p-6">
@@ -858,7 +860,12 @@ export default function ContractCreatePage() {
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 ) : (
-                  <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white">
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white"
+                    // 이 버튼은 아직 실제 생성 동작이 없다. "생성됨"으로 집계하면 전환율이 부풀려지므로
+                    // 클릭(=생성 시도)까지만 기록한다. 생성 기능이 붙으면 성공 시점 이벤트로 옮길 것.
+                    onClick={() => posthog.capture("contract_generate_clicked", { template_type: selectedTemplate, employment_type: contractData.employmentType })}
+                  >
                     <Download className="w-4 h-4 mr-2" />
                     계약서 생성
                   </Button>

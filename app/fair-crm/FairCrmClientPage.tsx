@@ -1,5 +1,6 @@
 "use client"
 
+import posthog from "posthog-js"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
@@ -138,6 +139,7 @@ export default function FairCrmPage() {
                   href="/fair-crm-proposal.pdf"
                   download="FAIR CRM 제안서.pdf"
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/40 text-primary text-xs sm:text-sm font-semibold hover:bg-primary/10 transition-colors"
+                  onClick={() => posthog.capture("crm_proposal_downloaded")}
                 >
                   <Download className="h-3.5 w-3.5" /> 제안서 다운로드
                 </a>
@@ -158,11 +160,14 @@ export default function FairCrmPage() {
                   size="lg"
                   variant="outline"
                   className="px-8 gap-1.5"
-                  onClick={() => setShowVideo(true)}
+                  onClick={() => {
+                    setShowVideo(true)
+                    posthog.capture("crm_video_opened")
+                  }}
                 >
                   <PlayCircle className="h-4 w-4" /> FAIR CRM 제안서
                 </Button>
-                <a href={CRM_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                <a href={CRM_LOGIN_URL} target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture("crm_login_clicked")}>
                   <Button size="lg" variant="outline" className="px-8 gap-1.5">
                     {t("hero.ctaSecondary")}
                     <ExternalLink className="h-4 w-4" />
@@ -406,7 +411,7 @@ export default function FairCrmPage() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <a href={CRM_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+            <a href={CRM_LOGIN_URL} target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture("crm_login_clicked")}>
               <Button
                 size="lg"
                 variant="outline"
