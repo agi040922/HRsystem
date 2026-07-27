@@ -121,7 +121,7 @@ export default function PrivacyPolicyPage() {
             이용자가 직접 입력한 자유 문장은 전송하지 않습니다. 법인은 해당 처리 내용을 별도로 저장하지 않으며, 선택
             항목 자체는 분석 도구에도 기록하지 않고 상담 완료 여부와 추천 결과만 통계 목적으로 기록합니다.
           </p>
-          <h3 className="text-xl font-semibold">3. 이메일 발송 (Resend)</h3>
+          <h3 className="text-xl font-semibold">4. 이메일 발송 (Resend)</h3>
           <ul className="list-disc pl-6">
             <li>수탁자(이전받는 자): Resend, Inc.</li>
             <li>이전되는 국가: 미국(United States)</li>
@@ -131,7 +131,9 @@ export default function PrivacyPolicyPage() {
             <li>
               이전·위탁 항목: 회사명, 성명, 휴대전화번호, 이메일 주소, 문의(질문) 제목 및 내용
             </li>
-            <li>이전·위탁 목적: 상담문의·Q&amp;A 접수 사실의 담당자 통지</li>
+            <li>
+              이전·위탁 목적: 상담문의·Q&amp;A 접수 사실의 담당자 통지 및 문의자 본인에게 접수 확인 메일 발송
+            </li>
             <li>보유·이용기간: 위탁 목적 달성 시까지</li>
           </ul>
           <p>
