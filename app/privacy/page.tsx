@@ -9,7 +9,7 @@ export default function PrivacyPolicyPage() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">개인정보처리방침</h1>
-          <p className="mt-4 text-lg text-muted-foreground">최종 수정일: 2026년 7월 20일</p>
+          <p className="mt-4 text-lg text-muted-foreground">최종 수정일: 2026년 7월 27일</p>
         </div>
 
         <div className="prose dark:prose-invert max-w-none space-y-6">
@@ -121,6 +121,19 @@ export default function PrivacyPolicyPage() {
             이용자가 직접 입력한 자유 문장은 전송하지 않습니다. 법인은 해당 처리 내용을 별도로 저장하지 않으며, 선택
             항목 자체는 분석 도구에도 기록하지 않고 상담 완료 여부와 추천 결과만 통계 목적으로 기록합니다.
           </p>
+          <h3 className="text-xl font-semibold">3. 이메일 발송 (Resend)</h3>
+          <ul className="list-disc pl-6">
+            <li>수탁자(이전받는 자): Resend, Inc.</li>
+            <li>이전되는 국가: 미국(United States)</li>
+            <li>
+              이전 일시 및 방법: 이용자가 상담문의 또는 Q&amp;A를 등록하는 시점에 네트워크(API 호출)를 통한 전송
+            </li>
+            <li>
+              이전·위탁 항목: 회사명, 성명, 휴대전화번호, 이메일 주소, 문의(질문) 제목 및 내용
+            </li>
+            <li>이전·위탁 목적: 상담문의·Q&amp;A 접수 사실의 담당자 통지</li>
+            <li>보유·이용기간: 위탁 목적 달성 시까지</li>
+          </ul>
           <p>
             법인은 위 방문·이용 분석에서 정보주체를 직접 식별하는 정보를 수집하지 않고 통계·집계 형태로만 처리하며, 화면
             녹화(세션 리플레이) 기능은 사용하지 않습니다. 이용자는 브라우저 설정에서 쿠키 저장을 거부·삭제하거나 추적
