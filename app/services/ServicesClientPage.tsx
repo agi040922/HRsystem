@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle, ArrowRight, UserCheck, Activity } from "lucide-react"
+import { CheckCircle, Briefcase, Calculator, Users, Shield, Scale, MessageCircle, ArrowRight, UserCheck, Activity, Handshake } from "lucide-react"
 import { motion } from "framer-motion"
 import { useTranslations } from 'next-intl'
 import PageBanner from "@/components/page-banner"
@@ -15,7 +15,8 @@ const iconMap = {
   "hr-consulting": Users,
   "serious-accident-law": Shield,
   "labor-disputes": Scale,
-  "workplace-harassment": MessageCircle
+  "workplace-harassment": MessageCircle,
+  "yellow-envelope-strategy": Handshake
 }
 
 export default function ServicesClientPage() {

@@ -9,7 +9,8 @@
       { "href": "/services/serious-accident-law", "title": "중대재해처벌법 관련 컨설팅", "description": "중대재해처벌법 시행에 따른 기업 안전관리체계 구축" },
       { "href": "/services/labor-disputes", "title": "노동분쟁 해결", "description": "노동위원회 사건 및 각종 노동분쟁 전문 대응" },
       { "href": "/services/workplace-harassment", "title": "직장 내 괴롭힘 조사 수행", "description": "신고 접수부터 조사·조치·모니터링까지 법에 맞게 수행" },
-      { "href": "/services/freelancer", "title": "프리랜서 진단과 관리", "description": "프리랜서 근로자성 진단·계약서·명부·증빙을 한 곳에서 관리" }
+      { "href": "/services/freelancer", "title": "프리랜서 진단과 관리", "description": "프리랜서 근로자성 진단·계약서·명부·증빙을 한 곳에서 관리" },
+      { "href": "/services/yellow-envelope-strategy", "title": "노란봉투법 대응 전략수립", "description": "개정 노조법 시행에 따른 원청 사용자성·단체교섭 요구 대응 체계 구축" }
     ]
   },
   "header": {

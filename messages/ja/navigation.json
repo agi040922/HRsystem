@@ -9,7 +9,8 @@
       { "href": "/services/serious-accident-law", "title": "重大災害処罰法関連コンサルティング", "description": "重大災害処罰法施行に伴う企業安全管理体系構築" },
       { "href": "/services/labor-disputes", "title": "労働紛争解決", "description": "労働委員会事件及び各種労働紛争専門対応" },
       { "href": "/services/workplace-harassment", "title": "職場内いじめ調査の実施", "description": "申告受付から調査・措置・モニタリングまで法に沿って実施" },
-      { "href": "/services/freelancer", "title": "フリーランサー診断と管理", "description": "労働者性診断・契約書・名簿・証憑を一箇所で管理" }
+      { "href": "/services/freelancer", "title": "フリーランサー診断と管理", "description": "労働者性診断・契約書・名簿・証憑を一箇所で管理" },
+      { "href": "/services/yellow-envelope-strategy", "title": "労組法改正(黄色い封筒法)対応戦略", "description": "改正労組法施行に伴う元請の使用者性・団体交渉要求への対応体制構築" }
     ]
   },
   "header": {
