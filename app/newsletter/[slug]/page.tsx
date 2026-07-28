@@ -42,18 +42,38 @@ export async function generateMetadata({
   }
 }
 
+/**
+ * 뉴스레터 본문 타이포그래피 — 4개 사이트 공통 규격(2026-07-28 확정).
+ * 한글 장문 가독성 기준: 본문 17px / 행간 2.0 / 어절 단위 줄바꿈(break-keep).
+ * 구분선 대신 여백으로 위계를 만든다.
+ */
 function BlockView({ block }: { block: Block }) {
   switch (block.type) {
     case "h2":
-      return <h2 className="mt-10 text-xl md:text-2xl font-bold text-gray-900">{block.text}</h2>
+      return (
+        <h2 className="mt-16 break-keep text-[1.375rem] font-bold leading-[1.5] tracking-tight text-gray-900 md:mt-20 md:text-2xl">
+          {block.text}
+        </h2>
+      )
     case "h3":
-      return <h3 className="mt-6 text-lg font-semibold text-gray-800">{block.text}</h3>
+      return (
+        <h3 className="mt-10 break-keep text-[1.0625rem] font-bold leading-[1.6] text-gray-800 md:text-lg">
+          {block.text}
+        </h3>
+      )
     case "ul":
       return (
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-gray-700">
+        <ul className="mt-6 space-y-3">
           {block.items.map((item, i) => (
-            <li key={i} className="leading-relaxed">
-              {item}
+            <li
+              key={i}
+              className="flex gap-3 break-keep text-[1.0625rem] leading-[1.9] text-gray-700"
+            >
+              <span
+                aria-hidden
+                className="mt-[0.85em] h-[3px] w-[3px] shrink-0 rounded-full bg-gray-400"
+              />
+              <span>{item}</span>
             </li>
           ))}
         </ul>
@@ -61,7 +81,7 @@ function BlockView({ block }: { block: Block }) {
     case "p":
     default:
       return (
-        <p className="mt-4 whitespace-pre-line leading-relaxed text-gray-700">
+        <p className="mt-7 whitespace-pre-line break-keep text-[1.0625rem] leading-[2] text-gray-700">
           {block.text}
         </p>
       )
@@ -108,24 +128,28 @@ export default async function NewsletterPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbsJsonLd) }}
       />
 
-      <article className="container-fluid max-w-3xl py-10 md:py-14 lg:py-16 px-4">
-        <nav className="mb-6 text-sm text-gray-400">
-          <Link href="/newsletter" className="hover:text-primary">
-            뉴스레터
-          </Link>{" "}
-          / <span className="text-gray-600">{post.title}</span>
-        </nav>
-
-        <header className="border-b border-gray-200 pb-6">
-          <h1 className="text-2xl md:text-3xl font-bold leading-snug text-gray-900">
+      {/* 표지 — 제목·발행일을 가운데 두고 여백으로 격을 만든다 */}
+      <header className="w-full bg-gray-50">
+        <div className="container-fluid max-w-4xl px-4 py-16 text-center md:py-24">
+          <nav className="text-xs text-gray-400">
+            <Link href="/newsletter" className="hover:text-primary">
+              뉴스레터
+            </Link>
+          </nav>
+          <h1 className="mx-auto mt-5 max-w-3xl break-keep text-[1.75rem] font-bold leading-[1.4] tracking-tight text-gray-900 sm:text-[2.125rem] md:text-[2.5rem]">
             {post.title}
           </h1>
-          <time dateTime={post.date} className="mt-3 block text-sm text-gray-400">
-            {post.date}
+          <time
+            dateTime={post.date}
+            className="mt-8 block text-sm tracking-wide text-gray-400 md:mt-10"
+          >
+            {post.date.replace(/-/g, ".")}
           </time>
-        </header>
+        </div>
+      </header>
 
-        <div className="mt-2 text-base">
+      <article className="container-fluid max-w-3xl px-4 py-14 md:py-20">
+        <div>
           {post.body.map((block, i) => (
             <BlockView key={i} block={block} />
           ))}
