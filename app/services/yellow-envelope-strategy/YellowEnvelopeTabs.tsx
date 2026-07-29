@@ -3,27 +3,15 @@
 import { useEffect, useRef, useState } from "react"
 import { Handshake, ClipboardCheck, ChevronDown } from "lucide-react"
 import { getServiceDetail } from "@/lib/serviceDetails"
+import QuickDiagnosisAiAssist from "@/components/QuickDiagnosisAiAssist"
+import { SUBCONTRACT_QUESTIONS as QUESTIONS, subcontractGrade as grade } from "@/lib/quickDiagnosis"
 
 const DETAIL = getServiceDetail("yellow-envelope-strategy")!
 
 // ── 도급적합성 간이진단 (참고용) ─────────────────────────────────────────
 // 도급백신 진단 15문항 중 현장 핵심 6문항. "예" = 위험 신호. 저장 없음.
+// 문항·등급 로직은 lib/quickDiagnosis.ts 단일 출처.
 type Ans = Partial<Record<string, "예" | "아니오">>
-
-const QUESTIONS: { id: string; core: boolean; weight: number; text: string; reason: string }[] = [
-  { id: "s1", core: true, weight: 2, text: "원청 직원이 수급업체 근로자에게 직접 업무·작업 지시를 하나요? (구두, 메신저, 작업지시서 등)", reason: "원청이 수급업체 근로자에게 직접 상당한 지휘·명령을 하는 것은 근로자파견의 핵심 요소로 해석될 가능성이 높습니다(대법원 5요소 ①)." },
-  { id: "s2", core: false, weight: 1, text: "원청이 수급업체 근로자의 출퇴근·근태를 관리하거나 보고받나요?", reason: "원청이 근태를 관리·보고받는 것은 지휘·명령과 인사노무 관여의 징표가 될 수 있습니다." },
-  { id: "s3", core: true, weight: 2, text: "원청 근로자와 같은 라인·공간에서 혼재되어 하나의 작업집단처럼 일하나요? (컨베이어 연동, 공정 혼재 등)", reason: "원청 근로자와 혼재되어 공동작업하는 것은 원청 사업에 실질적으로 편입된 것으로 해석될 가능성이 높습니다(대법원 5요소 ②)." },
-  { id: "s4", core: false, weight: 1, text: "수급업체 인력의 채용·교체·배치에 원청이 관여하나요? (특정인 지정, 교체 요구, 승인 등)", reason: "인력의 선발·교체·배치에 원청이 관여하는 것은 인사노무 권한을 원청이 행사한 것으로 해석될 가능성이 높습니다(대법원 5요소 ③)." },
-  { id: "s5", core: true, weight: 2, text: "도급대금이 일의 완성·성과가 아니라 투입 인원수×단가(공수) 방식으로 산정되나요?", reason: "인원수·근로시간(공수) 기준 대금 산정은 결과물에 대한 대가가 아니라 노무 제공의 대가로 해석될 가능성이 높습니다(대법원 5요소 ④)." },
-  { id: "s6", core: false, weight: 1, text: "수급업체의 현장 관리자(현장대리인)가 없거나, 있어도 실질적 지휘를 하지 않나요?", reason: "수급업체 현장대리인이 없거나 형식적이면 실제 지휘가 원청에서 나온 것으로 해석될 가능성이 높아집니다." },
-]
-
-function grade(total: number, core: number) {
-  if (core >= 2 || total >= 5) return { g: "🔴", label: "🔴 도급 적합도 하 (위험)", head: "실질이 근로자파견(위장도급)으로 해석될 가능성이 높은 신호가 확인됩니다. 계약서 문구만으로는 해결되지 않으며, 작업지시 경로·정산방식·인원관리 개선 또는 도급구조 재설계 검토를 권장합니다. 개정 노조법상 원청 사용자성도 함께 검토가 필요할 수 있습니다." }
-  if (core >= 1 || total >= 3) return { g: "🟡", label: "🟡 도급 적합도 중 (주의)", head: "일부 위험 신호가 있습니다. 표시된 항목을 개선하면 안전 구간으로 이동할 수 있습니다." }
-  return { g: "🟢", label: "🟢 도급 적합도 상 (양호)", head: "진정한 도급 관계에 가깝습니다. 현재의 운영 방식(원청 불개입·수급업체 독립)을 계약서·작업지시 경로·정산증빙으로 유지·관리하시기 바랍니다. 다만 개정 노조법상 사용자성·교섭의무는 별개 쟁점이므로 등급과 무관하게 별도 검토가 필요할 수 있습니다." }
-}
 
 function SubcontractQuickDiagnosis() {
   const [answers, setAnswers] = useState<Ans>({})
@@ -77,6 +65,7 @@ function SubcontractQuickDiagnosis() {
             </ul>
           )}
         </div>
+        <QuickDiagnosisAiAssist kind="subcontract" answers={answers} />
         <button type="button" onClick={() => { setAnswers({}); setResult(null) }} className="w-full rounded-md border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50">
           다시 진단하기
         </button>
