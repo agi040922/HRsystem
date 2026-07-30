@@ -20,7 +20,7 @@
   "services": [
     {
       "id": "hr-risk-diagnosis",
-      "title": "HR Risk Diagnosis",
+      "title": "HR Risk AI Diagnosis",
       "shortDescription": "Ordinary-wage, industrial-safety, and worker-status AI quick diagnostics in one place",
       "details": [
         "Ordinary/average wage quick calculation",

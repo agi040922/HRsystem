@@ -20,7 +20,7 @@
   "services": [
     {
       "id": "hr-risk-diagnosis",
-      "title": "HR 리스크 진단",
+      "title": "HR 리스크 AI 진단",
       "shortDescription": "통상임금·산업안전·근로자성 AI 간이진단을 한 곳에서",
       "details": [
         "통상임금·평균임금 간이 계산",

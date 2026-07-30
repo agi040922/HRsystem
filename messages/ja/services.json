@@ -20,7 +20,7 @@
   "services": [
     {
       "id": "hr-risk-diagnosis",
-      "title": "HRリスク診断",
+      "title": "HRリスクAI診断",
       "shortDescription": "通常賃金・産業安全・労働者性のAI簡易診断を一箇所で",
       "details": [
         "通常賃金・平均賃金の簡易計算",

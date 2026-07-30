@@ -9,11 +9,11 @@ import { pageMetadata, servicePageJsonLd } from "@/lib/seo"
 import DiagnosisTabs from "./DiagnosisTabs"
 
 export const metadata: Metadata = pageMetadata({
-  title: "HR 리스크 진단 | 통상임금·산업안전·근로자성 AI 간이진단",
+  title: "HR 리스크 AI 진단 | 통상임금·산업안전·근로자성 AI 간이진단",
   description:
     "통상임금·평균임금 간이 계산, 산업안전 AI 간이진단, 프리랜서 근로자성 AI 간이진단을 한 곳에서. 회원가입 없이 바로 확인하고, 정확한 진단은 FAIR인사노무컨설팅이 도와드립니다.",
   path: "/services/hr-risk-diagnosis",
-  keywords: ["HR 리스크 진단", "통상임금 계산", "산업안전 진단", "근로자성 진단", "AI 간이진단"],
+  keywords: ["HR 리스크 AI 진단", "HR 리스크 진단", "통상임금 계산", "산업안전 진단", "근로자성 진단", "AI 간이진단"],
 })
 
 export default function HrRiskDiagnosisPage() {
@@ -21,13 +21,13 @@ export default function HrRiskDiagnosisPage() {
     <div className="w-full overflow-x-hidden">
       <StructuredData
         data={servicePageJsonLd({
-          name: "HR 리스크 진단",
+          name: "HR 리스크 AI 진단",
           description: "통상임금·산업안전·근로자성을 간단히 자가진단해 보세요",
           path: "/services/hr-risk-diagnosis",
         })}
       />
       <PageBanner
-        title="HR 리스크 진단"
+        title="HR 리스크 AI 진단"
         subtitle="통상임금·산업안전·근로자성을 간단히 자가진단해 보세요"
         backgroundImage="/FAIR000.png"
       />
