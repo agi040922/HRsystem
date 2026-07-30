@@ -12,9 +12,9 @@ import YellowEnvelopeTabs from "./YellowEnvelopeTabs"
 const detail = getServiceDetail("yellow-envelope-strategy")!
 
 export const metadata: Metadata = pageMetadata({
-  title: "노란봉투법 대응 전략수립 | 원청 사용자성·교섭의무 대응과 도급적합성 간이진단",
+  title: "노란봉투법 대응 전략수립 | 원청 사용자성·교섭의무 대응과 도급적합성 AI 간이진단",
   description:
-    "개정 노조법(2026. 3. 10. 시행)에 따른 원청 사용자성 진단, 하청노조 단체교섭 요구 대응 체계, 쟁의 대비 전략, 도급구조 정비를 지원합니다. 대법원 5요소 기반 도급적합성 간이진단(6문항)도 바로 확인할 수 있습니다.",
+    "개정 노조법(2026. 3. 10. 시행)에 따른 원청 사용자성 진단, 하청노조 단체교섭 요구 대응 체계, 쟁의 대비 전략, 도급구조 정비를 지원합니다. 대법원 5요소 기반 도급적합성 AI 간이진단(6문항)도 바로 확인할 수 있습니다.",
   path: "/services/yellow-envelope-strategy",
   keywords: ["노란봉투법", "개정 노조법", "원청 사용자성", "단체교섭", "위장도급", "불법파견", "사내하도급"],
 })
@@ -43,7 +43,7 @@ export default function YellowEnvelopeStrategyPage() {
 
         <p className="text-sm sm:text-base leading-relaxed text-muted-foreground mb-8">
           개정 노조법 시대의 사내하도급·용역 리스크에 대응합니다. 아래에서 <b>서비스 내용</b>과{" "}
-          <b>도급적합성 간이진단</b>을 확인하실 수 있습니다.
+          <b>도급적합성 AI 간이진단</b>을 확인하실 수 있습니다.
         </p>
 
         <YellowEnvelopeTabs />

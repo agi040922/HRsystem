@@ -46,7 +46,7 @@ function SubcontractQuickDiagnosis() {
     return (
       <div ref={ref} className="space-y-4">
         <div className={`rounded-2xl border p-6 ${isRed ? "border-red-200 bg-red-50" : isYel ? "border-amber-200 bg-amber-50" : "border-emerald-200 bg-emerald-50"}`}>
-          <p className="text-xs font-bold uppercase tracking-widest text-gray-400">간이진단 결과 (6문항 기준)</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-gray-400">AI 간이진단 결과 (6문항 기준)</p>
           <p className="mt-2 text-2xl font-bold text-gray-900">{result.label}</p>
           <p className="mt-2 text-sm leading-relaxed text-gray-700">{result.head}</p>
         </div>
@@ -108,7 +108,7 @@ function SubcontractQuickDiagnosis() {
       <button type="button" onClick={submit} className={`w-full rounded-md px-5 py-4 text-base font-bold transition-colors ${answered === QUESTIONS.length ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-gray-100 text-gray-400"}`}>
         간이진단 결과 보기
       </button>
-      <p className="text-xs leading-relaxed text-gray-400">※ 간이·참고용 진단입니다(현장 6문항). 파견법상 위장도급 위험을 점검하며, 개정 노동조합법(2026. 3. 10. 시행)상 원청 사용자성·교섭의무는 별개 쟁점입니다. 분쟁·서류 지표까지 포함한 정밀 점검은 FAIR인사노무컨설팅 상담으로 받아 보세요.</p>
+      <p className="text-xs leading-relaxed text-gray-400">※ 간이·참고용 진단입니다(현장 6문항). 체크하신 응답을 기반으로 AI가 결과 설명을 보조하며, 판정은 규칙 기반으로 이뤄집니다. 파견법상 위장도급 위험을 점검하며, 개정 노동조합법(2026. 3. 10. 시행)상 원청 사용자성·교섭의무는 별개 쟁점입니다. 분쟁·서류 지표까지 포함한 정밀 점검은 FAIR인사노무컨설팅 상담으로 받아 보세요.</p>
     </div>
   )
 }
@@ -171,7 +171,7 @@ export default function YellowEnvelopeTabs() {
 
   const TABS: { key: TabKey; title: string; desc: string; icon: React.ReactNode }[] = [
     { key: "service", title: "서비스 내용", desc: "사용자성 진단·교섭 대응·구조 정비", icon: <Handshake className="h-6 w-6" /> },
-    { key: "diagnosis", title: "도급적합성 간이진단", desc: "핵심 6문항 자가진단 (참고용)", icon: <ClipboardCheck className="h-6 w-6" /> },
+    { key: "diagnosis", title: "도급적합성 AI 간이진단", desc: "핵심 6문항 AI 자가진단 (참고용)", icon: <ClipboardCheck className="h-6 w-6" /> },
   ]
 
   return (
@@ -225,7 +225,8 @@ export default function YellowEnvelopeTabs() {
           <h3 className="text-lg sm:text-xl font-bold text-gray-900">우리 회사의 사내하도급, 도급다운가요?</h3>
           <p className="mt-2 mb-6 text-sm sm:text-base leading-relaxed text-muted-foreground">
             대법원 근로자파견 판단기준(5요소)에 기반한 현장 핵심 6문항입니다. 예/아니오만 선택하면
-            바로 결과를 확인할 수 있으며, 응답은 저장되지 않습니다.
+            바로 결과를 확인할 수 있으며, 체크하신 응답을 기반으로 AI가 결과 설명을 보조합니다.
+            응답은 저장되지 않습니다.
           </p>
           <SubcontractQuickDiagnosis />
         </div>

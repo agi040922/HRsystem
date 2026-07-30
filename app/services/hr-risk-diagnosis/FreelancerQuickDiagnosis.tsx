@@ -41,7 +41,7 @@ export default function FreelancerQuickDiagnosis() {
     return (
       <div ref={ref} className="space-y-4">
         <div className={`rounded-2xl border p-6 ${isRed ? "border-red-200 bg-red-50" : isYel ? "border-amber-200 bg-amber-50" : "border-emerald-200 bg-emerald-50"}`}>
-          <p className="text-xs font-bold uppercase tracking-widest text-gray-400">간이진단 결과 (6문항 기준)</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-gray-400">AI 간이진단 결과 (6문항 기준)</p>
           <p className="mt-2 text-2xl font-bold text-gray-900">{result.label}</p>
           <p className="mt-2 text-sm leading-relaxed text-gray-700">{result.head}</p>
         </div>
@@ -103,7 +103,7 @@ export default function FreelancerQuickDiagnosis() {
       <button type="button" onClick={submit} className={`w-full rounded-md px-5 py-4 text-base font-bold transition-colors ${answered === QUESTIONS.length ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-gray-100 text-gray-400"}`}>
         간이진단 결과 보기
       </button>
-      <p className="text-xs leading-relaxed text-gray-400">※ 간이·참고용 진단입니다(업무 6문항). 분쟁·서류 지표까지 포함한 정확한 진단은 프리랜서 백신 심층진단 또는 FAIR인사노무컨설팅 상담으로 받아 보세요.</p>
+      <p className="text-xs leading-relaxed text-gray-400">※ 간이·참고용 진단입니다(업무 6문항). 체크하신 응답을 기반으로 AI가 결과 설명을 보조하며, 판정은 규칙 기반으로 이뤄집니다. 분쟁·서류 지표까지 포함한 정확한 진단은 프리랜서 백신 심층진단 또는 FAIR인사노무컨설팅 상담으로 받아 보세요.</p>
     </div>
   )
 }

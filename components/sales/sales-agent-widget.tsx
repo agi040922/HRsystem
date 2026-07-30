@@ -300,7 +300,7 @@ function ResultView({
             href={freeHref}
             className="rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-bold text-primary-foreground transition hover:bg-primary/90"
           >
-            무료 간이진단 먼저 해보기
+            무료 AI 간이진단 먼저 해보기
           </Link>
         )}
         <Link

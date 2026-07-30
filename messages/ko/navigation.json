@@ -2,7 +2,7 @@
   "servicesNav": {
     "label": "서비스",
     "items": [
-      { "href": "/services/hr-risk-diagnosis", "title": "HR 리스크 진단", "description": "통상임금·산업안전·근로자성 간이진단으로 리스크를 한 번에 점검" },
+      { "href": "/services/hr-risk-diagnosis", "title": "HR 리스크 진단", "description": "통상임금·산업안전·근로자성 AI 간이진단으로 리스크를 한 번에 점검" },
       { "href": "/services/labor-consulting", "title": "인사노무 관리 자문", "description": "기업 운영 전반의 인사노무 리스크 예방 및 대응" },
       { "href": "/services/payroll-system", "title": "급여체계 관련 컨설팅", "description": "통상임금 및 평균임금 등 급여체계 최적화 컨설팅" },
       { "href": "/services/hr-consulting", "title": "인사노무 컨설팅", "description": "기업 맞춤형 인사제도 설계 및 운영 지원" },

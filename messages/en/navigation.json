@@ -2,7 +2,7 @@
   "servicesNav": {
     "label": "Services",
     "items": [
-      { "href": "/services/hr-risk-diagnosis", "title": "HR Risk Diagnosis", "description": "Check ordinary-wage, industrial-safety, and worker-status risks with quick self-diagnostics" },
+      { "href": "/services/hr-risk-diagnosis", "title": "HR Risk Diagnosis", "description": "Check ordinary-wage, industrial-safety, and worker-status risks with AI quick self-diagnostics" },
       { "href": "/services/labor-consulting", "title": "HR & Labor Advisory", "description": "Prevention and response to labor law risks in overall business operations" },
       { "href": "/services/payroll-system", "title": "Payroll System Consulting", "description": "Optimization consulting for payroll systems including ordinary and average wages" },
       { "href": "/services/hr-consulting", "title": "HR Consulting", "description": "Customized HR system design and operational support for companies" },
