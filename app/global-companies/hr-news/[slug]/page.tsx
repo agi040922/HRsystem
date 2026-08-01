@@ -23,7 +23,8 @@ export async function generateMetadata({
     title: `${issue.title} | 외국계 기업 HR 소식 ${issue.issue}`,
     description: issue.summary,
     path: `/global-companies/hr-news/${issue.slug}`,
-    keywords: ["외국계기업 HR", "육아휴직 복귀", "외국계기업 노무", "인사담당자"],
+    // 호마다 주제가 다르므로 호별 키워드를 쓴다(고정하면 옛 호의 주제가 전 호에 붙는다)
+    keywords: ["외국계기업 HR", "외국계기업 노무사", "인사담당자", ...(issue.keywords ?? [])],
   })
 }
 

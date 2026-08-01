@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { getBoardPosts } from '@/lib/board'
 import { NEWSLETTER_POSTS } from '@/lib/newsletterPosts'
 import { SERVICE_DETAIL_SLUGS } from '@/lib/serviceDetails'
+import { NEWS_ISSUES } from '@/app/global-companies/hr-news/newsData'
 import { SITE_URL } from '@/lib/seo'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -75,6 +76,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+    },
+    // 외국계기업 지원센터 하위 페이지 — 검색 유입의 실제 진입점이라 개별 등록한다
+    {
+      url: `${baseUrl}/global-companies/hr-news`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    ...NEWS_ISSUES.map((n) => ({
+      url: `${baseUrl}/global-companies/hr-news/${n.slug}`,
+      lastModified: new Date(n.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    {
+      url: `${baseUrl}/global-companies/labor-relations`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/global-companies/glossary`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
     },
     {
       url: `${baseUrl}/contact`,

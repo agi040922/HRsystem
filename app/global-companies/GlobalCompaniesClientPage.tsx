@@ -4,6 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, Scale, FileText, Landmark, ShieldCheck, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { GLOBAL_FAQS } from "./faqData"
 
 type Gap = {
   no: string
@@ -260,6 +261,43 @@ export default function GlobalCompaniesClientPage() {
               </div>
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* 자주 묻는 질문 — GLOBAL_FAQS 가 화면과 FAQPage 구조화데이터의 공통 출처 */}
+      <section className="w-full bg-slate-50 py-14 sm:py-20">
+        <div className="container-fluid max-w-4xl px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="break-keep text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3"
+          >
+            외국계 기업 인사담당자가 자주 묻는 질문
+          </motion.h2>
+          <p className="break-keep text-sm sm:text-base text-muted-foreground leading-relaxed mb-8">
+            아래 내용은 일반적인 안내이며, 개별 사안의 법적 판단을 대체하지 않습니다.
+          </p>
+          <div className="space-y-4">
+            {GLOBAL_FAQS.map((faq, i) => (
+              <motion.div
+                key={faq.q}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.25) }}
+                className="rounded-2xl border border-border/50 bg-white p-6 sm:p-7"
+              >
+                <h3 className="break-keep text-base sm:text-lg font-bold text-gray-900 mb-2.5">
+                  {faq.q}
+                </h3>
+                <p className="break-keep text-sm sm:text-base leading-relaxed text-gray-700">
+                  {faq.a}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

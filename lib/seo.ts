@@ -120,6 +120,20 @@ export const homeFaqJsonLd = {
   ],
 }
 
+// 페이지별 FAQ 구조화 데이터 생성기.
+// ⚠️ 넘기는 문답은 반드시 그 페이지 화면에도 그대로 보여야 한다(구글 정책).
+export function faqJsonLd(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  }
+}
+
 // 브레드크럼(빵부스러기) 구조화 데이터 생성기. 검색결과의 경로 표시·내부링크 신호용.
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
