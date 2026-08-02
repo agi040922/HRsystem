@@ -59,6 +59,9 @@ export const metadata: Metadata = {
   },
   other: {
     "naver-site-verification": "30b5f0749e64b98e4970e9906e86ed17df7ed755",
+    // 구글 서치콘솔 URL 접두어 속성(https://www.fairhr.net/) 소유확인.
+    // ⚠️ 지우면 소유확인이 풀려 색인 현황·사이트맵 제출을 볼 수 없게 된다.
+    "google-site-verification": "yzsQcrGihTWtX49XpCR5sGifhxVIMCpcYunqPGlqFpY",
   },
 }
 
