@@ -58,7 +58,13 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "naver-site-verification": "30b5f0749e64b98e4970e9906e86ed17df7ed755",
+    // 네이버 소유확인 코드는 계정별이 아니라 **사이트별**이다(2026-08-02 확인).
+    // eb6880… = https://www.fairhr.net (FAIR인사노무컨설팅 계정).
+    // 30b5f0… 은 출처 불명의 기존 값 — 다른 계정에서 인정받고 있을 수 있어 지우지 않고 함께 둔다.
+    "naver-site-verification": [
+      "eb68807e59a29cee842e7bab8fc74ecffb53bbc2",
+      "30b5f0749e64b98e4970e9906e86ed17df7ed755",
+    ],
     // 구글 서치콘솔 URL 접두어 속성(https://www.fairhr.net/) 소유확인.
     // ⚠️ 지우면 소유확인이 풀려 색인 현황·사이트맵 제출을 볼 수 없게 된다.
     "google-site-verification": "yzsQcrGihTWtX49XpCR5sGifhxVIMCpcYunqPGlqFpY",
