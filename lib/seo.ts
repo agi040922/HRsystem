@@ -2,10 +2,22 @@ import type { Metadata } from "next"
 
 export const SITE_URL = "https://www.fairhr.net"
 export const SITE_NAME = "FAIR인사노무컨설팅"
+// 홈 제목·설명은 여기 한 곳에서만 정한다(layout.tsx 의 metadata·openGraph·twitter 세 곳이 같은 값을 쓴다).
+// ⚠️ 외국계 포지셔닝(CEO 승인 2026-08-03) — 검색엔진이 "외국계"와 이 사이트를 연결하도록
+//    제목·설명 앞머리에 배치한다. 경쟁사 분석에서 확인된 상위노출 요인이다.
+// ⚠️ 실적 표기는 이력 기준(과거·누적형)을 유지할 것.
+export const SITE_TITLE = `${SITE_NAME} | 외국계기업 전문 공인노무사·노사관계 자문`
 export const SITE_DESCRIPTION =
-  "27년 경력 공인노무사가 임금·근로시간·해고·산업안전·중대재해 리스크를 진단하고, FAIR CRM으로 자문 이력과 현장 기록을 관리합니다."
+  "외국계기업 전문 공인노무사. 27년 경력으로 단체교섭·노사관계, HR Compliance 조사, 본사 보고를 지원합니다. Microsoft·GE·CITIBANK 등 외국인투자기업 자문 이력. 자문 이력은 FAIR CRM에 기록으로 남습니다."
 
 export const SEO_KEYWORDS = [
+  "외국계기업 노무사",
+  "외국계 노무사",
+  "외국계기업 노무 자문",
+  "외국계기업 인사노무",
+  "외국인투자기업",
+  "단체교섭",
+  "노동조합 설립 대응",
   "인사노무컨설팅",
   "공인노무사",
   "노무법인",
