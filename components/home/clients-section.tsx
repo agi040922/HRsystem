@@ -126,60 +126,53 @@ export default function ClientsSection() {
                     className="w-16 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
-                    src="/로고/S-OIL.png"
-                    alt="S-OIL"
-                    className="w-16 h-16 object-contain"
+                    src="/로고/S-OIL-TotalEnergies.png"
+                    alt="S-OIL·TotalEnergies"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img
-                    src="/로고/TotalEnergies.png"
-                    alt="TotalEnergies"
-                    className="w-16 h-16 object-contain"
-                  />
-                </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/EWHA-Biomedics.png"
                     alt="EWHA Biomedics"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/ECO3.png"
                     alt="ECO3"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/SCREENKOREA.png"
                     alt="SCREENKOREA"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/AGFA.png"
                     alt="AGFA"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/FujiTV.png"
                     alt="Fuji Television"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/SERVIER.png"
                     alt="Servier"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
               </div>
@@ -249,60 +242,53 @@ export default function ClientsSection() {
                     className="w-16 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
-                    src="/로고/S-OIL.png"
-                    alt="S-OIL"
-                    className="w-16 h-16 object-contain"
+                    src="/로고/S-OIL-TotalEnergies.png"
+                    alt="S-OIL·TotalEnergies"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img
-                    src="/로고/TotalEnergies.png"
-                    alt="TotalEnergies"
-                    className="w-16 h-16 object-contain"
-                  />
-                </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/EWHA-Biomedics.png"
                     alt="EWHA Biomedics"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/ECO3.png"
                     alt="ECO3"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/SCREENKOREA.png"
                     alt="SCREENKOREA"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/AGFA.png"
                     alt="AGFA"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/FujiTV.png"
                     alt="Fuji Television"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center justify-center w-32 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/SERVIER.png"
                     alt="Servier"
-                    className="w-16 h-16 object-contain"
+                    className="w-28 h-16 object-contain"
                   />
                 </div>
               </div>
