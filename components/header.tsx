@@ -102,6 +102,11 @@ export default function Header() {
           description: t('globalCompaniesMenu.laborRelations.description'),
         },
         {
+          href: "/global-companies/investigation",
+          title: t('globalCompaniesMenu.investigation.title'),
+          description: t('globalCompaniesMenu.investigation.description'),
+        },
+        {
           href: "/global-companies/glossary",
           title: t('globalCompaniesMenu.glossary.title'),
           description: t('globalCompaniesMenu.glossary.description'),
