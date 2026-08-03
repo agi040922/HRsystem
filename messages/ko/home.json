@@ -178,7 +178,7 @@
   },
   "clients": {
     "title": "200여 외국계 기업이 선택한 전문가",
-    "subtitle": "2005년부터 26년간 글로벌 기업들의 신뢰받는 파트너",
+    "subtitle": "2005년 창립 이후 글로벌 기업들과 함께해 온 파트너",
     "stats": {
       "companies": {
         "value": "200+",
@@ -189,8 +189,9 @@
         "label": "전문 경험"
       }
     },
-    "partnersTitle": "함께한 글로벌 기업들",
-    "partnersSubtitle": "신뢰받는 파트너로 함께 성장해온 기업들"
+    "partnersTitle": "26년간 함께해 온 글로벌 기업들",
+    "partnersSubtitle": "창립 이후 자문·프로젝트로 인연을 맺어 온 기업들입니다",
+    "partnersNote": "※ 창립 이후 자문·프로젝트 수행 이력 기준입니다."
   },
   "board": {
     "title": "공지사항",

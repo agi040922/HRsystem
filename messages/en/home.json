@@ -174,7 +174,7 @@
   },
   "clients": {
     "title": "Expert Chosen by 200+ Foreign Companies",
-    "subtitle": "Trusted partner to global companies for 26 years since 2005",
+    "subtitle": "A partner working with global companies since our founding in 2005",
     "stats": {
       "companies": {
         "value": "200+",
@@ -185,8 +185,9 @@
         "label": "Professional Experience"
       }
     },
-    "partnersTitle": "Global Companies We've Worked With",
-    "partnersSubtitle": "Companies that have grown together as trusted partners"
+    "partnersTitle": "Global Companies We've Worked With Over 26 Years",
+    "partnersSubtitle": "Companies we have served through advisory work and projects since our founding",
+    "partnersNote": "* Based on advisory and project engagements since our founding."
   },
   "board": {
     "title": "Announcements",

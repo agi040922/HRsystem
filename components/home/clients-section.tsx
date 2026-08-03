@@ -308,6 +308,9 @@ export default function ClientsSection() {
               </div>
             </div>
           </div>
+
+          {/* 이력 기준 고지 — 계약 종료 기업 포함 표시에 대한 오인 방지 */}
+          <p className="mt-4 text-center text-xs text-gray-400">{tClients('partnersNote')}</p>
         </motion.div>
       </div>
     </section>
