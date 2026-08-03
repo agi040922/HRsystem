@@ -120,14 +120,70 @@ export default function ClientsSection() {
                   />
                 </div>
                 <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/NHK 서울지국.png" 
-                    alt="NHK 서울지국" 
+                  <img
+                    src="/로고/NHK 서울지국.png"
+                    alt="NHK 서울지국"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/S-OIL.png"
+                    alt="S-OIL"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/TotalEnergies.png"
+                    alt="TotalEnergies"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/EWHA-Biomedics.png"
+                    alt="EWHA Biomedics"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/ECO3.png"
+                    alt="ECO3"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/SCREENKOREA.png"
+                    alt="SCREENKOREA"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/AGFA.png"
+                    alt="AGFA"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/FujiTV.png"
+                    alt="Fuji Television"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/SERVIER.png"
+                    alt="Servier"
                     className="w-16 h-16 object-contain"
                   />
                 </div>
               </div>
-              
+
               {/* 두 번째 세트 (무한 스크롤용) */}
               <div className="flex space-x-16 min-w-max ml-16">
                 <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
@@ -182,7 +238,70 @@ export default function ClientsSection() {
                 <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img
                     src="/로고/Kellogg.svg"
-                    alt="Kellogg" 
+                    alt="Kellogg"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/NHK 서울지국.png"
+                    alt="NHK 서울지국"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/S-OIL.png"
+                    alt="S-OIL"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/TotalEnergies.png"
+                    alt="TotalEnergies"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/EWHA-Biomedics.png"
+                    alt="EWHA Biomedics"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/ECO3.png"
+                    alt="ECO3"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/SCREENKOREA.png"
+                    alt="SCREENKOREA"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/AGFA.png"
+                    alt="AGFA"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/FujiTV.png"
+                    alt="Fuji Television"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <img
+                    src="/로고/SERVIER.png"
+                    alt="Servier"
                     className="w-16 h-16 object-contain"
                   />
                 </div>
