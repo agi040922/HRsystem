@@ -78,15 +78,8 @@ export default function ClientsSection() {
                   />
                 </div>
                 <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/씨티뱅크.jpg" 
-                    alt="Citibank" 
-                    className="w-16 h-16 object-contain"
-                  />
-                </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/GSK.jpg" 
+                  <img
+                    src="/로고/GSK.jpg"
                     alt="GSK" 
                     className="w-16 h-16 object-contain"
                   />
@@ -120,15 +113,8 @@ export default function ClientsSection() {
                   />
                 </div>
                 <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/NovartisNovartis.jpg" 
-                    alt="Novartis" 
-                    className="w-16 h-16 object-contain"
-                  />
-                </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/Kellogg.svg" 
+                  <img
+                    src="/로고/Kellogg.svg"
                     alt="Kellogg" 
                     className="w-16 h-16 object-contain"
                   />
@@ -159,15 +145,8 @@ export default function ClientsSection() {
                   />
                 </div>
                 <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/씨티뱅크.jpg" 
-                    alt="Citibank" 
-                    className="w-16 h-16 object-contain"
-                  />
-                </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/GSK.jpg" 
+                  <img
+                    src="/로고/GSK.jpg"
                     alt="GSK" 
                     className="w-16 h-16 object-contain"
                   />
@@ -201,15 +180,8 @@ export default function ClientsSection() {
                   />
                 </div>
                 <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/NovartisNovartis.jpg" 
-                    alt="Novartis" 
-                    className="w-16 h-16 object-contain"
-                  />
-                </div>
-                <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <img 
-                    src="/로고/Kellogg.svg" 
+                  <img
+                    src="/로고/Kellogg.svg"
                     alt="Kellogg" 
                     className="w-16 h-16 object-contain"
                   />
