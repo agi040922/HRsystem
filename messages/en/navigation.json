@@ -2,15 +2,51 @@
   "servicesNav": {
     "label": "Services",
     "items": [
-      { "href": "/services/hr-risk-diagnosis", "title": "HR Risk AI Diagnosis", "description": "Check ordinary-wage, industrial-safety, and worker-status risks with AI quick self-diagnostics" },
-      { "href": "/services/labor-consulting", "title": "HR & Labor Advisory", "description": "Prevention and response to labor law risks in overall business operations" },
-      { "href": "/services/payroll-system", "title": "Payroll System Consulting", "description": "Optimization consulting for payroll systems including ordinary and average wages" },
-      { "href": "/services/hr-consulting", "title": "HR Consulting", "description": "Customized HR system design and operational support for companies" },
-      { "href": "/services/serious-accident-law", "title": "Serious Accident Punishment Act Consulting", "description": "Establishing corporate safety management systems under the Serious Accident Punishment Act" },
-      { "href": "/services/labor-disputes", "title": "Labor Dispute Resolution", "description": "Professional response to Labor Relations Commission cases and various labor disputes" },
-      { "href": "/services/workplace-harassment", "title": "Workplace Harassment Investigation", "description": "From report intake to investigation, action, and monitoring — conducted per the law" },
-      { "href": "/services/freelancer", "title": "Freelancer Diagnosis & Management", "description": "Worker-status diagnosis, contracts, roster, and evidence — all in one place" },
-      { "href": "/services/yellow-envelope-strategy", "title": "Yellow Envelope Law Response Strategy", "description": "Response systems for expanded employer status and bargaining obligations under the amended Trade Union Act" }
+      {
+        "href": "/services/hr-risk-diagnosis",
+        "title": "HR Risk AI Diagnosis",
+        "description": "Check ordinary-wage, industrial-safety, and worker-status risks with AI quick self-diagnostics"
+      },
+      {
+        "href": "/services/labor-consulting",
+        "title": "HR & Labor Advisory",
+        "description": "Prevention and response to labor law risks in overall business operations"
+      },
+      {
+        "href": "/services/payroll-system",
+        "title": "Payroll System Consulting",
+        "description": "Optimization consulting for payroll systems including ordinary and average wages"
+      },
+      {
+        "href": "/services/hr-consulting",
+        "title": "HR Consulting",
+        "description": "Customized HR system design and operational support for companies"
+      },
+      {
+        "href": "/services/serious-accident-law",
+        "title": "Serious Accident Punishment Act Consulting",
+        "description": "Establishing corporate safety management systems under the Serious Accident Punishment Act"
+      },
+      {
+        "href": "/services/labor-disputes",
+        "title": "Labor Dispute Resolution",
+        "description": "Professional response to Labor Relations Commission cases and various labor disputes"
+      },
+      {
+        "href": "/services/workplace-harassment",
+        "title": "Workplace Harassment Investigation",
+        "description": "From report intake to investigation, action, and monitoring — conducted per the law"
+      },
+      {
+        "href": "/services/freelancer",
+        "title": "Freelancer Diagnosis & Management",
+        "description": "Worker-status diagnosis, contracts, roster, and evidence — all in one place"
+      },
+      {
+        "href": "/services/yellow-envelope-strategy",
+        "title": "Yellow Envelope Law Response Strategy",
+        "description": "Response systems for expanded employer status and bargaining obligations under the amended Trade Union Act"
+      }
     ]
   },
   "header": {
@@ -27,7 +63,10 @@
     "board": "Notice",
     "newsletter": "Newsletter",
     "qna": "Q&A",
-    "contact": "Consultation"
+    "contact": "Consultation",
+    "blog": "Blog",
+    "naverBlog": "Naver Blog",
+    "openMenu": "Open menu"
   },
   "fairCrmMenu": {
     "intro": {

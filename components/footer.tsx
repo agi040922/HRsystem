@@ -8,6 +8,8 @@ const BLOG_URL = "https://blog.naver.com/fairhr"
 
 export default function Footer() {
   const t = useTranslations('footer')
+  // 메뉴 라벨은 mainNav 네임스페이스에 있다(footer 네임스페이스로는 못 읽는다)
+  const tNav = useTranslations('mainNav')
   return (
     <footer className="border-t bg-muted/40 w-full overflow-x-hidden">
       <div className="container-fluid max-w-7xl py-6 md:py-8 text-center md:text-left">
@@ -39,7 +41,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/newsletter" className="text-muted-foreground hover:text-primary transition-colors">
-                  뉴스레터
+                  {tNav('newsletter')}
                 </Link>
               </li>
               <li>
@@ -54,7 +56,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
                 >
-                  네이버 블로그
+                  {tNav('naverBlog')}
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </li>

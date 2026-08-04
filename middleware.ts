@@ -30,8 +30,12 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 다른 경로들은 기본 동작
-  return NextResponse.next();
+  // 서버 렌더 시 언어를 경로로 판단할 수 있도록 경로를 헤더에 실어 보낸다.
+  // i18n/request.ts 가 이 값을 읽어 /en/* 은 영어로 렌더한다.
+  // (헤더가 없으면 기존대로 ko 로 폴백하므로 이 변경은 한국어 화면에 영향이 없다.)
+  const headers = new Headers(request.headers);
+  headers.set('x-fair-pathname', pathname);
+  return NextResponse.next({ request: { headers } });
 }
 
 export const config = {

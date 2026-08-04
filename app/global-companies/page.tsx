@@ -9,6 +9,8 @@ export const metadata: Metadata = pageMetadata({
   description:
     "외국인투자기업의 한국 인사노무를 평시 관리부터 노동조합 설립·단체교섭·노동위원회 사건 대응까지 지원합니다. 김앤장 출신 27년 경력 노무사가 직접 자문하고, 모든 이력은 FAIR CRM에 기록으로 남습니다.",
   path: "/global-companies",
+  // 영문 짝과 서로를 건다 — 한쪽만 걸면 구글이 hreflang 을 무시한다
+  alternatePaths: { ko: "/global-companies", en: "/en/global-companies" },
   keywords: [
     "외국계기업 노무사",
     "외국계기업 노무",

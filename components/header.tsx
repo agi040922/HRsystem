@@ -207,7 +207,7 @@ export default function Header() {
                   "text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors h-10 px-4 py-2"
                 )}>
                   <a href={BLOG_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1">
-                    블로그
+                    {t('mainNav.blog')}
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </NavigationMenuLink>
@@ -250,7 +250,7 @@ export default function Header() {
                 className="h-10 w-10 text-gray-700 hover:text-primary hover:bg-gray-50"
               >
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">메뉴 열기</span>
+                <span className="sr-only">{t('mainNav.openMenu')}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] sm:w-[350px] bg-white overflow-y-auto">
@@ -304,7 +304,7 @@ export default function Header() {
                   className="inline-flex items-center gap-1.5 text-gray-900 hover:text-primary px-3 py-3 rounded-md hover:bg-gray-50 transition-colors border-b border-gray-200 font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  블로그
+                  {t('mainNav.blog')}
                   <ExternalLink className="h-4 w-4" />
                 </a>
               </nav>

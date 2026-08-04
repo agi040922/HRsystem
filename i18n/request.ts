@@ -1,12 +1,31 @@
 import { getRequestConfig } from 'next-intl/server';
+import { headers } from 'next/headers';
 
 // 지원하는 언어 목록
 export const locales = ['ko', 'en', 'ja'] as const;
 export type Locale = (typeof locales)[number];
 
+/**
+ * 경로로 서버 렌더 언어를 정한다. `/en/*` 만 영어다.
+ * ⚠️ 이 사이트는 로케일 라우트 세그먼트가 없어 기본이 ko 다. 헤더가 없으면 ko 로 폴백하므로
+ *    한국어 화면 동작은 이 함수가 있기 전과 같다. 경로를 넣어 주는 곳은 middleware.ts.
+ */
+async function localeFromPath(): Promise<string | null> {
+  try {
+    const pathname = (await headers()).get('x-fair-pathname') ?? '';
+    if (pathname === '/en' || pathname.startsWith('/en/')) return 'en';
+    return null;
+  } catch {
+    // headers() 를 쓸 수 없는 렌더 맥락(정적 생성 등)에서는 조용히 폴백한다.
+    return null;
+  }
+}
+
 export default getRequestConfig(async ({ locale }) => {
-  // 지원하지 않는 언어인 경우 기본 언어(ko)로 폴백
-  const validLocale: string = locales.includes(locale as any) ? locale! : 'ko';
+  // 경로가 우선, 그 다음 넘어온 locale, 마지막으로 기본 언어(ko)
+  const fromPath = await localeFromPath();
+  const validLocale: string =
+    fromPath ?? (locales.includes(locale as any) ? locale! : 'ko');
 
   try {
     // 모듈화된 번역 파일들을 동적으로 로드하고 통합

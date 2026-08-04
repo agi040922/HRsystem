@@ -36,26 +36,45 @@ export function pageMetadata({
   description = SITE_DESCRIPTION,
   path = "/",
   keywords = [],
+  locale = "ko",
+  alternatePaths,
 }: {
   title: string
   description?: string
   path?: string
   keywords?: string[]
+  /** 이 페이지 자체의 언어. og:locale 과 html 표기에 쓴다. */
+  locale?: "ko" | "en"
+  /**
+   * 같은 내용의 다른 언어 페이지 경로. 국문·영문 양쪽에 서로를 걸어야 hreflang 이 성립한다.
+   * 예: { ko: "/global-companies", en: "/en/global-companies" }
+   */
+  alternatePaths?: { ko: string; en: string }
 }): Metadata {
   const url = new URL(path, SITE_URL).toString()
+  const languages = alternatePaths
+    ? {
+        ko: new URL(alternatePaths.ko, SITE_URL).toString(),
+        en: new URL(alternatePaths.en, SITE_URL).toString(),
+        // 언어가 맞지 않는 방문자에게 보여줄 기본판은 국문으로 둔다
+        "x-default": new URL(alternatePaths.ko, SITE_URL).toString(),
+      }
+    : undefined
 
   return {
-    title,
+    // 루트 레이아웃의 title.template 이 "%s | FAIR인사노무컨설팅" 를 붙인다.
+    // 영문 페이지에는 한글 회사명이 붙으면 안 되므로 absolute 로 템플릿을 끈다.
+    title: locale === "en" ? { absolute: title } : title,
     description,
     keywords: [...SEO_KEYWORDS, ...keywords],
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages },
     openGraph: {
       type: "website",
       title,
       description,
       url,
       siteName: SITE_NAME,
-      locale: "ko_KR",
+      locale: locale === "en" ? "en_US" : "ko_KR",
     },
     twitter: {
       card: "summary_large_image",
