@@ -7,8 +7,9 @@
 //  - 실적 표현은 전부 과거·누적형(이력 기준)으로 쓴다.
 //  - FAQ 답변은 **이번 세션에서 원문을 확인한 조문만** 근거로 삼았다:
 //    근로기준법 제76조의3, 남녀고용평등법 제14조, 노동조합법 제2조 제2호 후단.
-//    확인하지 못한 사항(취업규칙 작성 기준 인원, 대표이사의 근로자성, 철수 시 보상 등)은
-//    싣지 않았다 — CEO 확인 후 추가할 것.
+//    취업규칙 작성 기준 인원(10인 이상), 대표이사의 근로자성(실질 판단), 철수 시 보상은
+//    **CEO(노무사) 확인으로 추가**했다(2026-08-04). 철수 시 위로금은 법정 의무가 아니라
+//    관행이므로 customary practice 로 쓴다 — requirement 로 바꾸지 말 것.
 
 export type EnProblem = { q: string }
 
@@ -109,6 +110,18 @@ export const EN_FAQS: EnFaq[] = [
   {
     q: "We use subcontractors in Korea. Could we be required to bargain with their union?",
     a: "Possibly. Under the amended Trade Union and Labor Relations Adjustment Act, effective 10 March 2026, a party that is not the employer under the employment contract may still be treated as an employer under that Act, within the scope of the working conditions it substantially and concretely controls and determines. If your company uses subcontracted or in-house partner labour, the question worth answering now is which working conditions you are in fact deciding.",
+  },
+  {
+    q: "Do we need rules of employment for our Korean entity?",
+    a: "Yes, where the business ordinarily employs 10 or more workers. The obligation applies to a foreign-invested company on the same terms as to any other employer in Korea. The question that follows in practice is which parts of a global policy can be carried into the Korean rules of employment and which cannot.",
+  },
+  {
+    q: "Is the representative director of a Korean subsidiary an employee?",
+    a: "Not determined by title alone. The assessment follows the substance of the relationship rather than the registered position, so a person appointed as a representative director or officer may still be found to be an employee. What matters is how the role is actually performed — whether the person is subject to direction and supervision, how working time is set, how remuneration is determined. This is worth establishing before a departure or termination is arranged, not after.",
+  },
+  {
+    q: "What do we owe employees when closing or downsizing a Korean subsidiary?",
+    a: "It depends on how the separations are carried out — the requirements differ between a dismissal for managerial reasons and a separation by agreement. Beyond statutory entitlements, the customary practice in Korea is to consult the employee representative or hold employee meetings and then pay an ex gratia settlement. That consultation is not a formality; planning it before any announcement is usually what determines whether the process holds together.",
   },
   {
     q: "Is a consultation available before we enter into an advisory agreement?",

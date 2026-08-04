@@ -150,8 +150,8 @@ export default function EnGlobalCompaniesClientPage() {
             ))}
           </div>
           <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
-            FAIR HR Consulting has advised foreign-invested companies including Microsoft, GE and
-            CITIBANK on Korean employment and labor matters.
+            FAIR HR Consulting&apos;s advisory experience includes foreign-invested companies such
+            as Microsoft, GE and CITIBANK.
           </p>
         </div>
       </section>
