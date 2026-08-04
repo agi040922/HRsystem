@@ -2,13 +2,19 @@ import type { Metadata } from "next"
 
 export const SITE_URL = "https://www.fairhr.net"
 export const SITE_NAME = "FAIR인사노무컨설팅"
-// 홈 제목·설명은 여기 한 곳에서만 정한다(layout.tsx 의 metadata·openGraph·twitter 세 곳이 같은 값을 쓴다).
-// ⚠️ 외국계 포지셔닝(CEO 승인 2026-08-03) — 검색엔진이 "외국계"와 이 사이트를 연결하도록
-//    제목·설명 앞머리에 배치한다. 경쟁사 분석에서 확인된 상위노출 요인이다.
+// 홈 제목·설명은 여기 한 곳에서만 정한다(layout.tsx 의 metadata·openGraph·twitter, app/page.tsx 가 같은 값을 쓴다).
+//
+// ⚠️ FAIR 의 목표 포지셔닝은 **2대 축**이다(CEO 확정 2026-08-04).
+//      ① 외국계기업 HR 전문   ② HR테크 전문(= FAIR CRM)
+//    한쪽만 내세우지 말 것. 외부위원 제안서 §4.2 의 "FAIR CRM·PlusTAI 를 하단으로" 권고는
+//    이 방침과 어긋나 **기각**했다.
+// ⚠️ PlusTAI 는 **독립 자회사**다. FAIR 의 HR테크 축은 FAIR CRM 이며 백신 시리즈는 포함하지 않는다.
+// ⚠️ 검색 유입은 각 축의 전용 랜딩페이지가 받는다(/global-companies, /en/global-companies, /fair-crm).
+//    홈은 두 축을 선언하는 자리다.
 // ⚠️ 실적 표기는 이력 기준(과거·누적형)을 유지할 것.
-export const SITE_TITLE = `${SITE_NAME} | 외국계기업 전문 공인노무사·노사관계 자문`
+export const SITE_TITLE = `${SITE_NAME} | 외국계기업 HR 전문 · HR테크 FAIR CRM`
 export const SITE_DESCRIPTION =
-  "외국계기업 전문 공인노무사. 27년 경력으로 단체교섭·노사관계, HR Compliance 조사, 본사 보고를 지원합니다. Microsoft·GE·CITIBANK 등 외국인투자기업 자문 이력. 자문 이력은 FAIR CRM에 기록으로 남습니다."
+  "외국계기업 HR과 HR테크, 두 축으로 일합니다. 김앤장 출신 27년 경력 공인노무사가 단체교섭·노사관계와 HR Compliance 조사를 직접 자문하고, HR테크 플랫폼 FAIR CRM으로 자문 이력·진단·안전보건 기록을 관리합니다. Microsoft·GE·CITIBANK 등 외국인투자기업 자문 이력."
 
 export const SEO_KEYWORDS = [
   "외국계기업 노무사",
@@ -16,6 +22,11 @@ export const SEO_KEYWORDS = [
   "외국계기업 노무 자문",
   "외국계기업 인사노무",
   "외국인투자기업",
+  "HR테크",
+  "HR SaaS",
+  "인사노무 시스템",
+  "HR 솔루션",
+  "노무관리 시스템",
   "단체교섭",
   "노동조합 설립 대응",
   "인사노무컨설팅",
