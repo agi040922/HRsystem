@@ -63,9 +63,9 @@ export default function PlustaiClientPage() {
               그런데 정작 필요한 것은 그 전에 우리 회사가 어디가 취약한지 아는 일입니다.
             </p>
             <p className="break-keep text-sm leading-relaxed text-gray-700 sm:text-base">
-              FAIR인사노무컨설팅은 27년간 현장에서 판단해 온 기준을 사업주가 직접 써 볼 수 있는
-              진단 서비스로 옮기기 위해 <b className="text-gray-900">플러스 티 에이아이</b>를 두고
-              있습니다. 진단은 제품이 하고, 판단이 필요한 지점은 노무사가 이어받습니다.
+              FAIR인사노무컨설팅의 노하우와 경험을 바탕으로 HR테크를 구현하기 위해{" "}
+              <b className="text-gray-900">플러스 티 에이아이</b>를 설립하게 되었습니다. 진단은
+              제품이 하고, 판단이 필요한 지점은 노무사가 이어받습니다.
             </p>
             <p className="break-keep text-sm leading-relaxed text-gray-700 sm:text-base">
               플러스 티 에이아이는 <b className="text-gray-900">독립된 자회사</b>로 운영되며, 각
