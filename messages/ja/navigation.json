@@ -56,7 +56,7 @@
   },
   "mainNav": {
     "home": "ホーム",
-    "fairCrm": "FAIR CRM",
+    "fairCrm": "HRテック支援センター",
     "globalCompanies": "外資系企業支援センター",
     "about": "会社紹介",
     "services": "主要サービス",
@@ -84,6 +84,14 @@
     "process": {
       "title": "導入手順",
       "description": "相談申し込みからアカウント発行までの3ステップ"
+    },
+    "crm": {
+      "title": "FAIR CRM",
+      "description": "相談履歴・労務診断・産業安全点検を一箇所で管理するHRテックプラットフォーム"
+    },
+    "plustai": {
+      "title": "プラス・ティ・エーアイ",
+      "description": "子会社紹介とHRリスクAI診断サービスのラインナップ"
     }
   },
   "globalCompaniesMenu": {

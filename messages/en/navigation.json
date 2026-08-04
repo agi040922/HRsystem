@@ -56,7 +56,7 @@
   },
   "mainNav": {
     "home": "Home",
-    "fairCrm": "FAIR CRM",
+    "fairCrm": "HR Tech Center",
     "globalCompanies": "Global Companies",
     "about": "About Us",
     "services": "Services",
@@ -84,6 +84,14 @@
     "process": {
       "title": "Onboarding",
       "description": "3-step process from consultation to account activation"
+    },
+    "crm": {
+      "title": "FAIR CRM",
+      "description": "HR tech platform for advisory records, diagnostics and safety management"
+    },
+    "plustai": {
+      "title": "PlusTAI",
+      "description": "Our subsidiary and its AI-based HR risk diagnostic services"
     }
   },
   "globalCompaniesMenu": {

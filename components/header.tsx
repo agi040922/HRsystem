@@ -81,6 +81,18 @@ export default function Header() {
     {
       href: "/fair-crm",
       label: t('mainNav.fairCrm'),
+      children: [
+        {
+          href: "/fair-crm",
+          title: t('fairCrmMenu.crm.title'),
+          description: t('fairCrmMenu.crm.description'),
+        },
+        {
+          href: "/plustai",
+          title: t('fairCrmMenu.plustai.title'),
+          description: t('fairCrmMenu.plustai.description'),
+        },
+      ],
     },
     {
       href: "/global-companies",
