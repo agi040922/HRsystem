@@ -181,12 +181,14 @@ export default function HeroSection() {
       </AnimatePresence>
 
       {/* 왼쪽 슬라이드 텍스트 상자 - 모바일에서는 숨김 */}
-      <div className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 z-20">
+      {/* 슬라이드 텍스트 카드 — 가운데 문구와 겹치지 않을 만큼 넓은 화면(2xl≥1536px)에서만 보인다.
+          영문은 한글보다 2~3배 길어 그보다 좁은 폭에서는 가운데 H1 과 충돌한다. */}
+      <div className="hidden 2xl:block absolute left-8 top-1/2 -translate-y-1/2 z-20">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.0, delay: 0.2, ease: "easeOut" }}
-          className="max-w-sm bg-black/30 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-white/20"
+          className="max-w-xs bg-black/30 backdrop-blur-sm rounded-lg p-4 md:p-5 border border-white/20"
         >
           <motion.div
             key={`slide-${currentSlide}`}
@@ -199,16 +201,16 @@ export default function HeroSection() {
                 {slides[currentSlide].topLeft.subtitle}
               </h3>
             )}
-            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white leading-tight mb-2 whitespace-nowrap">
+            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white leading-tight mb-2">
               {slides[currentSlide].topLeft.title}
             </h2>
             {slides[currentSlide].bottomRight.text && (
-              <p className="text-sm md:text-base text-white mb-1 whitespace-nowrap">
+              <p className="text-sm md:text-base text-white mb-1">
                 {slides[currentSlide].bottomRight.text}
               </p>
             )}
             {slides[currentSlide].bottomRight.highlight && (
-              <p className="text-base md:text-lg font-semibold text-white whitespace-nowrap">
+              <p className="text-base md:text-lg font-semibold text-white">
                 {slides[currentSlide].bottomRight.highlight}
               </p>
             )}
@@ -235,11 +237,11 @@ export default function HeroSection() {
                 {slides[currentSlide].topLeft.subtitle}
               </h3>
             )}
-            <h2 className="text-sm sm:text-base font-bold text-white leading-tight mb-1 whitespace-nowrap">
+            <h2 className="text-sm sm:text-base font-bold text-white leading-tight mb-1">
               {slides[currentSlide].topLeft.title}
             </h2>
             {slides[currentSlide].bottomRight.highlight && (
-              <p className="text-xs sm:text-sm font-medium text-white/90 whitespace-nowrap">
+              <p className="text-xs sm:text-sm font-medium text-white/90">
                 {slides[currentSlide].bottomRight.highlight}
               </p>
             )}
@@ -249,7 +251,7 @@ export default function HeroSection() {
 
       {/* 중앙 메인 콘텐츠 */}
       <div className="relative z-20 h-full flex items-center justify-center">
-        <div className="container-fluid text-center max-w-4xl px-4 pt-6 sm:pt-8 md:pt-16 lg:pt-0">
+        <div className="mx-auto w-full max-w-4xl px-4 text-center pt-6 sm:pt-8 md:pt-16 lg:pt-0">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
