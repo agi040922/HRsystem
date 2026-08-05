@@ -12,12 +12,14 @@ export default function PlustaiClientPage() {
     <div className="w-full overflow-x-hidden pt-16">
       {/* Hero */}
       <section className="relative w-full bg-gradient-to-br from-primary/5 via-white to-blue-50 py-16 sm:py-20 md:py-28">
-        <div className="container-fluid grid max-w-7xl items-center gap-10 px-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-14">
+        {/* 글과 그림을 각자 내용 폭으로 두고 한 덩어리로 가운데 정렬한다.
+            한쪽을 1fr 로 늘리면 글 끝과 그림 사이에 빈 공간이 생긴다(FAIR CRM 히어로와 같은 방식). */}
+        <div className="container-fluid flex max-w-7xl flex-col items-center justify-center gap-10 px-4 lg:flex-row lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
             <span className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary sm:text-sm">
               FAIR인사노무컨설팅 자회사
@@ -49,7 +51,7 @@ export default function PlustaiClientPage() {
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full lg:w-[420px] lg:shrink-0"
+            className="w-full max-w-[360px] lg:shrink-0"
           >
             <TechCycle />
           </motion.div>
