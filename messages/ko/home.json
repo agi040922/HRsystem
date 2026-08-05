@@ -20,9 +20,10 @@
     },
     "videoNotSupported": "영상을 지원하지 않는 브라우저입니다.",
     "description": "자문 이력 축적부터 인사노무 진단, 산업안전 관리까지 하나의 플랫폼",
-    "partner": "FAIR인사노무컨설팅은 외국계 기업과 HR테크에 전문화된 컨설팅 회사입니다.",
+    "partner": "FAIR CRM — 인사노무 통합 관리 플랫폼",
     "quickConsultation": "무료 상담 신청하기",
-    "browseServices": "FAIR CRM 살펴보기"
+    "browseServices": "FAIR CRM 살펴보기",
+    "companyHeadline": "FAIR인사노무컨설팅은 외국계 기업과 HR테크에 전문화된 컨설팅 회사입니다."
   },
   "crmServices": {
     "title": "FAIR CRM — 인사노무 리스크를 예방하는 통합 플랫폼",

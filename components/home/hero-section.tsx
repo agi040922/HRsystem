@@ -19,6 +19,8 @@ export default function HeroSection() {
       src: "/crm/diagnosis-report.png",
       // 첫 화면은 2대 축 입구만 보여준다. 진단은 다음 화면(아래 슬라이드)으로 넘겼다.
       variant: "centers",
+      // 첫 장에만 회사 소개 문장을 쓴다. 나머지 장은 기존 t('partner') 를 그대로 쓴다.
+      headline: t('companyHeadline'),
       topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
       bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
     },
@@ -258,15 +260,15 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
-            className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-2 sm:mb-3 md:mb-4 leading-tight"
+            className="break-keep text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5 sm:mb-6 md:mb-8 leading-snug"
           >
-            {t('partner')}
+            {(slides[currentSlide] as { headline?: string }).headline ?? t('partner')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
-            className="text-white text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-5 md:mb-7 leading-relaxed"
+            className="break-keep text-white text-sm sm:text-base md:text-lg lg:text-xl mb-7 sm:mb-8 md:mb-10 leading-relaxed"
           >
             {t('description')}
           </motion.p>

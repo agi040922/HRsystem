@@ -20,9 +20,10 @@
     },
     "videoNotSupported": "お使いのブラウザは動画をサポートしていません。",
     "description": "相談履歴の蓄積から人事労務診断、産業安全管理まで一つのプラットフォームで。",
-    "partner": "FAIR人事労務コンサルティングは、外資系企業とHRテックに特化したコンサルティング会社です。",
+    "partner": "FAIR CRM — 人事労務統合管理プラットフォーム",
     "quickConsultation": "無料相談申請",
-    "browseServices": "FAIR CRMを見る"
+    "browseServices": "FAIR CRMを見る",
+    "companyHeadline": "FAIR人事労務コンサルティングは、外資系企業とHRテックに特化したコンサルティング会社です。"
   },
   "crmServices": {
     "title": "FAIR CRM — 人事労務リスクを予防する統合プラットフォーム",
