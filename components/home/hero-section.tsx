@@ -261,7 +261,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
-            className="break-keep text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 sm:mb-10 md:mb-12 leading-[1.6]"  /* 제목이 두 줄 이상일 때 줄끼리 붙지 않게 — 큰 글자라 1.25 는 답답하다 */
+            className="break-keep text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 sm:mb-10 md:mb-12 leading-[2]"  /* 제목이 두 줄 이상일 때 줄끼리 붙지 않게 — 큰 글자라 1.25 는 답답하다 */
           >
             {(slides[currentSlide] as { headline?: string }).headline ?? t('partner')}
           </motion.h1>
