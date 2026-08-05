@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "AI 노무 상담 | FAIR인사노무컨설팅",
-  description: "24시간 언제든지 AI 챗봇을 통해 노무 관련 질문에 대한 즉시 답변을 받을 수 있습니다. 26년차 전문가 지식 기반 AI 상담.",
+  description: "24시간 언제든지 AI 챗봇을 통해 노무 관련 질문에 대한 즉시 답변을 받을 수 있습니다. 27년차 전문가 지식 기반 AI 상담.",
   keywords: "AI상담, 노무상담, 챗봇, 24시간상담, 노동법, 인공지능, 즉시답변, FAIR인사노무컨설팅",
   openGraph: {
     title: "AI 노무 상담 - 24시간 즉시 답변",

@@ -57,7 +57,7 @@ export default function HrRiskDiagnosisPage() {
           <div className="rounded-2xl bg-primary text-primary-foreground p-6 sm:p-8 text-center">
             <h2 className="text-xl sm:text-2xl font-bold mb-2">정확한 진단이 필요하신가요?</h2>
             <p className="text-sm sm:text-base opacity-90 mb-5">
-              간이진단은 참고용입니다. 26년 경력의 공인노무사가 회사 상황에 맞게 정밀하게 진단하고
+              간이진단은 참고용입니다. 27년 경력의 공인노무사가 회사 상황에 맞게 정밀하게 진단하고
               대응 방안을 설계합니다.
             </p>
             <Link

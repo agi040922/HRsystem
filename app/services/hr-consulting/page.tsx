@@ -57,7 +57,7 @@ export default function HrConsultingPage() {
           <div className="rounded-2xl bg-primary text-primary-foreground p-6 sm:p-8 text-center">
             <h2 className="text-xl sm:text-2xl font-bold mb-2">{detail.title}, 전문가와 상담하세요</h2>
             <p className="text-sm sm:text-base opacity-90 mb-5">
-              26년 경력의 공인노무사가 제도 설계부터 시스템 구축까지 회사 상황에 맞게 함께합니다.
+              27년 경력의 공인노무사가 제도 설계부터 시스템 구축까지 회사 상황에 맞게 함께합니다.
             </p>
             <Link
               href="/contact"
