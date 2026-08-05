@@ -4,6 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, ExternalLink, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import TechCycle from "@/components/plustai/tech-cycle"
 import { PLUSTAI_PRODUCTS, PLUSTAI_PORTAL } from "./plustaiData"
 
 export default function PlustaiClientPage() {
@@ -11,7 +12,7 @@ export default function PlustaiClientPage() {
     <div className="w-full overflow-x-hidden pt-16">
       {/* Hero */}
       <section className="relative w-full bg-gradient-to-br from-primary/5 via-white to-blue-50 py-16 sm:py-20 md:py-28">
-        <div className="container-fluid max-w-7xl px-4">
+        <div className="container-fluid grid max-w-7xl items-center gap-10 px-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,6 +42,16 @@ export default function PlustaiClientPage() {
                 </Button>
               </Link>
             </div>
+          </motion.div>
+
+          {/* 오른쪽 — 기술력과 플랫폼이 서로 도는 그림 */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full lg:w-[420px] lg:shrink-0"
+          >
+            <TechCycle />
           </motion.div>
         </div>
       </section>
