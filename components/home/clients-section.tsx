@@ -60,9 +60,13 @@ export default function ClientsSection() {
           </div>
           
           <div className="relative overflow-hidden bg-gradient-to-r from-blue-50 via-white to-blue-50 py-12 -mx-4 md:-mx-8 lg:-mx-16">
-            <div className="flex animate-scroll px-8">
+            {/* w-max 가 없으면 요소 폭이 부모(화면) 폭이 되어 translateX(-50%) 가
+                한 세트가 아니라 화면 절반만 움직인다 — 로고 일부만 지나가고 되돌아간다.
+                두 세트의 폭이 정확히 같아야 이어지므로 트랙 좌우 패딩은 두지 않고
+                양쪽 세트에 같은 ml-16 을 준다. */}
+            <div className="flex w-max animate-scroll">
               {/* 첫 번째 세트 */}
-              <div className="flex space-x-16 min-w-max">
+              <div className="flex space-x-16 min-w-max ml-16">
                 <div className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <img 
                     src="/로고/마이크로소프트.png" 
