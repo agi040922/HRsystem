@@ -35,6 +35,7 @@ export default function HeroSection() {
       type: "image",
       src: "/crm/advisory-history.png",
       variant: "consulting",
+      headline: t('companyHeadline'),
       topLeft: { title: t('slide1.title'), subtitle: t('slide1.subtitle') },
       bottomRight: { text: t('slide1.text'), highlight: t('slide1.highlight') }
     },
@@ -260,7 +261,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
-            className="break-keep text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5 sm:mb-6 md:mb-8 leading-snug"
+            className="break-keep text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 sm:mb-10 md:mb-12 leading-tight"
           >
             {(slides[currentSlide] as { headline?: string }).headline ?? t('partner')}
           </motion.h1>
@@ -268,7 +269,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
-            className="break-keep text-white text-sm sm:text-base md:text-lg lg:text-xl mb-7 sm:mb-8 md:mb-10 leading-relaxed"
+            className="break-keep text-white text-sm sm:text-base md:text-lg lg:text-xl mb-10 sm:mb-12 md:mb-14 leading-relaxed"
           >
             {t('description')}
           </motion.p>
