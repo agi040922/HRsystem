@@ -70,8 +70,16 @@
   },
   "fairCrmMenu": {
     "intro": {
-      "title": "서비스 소개",
-      "description": "FAIR CRM이 어떤 플랫폼인지 확인해 보세요"
+      "title": "지원센터 소개",
+      "description": "FAIR CRM과 자회사 플러스 티 에이아이, 두 축이 서로를 채우는 구조"
+    },
+    "crm": {
+      "title": "FAIR CRM",
+      "description": "자문 이력·노무 진단·산업안전 점검을 한 곳에서 관리하는 HR테크 플랫폼"
+    },
+    "plustai": {
+      "title": "플러스 티 에이아이",
+      "description": "자회사 소개와 HR 리스크 AI 진단 서비스 라인업"
     },
     "features": {
       "title": "기능",
@@ -84,14 +92,6 @@
     "process": {
       "title": "도입 절차",
       "description": "상담 신청부터 계정 발급까지 3단계 프로세스"
-    },
-    "crm": {
-      "title": "FAIR CRM",
-      "description": "자문 이력·노무 진단·산업안전 점검을 한 곳에서 관리하는 HR테크 플랫폼"
-    },
-    "plustai": {
-      "title": "플러스 티 에이아이",
-      "description": "자회사 소개와 HR 리스크 AI 진단 서비스 라인업"
     }
   },
   "globalCompaniesMenu": {

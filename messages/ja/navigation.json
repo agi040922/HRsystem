@@ -70,8 +70,16 @@
   },
   "fairCrmMenu": {
     "intro": {
-      "title": "サービス紹介",
-      "description": "FAIR CRMの概要をご確認ください"
+      "title": "支援センター紹介",
+      "description": "FAIR CRM と子会社プラス・ティ・エーアイ、二つの軸が互いを補う構造"
+    },
+    "crm": {
+      "title": "FAIR CRM",
+      "description": "相談履歴・労務診断・産業安全点検を一箇所で管理するHRテックプラットフォーム"
+    },
+    "plustai": {
+      "title": "プラス・ティ・エーアイ",
+      "description": "子会社紹介とHRリスクAI診断サービスのラインナップ"
     },
     "features": {
       "title": "機能",
@@ -84,14 +92,6 @@
     "process": {
       "title": "導入手順",
       "description": "相談申し込みからアカウント発行までの3ステップ"
-    },
-    "crm": {
-      "title": "FAIR CRM",
-      "description": "相談履歴・労務診断・産業安全点検を一箇所で管理するHRテックプラットフォーム"
-    },
-    "plustai": {
-      "title": "プラス・ティ・エーアイ",
-      "description": "子会社紹介とHRリスクAI診断サービスのラインナップ"
     }
   },
   "globalCompaniesMenu": {
