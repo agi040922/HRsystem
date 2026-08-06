@@ -15,6 +15,19 @@ import { GUIDELINE_SECTIONS } from "./sections"
  * ⚠️ 법 시행일은 적지 않았다 — 부칙 원문 조회에 2회 실패했다. 확인 전에는 날짜를 쓰지 말 것.
  */
 
+const USING = [
+  ["진단 결과 설명", "규칙이 낸 결론을 읽기 쉬운 문장으로 풀어 씁니다."],
+  ["계약서·서류 점검", "눈에 걸리는 조항을 짚어 초안으로 보여 줍니다."],
+  ["법령·판례 확인", "관련 자료를 찾아 근거로 붙입니다."],
+  ["내부 업무 보조", "자료 정리와 초안 작성 — 사람 검수 뒤에만 밖으로 나갑니다."],
+]
+
+const NOT_USING = [
+  ["진단 등급과 위험 판정", "공인노무사가 설계한 규칙이 냅니다."],
+  ["법적 판단과 의견서 결론", "공인노무사가 냅니다."],
+  ["대외 발신", "사람 검수와 대표 승인을 거칩니다."],
+]
+
 const NOT_DOING = [
   "AI가 법적 판단을 대신하지 않습니다",
   "고객 자료를 AI 모델 학습에 쓰지 않습니다",
@@ -55,6 +68,24 @@ const P = ({ children }: { children: React.ReactNode }) => (
   <p className="break-keep text-[1.0625rem] leading-[1.9] text-gray-700">{children}</p>
 )
 
+/** 「무엇 — 설명」 목록 */
+function DefList({ items }: { items: string[][] }) {
+  return (
+    <ul className="space-y-3">
+      {items.map(([k, v]) => (
+        <li key={k} className="flex gap-3">
+          <span aria-hidden className="mt-0.5 shrink-0 text-primary">
+            •
+          </span>
+          <span className="break-keep text-[1.0625rem] leading-[1.9] text-gray-700">
+            <b className="text-gray-900">{k}</b> — {v}
+          </span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function AiGuidelinesClientPage() {
   return (
     <div className="w-full overflow-x-hidden pt-16">
@@ -92,7 +123,8 @@ export default function AiGuidelinesClientPage() {
           </ul>
         </nav>
 
-        <Section id="rules">
+        {/* ── FAIR AI란 무엇인가 ── */}
+        <Section id="what">
           <P>
             우리 서비스에서 <b className="text-gray-900">결과를 정하는 것은 AI가 아닙니다.</b>
           </P>
@@ -107,9 +139,6 @@ export default function AiGuidelinesClientPage() {
             지표, 평균임금 판단 기준 — 모두 <b className="text-gray-900">문서로 검수받아 코드에
             고정</b>되어 있고, 바뀔 때마다 기록이 남습니다.
           </P>
-        </Section>
-
-        <Section id="learning">
           <P>
             AI를 업무에 쓰는 방법은 크게 두 가지입니다. 하나는 모델 자체를 우리 데이터로 다시
             훈련시키는 것이고, 다른 하나는 필요할 때 우리 자료를 찾아 읽고 그 근거로 답하게 하는
@@ -127,6 +156,34 @@ export default function AiGuidelinesClientPage() {
           </P>
         </Section>
 
+        {/* ── 어디에 쓰고, 어디에 쓰지 않는가 ── */}
+        <Section id="where">
+          <P>AI가 맡는 일과, 사람이 반드시 쥐고 있는 일을 나누어 두었습니다.</P>
+
+          <div className="mt-6 rounded-2xl border border-border/50 bg-white p-6 sm:p-7">
+            <h3 className="mb-4 break-keep text-base font-bold text-gray-900 sm:text-lg">
+              AI가 맡는 일
+            </h3>
+            <DefList items={USING} />
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-7">
+            <h3 className="mb-4 break-keep text-base font-bold text-gray-900 sm:text-lg">
+              AI에게 맡기지 않는 일
+            </h3>
+            <DefList items={NOT_USING} />
+          </div>
+
+          <P>
+            서비스 단위로도 나뉩니다. 예를 들어{" "}
+            <b className="text-gray-900">고객사 전용 성과관리 시스템에는 생성형 AI를 사용하지
+            않습니다.</b> 평가 등급은 사람이 입력한 결과를 정해진 규칙표로 집계해 산출하며, 이
+            과정에 AI가 관여하지 않습니다. AI를 쓰지 않던 곳에 새로 도입할 때에는, 그 사실을 먼저
+            알리고 이 가이드라인을 고칩니다.
+          </P>
+        </Section>
+
+        {/* ── 사람이 어떻게 관리·감독하는가 ── */}
         <Section id="supervision">
           <P>
             AI에게 일을 맡기되 <b className="text-gray-900">결정과 검수는 사람이 합니다.</b> 우리는
@@ -146,29 +203,39 @@ export default function AiGuidelinesClientPage() {
             </figcaption>
           </figure>
 
-          <ul className="space-y-3">
-            {[
+          <DefList
+            items={[
               ["대표(CEO)", "최종 결정, 최종 검수, 대외 발신 승인"],
               ["총괄 AI", "지시 분배와 산출물 검수 — 결재권이 없습니다"],
               ["AI 감사팀", "전 좌석 독립 사후 감사"],
               ["리스크·재무", "보안·준법 점검"],
               ["외부 위촉 AI", "좌석이 아니며, 고위험 사안에만 투입해 반대 의견을 냅니다"],
-            ].map(([k, v]) => (
-              <li key={k} className="flex gap-3">
-                <span aria-hidden className="mt-0.5 shrink-0 text-primary">
-                  •
-                </span>
-                <span className="break-keep text-[1.0625rem] leading-[1.9] text-gray-700">
-                  <b className="text-gray-900">{k}</b> — {v}
-                </span>
-              </li>
-            ))}
-          </ul>
+            ]}
+          />
 
           <P>
             모든 좌석은 직무기술서와 전결규정으로 권한과 금지사항이 정의되어 있고, 대외 발신은
             대표 승인 후에만 이루어집니다.
           </P>
+
+          <P>
+            조직 위에, 프로그램 자체에도 장치를 두었습니다. 사람이 매번 확인하지 않아도 어긋난
+            결과가 밖으로 나가지 못하게 하기 위해서입니다.
+          </P>
+
+          <div className="mt-6 space-y-4">
+            {GUARDS.map(([title, desc], i) => (
+              <div key={title} className="rounded-2xl border border-border/50 bg-white p-5 sm:p-6">
+                <div className="mb-1.5 flex items-center gap-2">
+                  <span className="text-xs font-bold tracking-wider text-primary/60">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="break-keep text-base font-bold text-gray-900">{title}</h3>
+                </div>
+                <p className="break-keep text-[1.0625rem] leading-[1.85] text-gray-700">{desc}</p>
+              </div>
+            ))}
+          </div>
 
           <div className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-7">
             <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -191,44 +258,7 @@ export default function AiGuidelinesClientPage() {
           </div>
         </Section>
 
-        <Section id="risk">
-          <P>
-            조직 위에, 프로그램 자체에도 장치를 두었습니다. 사람이 매번 확인하지 않아도 어긋난
-            결과가 밖으로 나가지 못하게 하기 위해서입니다.
-          </P>
-          <div className="mt-6 space-y-4">
-            {GUARDS.map(([title, desc], i) => (
-              <div key={title} className="rounded-2xl border border-border/50 bg-white p-5 sm:p-6">
-                <div className="mb-1.5 flex items-center gap-2">
-                  <span className="text-xs font-bold tracking-wider text-primary/60">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="break-keep text-base font-bold text-gray-900">{title}</h3>
-                </div>
-                <p className="break-keep text-[1.0625rem] leading-[1.85] text-gray-700">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section id="explain">
-          <P>
-            판정 기준은 공개되어 있습니다. 진단 문항과 판정 규칙, 9대 이행점검 기준은 문서로
-            확인하실 수 있고, 결과 화면에도 어느 기준에서 그 결론이 나왔는지 함께 표시합니다.
-          </P>
-          <P>
-            학습용 데이터에 관해서는 밝힐 것이 없습니다.{" "}
-            <b className="text-gray-900">우리는 모델을 학습시키지 않기 때문입니다.</b> AI는 우리가
-            제공한 자료를 그때그때 읽을 뿐입니다.
-          </P>
-          <P>
-            AI가 만든 결과에는 <b className="text-gray-900">참고용이며 법적 판단이 아니라는
-            안내</b>를 항상 함께 둡니다. 진단·상담 화면에서는 시작하기 전에 AI가 보조로 쓰인다는
-            사실을 알리고, AI가 만든 문장에는 AI 표시를 붙입니다. 결과에 이견이 있으시면 알려
-            주십시오. 사람이 다시 확인해 답변드립니다.
-          </P>
-        </Section>
-
+        {/* ── 고객 자료를 어떻게 다루는가 ── */}
         <Section id="data">
           <P>
             <b className="text-gray-900">필요 최소한만 저장하고, 개인정보는 가린 뒤 처리합니다.</b>
@@ -250,15 +280,30 @@ export default function AiGuidelinesClientPage() {
           </P>
         </Section>
 
-        <Section id="limits">
+        {/* ── AI를 쓴다는 사실을 알립니다 ── */}
+        <Section id="notice">
           <P>
-            모든 서비스에 AI를 쓰는 것은 아닙니다. 예를 들어{" "}
-            <b className="text-gray-900">고객사 전용 성과관리 시스템에는 생성형 AI를 사용하지
-            않습니다.</b> 평가 등급은 사람이 입력한 결과를 정해진 규칙표로 집계해 산출하며, 이
-            과정에 AI가 관여하지 않습니다. AI를 쓰지 않던 곳에 새로 도입할 때에는, 그 사실을 먼저
-            알리고 이 가이드라인을 고칩니다.
+            진단·상담 화면에서는 시작하기 전에 AI가 보조로 쓰인다는 사실을 알리고,{" "}
+            <b className="text-gray-900">AI가 만든 문장에는 AI 표시를 붙입니다.</b> AI가 만든
+            결과에는 참고용이며 법적 판단이 아니라는 안내를 항상 함께 둡니다.
           </P>
-          <ul className="mt-6 space-y-3">
+          <P>
+            판정 기준은 공개되어 있습니다. 진단 문항과 판정 규칙, 9대 이행점검 기준은 문서로
+            확인하실 수 있고, 결과 화면에도 어느 기준에서 그 결론이 나왔는지 함께 표시합니다.
+          </P>
+          <P>
+            학습용 데이터에 관해서는 밝힐 것이 없습니다.{" "}
+            <b className="text-gray-900">우리는 모델을 학습시키지 않기 때문입니다.</b> AI는 우리가
+            제공한 자료를 그때그때 읽을 뿐입니다.
+          </P>
+          <P>
+            결과에 이견이 있으시면 알려 주십시오. 사람이 다시 확인해 답변드립니다.
+          </P>
+        </Section>
+
+        {/* ── 우리가 하지 않는 것 ── */}
+        <Section id="not-doing">
+          <ul className="space-y-3">
             {NOT_DOING.map((t) => (
               <li key={t} className="flex gap-3">
                 <ShieldCheck aria-hidden className="mt-1 h-5 w-5 shrink-0 text-primary" />
@@ -268,27 +313,28 @@ export default function AiGuidelinesClientPage() {
           </ul>
         </Section>
 
-        {/* 문의 — 목차에는 넣지 않는다(내용이 아니라 창구) */}
-        <div className="mt-16 rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-10">
-          <h2 className="mb-3 break-keep text-xl font-bold sm:text-2xl">문의와 이의제기</h2>
-          <p className="mb-6 break-keep text-sm leading-relaxed opacity-90 sm:text-base">
-            AI 활용에 관한 문의나 이의가 있으시면 알려 주십시오. 확인해 답변드립니다.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-white px-6 py-3 font-semibold text-primary transition-colors hover:bg-gray-50"
-            >
-              문의하기 <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/hr-tech"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-white/70 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
-            >
-              HR테크 지원센터
-            </Link>
+        {/* ── 문의 ── */}
+        <Section id="contact">
+          <div className="rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-10">
+            <p className="mb-6 break-keep text-sm leading-relaxed opacity-90 sm:text-base">
+              AI 활용에 관한 문의나 이의가 있으시면 알려 주십시오. 확인해 답변드립니다.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-white px-6 py-3 font-semibold text-primary transition-colors hover:bg-gray-50"
+              >
+                문의하기 <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/hr-tech"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-white/70 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                HR테크 지원센터
+              </Link>
+            </div>
           </div>
-        </div>
+        </Section>
 
         <p className="mt-12 break-keep border-t border-border/50 pt-6 text-sm leading-relaxed text-muted-foreground">
           <ScrollText aria-hidden className="mr-1.5 inline h-4 w-4" />
