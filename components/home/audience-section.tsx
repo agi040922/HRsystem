@@ -70,9 +70,11 @@ const BLOCKS: Block[] = [
       { label: "임금피크제", href: "/services/payroll-system#peak" },
     ],
     visual: (
+      /* 섹션 A(왜 FAIR인가)가 CRM 대시보드 영상을 쓰므로, 여기는 같은 화면을 피해
+         진단 보고서 화면을 쓴다 — 같은 스크린샷이 홈에 두 번 나오지 않게. */
       <img
-        src="/crm/dashboard-overview.png"
-        alt="FAIR CRM 대시보드 화면"
+        src="/crm/diagnosis-report.png"
+        alt="FAIR CRM 인사노무 진단 보고서 화면"
         className="h-full w-full object-cover object-top"
         loading="lazy"
       />

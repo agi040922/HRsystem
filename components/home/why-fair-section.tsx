@@ -11,8 +11,10 @@ import { ArrowRight, Globe2, Cpu, Scale } from "lucide-react"
  * 나와서, 방문자가 "이 회사가 누구인지" 모르는 채 메뉴부터 받는 구조였다.
  * 여기서 외국계기업·HR테크 두 갈래를 먼저 선언한 뒤 서비스로 넘긴다.
  *
- * 사진은 사무실 명패(실사진). 고객사 로고는 하단 ClientsSection 에만 두고
- * 여기서는 쓰지 않는다(중복 노출 금지 — 운영자 확정).
+ * 시각물은 FAIR CRM 이 실제로 동작하는 영상이다(운영자 지시 2026-08-06, 명패 사진 폐기).
+ * "HR테크를 직접 만듭니다" 라는 주장을 말로 하지 않고 화면으로 보여주는 게 목적이라
+ * 자동재생·무음·루프로 두고 컨트롤은 노출하지 않는다.
+ * 고객사 로고는 하단 ClientsSection 에만 두고 여기서는 쓰지 않는다(중복 노출 금지).
  */
 
 const REASONS = [
@@ -44,13 +46,18 @@ export default function WhyFairSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative overflow-hidden rounded-2xl border border-border/50 shadow-sm"
+            className="relative aspect-video overflow-hidden rounded-2xl border border-border/50 bg-slate-100 shadow-sm"
           >
-            <img
-              src="/office-plate.jpg"
-              alt="FAIR인사노무컨설팅 사무실"
-              className="aspect-[4/3] w-full object-cover md:aspect-[5/4]"
-              loading="lazy"
+            <video
+              src="/crm/hero-intro.mp4"
+              poster="/crm/dashboard-overview.png"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="FAIR CRM 실제 동작 화면"
+              className="h-full w-full object-cover"
             />
           </motion.div>
 
