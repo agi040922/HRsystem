@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils"
 import React, { useState, useEffect } from "react"
 import { useTranslations } from 'next-intl'
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
+import { GUIDELINE_SECTIONS } from "@/app/ai-guidelines/sections"
 
 interface NavItem {
   href: string
@@ -78,6 +79,17 @@ export default function Header() {
   // 번역된 네비게이션 아이템 생성
   // 기획서 기준: 홈 / FAIR CRM(신규) / 회사소개 / 공지사항 / Q&A / 상담 신청 + 우측 CRM 로그인 버튼
   const navItems: NavItem[] = [
+    {
+      // FAIR AI 가이드라인 — 절 목록은 app/ai-guidelines/sections.ts 가 단일 출처다.
+      // 절을 더하거나 빼면 메뉴도 자동으로 따라간다(제목·설명을 두 곳에 적지 않는다).
+      href: "/ai-guidelines",
+      label: t('mainNav.aiGuidelines'),
+      children: GUIDELINE_SECTIONS.map((s) => ({
+        href: `/ai-guidelines#${s.id}`,
+        title: s.title,
+        description: s.menuDesc,
+      })),
+    },
     {
       href: "/hr-tech",
       label: t('mainNav.fairCrm'),
