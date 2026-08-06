@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
-import { GlobalHqVisual, DiagnosisVisual, DisputeVisual } from "./audience-visuals"
+import { GlobalHqVisual, DisputeVisual } from "./audience-visuals"
 
 /**
  * 홈 — "어떤 고객에게, 무엇을" 지그재그 섹션.
@@ -37,17 +37,9 @@ const BLOCKS: Block[] = [
     ],
     visual: <GlobalHqVisual />,
   },
-  {
-    eyebrow: "프리랜서·유연인력",
-    title: "3.3 계약, 이제 회사가 입증해야 합니다",
-    situation: "근로자 추정제로 입증책임이 사용자에게 넘어왔습니다.",
-    body: "계약서만 바꿔서는 막지 못합니다. 실제 운영방식을 진단하고, 나중에 근거로 쓸 자료를 계약 시점부터 남기도록 설계합니다.",
-    services: [
-      { label: "프리랜서·3.3", href: "/services/freelancer" },
-      { label: "근로자 추정제", href: "/services/freelancer#presumption" },
-    ],
-    visual: <DiagnosisVisual />,
-  },
+  /* 프리랜서·3.3 블록은 운영자 지시로 홈 지그재그에서 제외(2026-08-06).
+     서비스 자체는 유지되며 아래 ServiceFinderSection 그리드와 /services/freelancer 로 접근한다.
+     되살릴 경우 audience-visuals 의 DiagnosisVisual 을 다시 import 하면 된다. */
   {
     eyebrow: "분쟁·근로감독",
     title: "이미 벌어진 일에는 순서가 있습니다",
@@ -64,7 +56,7 @@ const BLOCKS: Block[] = [
     eyebrow: "HR테크·인사제도",
     title: "자문에서 끝내지 않고 시스템까지",
     situation: "진단은 받았는데, 그다음 관리할 도구가 없습니다.",
-    body: "노무법인이 직접 만든 시스템으로 진단 결과를 제도에 반영하고 운영까지 이어 갑니다.",
+    body: "베테랑 노무사가 직접 만든 시스템으로 진단 결과를 제도에 반영하고 운영까지 이어 갑니다.",
     services: [
       { label: "인사제도·HR 테크", href: "/services/hr-consulting" },
       { label: "임금피크제", href: "/services/payroll-system#peak" },
