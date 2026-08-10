@@ -4,7 +4,14 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, Scale, FileText, Landmark, ShieldCheck, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { YouTubeVideo } from "@/components/youtube-video"
 import { GLOBAL_FAQS } from "./faqData"
+
+/**
+ * 외국계기업 지원센터 안내 영상.
+ * ⚠️ 영상을 바꾸면 여기 id 만 고친다 — 주소 전체가 아니라 https://youtu.be/<id> 의 뒷부분.
+ */
+const CENTER_VIDEO_ID = "XrxlvFNKHEg"
 
 type Gap = {
   no: string
@@ -116,12 +123,13 @@ export default function GlobalCompaniesClientPage() {
 
       {/* Hero */}
       <section className="relative w-full bg-gradient-to-br from-primary/5 via-white to-blue-50 py-16 sm:py-20 md:py-28">
-        <div className="container-fluid max-w-7xl px-4">
+        {/* 글 왼쪽 / 영상 오른쪽 2단 (CEO 지시 2026-08-07).
+            이전에는 글만 max-w-3xl 로 두어 오른쪽 절반이 비어 있었다. */}
+        <div className="container-fluid grid max-w-7xl items-center gap-10 px-4 lg:grid-cols-2 lg:gap-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl"
           >
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-4">
               외국계기업 지원센터
@@ -146,6 +154,19 @@ export default function GlobalCompaniesClientPage() {
                 </Button>
               </Link>
             </div>
+          </motion.div>
+
+          {/* 오른쪽 — 지원센터 안내 영상.
+              ⚠️ YouTubeVideo 를 쓴다(iframe 직접 금지). 자막 때문이며 이유는 그 파일 주석. */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <YouTubeVideo
+              videoId={CENTER_VIDEO_ID}
+              title="외국계기업 지원센터 안내 영상"
+            />
           </motion.div>
         </div>
       </section>
