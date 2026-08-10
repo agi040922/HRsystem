@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowRight, Scale, FileText, Landmark, ShieldCheck, BookOpen } from "lucide-react"
+import { ArrowRight, Scale, FileText, FileDown, Landmark, ShieldCheck, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { YouTubeVideo } from "@/components/youtube-video"
 import { GLOBAL_FAQS } from "./faqData"
@@ -12,6 +12,13 @@ import { GLOBAL_FAQS } from "./faqData"
  * ⚠️ 영상을 바꾸면 여기 id 만 고친다 — 주소 전체가 아니라 https://youtu.be/<id> 의 뒷부분.
  */
 const CENTER_VIDEO_ID = "XrxlvFNKHEg"
+
+/**
+ * 사용설명서 PDF (public/docs/).
+ * ⚠️ URL 은 영문 파일명이다 — 한글 파일명은 링크가 인코딩되며 깨지기 쉽다.
+ *    저장될 때의 한글 이름은 링크의 download 속성이 준다.
+ */
+const CENTER_MANUAL_PATH = "/docs/global-center-manual.pdf"
 
 type Gap = {
   no: string
@@ -167,6 +174,17 @@ export default function GlobalCompaniesClientPage() {
               videoId={CENTER_VIDEO_ID}
               title="외국계기업 지원센터 안내 영상"
             />
+            {/* PDF 매뉴얼 — 영상을 못 보는 환경(사내망 유튜브 차단 등)에서도
+                같은 내용을 볼 수 있어야 한다. download 속성으로 한글 파일명을 준다
+                (URL 은 영문이라 링크가 깨지지 않는다). */}
+            <a
+              href={CENTER_MANUAL_PATH}
+              download="외국계기업 지원센터_사용메뉴얼.pdf"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-border bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50"
+            >
+              <FileDown className="h-4 w-4" />
+              사용설명서 PDF 내려받기
+            </a>
           </motion.div>
         </div>
       </section>
