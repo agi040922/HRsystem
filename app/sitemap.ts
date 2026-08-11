@@ -108,6 +108,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),
+    // FAIR 메모 — **목록 페이지만** 넣는다.
+    // 개별 글은 canonical 이 네이버 원문을 가리키므로(원본은 블로그), sitemap 에 함께
+    // 올리면 "여기가 정본"과 "저기가 정본"이라는 상반된 신호를 동시에 보내게 된다.
+    {
+      url: `${baseUrl}/global-companies/fair-memo`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
     {
       url: `${baseUrl}/global-companies/labor-relations`,
       lastModified: new Date(),
