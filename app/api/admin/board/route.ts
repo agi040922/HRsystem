@@ -55,6 +55,15 @@ export async function POST(request: NextRequest) {
     meta_title: typeof body?.meta_title === "string" ? body.meta_title : undefined,
     meta_description: typeof body?.meta_description === "string" ? body.meta_description : undefined,
     is_featured: typeof body?.is_featured === "boolean" ? body.is_featured : undefined,
+    // ⚠️ 이 두 값을 넣지 않으면 글이 만들어져도 **목록·상세에 나오지 않는다**
+    //    (조회가 is_published=true 로 거른다. DB 기본값은 false).
+    //    2026-08-11 에 실제로 이 문제로 공지 하나가 보이지 않았고, 뒤늦게 PUT 으로
+    //    켜려 했으나 반영되지 않았다. 그래서 **생성 시점에** 정한다.
+    is_published: typeof body?.is_published === "boolean" ? body.is_published : true,
+    published_at:
+      typeof body?.published_at === "string" && body.published_at
+        ? body.published_at
+        : new Date().toISOString(),
   }
 
   const { post, error } = await createBoardPost(postData)

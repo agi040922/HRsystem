@@ -368,6 +368,10 @@ export async function createBoardPost(postData: {
   meta_title?: string
   meta_description?: string
   is_featured?: boolean
+  /** 발행 여부. 넣지 않으면 DB 기본값(false)이라 목록·상세에 나오지 않는다. */
+  is_published?: boolean
+  /** 발행일시. 목록 정렬 기준이라 비어 있으면 순서가 흐트러진다. */
+  published_at?: string
 }) {
   const { data, error } = await supabase
     .from('board_posts')
