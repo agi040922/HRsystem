@@ -130,6 +130,10 @@
       "title": "Code of Ethics",
       "description": "8 ethical principles pursued by FAIR HR Consulting"
     },
+    "aiGuidelines": {
+      "title": "FAIR AI",
+      "description": "Where we use AI and where we don't, and how people supervise it"
+    },
     "location": {
       "title": "Location",
       "description": "Location and transportation information for FAIR HR Consulting"

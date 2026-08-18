@@ -130,6 +130,10 @@
       "title": "倫理綱領",
       "description": "FAIR人事労務コンサルティングが追求する8つの倫理綱領"
     },
+    "aiGuidelines": {
+      "title": "FAIR AI",
+      "description": "AI をどこに使い、どこに使わないか。人がどう管理・監督するか"
+    },
     "location": {
       "title": "アクセス",
       "description": "FAIR人事労務コンサルティングの所在地案内及び交通手段"

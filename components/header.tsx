@@ -156,6 +156,16 @@ export default function Header() {
           title: t('aboutMenu.ethics.title'),
           description: t('aboutMenu.ethics.description'),
         },
+        // FAIR AI — 회사소개 안에서도 찾을 수 있게 윤리강령 바로 아래에 둔다
+        // (CEO 지시 2026-08-13). 페이지는 옮기지 않고 기존 /ai-guidelines 를 가리킨다.
+        // ⚠️ 상단 "FAIR AI" 메뉴와 절 앵커(#what 등), 그리고 블로그 memo ② 에 이미
+        //    공표한 https://www.fairhr.net/ai-guidelines 링크가 모두 살아 있어야 한다.
+        //    이 항목을 별도 페이지로 복제하지 말 것.
+        {
+          href: "/ai-guidelines",
+          title: t('aboutMenu.aiGuidelines.title'),
+          description: t('aboutMenu.aiGuidelines.description'),
+        },
         {
           href: "/about/location",
           title: t('aboutMenu.location.title'),

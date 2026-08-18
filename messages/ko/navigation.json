@@ -130,6 +130,10 @@
       "title": "윤리강령",
       "description": "FAIR인사노무컨설팅이 추구하는 8가지 윤리강령"
     },
+    "aiGuidelines": {
+      "title": "FAIR AI",
+      "description": "AI를 어디에 쓰고 어디에 쓰지 않는지, 사람이 어떻게 관리·감독하는지"
+    },
     "location": {
       "title": "오시는 길",
       "description": "FAIR인사노무컨설팅 위치 안내 및 교통편"
