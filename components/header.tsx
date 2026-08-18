@@ -135,6 +135,15 @@ export default function Header() {
         },
       ],
     },
+    // 직장 내 괴롭힘 센터 — 외국계기업 지원센터와 회사소개 사이 (CEO 지시 2026-08-13).
+    // 서비스 메뉴에 있던 "직장 내 괴롭힘 조사 수행"을 이쪽으로 옮겼다(서비스에서는 제거).
+    // ⚠️ 페이지 경로 /services/workplace-harassment 는 그대로다 — 옮긴 것은 메뉴 위치뿐이며,
+    //    /global-companies/investigation 과 서비스 목록 카드가 이 주소를 참조하고 있다.
+    {
+      href: "/services/workplace-harassment",
+      label: t('harassmentCenterNav.label'),
+      children: t.raw('harassmentCenterNav.items') as NavSubItem[],
+    },
     {
       href: "/about/greeting",
       label: t('mainNav.about'),

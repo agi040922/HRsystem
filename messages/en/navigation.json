@@ -1,4 +1,14 @@
 {
+  "harassmentCenterNav": {
+    "label": "Workplace Harassment Center",
+    "items": [
+      {
+        "href": "/services/workplace-harassment",
+        "title": "Workplace Harassment Investigation",
+        "description": "From report intake to investigation, action, and monitoring — conducted per the law"
+      }
+    ]
+  },
   "servicesNav": {
     "label": "Services",
     "items": [
@@ -31,11 +41,6 @@
         "href": "/services/labor-disputes",
         "title": "Labor Dispute Resolution",
         "description": "Professional response to Labor Relations Commission cases and various labor disputes"
-      },
-      {
-        "href": "/services/workplace-harassment",
-        "title": "Workplace Harassment Investigation",
-        "description": "From report intake to investigation, action, and monitoring — conducted per the law"
       },
       {
         "href": "/services/freelancer",

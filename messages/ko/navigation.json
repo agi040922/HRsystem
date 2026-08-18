@@ -1,4 +1,14 @@
 {
+  "harassmentCenterNav": {
+    "label": "직장 내 괴롭힘 센터",
+    "items": [
+      {
+        "href": "/services/workplace-harassment",
+        "title": "직장 내 괴롭힘 조사 수행",
+        "description": "신고 접수부터 조사·조치·모니터링까지 법에 맞게 수행"
+      }
+    ]
+  },
   "servicesNav": {
     "label": "서비스",
     "items": [
@@ -31,11 +41,6 @@
         "href": "/services/labor-disputes",
         "title": "노동분쟁 해결",
         "description": "노동위원회 사건 및 각종 노동분쟁 전문 대응"
-      },
-      {
-        "href": "/services/workplace-harassment",
-        "title": "직장 내 괴롭힘 조사 수행",
-        "description": "신고 접수부터 조사·조치·모니터링까지 법에 맞게 수행"
       },
       {
         "href": "/services/freelancer",

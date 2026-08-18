@@ -1,4 +1,14 @@
 {
+  "harassmentCenterNav": {
+    "label": "職場のハラスメントセンター",
+    "items": [
+      {
+        "href": "/services/workplace-harassment",
+        "title": "職場内いじめ調査の実施",
+        "description": "申告受付から調査・措置・モニタリングまで法に沿って実施"
+      }
+    ]
+  },
   "servicesNav": {
     "label": "サービス",
     "items": [
@@ -31,11 +41,6 @@
         "href": "/services/labor-disputes",
         "title": "労働紛争解決",
         "description": "労働委員会事件及び各種労働紛争専門対応"
-      },
-      {
-        "href": "/services/workplace-harassment",
-        "title": "職場内いじめ調査の実施",
-        "description": "申告受付から調査・措置・モニタリングまで法に沿って実施"
       },
       {
         "href": "/services/freelancer",
