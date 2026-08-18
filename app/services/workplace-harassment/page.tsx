@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import PageBanner from "@/components/page-banner"
 import StructuredData from "@/components/seo/structured-data"
 import NewsletterLinkBlock from "@/components/newsletter-link-block"
@@ -13,7 +13,18 @@ export const metadata: Metadata = pageMetadata({
   description:
     "고용노동부 「직장 내 괴롭힘 예방·대응 매뉴얼」과 근로기준법 제76조의2·제76조의3을 기준으로 한 5단계 조사 절차와, FAIR인사노무컨설팅이 수행한 직장 내 괴롭힘 조사 사례를 안내합니다.",
   path: "/services/workplace-harassment",
-  keywords: ["직장 내 괴롭힘", "괴롭힘 조사", "직장 내 괴롭힘 조사 절차", "괴롭힘 조사 사례", "셀프조사", "노무 자문"],
+  // 검색 유입 목표 키워드(CEO 지시 2026-08-13 — 직장 내 괴롭힘 센터는 마케팅 목적).
+  // 실제 검색되는 말로 적는다. 내부 용어("셀프조사" 등)만 넣으면 아무도 못 찾는다.
+  keywords: [
+    "직장 내 괴롭힘 조사",
+    "직장 내 괴롭힘 신고",
+    "괴롭힘 조사 노무사",
+    "직장 내 괴롭힘 외부조사",
+    "직장 내 괴롭힘 조사 절차",
+    "괴롭힘 조사 보고서",
+    "직장 내 괴롭힘 대응",
+    "노무법인 괴롭힘 조사",
+  ],
 })
 
 export default function WorkplaceHarassmentPage() {
@@ -48,6 +59,24 @@ export default function WorkplaceHarassmentPage() {
         </p>
 
         <HarassmentTabs />
+
+        {/* 예방교육으로 연결 — 조사(사후)와 교육(사전)을 서로 잇는다.
+            내부 링크가 양쪽 페이지의 검색 노출을 함께 끌어올린다(CEO 지시 2026-08-13). */}
+        <section className="mt-10 rounded-2xl border border-border/60 bg-gray-50 p-6 sm:p-8">
+          <h2 className="break-keep text-lg sm:text-xl font-bold text-gray-900 mb-2">
+            사건이 생기기 전이라면
+          </h2>
+          <p className="break-keep text-sm sm:text-base leading-relaxed text-gray-700 mb-4">
+            조사는 이미 벌어진 일을 다룹니다. 관리자가 기준을 모르면 악의가 없어도 사건이
+            생깁니다. 사업장으로 찾아가는 예방교육을 함께 검토해 보세요.
+          </p>
+          <Link
+            href="/services/harassment-training"
+            className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-primary hover:underline"
+          >
+            직장 내 괴롭힘 예방교육 보기 <ArrowRight className="h-4 w-4" />
+          </Link>
+        </section>
 
         {/* CTA */}
         <section className="mt-10">

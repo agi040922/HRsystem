@@ -31,13 +31,16 @@ export const metadata: Metadata = pageMetadata({
   description:
     "사업장으로 찾아가는 직장 내 괴롭힘 예방교육. 관리자와 전 직원을 대상으로 1~2시간 과정으로 진행하며, 고용노동교육원 의뢰 수행 사례와 성희롱 예방교육 병행 이력을 안내합니다.",
   path: "/services/harassment-training",
+  // 검색 유입 목표 키워드(CEO 지시 2026-08-13). 실제 검색되는 말로 적는다.
   keywords: [
     "직장 내 괴롭힘 예방교육",
-    "괴롭힘 예방교육",
+    "괴롭힘 예방교육 강사",
+    "직장 내 괴롭힘 교육 신청",
     "성희롱 예방교육",
+    "관리자 괴롭힘 교육",
     "찾아가는 예방교육",
-    "사업장 현장교육",
-    "노무사 강의",
+    "사업장 방문 교육",
+    "노무사 예방교육",
   ],
 })
 
@@ -114,6 +117,26 @@ const CURRICULUM = [
         desc: "성희롱과 괴롭힘은 근거 법률과 판단 기준이 다릅니다. 같은 자리에서 경계를 정리하면 관리자가 헷갈리지 않습니다.",
       },
     ],
+  },
+]
+
+/**
+ * 관련 공지 글 — **이미 검색에 색인되고 있는 페이지들**이다(sitemap 포함).
+ * 새로 만든 이 페이지와 서로 링크를 걸어 두면 양쪽이 함께 올라간다.
+ * ⚠️ 공지 slug 가 바뀌면 여기도 함께 고칠 것(끊긴 링크는 색인에 마이너스다).
+ */
+const RELATED_POSTS = [
+  {
+    href: "/board/uijeongbu-eulji-hospital-harassment-education",
+    title: "[공익활동] 의정부을지대학교병원 직장 내 괴롭힘 예방교육",
+  },
+  {
+    href: "/board/duru-workplace-harassment-education-2026",
+    title: "[공익활동] 두루장애인보호사업장 직장 내 괴롭힘 및 성희롱 예방 교육",
+  },
+  {
+    href: "/board/workplace-harassment-prevention-training-2025",
+    title: "직장 내 괴롭힘 예방교육 안내",
   },
 ]
 
@@ -280,6 +303,48 @@ export default function HarassmentTrainingPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        {/* 관련 글 — 이미 색인되고 있는 공지 글과 이어 붙인다(내부 링크가 양쪽을 함께 올린다). */}
+        <section className="mb-12">
+          <h2 className="break-keep text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+            교육 수행 소식
+          </h2>
+          <p className="break-keep text-sm text-muted-foreground mb-5">
+            공지사항에 올린 실제 수행 기록입니다.
+          </p>
+          <ul className="space-y-2.5">
+            {RELATED_POSTS.map((p) => (
+              <li key={p.href}>
+                <Link
+                  href={p.href}
+                  className="group flex items-start gap-2 rounded-xl border border-border/60 bg-white px-5 py-4 transition-colors hover:border-primary/40 hover:bg-primary/5"
+                >
+                  <span className="break-keep text-sm sm:text-base font-medium text-gray-800 group-hover:text-primary">
+                    {p.title}
+                  </span>
+                  <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* 조사로 연결 — 예방교육에서 사건이 확인되면 조사로 넘어간다 */}
+        <section className="mb-12 rounded-2xl border border-border/60 bg-gray-50 p-6 sm:p-8">
+          <h2 className="break-keep text-lg sm:text-xl font-bold text-gray-900 mb-2">
+            이미 신고가 접수되었다면
+          </h2>
+          <p className="break-keep text-sm sm:text-base leading-relaxed text-gray-700 mb-4">
+            교육은 예방 단계입니다. 사건이 이미 발생했다면 조사 절차로 넘어가야 합니다.
+            FAIR인사노무컨설팅은 접수부터 조사·조치·모니터링까지 수행합니다.
+          </p>
+          <Link
+            href="/services/workplace-harassment"
+            className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-primary hover:underline"
+          >
+            직장 내 괴롭힘 조사 수행 보기 <ArrowRight className="h-4 w-4" />
+          </Link>
         </section>
 
         {/* CTA */}

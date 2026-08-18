@@ -41,11 +41,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
+    // 직장 내 괴롭힘 센터 — 마케팅 목적의 독립 메뉴(CEO 지시 2026-08-13)라
+    // 두 페이지 모두 우선순위를 올려 잡는다. 검색 유입의 실제 진입점이다.
     {
       url: `${baseUrl}/services/workplace-harassment`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services/harassment-training`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/services/freelancer`,
