@@ -3,9 +3,19 @@
     "label": "직장 내 괴롭힘 센터",
     "items": [
       {
-        "href": "/services/workplace-harassment",
-        "title": "직장 내 괴롭힘 조사 수행",
-        "description": "신고 접수부터 조사·조치·모니터링까지 법에 맞게 수행"
+        "href": "/services/workplace-harassment#strengths",
+        "title": "FAIR의 강점",
+        "description": "27년 전문성 · AI 모의판정 교차검증 · 피해자 심리검사 지원"
+      },
+      {
+        "href": "/services/workplace-harassment#procedure",
+        "title": "조사 절차",
+        "description": "신고 접수부터 조치·모니터링까지 5단계"
+      },
+      {
+        "href": "/services/workplace-harassment#cases",
+        "title": "수행 사례",
+        "description": "최근 3년간 대표 수행 사례"
       }
     ]
   },

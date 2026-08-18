@@ -3,9 +3,19 @@
     "label": "職場のハラスメントセンター",
     "items": [
       {
-        "href": "/services/workplace-harassment",
-        "title": "職場内いじめ調査の実施",
-        "description": "申告受付から調査・措置・モニタリングまで法に沿って実施"
+        "href": "/services/workplace-harassment#strengths",
+        "title": "FAIR の強み",
+        "description": "27年の専門性・AI 模擬判定の交差検証・被害者の心理検査支援"
+      },
+      {
+        "href": "/services/workplace-harassment#procedure",
+        "title": "調査手続",
+        "description": "申告受付から措置・モニタリングまでの5段階"
+      },
+      {
+        "href": "/services/workplace-harassment#cases",
+        "title": "実施事例",
+        "description": "直近3年の代表的な実施事例"
       }
     ]
   },

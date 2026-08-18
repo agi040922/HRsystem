@@ -3,9 +3,19 @@
     "label": "Workplace Harassment Center",
     "items": [
       {
-        "href": "/services/workplace-harassment",
-        "title": "Workplace Harassment Investigation",
-        "description": "From report intake to investigation, action, and monitoring — conducted per the law"
+        "href": "/services/workplace-harassment#strengths",
+        "title": "FAIR's Strengths",
+        "description": "27 years of expertise, AI cross-check, psychological support for the complainant"
+      },
+      {
+        "href": "/services/workplace-harassment#procedure",
+        "title": "Investigation Process",
+        "description": "Five stages from intake to remedial action and monitoring"
+      },
+      {
+        "href": "/services/workplace-harassment#cases",
+        "title": "Case Record",
+        "description": "Representative investigations over the past three years"
       }
     ]
   },
