@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ArrowRight, GraduationCap, Star, Users, Clock } from "lucide-react"
+import { ArrowLeft, ArrowRight, GraduationCap, Users, Clock } from "lucide-react"
 import PageBanner from "@/components/page-banner"
 import StructuredData from "@/components/seo/structured-data"
 import NewsletterLinkBlock from "@/components/newsletter-link-block"
@@ -19,7 +19,8 @@ import { pageMetadata, servicePageJsonLd } from "@/lib/seo"
  *  - 기관명은 **이미 고객사로 공개된 곳만 실명**을 쓴다(에쓰오일토탈윤활유 — CEO 지시).
  *    고용노동교육원 파견 건의 사업장은 제3자라 업종·유형으로만 적는다.
  *    조사 사례(HarassmentTabs 의 CASES)가 전부 익명인 것과 같은 기준이다.
- *  - 만족도는 **표본(수행 3회)을 함께 밝힌다.** 표본 없는 평균은 부풀리기가 된다.
+ *  - 강사 만족도 점수는 **CEO 지시(2026-08-13)로 게재하지 않는다.** 되살리지 말 것.
+ *  - 교육 일자도 같은 지시로 싣지 않는다.
  *
  * ⚠️ 법적 서술 주의 — 괴롭힘 예방교육을 "법정 의무교육"이라고 쓰지 않는다.
  *    성희롱 예방교육과 근거가 다르다. 단정 표현을 넣지 말 것.
@@ -40,33 +41,20 @@ export const metadata: Metadata = pageMetadata({
   ],
 })
 
-/** 최근 수행 사례. 날짜는 원자료(강의 실적) 기준. */
+/**
+ * 수행 사례.
+ * ⚠️ CEO 지시(2026-08-13)로 **기관 실명과 교육 일자를 모두 뺐다.** 업종·유형으로만 적는다.
+ *    조사 사례(HarassmentTabs 의 CASES)와 같은 기준이 되었다.
+ */
 const RECENT = [
-  {
-    org: "에쓰오일토탈윤활유",
-    note: "직장 내 괴롭힘 예방교육",
-    when: "",
-  },
-  {
-    org: "지방공기업(도시공사)",
-    note: "직장 내 괴롭힘 예방교육 · 1시간",
-    when: "2026.04",
-  },
+  { org: "외국계기업", note: "직장 내 괴롭힘 예방교육" },
+  { org: "지방공기업(도시공사)", note: "직장 내 괴롭힘 예방교육 · 1시간" },
   {
     org: "사회복지법인(시니어클럽)",
     note: "직장 내 괴롭힘 예방교육 · 성희롱 예방교육 병행 · 2시간 (2회)",
-    when: "2026.05",
   },
-  {
-    org: "수산업 사업장",
-    note: "직장 내 괴롭힘 예방교육 · 1시간",
-    when: "2026.05",
-  },
-  {
-    org: "제조업 사업장 (고용노동교육원 의뢰)",
-    note: "직장 내 괴롭힘 예방교육 · 양일 과정",
-    when: "2025.10",
-  },
+  { org: "수산업 사업장", note: "직장 내 괴롭힘 예방교육 · 1시간" },
+  { org: "제조업 사업장", note: "직장 내 괴롭힘 예방교육 · 양일 과정" },
 ]
 
 /**
@@ -251,43 +239,20 @@ export default function HarassmentTrainingPage() {
           </div>
         </section>
 
-        {/* 만족도 */}
-        <section className="mb-12">
-          <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-            <div className="flex flex-wrap items-baseline gap-3">
-              <Star className="h-6 w-6 text-primary" />
-              <span className="text-3xl font-bold text-gray-900">4.49</span>
-              <span className="text-sm text-muted-foreground">/ 5점</span>
-            </div>
-            <p className="break-keep mt-3 text-sm leading-relaxed text-gray-700">
-              고용노동교육원 「찾아가는 직장 내 괴롭힘 예방교육 사업장 현장지원과정」에서 받은
-              <b> 강사 만족도 평균</b>입니다. <b>2026년 수행 3회 기준</b>(4.63 · 4.53 · 4.32)이며,
-              해당 과정에 한정된 수치입니다.
-            </p>
-          </div>
-        </section>
-
         {/* 수행 사례 */}
         <section className="mb-12">
           <h2 className="break-keep text-xl sm:text-2xl font-bold text-gray-900 mb-2">수행 사례</h2>
           <p className="break-keep text-sm text-muted-foreground mb-6">
-            아래는 이력 기준이며, 고용노동교육원 의뢰로 수행한 사업장은 업종·유형으로만 표기했습니다.
+            아래는 이력 기준이며, 사업장은 업종·유형으로만 표기했습니다.
           </p>
           <ul className="space-y-3">
             {RECENT.map((c) => (
               <li
-                key={`${c.org}-${c.when}-${c.note}`}
-                className="flex flex-wrap items-baseline justify-between gap-2 rounded-xl border border-border/60 bg-white px-5 py-4"
+                key={`${c.org}-${c.note}`}
+                className="rounded-xl border border-border/60 bg-white px-5 py-4"
               >
-                <div className="min-w-0">
-                  <p className="break-keep font-semibold text-gray-900">{c.org}</p>
-                  <p className="break-keep mt-0.5 text-sm text-muted-foreground">{c.note}</p>
-                </div>
-                {c.when && (
-                  <span className="shrink-0 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                    {c.when}
-                  </span>
-                )}
+                <p className="break-keep font-semibold text-gray-900">{c.org}</p>
+                <p className="break-keep mt-0.5 text-sm text-muted-foreground">{c.note}</p>
               </li>
             ))}
           </ul>
@@ -336,7 +301,7 @@ export default function HarassmentTrainingPage() {
         </section>
 
         <p className="mt-8 text-xs leading-relaxed text-gray-400">
-          ※ 수행 사례와 만족도는 이력 기준이며, 개별 사업장의 교육 효과를 보장하는 내용이 아닙니다.
+          ※ 수행 사례는 이력 기준이며, 개별 사업장의 교육 효과를 보장하는 내용이 아닙니다.
           교육 구성과 시간은 사업장 상황에 따라 조정됩니다.
         </p>
 
