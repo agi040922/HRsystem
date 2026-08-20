@@ -47,6 +47,29 @@ export async function generateMetadata({
  * 한글 장문 가독성 기준: 본문 17px / 행간 2.0 / 어절 단위 줄바꿈(break-keep).
  * 구분선 대신 여백으로 위계를 만든다.
  */
+/**
+ * 본문 안의 `**굵게**` 표기를 굵은 글씨로 바꾼다.
+ *
+ * 한글 장문은 한 문단이 길어져서 눈이 미끄러진다. 문단마다 한두 곳만 굵게 잡아
+ * 시선의 착지점을 만든다(백신 사이트 `RichText` 와 같은 방식).
+ * 표기를 쓰지 않은 글은 split 결과가 한 조각이라 예전 그대로 출력된다.
+ */
+function RichText({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+        part.startsWith("**") && part.endsWith("**") ? (
+          <strong key={i} className="font-bold text-gray-900">
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  )
+}
+
 function BlockView({ block }: { block: Block }) {
   switch (block.type) {
     case "h2":
@@ -73,7 +96,9 @@ function BlockView({ block }: { block: Block }) {
                 aria-hidden
                 className="mt-[0.85em] h-[3px] w-[3px] shrink-0 rounded-full bg-gray-400"
               />
-              <span>{item}</span>
+              <span>
+                <RichText text={item} />
+              </span>
             </li>
           ))}
         </ul>
@@ -82,7 +107,7 @@ function BlockView({ block }: { block: Block }) {
     default:
       return (
         <p className="mt-7 whitespace-pre-line break-keep text-[1.0625rem] leading-[2] text-gray-700">
-          {block.text}
+          <RichText text={block.text} />
         </p>
       )
   }
