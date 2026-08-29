@@ -24,6 +24,8 @@ export const metadata: Metadata = pageMetadata({
     "괴롭힘 조사 보고서",
     "직장 내 괴롭힘 대응",
     "노무법인 괴롭힘 조사",
+    "직장 내 괴롭힘 허위신고",
+    "괴롭힘 반복 신고 징계",
   ],
 })
 
